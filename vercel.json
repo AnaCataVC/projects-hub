@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/my-cv",
-      "destination": "https://my-4gwwcxx8h-ana-catalina-s-projects.vercel.app"
+      "destination": "https://my-cv-chi-black.vercel.app"
     },
     {
       "source": "/my-cv/:path*",
-      "destination": "https://my-4gwwcxx8h-ana-catalina-s-projects.vercel.app/:path*"
+      "destination": "https://my-cv-chi-black.vercel.app/:path*"
     }
   ]
 }
