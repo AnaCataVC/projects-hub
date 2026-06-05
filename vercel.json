@@ -5,8 +5,8 @@
       "destination": "https://my-cv-chi-black.vercel.app"
     },
     {
-      "source": "/my-cv/:path*",
-      "destination": "https://my-cv-chi-black.vercel.app/:path*"
+      "source": "/my-cv/(.*)",
+      "destination": "https://my-cv-chi-black.vercel.app/$1"
     }
   ]
 }
