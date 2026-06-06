@@ -14,7 +14,8 @@
 </div>
 
 <script>
-    const translations = {
+    type LangKeys = 'es' | 'en';
+    const translations: Record<string, Record<LangKeys, string>> = {
         'badge_cv': { 
             'es': 'Plantilla Open Source', 
             'en': 'Open Source Template' 
@@ -37,9 +38,9 @@
         }
     };
 
-    let currentLang = localStorage.getItem('lang');
+    let currentLang = localStorage.getItem('lang') as LangKeys | null;
     if (!currentLang) {
-        const browserLang = navigator.language || navigator.userLanguage;
+        const browserLang = navigator.language || (navigator as any).userLanguage;
         currentLang = browserLang.toLowerCase().startsWith('es') ? 'es' : 'en';
         localStorage.setItem('lang', currentLang); 
     }
@@ -48,27 +49,25 @@
     const btnEn = document.getElementById('lang-en');
     const indicator = document.getElementById('lang-indicator');
 
-
-
-    function updateTexts(lang) {
+    function updateTexts(lang: LangKeys) {
         const elements = document.querySelectorAll('[data-i18n]');
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[key] && translations[key][lang]) {
+            if (key && translations[key] && translations[key][lang]) {
                 el.innerHTML = translations[key][lang];
             }
         });
         document.documentElement.lang = lang;
     }
 
-    function setLanguage(lang) {
+    function setLanguage(lang: LangKeys) {
         currentLang = lang;
         localStorage.setItem('lang', lang);
         
         if (lang === 'es') {
-            window.updateToggleUI(btnEs, btnEn, indicator, false);
+            (window as any).updateToggleUI(btnEs, btnEn, indicator, false);
         } else {
-            window.updateToggleUI(btnEn, btnEs, indicator, true);
+            (window as any).updateToggleUI(btnEn, btnEs, indicator, true);
         }
         updateTexts(lang);
     }
