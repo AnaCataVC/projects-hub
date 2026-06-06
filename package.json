@@ -23,11 +23,9 @@
   },
   "homepage": "https://github.com/AnaCataVC/projects-hub#readme",
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.0",
+    "@tailwindcss/postcss": "^4.3.0",
     "astro": "^6.4.4",
+    "postcss": "^8.5.15",
     "tailwindcss": "^4.3.0"
-  },
-  "overrides": {
-    "vite": "6.x"
   }
 }
