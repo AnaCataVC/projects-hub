@@ -1,15 +1,18 @@
 ---
 interface Props {
-    href: string;
+    demoHref?: string;
+    githubHref?: string;
+    href?: string; // for backwards compatibility
     badgeKey: string;
     title: string;
     descKey: string;
 }
 
-const { href, badgeKey, title, descKey } = Astro.props;
+const { demoHref, githubHref, href, badgeKey, title, descKey } = Astro.props;
+const finalDemoHref = demoHref || href;
 ---
 
-<a href={href} class="group relative flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-slate-800 dark:text-slate-100 no-underline transition-all duration-300 w-full box-border overflow-hidden hover:-translate-y-1 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/30">
+<div class="group relative flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-slate-800 dark:text-slate-100 no-underline transition-all duration-300 w-full box-border overflow-hidden hover:-translate-y-1 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/30">
     <!-- Gradient top border effect on hover -->
     <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
     
@@ -20,9 +23,19 @@ const { href, badgeKey, title, descKey } = Astro.props;
         
         <p class="text-slate-500 dark:text-slate-400 text-[15px] leading-relaxed flex-grow m-0" data-i18n={descKey}>Una plantilla moderna e interactiva para crear tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.</p>
         
-        <div class="mt-6 text-sm font-medium flex items-center transition-colors duration-300 group-hover:text-purple-500 dark:group-hover:text-purple-400" data-i18n="btn_view">
-            Ver proyecto 
-            <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1 text-purple-500 dark:text-purple-400">&rarr;</span>
+        <div class="mt-6 flex flex-wrap gap-4 text-sm font-medium relative z-10">
+            {finalDemoHref && (
+                <a href={finalDemoHref} class="flex items-center transition-colors duration-300 text-slate-600 dark:text-slate-300 hover:text-purple-500 dark:hover:text-purple-400 no-underline group/link">
+                    <span data-i18n="btn_demo">Ver demo</span>
+                    <span class="ml-1.5 transition-transform duration-300 group-hover/link:translate-x-1 text-purple-500 dark:text-purple-400">&rarr;</span>
+                </a>
+            )}
+            {githubHref && (
+                <a href={githubHref} target="_blank" rel="noopener noreferrer" class="flex items-center transition-colors duration-300 text-slate-600 dark:text-slate-300 hover:text-purple-500 dark:hover:text-purple-400 no-underline group/link">
+                    <svg class="w-4 h-4 mr-1.5 fill-current text-slate-500 dark:text-slate-400 group-hover/link:text-purple-500 dark:group-hover/link:text-purple-400 transition-colors duration-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    <span data-i18n="btn_github">GitHub</span>
+                </a>
+            )}
         </div>
     </div>
-</a>
+</div>
