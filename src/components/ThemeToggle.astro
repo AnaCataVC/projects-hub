@@ -1,12 +1,13 @@
 ---
 ---
 
-<div class="flex items-center bg-white/50 dark:bg-slate-800/50 rounded-full p-1 border border-slate-200/50 dark:border-slate-700/50 shadow-sm backdrop-blur-sm relative">
+<!-- Desktop Switch -->
+<div class="hidden sm:flex items-center bg-white/50 dark:bg-slate-800/50 rounded-full p-1 border border-slate-200/50 dark:border-slate-700/50 shadow-sm backdrop-blur-sm relative">
     <!-- Active Indicator Background -->
     <div id="theme-indicator" class="absolute top-1 bottom-1 left-1 bg-white dark:bg-slate-700 shadow-sm rounded-full transition-transform duration-300 ease-out w-[calc(50%-4px)] pointer-events-none"></div>
     
-    <button id="theme-light" class="relative z-10 w-11 sm:w-14 h-8 sm:h-10 rounded-full flex items-center justify-center transition-colors text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200" aria-label="Modo Claro">
-        <svg class="w-4 h-4 sm:w-5 sm:h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="theme-light" class="relative z-10 w-14 h-10 rounded-full flex items-center justify-center transition-colors text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200" aria-label="Modo Claro">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -18,19 +19,38 @@
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
     </button>
-    <button id="theme-dark" class="relative z-10 w-11 sm:w-14 h-8 sm:h-10 rounded-full flex items-center justify-center transition-colors text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200" aria-label="Modo Oscuro">
-        <svg class="w-4 h-4 sm:w-5 sm:h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button id="theme-dark" class="relative z-10 w-14 h-10 rounded-full flex items-center justify-center transition-colors text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200" aria-label="Modo Oscuro">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
     </button>
 </div>
 
+<!-- Mobile Button -->
+<button id="theme-mobile" class="sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50 shadow-sm backdrop-blur-sm text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors shrink-0" aria-label="Toggle Theme">
+    <!-- Sun icon for dark mode (to switch to light) -->
+    <svg class="w-4 h-4 hidden dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <!-- Moon icon for light mode (to switch to dark) -->
+    <svg class="w-4 h-4 block dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+</button>
+
 <script>
     const btnLight = document.getElementById('theme-light');
     const btnDark = document.getElementById('theme-dark');
     const themeIndicator = document.getElementById('theme-indicator');
-
-
+    const btnMobile = document.getElementById('theme-mobile');
 
     function setTheme(isDark) {
         if (isDark) {
@@ -47,6 +67,14 @@
     if (btnLight && btnDark) {
         btnLight.addEventListener('click', () => setTheme(false));
         btnDark.addEventListener('click', () => setTheme(true));
+        
+        if (btnMobile) {
+            btnMobile.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                setTheme(!isDark);
+            });
+        }
+        
         setTheme(document.documentElement.classList.contains('dark'));
     }
 </script>

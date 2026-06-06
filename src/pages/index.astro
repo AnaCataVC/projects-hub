@@ -9,9 +9,10 @@ import ProjectCard from '../components/ProjectCard.astro';
             <h1 class="text-[3rem] sm:text-[4.5rem] font-bold m-0 mb-6 tracking-tight leading-[1.1]">
                 Projects Hub<span class="bg-gradient-to-br from-purple-500 to-blue-500 bg-clip-text text-transparent">.</span>
             </h1>
+            <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base font-light leading-relaxed max-w-xl m-0" data-i18n="subtitle_main">Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.</p>
         </header>
         
-        <div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-6 justify-start animate-fade-in delay-200">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start animate-fade-in delay-200">
             <ProjectCard 
                 demoHref="/my-cv/"
                 githubHref="https://github.com/AnaCataVC/my-cv"
