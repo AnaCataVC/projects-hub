@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased font-sans overflow-x-hidden transition-colors duration-300;
+  }
+}
+
+/* Subtle fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 100ms; opacity: 0; }
+.delay-200 { animation-delay: 200ms; opacity: 0; }
+.delay-300 { animation-delay: 300ms; opacity: 0; }

@@ -1,0 +1,30 @@
+{
+  "name": "projects-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnaCataVC/projects-hub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/AnaCataVC/projects-hub/issues"
+  },
+  "homepage": "https://github.com/AnaCataVC/projects-hub#readme",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.4",
+    "tailwindcss": "^4.3.0"
+  }
+}

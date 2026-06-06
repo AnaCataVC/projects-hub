@@ -1,0 +1,28 @@
+---
+interface Props {
+    href: string;
+    badgeKey: string;
+    title: string;
+    descKey: string;
+}
+
+const { href, badgeKey, title, descKey } = Astro.props;
+---
+
+<a href={href} class="group relative flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-slate-800 dark:text-slate-100 no-underline transition-all duration-300 w-full box-border overflow-hidden hover:-translate-y-1 hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/30">
+    <!-- Gradient top border effect on hover -->
+    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+    
+    <div class="flex flex-col flex-grow">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-purple-100/50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-5 w-fit uppercase tracking-wider" data-i18n={badgeKey}>Plantilla Open Source</span>
+        
+        <h2 class="m-0 mb-3 text-xl font-semibold tracking-tight">{title}</h2>
+        
+        <p class="text-slate-500 dark:text-slate-400 text-[15px] leading-relaxed flex-grow m-0" data-i18n={descKey}>Una plantilla moderna e interactiva para crear tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.</p>
+        
+        <div class="mt-6 text-sm font-medium flex items-center transition-colors duration-300 group-hover:text-purple-500 dark:group-hover:text-purple-400" data-i18n="btn_view">
+            Ver proyecto 
+            <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1 text-purple-500 dark:text-purple-400">&rarr;</span>
+        </div>
+    </div>
+</a>

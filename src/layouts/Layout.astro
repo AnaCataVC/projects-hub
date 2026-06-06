@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import LanguageToggle from '../components/LanguageToggle.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Ana-Catalina | Projects Hub" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<title>{title}</title>
+		<script is:inline>
+			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+
+			window.updateToggleUI = function(activeBtn, inactiveBtn, indicatorEl, isRight) {
+				if (indicatorEl) indicatorEl.style.transform = isRight ? 'translateX(100%)' : 'translateX(0)';
+				if (activeBtn) {
+					activeBtn.classList.remove('text-slate-500', 'dark:text-slate-400');
+					activeBtn.classList.add('text-slate-800', 'dark:text-slate-200');
+				}
+				if (inactiveBtn) {
+					inactiveBtn.classList.remove('text-slate-800', 'dark:text-slate-200');
+					inactiveBtn.classList.add('text-slate-500', 'dark:text-slate-400');
+				}
+			};
+		</script>
+	</head>
+	<body class="relative min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900 dark:selection:bg-indigo-900 dark:selection:text-indigo-100">
+		
+		<!-- Discreet Logo in corner -->
+		<header class="absolute top-8 left-8 sm:top-12 sm:left-12 z-10 animate-fade-in">
+			<a href="https://ana-catalina.com">
+				<img src="/favicon.svg" alt="ACVC Logo" class="w-8 h-8 sm:w-10 sm:h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" />
+			</a>
+		</header>
+
+		<!-- Top Right Actions -->
+		<div class="absolute top-8 right-8 sm:top-12 sm:right-12 z-10 animate-fade-in flex items-center gap-3">
+			<LanguageToggle />
+			<ThemeToggle />
+		</div>
+
+		<main class="flex-grow flex flex-col px-6 sm:px-12 w-full max-w-4xl mx-auto py-8 sm:py-12 mt-16 sm:mt-0">
+			<slot />
+		</main>
+
+		<div class="w-full mt-auto animate-fade-in delay-300 flex justify-center">
+			<footer class="w-full max-w-2xl border-t border-slate-200/50 dark:border-slate-800/50 pt-8 pb-4">
+				<div class="flex flex-col sm:flex-row justify-center sm:justify-end items-center sm:items-start gap-8">
+					<div class="flex flex-col items-center sm:items-end gap-3">
+						<div class="flex gap-6">
+							<a href="https://linkedin.com/in/ana-catalina/" target="_blank" rel="noopener noreferrer" class="text-sm font-light text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors">LinkedIn</a>
+							<a href="https://github.com/AnaCataVC/" target="_blank" rel="noopener noreferrer" class="text-sm font-light text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors">GitHub</a>
+						</div>
+						<p class="text-xs font-light text-slate-400 dark:text-slate-500">
+							&copy; {new Date().getFullYear()} Ana-Catalina.
+						</p>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

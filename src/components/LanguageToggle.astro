@@ -1,0 +1,73 @@
+---
+---
+
+<div class="flex items-center bg-white/50 dark:bg-slate-800/50 rounded-full p-1 border border-slate-200/50 dark:border-slate-700/50 shadow-sm backdrop-blur-sm relative">
+    <!-- Active Indicator Background -->
+    <div id="lang-indicator" class="absolute top-1 bottom-1 left-1 bg-white dark:bg-slate-700 shadow-sm rounded-full transition-transform duration-300 ease-out w-[calc(50%-4px)] pointer-events-none"></div>
+    
+    <button id="lang-es" class="lang-btn relative z-10 w-11 sm:w-14 h-8 sm:h-10 rounded-full text-xs sm:text-sm font-medium transition-colors text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 flex items-center justify-center" data-lang="es">
+        ES
+    </button>
+    <button id="lang-en" class="lang-btn relative z-10 w-11 sm:w-14 h-8 sm:h-10 rounded-full text-xs sm:text-sm font-medium transition-colors text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 flex items-center justify-center" data-lang="en">
+        EN
+    </button>
+</div>
+
+<script>
+    const translations = {
+        'badge_cv': { 
+            'es': 'Plantilla Open Source', 
+            'en': 'Open Source Template' 
+        },
+        'desc_cv': { 
+            'es': 'Una plantilla moderna e interactiva para crear tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.', 
+            'en': 'A modern and interactive template to build your own resume or professional portfolio. Easy to configure and deploy.' 
+        },
+        'btn_view': { 
+            'es': 'Ver proyecto', 
+            'en': 'View project' 
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang');
+    if (!currentLang) {
+        const browserLang = navigator.language || navigator.userLanguage;
+        currentLang = browserLang.toLowerCase().startsWith('es') ? 'es' : 'en';
+        localStorage.setItem('lang', currentLang); 
+    }
+
+    const btnEs = document.getElementById('lang-es');
+    const btnEn = document.getElementById('lang-en');
+    const indicator = document.getElementById('lang-indicator');
+
+
+
+    function updateTexts(lang) {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[key] && translations[key][lang]) {
+                el.innerHTML = translations[key][lang];
+            }
+        });
+        document.documentElement.lang = lang;
+    }
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        
+        if (lang === 'es') {
+            window.updateToggleUI(btnEs, btnEn, indicator, false);
+        } else {
+            window.updateToggleUI(btnEn, btnEs, indicator, true);
+        }
+        updateTexts(lang);
+    }
+
+    if (btnEs && btnEn) {
+        btnEs.addEventListener('click', () => setLanguage('es'));
+        btnEn.addEventListener('click', () => setLanguage('en'));
+        setLanguage(currentLang);
+    }
+</script>
