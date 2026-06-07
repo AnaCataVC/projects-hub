@@ -7,14 +7,6 @@
     {
       "source": "/my-cv/(.*)",
       "destination": "https://my-cv-chi-black.vercel.app/$1"
-    },
-    {
-      "source": "/life-tracker-analytics",
-      "destination": "https://life-tracker-analytics.vercel.app"
-    },
-    {
-      "source": "/life-tracker-analytics/(.*)",
-      "destination": "https://life-tracker-analytics.vercel.app/$1"
     }
   ]
 }
