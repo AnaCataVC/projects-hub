@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Outfit", "Inter", system-ui, sans-serif;
 }
 
 @layer base {
+  html {
+    @apply bg-slate-50 dark:bg-slate-900 transition-colors duration-300;
+  }
   body {
-    @apply bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased font-sans overflow-x-hidden transition-colors duration-300;
+    @apply text-slate-800 dark:text-slate-100 antialiased font-sans overflow-x-hidden transition-colors duration-300;
   }
 }
 
