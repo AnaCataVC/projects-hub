@@ -15,6 +15,14 @@
     {
       "source": "/life-tracker-analytics/(.*)",
       "destination": "https://life-tracker-analytics.vercel.app/$1"
+    },
+    {
+      "source": "/amiga-ia",
+      "destination": "https://amiga-ia.vercel.app"
+    },
+    {
+      "source": "/amiga-ia/(.*)",
+      "destination": "https://amiga-ia.vercel.app/$1"
     }
   ]
 }
