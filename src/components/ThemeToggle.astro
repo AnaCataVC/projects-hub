@@ -52,15 +52,15 @@
     const themeIndicator = document.getElementById('theme-indicator');
     const btnMobile = document.getElementById('theme-mobile');
 
-    function setTheme(isDark) {
+    function setTheme(isDark: boolean, saveToStorage: boolean = true) {
         if (isDark) {
             document.documentElement.classList.add('dark');
-            localStorage.theme = 'dark';
-            window.updateToggleUI(btnDark, btnLight, themeIndicator, true);
+            if (saveToStorage) localStorage.setItem('theme', 'dark');
+            (window as any).updateToggleUI(btnDark, btnLight, themeIndicator, true);
         } else {
             document.documentElement.classList.remove('dark');
-            localStorage.theme = 'light';
-            window.updateToggleUI(btnLight, btnDark, themeIndicator, false);
+            if (saveToStorage) localStorage.setItem('theme', 'light');
+            (window as any).updateToggleUI(btnLight, btnDark, themeIndicator, false);
         }
     }
 
@@ -75,6 +75,7 @@
             });
         }
         
-        setTheme(document.documentElement.classList.contains('dark'));
+        // Inicializar la UI sin sobreescribir la preferencia en localStorage
+        setTheme(document.documentElement.classList.contains('dark'), false);
     }
 </script>
