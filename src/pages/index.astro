@@ -12,8 +12,10 @@ import ProjectCard from '../components/ProjectCard.astro';
             <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base font-light leading-relaxed max-w-xl m-0" data-i18n="subtitle_main">Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.</p>
         </header>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start animate-fade-in delay-200">
-            <ProjectCard 
+        <div class="flex flex-wrap justify-center gap-6 animate-fade-in delay-200">
+            <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
+                <ProjectCard 
+                    icon="analytics"
                 demoHref="/life-tracker-analytics/"
                 githubHref="https://github.com/AnaCataVC/life-tracker-analytics"
                 badgeKey="badge_life"
@@ -21,23 +23,30 @@ import ProjectCard from '../components/ProjectCard.astro';
                 descKey="desc_life"
                 btnDemoKey="btn_view_app"
                 btnGithubKey="btn_view_github"
-            />
-            <ProjectCard 
+                />
+            </div>
+            <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
+                <ProjectCard 
+                    icon="ai"
                 demoHref="/amiga-ia/"
                 githubHref="https://github.com/AnaCataVC/amiga-ia"
                 badgeKey="badge_amiga"
                 title="Amiga IA"
                 descKey="desc_amiga"
                 btnDemoKey="btn_landing"
-                btnGithubKey="btn_github"
-            />
-            <ProjectCard 
+                btnGithubKey="btn_view_github"
+                />
+            </div>
+            <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
+                <ProjectCard 
+                    icon="cv"
                 demoHref="/my-cv/"
                 githubHref="https://github.com/AnaCataVC/my-cv"
                 badgeKey="badge_cv"
                 title="My CV Template"
                 descKey="desc_cv"
-            />
+                />
+            </div>
             <!-- You can easily add more ProjectCard components here -->
         </div>
 
