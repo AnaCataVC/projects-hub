@@ -63,6 +63,7 @@
             (window as any).updateToggleUI(btnLight, btnDark, themeIndicator, false);
         }
     }
+    (window as any).setThemeGlobal = setTheme;
 
     if (btnLight && btnDark) {
         btnLight.addEventListener('click', () => setTheme(false));
@@ -75,7 +76,7 @@
             });
         }
         
-        // Inicializar la UI sin sobreescribir la preferencia en localStorage
+        // Initialize the UI without overwriting the preference in localStorage
         setTheme(document.documentElement.classList.contains('dark'), false);
     }
 </script>

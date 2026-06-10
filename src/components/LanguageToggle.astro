@@ -102,7 +102,11 @@
             (window as any).updateToggleUI(btnEn, btnEs, indicator, true);
         }
         updateTexts(lang);
+        if (typeof (window as any).updateUIText === 'function') {
+            (window as any).updateUIText(lang);
+        }
     }
+    (window as any).setLanguageGlobal = setLanguage;
 
     if (btnEs && btnEn) {
         btnEs.addEventListener('click', () => setLanguage('es'));

@@ -4,51 +4,572 @@ import ProjectCard from '../components/ProjectCard.astro';
 ---
 
 <Layout title="Ana-Catalina | Projects Hub">
-    <div class="relative z-10 w-full flex-grow flex flex-col justify-center">
-        <header class="text-left mb-16 max-w-2xl animate-fade-in">
-            <h1 class="text-[3rem] sm:text-[4.5rem] font-bold m-0 mb-6 tracking-tight leading-[1.1]">
-                Projects Hub<span class="bg-gradient-to-br from-purple-500 to-blue-500 bg-clip-text text-transparent">.</span>
-            </h1>
-            <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base font-light leading-relaxed max-w-xl m-0" data-i18n="subtitle_main">Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.</p>
-        </header>
+    <div id="main-wrapper" class="relative z-10 w-full flex-grow flex items-center justify-center transition-all duration-500">
         
-        <div class="flex flex-wrap justify-center gap-6 animate-fade-in delay-200">
-            <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
-                <ProjectCard 
-                    icon="analytics"
-                demoHref="/life-tracker-analytics/"
-                githubHref="https://github.com/AnaCataVC/life-tracker-analytics"
-                badgeKey="badge_life"
-                title="Life Tracker Analytics"
-                descKey="desc_life"
-                btnDemoKey="btn_view_app"
-                btnGithubKey="btn_view_github"
-                />
+        <!-- Selection Screen -->
+        <div id="selection-screen" class="w-full max-w-lg bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl p-8 sm:p-12 text-center animate-fade-in">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-600 dark:from-white dark:to-slate-400">
+                Projects Hub<span class="text-purple-500">.</span>
+            </h1>
+            <p class="text-slate-500 dark:text-slate-400 mb-8" data-es="Elige tu experiencia de navegación" data-en="Choose your browsing experience">Elige tu experiencia de navegación</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="startHub('console')" class="flex-1 py-3 px-6 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium hover:scale-105 transition-transform shadow-lg">
+                    <span class="block text-xl mb-1">Terminal</span>
+                    <span class="text-xs opacity-70 font-mono" data-es="Modo interactivo" data-en="Interactive mode">Modo interactivo</span>
+                </button>
+                <button onclick="startHub('classic')" class="flex-1 py-3 px-6 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 font-medium hover:scale-105 transition-transform shadow-sm">
+                    <span class="block text-xl mb-1" data-es="Clásica" data-en="Classic">Clásica</span>
+                    <span class="text-xs opacity-70" data-es="Tarjetas UI" data-en="UI Cards">Tarjetas UI</span>
+                </button>
             </div>
-            <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
-                <ProjectCard 
-                    icon="ai"
-                demoHref="/amiga-ia/"
-                githubHref="https://github.com/AnaCataVC/amiga-ia"
-                badgeKey="badge_amiga"
-                title="Amiga IA"
-                descKey="desc_amiga"
-                btnDemoKey="btn_landing"
-                btnGithubKey="btn_view_github"
-                />
+        </div>
+
+        <!-- Console Window -->
+        <div id="console-window" class="hidden w-full max-w-4xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex-col flex-grow">
+            <!-- Console Header -->
+            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200/50 dark:border-slate-800/50 bg-white/30 dark:bg-slate-950/30 shrink-0">
+                <div class="flex items-center space-x-2 w-16">
+                    <!-- ACVC Logo -->
+                    <div class="flex items-center">
+                        <img src="/favicon.svg" alt="ACVC" class="w-5 h-5 sm:w-6 sm:h-6 opacity-80" />
+                    </div>
+                </div>
+                <div class="flex-grow flex justify-center px-2">
+                    <span id="header-path" class="text-xs font-mono text-slate-400 dark:text-slate-500 font-['JetBrains_Mono'] truncate">~/projects-hub</span>
+                </div>
+                <div class="w-16 flex justify-end">
+                    <button id="btn-escape" class="text-lg leading-none font-bold text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors w-6 h-6 flex items-center justify-center rounded hover:bg-slate-200/50 dark:hover:bg-slate-800/50" onclick="location.reload()" aria-label="Cerrar consola">
+                        ✕
+                    </button>
+                </div>
             </div>
-            <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
-                <ProjectCard 
-                    icon="cv"
-                demoHref="/my-cv/"
-                githubHref="https://github.com/AnaCataVC/my-cv"
-                badgeKey="badge_cv"
-                title="My CV Template"
-                descKey="desc_cv"
-                />
+
+            <!-- Console Content Container -->
+            <div class="p-4 sm:p-6 lg:p-8 flex-grow flex flex-col relative overflow-hidden">
+                
+                <!-- State 1: Interactive Tree Menu -->
+                <div id="console-menu" class="flex-grow flex flex-col overflow-hidden">
+
+                    <div id="menu-container" class="space-y-1 flex-grow outline-none font-['JetBrains_Mono',monospace] text-sm sm:text-base text-slate-700 dark:text-slate-300 overflow-y-auto pr-2" tabindex="0">
+                        <!-- Renderizado por JS -->
+                    </div>
+                    
+                    <!-- Footer con instrucciones -->
+                    <div class="mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 text-xs text-slate-400 dark:text-slate-500 hidden sm:flex flex-wrap gap-4 shrink-0">
+                        <div class="flex items-center gap-1.5">
+                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↑</span>
+                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↓</span>
+                            <span data-es="Navegar" data-en="Navigate">Navegar</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↵</span>
+                            <span data-es="Expandir/Ejecutar" data-en="Expand/Execute">Expandir/Ejecutar</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">←</span>
+                            <span data-es="o" data-en="or">o</span>
+                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]" data-es="Retroceso" data-en="Backspace">Retroceso</span>
+                            <span data-es="Contraer" data-en="Collapse">Contraer</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <!-- You can easily add more ProjectCard components here -->
+        </div>
+        
+        <!-- Classic View Outer Container -->
+        <div id="classic-view" class="hidden w-full animate-fade-in flex-col items-center">
+            <div class="mb-4 sm:mb-6 mt-8 sm:mt-10 w-full flex justify-end px-4 sm:px-0">
+                <button id="btn-escape-classic" class="text-xs sm:text-sm font-bold bg-slate-800/80 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg transition-all duration-300 shadow-md border border-slate-700/50 flex items-center gap-2" onclick="location.reload()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M15 18l-6-6 6-6"/></svg>
+                    <span data-es="Cambiar Vista" data-en="Change View">Cambiar Vista</span>
+                </button>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-6 p-4 w-full">
+                <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
+                    <ProjectCard 
+                        icon="analytics"
+                                demoHref="/life-tracker-analytics/"
+                                githubHref="https://github.com/AnaCataVC/life-tracker-analytics"
+                                badgeKey="badge_life"
+                                title="Life Tracker Analytics"
+                                descKey="desc_life"
+                                btnDemoKey="btn_view_app"
+                                btnGithubKey="btn_view_github"
+                            />
+                        </div>
+                        <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
+                            <ProjectCard 
+                                icon="ai"
+                                demoHref="/amiga-ia/"
+                                githubHref="https://github.com/AnaCataVC/amiga-ia"
+                                badgeKey="badge_amiga"
+                                title="Amiga IA"
+                                descKey="desc_amiga"
+                                btnDemoKey="btn_landing"
+                                btnGithubKey="btn_view_github"
+                            />
+                        </div>
+                        <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
+                            <ProjectCard 
+                                icon="cv"
+                                demoHref="/my-cv/"
+                                githubHref="https://github.com/AnaCataVC/my-cv"
+                                badgeKey="badge_cv"
+                                title="My CV Template"
+                                descKey="desc_cv"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
+
+    <script>
+        // Data Structure
+        const menuData = [
+            { 
+                id: 'help', 
+                title: '~/help', 
+                desc: '# Sobre este hub', 
+                color: 'text-amber-600 dark:text-amber-400',
+                type: 'folder', 
+                expanded: false, 
+                children: [
+                    { title: 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.', type: 'text' },
+                    { title: ' ', type: 'text' },
+                    { title: `© ${new Date().getFullYear()} Ana-Catalina.`, type: 'text' }
+                ]
+            },
+            {
+                id: 'links',
+                title: '~/links',
+                desc: '# Contacto y redes',
+                color: 'text-pink-600 dark:text-pink-400',
+                type: 'folder',
+                expanded: false,
+                children: [
+                    { title: '↳ ana-catalina.com', type: 'action', action: () => window.location.href = 'https://ana-catalina.com' },
+                    { title: '↳ LinkedIn', type: 'action', action: () => window.open('https://linkedin.com/in/ana-catalina/', '_blank') },
+                    { title: '↳ GitHub', type: 'action', action: () => window.open('https://github.com/AnaCataVC/', '_blank') }
+                ]
+            },
+            { 
+                id: 'idioma', 
+                title: '~/idioma', 
+                desc: '# Cambiar idioma', 
+                color: 'text-purple-600 dark:text-purple-400',
+                type: 'folder', 
+                expanded: false, 
+                children: [
+                    { title: '[es] Español', action: () => { 
+                        if(window.setLanguageGlobal) window.setLanguageGlobal('es'); 
+                        handleCollapse();
+                    } },
+                    { title: '[en] English', action: () => { 
+                        if(window.setLanguageGlobal) window.setLanguageGlobal('en'); 
+                        handleCollapse();
+                    } }
+                ]
+            },
+            { 
+                id: 'tema', 
+                title: '~/tema', 
+                desc: '# Cambiar apariencia', 
+                color: 'text-blue-600 dark:text-blue-400',
+                type: 'folder', 
+                expanded: false, 
+                children: [
+                    { title: '[☀] Claro', action: () => { 
+                        if(window.setThemeGlobal) window.setThemeGlobal(false); 
+                        localStorage.setItem('terminalThemeSet', 'true');
+                        handleCollapse();
+                    } },
+                    { title: '[☾] Oscuro', action: () => { 
+                        if(window.setThemeGlobal) window.setThemeGlobal(true); 
+                        localStorage.setItem('terminalThemeSet', 'true');
+                        handleCollapse();
+                    } }
+                ]
+            },
+            { 
+                id: 'proyectos', 
+                title: '~/proyectos', 
+                desc: '# Explorar portfolio', 
+                color: 'text-emerald-600 dark:text-emerald-400',
+                type: 'folder', 
+                expanded: false, 
+                children: [
+                    { 
+                        title: 'Life Tracker Analytics', 
+                        type: 'folder', 
+                        expanded: false, 
+                        children: [
+                            { title: '▪ Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos.', type: 'text' },
+                            { title: '↳ Ver app', action: () => window.location.href = '/life-tracker-analytics/' },
+                            { title: '↳ Ver en GitHub', action: () => window.open('https://github.com/AnaCataVC/life-tracker-analytics', '_blank') }
+                        ]
+                    },
+                    { 
+                        title: 'Amiga IA', 
+                        type: 'folder', 
+                        expanded: false, 
+                        children: [
+                            { title: '▪ Repositorio centralizado de habilidades y agentes para asistentes IA. Facilita la programación y asegura la calidad del código.', type: 'text' },
+                            { title: '↳ Ver página de producto', action: () => window.location.href = '/amiga-ia/' },
+                            { title: '↳ Ver en GitHub', action: () => window.open('https://github.com/AnaCataVC/amiga-ia', '_blank') }
+                        ]
+                    },
+                    { 
+                        title: 'My CV Template', 
+                        type: 'folder', 
+                        expanded: false, 
+                        children: [
+                            { title: '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.', type: 'text' },
+                            { title: '↳ Ver demo interactiva', type: 'action', action: () => window.location.href = '/my-cv/' },
+                            { title: '↳ Ver en GitHub', type: 'action', action: () => window.open('https://github.com/AnaCataVC/my-cv', '_blank') }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        let currentPath = [];
+        let flatList = [];
+        let selectedIndex = 0;
+        const container = document.getElementById('menu-container');
+
+        window.handleMenuClick = function(idx, e) {
+            if (e) e.stopPropagation();
+            selectedIndex = idx;
+            handleAction();
+        };
+
+        window.handleMenuHover = function(idx, e) {
+            // Ignore events on pure touch devices
+            if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+            if (selectedIndex !== idx) {
+                selectedIndex = idx;
+                renderMenu();
+            }
+        };
+
+        function renderMenu() {
+            flatList = [];
+            if (!container) return;
+            
+            let nodesToRender = menuData;
+            if (currentPath.length > 0) {
+                const currentFolder = currentPath[currentPath.length - 1];
+                nodesToRender = currentFolder.children || [];
+                // Add back option ".."
+                flatList.push({
+                    title: '..',
+                    desc: '',
+                    type: 'action',
+                    action: handleCollapse,
+                    color: 'text-slate-500',
+                    isBack: true
+                });
+            }
+
+            nodesToRender.forEach(node => flatList.push(node));
+            
+            // Ensure selectedIndex is within bounds
+            if (selectedIndex >= flatList.length) selectedIndex = flatList.length - 1;
+            if (selectedIndex < 0) selectedIndex = 0;
+
+            let html = '';
+            flatList.forEach((item, idx) => {
+                const isSelected = idx === selectedIndex;
+                const isSelectable = item.type !== 'text';
+                
+                const bgClass = isSelected && isSelectable ? 'bg-slate-200/50 dark:bg-slate-800/50' : (isSelectable ? 'hover:bg-slate-100/30 dark:hover:bg-slate-800/30 cursor-pointer' : '');
+                const textColor = item.color || 'text-slate-700 dark:text-slate-300';
+                const opacityClass = item.type === 'text' ? 'opacity-70 italic' : '';
+                
+                let icon = '';
+                if (item.type === 'folder') {
+                    icon = '▶ ';
+                } else if (item.isBack) {
+                    icon = '↵ ';
+                }
+
+                if (item.type === 'text') {
+                    html += `
+                        <div 
+                            class="flex px-3 py-1.5 sm:py-1 rounded transition-colors ${bgClass}"
+                        >
+                            <div class="flex-grow flex items-start">
+                                <span class="${textColor} font-medium ${opacityClass} whitespace-normal leading-relaxed break-words pr-2">${icon}${item.title}</span>
+                                ${item.desc ? `<span class="ml-3 text-slate-400 dark:text-slate-500 text-xs sm:text-sm hidden sm:inline shrink-0 mt-0.5">${item.desc}</span>` : ''}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <button type="button" data-idx="${idx}"
+                            class="w-full text-left flex items-center px-3 py-4 sm:py-2 rounded transition-colors ${bgClass}"
+                            onclick="window.handleMenuClick(${idx}, event)"
+                            onmousemove="window.handleMenuHover(${idx}, event)"
+                        >
+                            <div class="flex-grow flex items-baseline pointer-events-none">
+                                <span class="${textColor} font-medium ${opacityClass}">${icon}${item.title}</span>
+                                ${item.desc ? `<span class="ml-3 text-slate-400 dark:text-slate-500 text-xs sm:text-sm hidden sm:inline">${item.desc}</span>` : ''}
+                            </div>
+                        </button>
+                    `;
+                }
+            });
+            container.innerHTML = html;
+
+            // Update Header Path
+            const headerPathEl = document.getElementById('header-path');
+            if (headerPathEl) {
+                if (currentPath.length === 0) {
+                    headerPathEl.innerText = '~/projects-hub';
+                } else {
+                    const pathStr = currentPath.map(p => p.id || p.title.replace('~/', '')).join('/');
+                    headerPathEl.innerText = `~/projects-hub/${pathStr}`;
+                }
+            }
+
+            // Auto scroll
+            const selectedEl = container.querySelector(`[data-idx="${selectedIndex}"]`);
+            if (selectedEl) {
+                selectedEl.scrollIntoView({ block: 'nearest' });
+            }
+        }
+
+        function handleAction() {
+            const item = flatList[selectedIndex];
+            if (!item) return;
+
+            if (item.type === 'folder') {
+                currentPath.push(item);
+                selectedIndex = 0;
+                renderMenu();
+            } else if (item.action) {
+                item.action();
+            }
+        }
+        
+        function handleCollapse() {
+            if (currentPath.length > 0) {
+                currentPath.pop();
+                selectedIndex = 0;
+                renderMenu();
+            }
+        }
+
+        window.updateUIText = function(lang) {
+            // Update classic view and welcome screen translations
+            document.querySelectorAll('[data-es]').forEach(el => {
+                if (lang === 'es' && el.dataset.es) el.innerHTML = el.dataset.es;
+                if (lang === 'en' && el.dataset.en) el.innerHTML = el.dataset.en;
+            });
+
+            // menuData indices:
+            // 0: help, 1: links, 2: idioma, 3: tema, 4: proyectos
+
+            // Update console menu text
+            if (lang === 'en') {
+                menuData[0].desc = '# About this hub';
+                menuData[0].children[0].title = 'Personal projects developed to explore, learn and share with the community.';
+                menuData[0].children[1].title = ' ';
+                menuData[0].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
+
+                menuData[1].desc = '# Contact and links';
+
+                menuData[2].title = '~/language';
+                menuData[2].desc = '# Change language';
+                
+                menuData[3].title = '~/theme';
+                menuData[3].desc = '# Change theme';
+                menuData[3].children[0].title = '↳ Light mode';
+                menuData[3].children[1].title = '↳ Dark mode';
+
+                menuData[4].title = '~/projects';
+                menuData[4].desc = '# Web development';
+                
+                menuData[4].children[0].children[0].title = '▪ Web application to track and analyze life metrics and daily habits through data visualizations.';
+                menuData[4].children[0].children[1].title = '↳ View app';
+                menuData[4].children[0].children[2].title = '↳ View on GitHub';
+
+                menuData[4].children[1].children[0].title = '▪ Centralized repository of skills and agents for AI assistants. It makes programming easier and ensures code quality.';
+                menuData[4].children[1].children[1].title = '↳ View product page';
+                menuData[4].children[1].children[2].title = '↳ View on GitHub';
+
+                menuData[4].children[2].children[0].title = '▪ A modern and interactive template to build your own resume or professional portfolio. Easy to configure and deploy.';
+                menuData[4].children[2].children[1].title = '↳ View interactive demo';
+                menuData[4].children[2].children[2].title = '↳ View on GitHub';
+            } else {
+                menuData[0].desc = '# Sobre este hub';
+                menuData[0].children[0].title = 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.';
+                menuData[0].children[1].title = ' ';
+                menuData[0].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
+
+                menuData[1].desc = '# Contacto y redes';
+
+                menuData[2].title = '~/idioma';
+                menuData[2].desc = '# Cambiar idioma';
+                
+                menuData[3].title = '~/tema';
+                menuData[3].desc = '# Cambiar apariencia';
+                menuData[3].children[0].title = '[☀] Claro';
+                menuData[3].children[1].title = '[☾] Oscuro';
+
+                menuData[4].title = '~/proyectos';
+                menuData[4].desc = '# Explorar portfolio';
+                
+                menuData[4].children[0].children[0].title = '▪ Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos.';
+                menuData[4].children[0].children[1].title = '↳ Ver app';
+                menuData[4].children[0].children[2].title = '↳ Ver en GitHub';
+
+                menuData[4].children[1].children[0].title = '▪ Repositorio centralizado de habilidades y agentes para asistentes IA. Facilita la programación y asegura la calidad del código.';
+                menuData[4].children[1].children[1].title = '↳ Ver página de producto';
+                menuData[4].children[1].children[2].title = '↳ Ver en GitHub';
+
+                menuData[4].children[2].children[0].title = '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.';
+                menuData[4].children[2].children[1].title = '↳ Ver demo interactiva';
+                menuData[4].children[2].children[2].title = '↳ Ver en GitHub';
+            }
+
+            renderMenu();
+        };
+
+        // Force translation on initial load to avoid race conditions with DOMContentLoaded
+        if (typeof localStorage !== 'undefined') {
+            const currentLang = localStorage.getItem('lang') || 'es';
+            window.updateUIText(currentLang);
+        }
+
+        // Keyboard events
+        window.addEventListener('keydown', (e) => {
+            const menuVisible = !document.getElementById('console-menu')?.classList.contains('hidden');
+            
+            if (!menuVisible) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    location.reload();
+                }
+                return;
+            }
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                let nextIdx = selectedIndex;
+                while (nextIdx < flatList.length - 1) {
+                    nextIdx++;
+                    if (flatList[nextIdx].type !== 'text') {
+                        selectedIndex = nextIdx;
+                        break;
+                    }
+                }
+                renderMenu();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                let prevIdx = selectedIndex;
+                while (prevIdx > 0) {
+                    prevIdx--;
+                    if (flatList[prevIdx].type !== 'text') {
+                        selectedIndex = prevIdx;
+                        break;
+                    }
+                }
+                renderMenu();
+            } else if (e.key === 'Enter' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                handleAction();
+            } else if (e.key === 'Escape' || e.key === 'ArrowLeft' || e.key === 'Backspace') {
+                e.preventDefault();
+                if (currentPath.length > 0) {
+                    handleCollapse();
+                } else if (e.key === 'Escape') {
+                    location.reload();
+                }
+            }
+        });
+
+        // Initialize App
+        const selectionScreen = document.getElementById('selection-screen');
+        const consoleWindow = document.getElementById('console-window');
+        const classicViewEl = document.getElementById('classic-view');
+        const mainWrapper = document.getElementById('main-wrapper');
+
+        window.startHub = function(mode) {
+            selectionScreen?.classList.add('hidden');
+            
+            if (mode === 'console') {
+                consoleWindow?.classList.remove('hidden');
+                consoleWindow?.classList.add('flex');
+                document.getElementById('menu-container')?.focus();
+                
+                // Hide global language button (terminal has its own)
+                document.getElementById('global-actions')?.classList.add('hidden');
+                document.body.classList.add('terminal-active');
+            } else {
+                classicViewEl?.classList.remove('hidden');
+                classicViewEl?.classList.add('flex');
+                
+                document.body.classList.remove('terminal-active');
+                
+                // Remove vertical centering so classic view moves up
+                if (mainWrapper) {
+                    mainWrapper.classList.remove('items-center', 'justify-center');
+                    mainWrapper.classList.add('items-start', 'pt-8', 'sm:pt-10');
+                }
+                
+                // Easter Egg: Respect terminal-selected theme in classic view. Otherwise, force dark mode.
+                if (localStorage.getItem('terminalThemeSet') === 'true') {
+                    const isDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                    if (window.setThemeGlobal) {
+                        window.setThemeGlobal(isDark, false);
+                    } else {
+                        document.documentElement.classList.toggle('dark', isDark);
+                    }
+                } else {
+                    if (window.setThemeGlobal) {
+                        window.setThemeGlobal(true, false);
+                    } else {
+                        document.documentElement.classList.add('dark');
+                    }
+                }
+            }
+        };
+
+        // Initial render
+        renderMenu();
+    </script>
+
+    <style is:global>
+        body.terminal-active {
+            overflow: hidden;
+        }
+        body.terminal-active #global-logo,
+        body.terminal-active #global-footer {
+            display: none !important;
+        }
+        body.terminal-active #main-content {
+            margin-top: 1rem !important;
+            margin-bottom: 1rem !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            height: calc(100vh - 2rem);
+            max-height: calc(100vh - 2rem);
+        }
+        @media (min-width: 640px) {
+            body.terminal-active #main-content {
+                margin-top: 2rem !important;
+                margin-bottom: 2rem !important;
+                height: calc(100vh - 4rem);
+                max-height: calc(100vh - 4rem);
+            }
+        }
+    </style>
 </Layout>

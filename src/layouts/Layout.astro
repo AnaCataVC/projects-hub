@@ -20,7 +20,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 		<title>{title}</title>
 		<script is:inline>
 			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -46,23 +46,25 @@ const { title } = Astro.props;
 		<PoppyBackground />
 		
 		<!-- Discreet Logo in corner -->
-		<header class="absolute top-8 left-8 sm:top-12 sm:left-12 z-10 animate-fade-in">
+		<header id="global-logo" class="absolute top-8 left-8 sm:top-12 sm:left-12 z-10 animate-fade-in">
 			<a href="https://ana-catalina.com">
 				<img src="/favicon.svg" alt="ACVC Logo" class="w-8 h-8 sm:w-10 sm:h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" />
 			</a>
 		</header>
 
 		<!-- Top Right Actions -->
-		<div class="absolute top-8 right-8 sm:top-12 sm:right-12 z-10 animate-fade-in flex items-center gap-3">
+		<div id="global-actions" class="absolute top-8 right-8 sm:top-12 sm:right-12 z-20 flex gap-4 animate-fade-in">
 			<LanguageToggle />
+		</div>
+		<div class="hidden">
 			<ThemeToggle />
 		</div>
 
-		<main class="flex-grow flex flex-col px-6 sm:px-12 w-full max-w-4xl mx-auto py-8 sm:py-12 mt-16 sm:mt-0">
+		<main id="main-content" class="flex-grow flex flex-col px-4 sm:px-12 w-full max-w-4xl mx-auto py-8 sm:py-12 mt-16 sm:mt-0 transition-all duration-300">
 			<slot />
 		</main>
 
-		<div class="w-full mt-auto animate-fade-in delay-300 flex justify-center">
+		<div id="global-footer" class="hidden sm:flex w-full mt-auto animate-fade-in delay-300 justify-center">
 			<footer class="w-full max-w-2xl border-t border-slate-200/50 dark:border-slate-800/50 pt-8 pb-4">
 				<div class="flex flex-col sm:flex-row justify-center sm:justify-end items-center sm:items-start gap-8">
 					<div class="flex flex-col items-center sm:items-end gap-3">

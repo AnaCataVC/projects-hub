@@ -12,14 +12,14 @@
 ## English
 
 ### 1. Project Description
-Welcome to **Projects Hub**, the central portfolio and application directory for Ana-Catalina. This project serves as a gateway to various open-source projects, including "My CV Template", "Amiga IA", and "Life Tracker Analytics". It is designed with a modern, bilingual interface (English/Spanish) and provides a fast, accessible hub for all showcased works.
+Welcome to **Projects Hub**, the central portfolio and application directory for Ana-Catalina. This project serves as a gateway to various open-source projects, including "My CV Template", "Amiga IA", and "Life Tracker Analytics". It features a **Dual Interface** (Classic UI Cards vs. Interactive Terminal Console), a modern bilingual design (English/Spanish), and provides a fast, accessible hub for all showcased works.
 
 ### 2. Technologies Used
 The project was migrated to Astro for maximum performance and scalability, maintaining a "Zero JS by default" approach.
 - **Framework:** [Astro](https://astro.build/)
 - **Structure:** HTML5 / Astro Components (`.astro`)
 - **Styling:** TailwindCSS (utility-first styling and animations)
-- **Logic:** Vanilla JavaScript (for local storage and i18n language toggling via Islands Architecture)
+- **Logic:** Vanilla JavaScript (for local storage, i18n language toggling, and interactive terminal navigation logic)
 - **Deployment:** Vercel
 
 ### 3. Key Learnings
@@ -37,14 +37,14 @@ During the development of this hub, the main technical takeaways were:
 ## Español
 
 ### 1. Descripción del Proyecto
-Bienvenido a **Projects Hub**, el directorio central de aplicaciones y portafolio de Ana-Catalina. Este proyecto sirve como un portal hacia varios proyectos de código abierto, incluyendo "My CV Template", "Amiga IA" y "Life Tracker Analytics". Está diseñado con una interfaz moderna, bilingüe (Inglés/Español) y proporciona un centro rápido y accesible para todos los trabajos destacados.
+Bienvenido a **Projects Hub**, el directorio central de aplicaciones y portafolio de Ana-Catalina. Este proyecto sirve como un portal hacia varios proyectos de código abierto, incluyendo "My CV Template", "Amiga IA" y "Life Tracker Analytics". Destaca por su **Interfaz Dual** (Tarjetas UI Clásicas vs. Consola Interactiva tipo Terminal), un diseño bilingüe (Inglés/Español) y proporciona un centro rápido y accesible para todos los trabajos destacados.
 
 ### 2. Tecnologías Utilizadas
 El proyecto fue migrado a Astro para maximizar el rendimiento y la escalabilidad, manteniendo un enfoque "Cero JS por defecto".
 - **Framework:** [Astro](https://astro.build/)
 - **Estructura:** HTML5 / Componentes Astro (`.astro`)
 - **Estilos:** TailwindCSS (para diseño basado en utilidades y animaciones)
-- **Lógica:** Vanilla JavaScript (para *local storage* y cambio de idioma i18n)
+- **Lógica:** Vanilla JavaScript (para *local storage*, cambio de idioma i18n, y lógica de navegación interactiva de la terminal)
 - **Despliegue:** Vercel
 
 ### 3. Aprendizajes Destacados
