@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#grad)" />
+  
+  <g fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Document outline -->
+    <path d="M 32 24 L 54 24 L 68 38 L 68 72 C 68 74.2 66.2 76 64 76 L 36 76 C 33.8 76 32 74.2 32 72 Z" />
+    
+    <!-- Top-right fold -->
+    <path d="M 54 24 L 54 38 L 68 38" />
+    
+    <!-- Checkmark representing achievements -->
+    <path d="M 42 56 L 48 62 L 58 48" stroke="#67e8f9" stroke-width="7" />
+  </g>
+</svg>
