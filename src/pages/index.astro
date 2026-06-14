@@ -75,10 +75,10 @@ import Layout from '../layouts/Layout.astro';
                 type: 'folder', 
                 expanded: false, 
                 children: [
-                    { title: 'Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.', type: 'text' },
-                    { title: 'Presiona [←] o [Retroceso] para regresar a la carpeta anterior.', type: 'text' },
-                    { title: 'Empieza a escribir en cualquier momento para buscar.', type: 'text' },
-                    { title: 'Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.', type: 'text' }
+                    { title: '<span class="hidden sm:inline">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="inline sm:hidden">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>', type: 'text' },
+                    { title: '<span class="hidden sm:inline">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="inline sm:hidden">Toca la opción ".." para regresar a la carpeta anterior.</span>', type: 'text' },
+                    { title: '<span class="hidden sm:inline">Empieza a escribir en cualquier momento para buscar.</span><span class="inline sm:hidden">Toca la barra inferior para buscar.</span>', type: 'text' },
+                    { title: '<span class="hidden sm:inline">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="inline sm:hidden">Borra el texto para limpiar la búsqueda actual.</span>', type: 'text' }
                 ]
             },
             {
@@ -265,13 +265,16 @@ import Layout from '../layouts/Layout.astro';
                 let searchResults = [];
 
                 function searchNodes(nodes, currentLineage = []) {
+                    const stripHtml = (str) => str.replace(/<[^>]*>?/gm, '');
+
                     nodes.forEach(node => {
-                        const cleanTitle = node.title.replace('~/', '');
+                        const rawTitle = stripHtml(node.title);
+                        const cleanTitle = rawTitle.replace('~/', '');
                         const matchTitle = cleanTitle.toLowerCase().includes(query);
                         const matchDesc = node.desc && node.desc.toLowerCase().includes(query);
                         
                         const matchChildText = node.children && node.children.some(child => 
-                            child.type === 'text' && child.title.toLowerCase().includes(query)
+                            child.type === 'text' && stripHtml(child.title).toLowerCase().includes(query)
                         );
                         
                         const newLineage = [...currentLineage, node];
@@ -437,10 +440,10 @@ import Layout from '../layouts/Layout.astro';
 
             if (lang === 'en') {
                 menuData[0].desc = '# Help and commands';
-                menuData[0].children[0].title = 'Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.';
-                menuData[0].children[1].title = 'Press [←] or [Backspace] to go back to the previous folder.';
-                menuData[0].children[2].title = 'Start typing at any time to search.';
-                menuData[0].children[3].title = 'Press [Esc] to clear the current search, or return to the root path.';
+                menuData[0].children[0].title = '<span class="hidden sm:inline">Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.</span><span class="inline sm:hidden">Tap any item in the list to select or open it.</span>';
+                menuData[0].children[1].title = '<span class="hidden sm:inline">Press [←] or [Backspace] to go back to the previous folder.</span><span class="inline sm:hidden">Tap the ".." option to go back to the previous folder.</span>';
+                menuData[0].children[2].title = '<span class="hidden sm:inline">Start typing at any time to search.</span><span class="inline sm:hidden">Tap the bottom bar to search.</span>';
+                menuData[0].children[3].title = '<span class="hidden sm:inline">Press [Esc] to clear the current search, or return to the root path.</span><span class="inline sm:hidden">Delete the text to clear the current search.</span>';
 
                 menuData[1].desc = '# About this hub';
                 menuData[1].children[0].title = 'Personal projects developed to explore, learn and share with the community.';
@@ -477,10 +480,10 @@ import Layout from '../layouts/Layout.astro';
                 menuData[5].children[3].children[2].title = '↳ View on GitHub';
             } else {
                 menuData[0].desc = '# Ayuda y comandos';
-                menuData[0].children[0].title = 'Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.';
-                menuData[0].children[1].title = 'Presiona [←] o [Retroceso] para regresar a la carpeta anterior.';
-                menuData[0].children[2].title = 'Empieza a escribir en cualquier momento para buscar.';
-                menuData[0].children[3].title = 'Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.';
+                menuData[0].children[0].title = '<span class="hidden sm:inline">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="inline sm:hidden">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>';
+                menuData[0].children[1].title = '<span class="hidden sm:inline">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="inline sm:hidden">Toca la opción ".." para regresar a la carpeta anterior.</span>';
+                menuData[0].children[2].title = '<span class="hidden sm:inline">Empieza a escribir en cualquier momento para buscar.</span><span class="inline sm:hidden">Toca la barra inferior para buscar.</span>';
+                menuData[0].children[3].title = '<span class="hidden sm:inline">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="inline sm:hidden">Borra el texto para limpiar la búsqueda actual.</span>';
 
                 menuData[1].desc = '# Sobre este hub';
                 menuData[1].children[0].title = 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.';
