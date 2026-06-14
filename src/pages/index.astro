@@ -8,18 +8,15 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Console Window -->
         <div id="console-window" class="flex w-full max-w-4xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex-col flex-grow">
-            <!-- Console Header -->
-            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200/50 dark:border-slate-800/50 bg-white/30 dark:bg-slate-950/30 shrink-0">
-                <div class="flex items-center space-x-2 w-16">
-                    <!-- ACVC Logo -->
-                    <div class="flex items-center">
-                        <img id="console-header-icon" src="/favicon.svg" alt="ACVC" class="w-5 h-5 sm:w-6 sm:h-6 opacity-80 transition-all duration-300" />
-                    </div>
+            <!-- Window Header -->
+            <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0 bg-white/50 dark:bg-slate-900/50">
+                <div class="w-16 shrink-0 flex justify-start">
+                    <img id="console-header-icon" src="/favicon.svg" alt="App Icon" class="w-5 h-5 opacity-80" />
                 </div>
-                <div class="flex-grow flex justify-center px-2">
-                    <span id="header-path" class="text-xs font-mono text-slate-400 dark:text-slate-500 font-['JetBrains_Mono'] truncate">~/projects-hub</span>
+                <div class="flex-grow min-w-0 flex justify-center px-4">
+                    <span id="header-path" class="text-xs sm:text-sm font-mono text-slate-500 truncate text-center w-full">~/projects-hub</span>
                 </div>
-                <div class="w-16 flex justify-end">
+                <div class="w-16 shrink-0 flex justify-end">
                     <!-- Empty div for layout symmetry -->
                 </div>
             </div>
@@ -29,14 +26,17 @@ import Layout from '../layouts/Layout.astro';
                 
                 <!-- State 1: Interactive Tree Menu -->
                 <div id="console-menu" class="flex-grow flex flex-col overflow-hidden">
-                    
-                    <!-- Search Indicator -->
-                    <div id="search-indicator" class="hidden shrink-0 px-3 py-1.5 mb-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/30 rounded border border-indigo-100 dark:border-indigo-900/50">
-                        <span class="opacity-70">> find: </span><span id="search-query-text" class="font-bold"></span><span class="animate-pulse">_</span>
-                    </div>
 
                     <div id="menu-container" class="space-y-1 flex-grow outline-none font-['JetBrains_Mono',monospace] text-sm sm:text-base text-slate-700 dark:text-slate-300 overflow-y-auto pr-2" tabindex="0">
+                        <!-- Renderizado por JS -->
                     </div>
+                    
+                    <!-- Simulated Command Line Prompt -->
+                    <div class="shrink-0 px-3 py-2 mt-1 font-mono text-sm sm:text-base flex items-center text-slate-700 dark:text-slate-300">
+                        <span class="text-indigo-600 dark:text-indigo-400 font-bold mr-2" id="prompt-symbol">❯</span>
+                        <span id="search-query-text" class="whitespace-pre"></span>
+                        <span class="inline-block w-2 h-4 sm:h-5 bg-slate-400 dark:bg-slate-500 animate-pulse-fast ml-0.5"></span>
+                    </div></div>
                     
                     <div class="mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 text-xs text-slate-400 dark:text-slate-500 hidden sm:flex flex-wrap gap-4 shrink-0">
                         <div class="flex items-center gap-1.5">
@@ -77,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
                 children: [
                     { title: 'Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.', type: 'text' },
                     { title: 'Presiona [←] o [Retroceso] para regresar a la carpeta anterior.', type: 'text' },
-                    { title: 'Empieza a escribir en cualquier momento para buscar archivos y carpetas rápidamente ("Fuzzy Finder").', type: 'text' },
+                    { title: 'Empieza a escribir en cualquier momento para buscar.', type: 'text' },
                     { title: 'Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.', type: 'text' }
                 ]
             },
@@ -197,16 +197,21 @@ import Layout from '../layouts/Layout.astro';
         const container = document.getElementById('menu-container');
 
         function updateSearchIndicator() {
-            const indicator = document.getElementById('search-indicator');
             const textEl = document.getElementById('search-query-text');
-            if (!indicator || !textEl) return;
+            const promptSymbol = document.getElementById('prompt-symbol');
+            if (!textEl || !promptSymbol) return;
 
+            textEl.innerText = searchQuery;
+            
+            // Change prompt symbol color when searching to make it obvious
             if (searchQuery.length > 0) {
-                indicator.classList.remove('hidden');
-                textEl.innerText = searchQuery;
+                promptSymbol.classList.replace('text-indigo-600', 'text-emerald-500');
+                promptSymbol.classList.replace('dark:text-indigo-400', 'dark:text-emerald-400');
+                promptSymbol.innerText = 'find ❯';
             } else {
-                indicator.classList.add('hidden');
-                textEl.innerText = '';
+                promptSymbol.classList.replace('text-emerald-500', 'text-indigo-600');
+                promptSymbol.classList.replace('dark:text-emerald-400', 'dark:text-indigo-400');
+                promptSymbol.innerText = '❯';
             }
         }
 
@@ -221,11 +226,11 @@ import Layout from '../layouts/Layout.astro';
             if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
             if (selectedIndex !== idx) {
                 selectedIndex = idx;
-                renderMenu();
+                renderMenu(true);
             }
         };
 
-        function renderMenu() {
+        function renderMenu(skipAnimation = false) {
             flatList = [];
             if (!container) return;
             
@@ -304,6 +309,9 @@ import Layout from '../layouts/Layout.astro';
                 const textColor = item.color || 'text-slate-700 dark:text-slate-300';
                 const opacityClass = item.type === 'text' ? 'opacity-70 italic' : '';
                 
+                const animClass = skipAnimation ? '' : 'menu-item-anim';
+                const animStyle = skipAnimation ? '' : `style="animation-delay: ${idx * 30}ms;"`;
+                
                 let icon = '';
                 if (item.type === 'folder') {
                     icon = '▶ ';
@@ -311,13 +319,25 @@ import Layout from '../layouts/Layout.astro';
                     icon = '↵ ';
                 }
 
+                let displayTitle = item.searchTitle || item.title;
+
+                if (isSelected && isSelectable) {
+                    if (icon) {
+                        icon = `<span class="animate-pulse-fast">${icon.trim()}</span> `;
+                    } else {
+                        // For actions that have their icon baked into the title
+                        displayTitle = displayTitle.replace(/(↳|\[☀\]|\[☾\])/, '<span class="animate-pulse-fast">$1</span>');
+                    }
+                }
+
                 if (item.type === 'text') {
                     html += `
                         <div 
-                            class="flex px-3 py-1.5 sm:py-1 rounded transition-colors ${bgClass}"
+                            class="flex px-3 py-1.5 sm:py-1 rounded transition-colors ${animClass} ${bgClass}"
+                            ${animStyle}
                         >
                             <div class="flex-grow flex items-start">
-                                <span class="${textColor} font-medium ${opacityClass} whitespace-normal leading-relaxed break-words pr-2">${icon}${item.searchTitle || item.title}</span>
+                                <span class="${textColor} font-medium ${opacityClass} whitespace-normal leading-relaxed break-words pr-2">${icon}${displayTitle}</span>
                                 ${item.desc ? `<span class="ml-3 text-slate-400 dark:text-slate-500 text-xs sm:text-sm hidden sm:inline shrink-0 mt-0.5">${item.desc}</span>` : ''}
                             </div>
                         </div>
@@ -325,12 +345,13 @@ import Layout from '../layouts/Layout.astro';
                 } else {
                     html += `
                         <button type="button" data-idx="${idx}"
-                            class="w-full text-left flex items-center px-3 py-4 sm:py-2 rounded transition-colors ${bgClass}"
+                            class="w-full text-left flex items-center px-3 py-4 sm:py-2 rounded transition-colors ${animClass} ${bgClass}"
+                            ${animStyle}
                             onclick="window.handleMenuClick(${idx}, event)"
                             onmousemove="window.handleMenuHover(${idx}, event)"
                         >
                             <div class="flex-grow flex items-baseline pointer-events-none">
-                                <span class="${textColor} font-medium ${opacityClass}">${icon}${item.searchTitle || item.title}</span>
+                                <span class="${textColor} font-medium ${opacityClass}">${icon}${displayTitle}</span>
                                 ${item.desc ? `<span class="ml-3 text-slate-400 dark:text-slate-500 text-xs sm:text-sm hidden sm:inline">${item.desc}</span>` : ''}
                             </div>
                         </button>
@@ -407,7 +428,7 @@ import Layout from '../layouts/Layout.astro';
                 menuData[0].desc = '# Help and commands';
                 menuData[0].children[0].title = 'Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.';
                 menuData[0].children[1].title = 'Press [←] or [Backspace] to go back to the previous folder.';
-                menuData[0].children[2].title = 'Start typing at any time to quickly search for files and folders ("Fuzzy Finder").';
+                menuData[0].children[2].title = 'Start typing at any time to search.';
                 menuData[0].children[3].title = 'Press [Esc] to clear the current search, or return to the root path.';
 
                 menuData[1].desc = '# About this hub';
@@ -443,7 +464,7 @@ import Layout from '../layouts/Layout.astro';
                 menuData[0].desc = '# Ayuda y comandos';
                 menuData[0].children[0].title = 'Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.';
                 menuData[0].children[1].title = 'Presiona [←] o [Retroceso] para regresar a la carpeta anterior.';
-                menuData[0].children[2].title = 'Empieza a escribir en cualquier momento para buscar archivos y carpetas rápidamente ("Fuzzy Finder").';
+                menuData[0].children[2].title = 'Empieza a escribir en cualquier momento para buscar.';
                 menuData[0].children[3].title = 'Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.';
 
                 menuData[1].desc = '# Sobre este hub';
@@ -508,7 +529,7 @@ import Layout from '../layouts/Layout.astro';
                         break;
                     }
                 }
-                renderMenu();
+                renderMenu(true);
             } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
                 let prevIdx = selectedIndex;
@@ -519,7 +540,7 @@ import Layout from '../layouts/Layout.astro';
                         break;
                     }
                 }
-                renderMenu();
+                renderMenu(true);
             } else if (e.key === 'Enter' || e.key === 'ArrowRight') {
                 e.preventDefault();
                 handleAction();
@@ -577,6 +598,23 @@ import Layout from '../layouts/Layout.astro';
     </script>
 
     <style is:global>
+        @keyframes menuSlide {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .menu-item-anim {
+            animation: menuSlide 0.2s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes pulseFast {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .animate-pulse-fast {
+            animation: pulseFast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
         body.terminal-active {
             overflow: hidden;
         }
