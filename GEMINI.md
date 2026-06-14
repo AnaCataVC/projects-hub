@@ -27,3 +27,4 @@ Projects Hub es el portafolio y directorio central de proyectos y aplicaciones d
 - Asegurar responsividad total (Mobile-first).
 - Uso estricto de variables CSS para la paleta de colores.
 - Toda nueva característica debe soportar la internacionalización (i18n) en ES y EN.
+- **Subaplicaciones externas:** Si un proyecto externo (Vite, React, Astro, etc.) va a ser embebido o enrutado dentro de este Hub mediante rewrites de Vercel (ej. `/identity-map`), el proyecto externo DEBE estar compilado con rutas relativas para sus assets (ej. `base: './'` en Vite) para evitar errores 404.
