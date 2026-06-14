@@ -70,10 +70,24 @@ import Layout from '../layouts/Layout.astro';
             { 
                 id: 'help', 
                 title: '~/help', 
-                desc: '# Sobre este hub', 
+                desc: '# Ayuda y comandos', 
                 color: 'text-amber-600 dark:text-amber-400',
                 type: 'folder', 
                 expanded: false, 
+                children: [
+                    { title: 'Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.', type: 'text' },
+                    { title: 'Presiona [←] o [Retroceso] para regresar a la carpeta anterior.', type: 'text' },
+                    { title: 'Empieza a escribir en cualquier momento para buscar archivos y carpetas rápidamente ("Fuzzy Finder").', type: 'text' },
+                    { title: 'Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.', type: 'text' }
+                ]
+            },
+            {
+                id: 'about',
+                title: '~/about',
+                desc: '# Sobre este hub',
+                color: 'text-orange-600 dark:text-orange-400',
+                type: 'folder',
+                expanded: false,
                 children: [
                     { title: 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.', type: 'text' },
                     { title: ' ', type: 'text' },
@@ -384,76 +398,83 @@ import Layout from '../layouts/Layout.astro';
         }
 
         window.updateUIText = function(lang) {
-            // Update classic view and welcome screen translations
             document.querySelectorAll('[data-es]').forEach(el => {
                 if (lang === 'es' && el.dataset.es) el.innerHTML = el.dataset.es;
                 if (lang === 'en' && el.dataset.en) el.innerHTML = el.dataset.en;
             });
 
-            // menuData indices:
-            // 0: help, 1: links, 2: idioma, 3: tema, 4: proyectos
-
-            // Update console menu text
             if (lang === 'en') {
-                menuData[0].desc = '# About this hub';
-                menuData[0].children[0].title = 'Personal projects developed to explore, learn and share with the community.';
-                menuData[0].children[1].title = ' ';
-                menuData[0].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
+                menuData[0].desc = '# Help and commands';
+                menuData[0].children[0].title = 'Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.';
+                menuData[0].children[1].title = 'Press [←] or [Backspace] to go back to the previous folder.';
+                menuData[0].children[2].title = 'Start typing at any time to quickly search for files and folders ("Fuzzy Finder").';
+                menuData[0].children[3].title = 'Press [Esc] to clear the current search, or return to the root path.';
 
-                menuData[1].desc = '# Contact and links';
+                menuData[1].desc = '# About this hub';
+                menuData[1].children[0].title = 'Personal projects developed to explore, learn and share with the community.';
+                menuData[1].children[1].title = ' ';
+                menuData[1].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
-                menuData[2].title = '~/language';
-                menuData[2].desc = '# Change language';
+                menuData[2].desc = '# Contact and links';
+
+                menuData[3].title = '~/language';
+                menuData[3].desc = '# Change language';
                 
-                menuData[3].title = '~/theme';
-                menuData[3].desc = '# Change theme';
-                menuData[3].children[0].title = '↳ Light mode';
-                menuData[3].children[1].title = '↳ Dark mode';
+                menuData[4].title = '~/theme';
+                menuData[4].desc = '# Change theme';
+                menuData[4].children[0].title = '↳ Light mode';
+                menuData[4].children[1].title = '↳ Dark mode';
 
-                menuData[4].title = '~/projects';
-                menuData[4].desc = '# Web development';
+                menuData[5].title = '~/projects';
+                menuData[5].desc = '# Web development';
                 
-                menuData[4].children[0].children[0].title = '▪ Web application to track and analyze life metrics and daily habits through data visualizations.';
-                menuData[4].children[0].children[1].title = '↳ View app';
-                menuData[4].children[0].children[2].title = '↳ View on GitHub';
+                menuData[5].children[0].children[0].title = '▪ Web application to track and analyze life metrics and daily habits through data visualizations.';
+                menuData[5].children[0].children[1].title = '↳ View app';
+                menuData[5].children[0].children[2].title = '↳ View on GitHub';
 
-                menuData[4].children[1].children[0].title = '▪ Centralized repository of skills and agents for AI assistants. It makes programming easier and ensures code quality.';
-                menuData[4].children[1].children[1].title = '↳ View product page';
-                menuData[4].children[1].children[2].title = '↳ View on GitHub';
+                menuData[5].children[1].children[0].title = '▪ Centralized repository of skills and agents for AI assistants. It makes programming easier and ensures code quality.';
+                menuData[5].children[1].children[1].title = '↳ View product page';
+                menuData[5].children[1].children[2].title = '↳ View on GitHub';
 
-                menuData[4].children[2].children[0].title = '▪ A modern and interactive template to build your own resume or professional portfolio. Easy to configure and deploy.';
-                menuData[4].children[2].children[1].title = '↳ View interactive demo';
-                menuData[4].children[2].children[2].title = '↳ View on GitHub';
+                menuData[5].children[2].children[0].title = '▪ A modern and interactive template to build your own resume or professional portfolio. Easy to configure and deploy.';
+                menuData[5].children[2].children[1].title = '↳ View interactive demo';
+                menuData[5].children[2].children[2].title = '↳ View on GitHub';
             } else {
-                menuData[0].desc = '# Sobre este hub';
-                menuData[0].children[0].title = 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.';
-                menuData[0].children[1].title = ' ';
-                menuData[0].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
+                menuData[0].desc = '# Ayuda y comandos';
+                menuData[0].children[0].title = 'Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.';
+                menuData[0].children[1].title = 'Presiona [←] o [Retroceso] para regresar a la carpeta anterior.';
+                menuData[0].children[2].title = 'Empieza a escribir en cualquier momento para buscar archivos y carpetas rápidamente ("Fuzzy Finder").';
+                menuData[0].children[3].title = 'Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.';
 
-                menuData[1].desc = '# Contacto y redes';
+                menuData[1].desc = '# Sobre este hub';
+                menuData[1].children[0].title = 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.';
+                menuData[1].children[1].title = ' ';
+                menuData[1].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
-                menuData[2].title = '~/idioma';
-                menuData[2].desc = '# Cambiar idioma';
+                menuData[2].desc = '# Contacto y redes';
+
+                menuData[3].title = '~/idioma';
+                menuData[3].desc = '# Cambiar idioma';
                 
-                menuData[3].title = '~/tema';
-                menuData[3].desc = '# Cambiar apariencia';
-                menuData[3].children[0].title = '[☀] Claro';
-                menuData[3].children[1].title = '[☾] Oscuro';
+                menuData[4].title = '~/tema';
+                menuData[4].desc = '# Cambiar apariencia';
+                menuData[4].children[0].title = '[☀] Claro';
+                menuData[4].children[1].title = '[☾] Oscuro';
 
-                menuData[4].title = '~/proyectos';
-                menuData[4].desc = '# Explorar portfolio';
+                menuData[5].title = '~/proyectos';
+                menuData[5].desc = '# Explorar portfolio';
                 
-                menuData[4].children[0].children[0].title = '▪ Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos.';
-                menuData[4].children[0].children[1].title = '↳ Ver app';
-                menuData[4].children[0].children[2].title = '↳ Ver en GitHub';
+                menuData[5].children[0].children[0].title = '▪ Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos.';
+                menuData[5].children[0].children[1].title = '↳ Ver app';
+                menuData[5].children[0].children[2].title = '↳ Ver en GitHub';
 
-                menuData[4].children[1].children[0].title = '▪ Repositorio centralizado de habilidades y agentes para asistentes IA. Facilita la programación y asegura la calidad del código.';
-                menuData[4].children[1].children[1].title = '↳ Ver página de producto';
-                menuData[4].children[1].children[2].title = '↳ Ver en GitHub';
+                menuData[5].children[1].children[0].title = '▪ Repositorio centralizado de habilidades y agentes para asistentes IA. Facilita la programación y asegura la calidad del código.';
+                menuData[5].children[1].children[1].title = '↳ Ver página de producto';
+                menuData[5].children[1].children[2].title = '↳ Ver en GitHub';
 
-                menuData[4].children[2].children[0].title = '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.';
-                menuData[4].children[2].children[1].title = '↳ Ver demo interactiva';
-                menuData[4].children[2].children[2].title = '↳ Ver en GitHub';
+                menuData[5].children[2].children[0].title = '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.';
+                menuData[5].children[2].children[1].title = '↳ Ver demo interactiva';
+                menuData[5].children[2].children[2].title = '↳ Ver en GitHub';
             }
 
             renderMenu();
