@@ -185,6 +185,17 @@ import Layout from '../layouts/Layout.astro';
                             { title: '↳ Ver demo interactiva', type: 'action', action: () => window.location.href = '/my-cv/' },
                             { title: '↳ Ver en GitHub', type: 'action', action: () => window.open('https://github.com/AnaCataVC/my-cv', '_blank') }
                         ]
+                    },
+                    { 
+                        title: 'Identity Map', 
+                        type: 'folder', 
+                        icon: '/project-icons/identitymap_icon.png',
+                        expanded: false, 
+                        children: [
+                            { title: '▪ Aplicación web interactiva para visualizar y explorar mapas de identidad.', type: 'text' },
+                            { title: '↳ Ver app', type: 'action', action: () => window.location.href = '/identity-map/' },
+                            { title: '↳ Ver en GitHub', type: 'action', action: () => window.open('https://github.com/AnaCataVC/identity-map', '_blank') }
+                        ]
                     }
                 ]
             }
@@ -460,6 +471,10 @@ import Layout from '../layouts/Layout.astro';
                 menuData[5].children[2].children[0].title = '▪ A modern and interactive template to build your own resume or professional portfolio. Easy to configure and deploy.';
                 menuData[5].children[2].children[1].title = '↳ View interactive demo';
                 menuData[5].children[2].children[2].title = '↳ View on GitHub';
+
+                menuData[5].children[3].children[0].title = '▪ Interactive web application to visualize and explore identity maps.';
+                menuData[5].children[3].children[1].title = '↳ View app';
+                menuData[5].children[3].children[2].title = '↳ View on GitHub';
             } else {
                 menuData[0].desc = '# Ayuda y comandos';
                 menuData[0].children[0].title = 'Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.';
@@ -496,6 +511,10 @@ import Layout from '../layouts/Layout.astro';
                 menuData[5].children[2].children[0].title = '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.';
                 menuData[5].children[2].children[1].title = '↳ Ver demo interactiva';
                 menuData[5].children[2].children[2].title = '↳ Ver en GitHub';
+
+                menuData[5].children[3].children[0].title = '▪ Aplicación web interactiva para visualizar y explorar mapas de identidad.';
+                menuData[5].children[3].children[1].title = '↳ Ver app';
+                menuData[5].children[3].children[2].title = '↳ Ver en GitHub';
             }
 
             renderMenu();

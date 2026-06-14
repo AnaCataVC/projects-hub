@@ -23,6 +23,14 @@
     {
       "source": "/amiga-ia/(.*)",
       "destination": "https://amiga-ia.vercel.app/$1"
+    },
+    {
+      "source": "/identity-map",
+      "destination": "https://identity-map-xi.vercel.app"
+    },
+    {
+      "source": "/identity-map/(.*)",
+      "destination": "https://identity-map-xi.vercel.app/$1"
     }
   ]
 }
