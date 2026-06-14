@@ -1,47 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 ---
 
 <Layout title="Ana-Catalina | Projects Hub">
     <div id="main-wrapper" class="relative z-10 w-full flex-grow flex items-center justify-center transition-all duration-500">
         
-        <!-- Selection Screen -->
-        <div id="selection-screen" class="w-full max-w-lg bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl p-8 sm:p-12 text-center animate-fade-in">
-            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-600 dark:from-white dark:to-slate-400">
-                Projects Hub<span class="text-purple-500">.</span>
-            </h1>
-            <p class="text-slate-500 dark:text-slate-400 mb-8" data-es="Elige tu experiencia de navegación" data-en="Choose your browsing experience">Elige tu experiencia de navegación</p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="startHub('console')" class="flex-1 py-3 px-6 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium hover:scale-105 transition-transform shadow-lg">
-                    <span class="block text-xl mb-1">Terminal</span>
-                    <span class="text-xs opacity-70 font-mono" data-es="Modo interactivo" data-en="Interactive mode">Modo interactivo</span>
-                </button>
-                <button onclick="startHub('classic')" class="flex-1 py-3 px-6 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 font-medium hover:scale-105 transition-transform shadow-sm">
-                    <span class="block text-xl mb-1" data-es="Clásica" data-en="Classic">Clásica</span>
-                    <span class="text-xs opacity-70" data-es="Tarjetas UI" data-en="UI Cards">Tarjetas UI</span>
-                </button>
-            </div>
-        </div>
 
         <!-- Console Window -->
-        <div id="console-window" class="hidden w-full max-w-4xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex-col flex-grow">
+        <div id="console-window" class="flex w-full max-w-4xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex-col flex-grow">
             <!-- Console Header -->
             <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200/50 dark:border-slate-800/50 bg-white/30 dark:bg-slate-950/30 shrink-0">
                 <div class="flex items-center space-x-2 w-16">
                     <!-- ACVC Logo -->
                     <div class="flex items-center">
-                        <img src="/favicon.svg" alt="ACVC" class="w-5 h-5 sm:w-6 sm:h-6 opacity-80" />
+                        <img id="console-header-icon" src="/favicon.svg" alt="ACVC" class="w-5 h-5 sm:w-6 sm:h-6 opacity-80 transition-all duration-300" />
                     </div>
                 </div>
                 <div class="flex-grow flex justify-center px-2">
                     <span id="header-path" class="text-xs font-mono text-slate-400 dark:text-slate-500 font-['JetBrains_Mono'] truncate">~/projects-hub</span>
                 </div>
                 <div class="w-16 flex justify-end">
-                    <button id="btn-escape" class="text-lg leading-none font-bold text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors w-6 h-6 flex items-center justify-center rounded hover:bg-slate-200/50 dark:hover:bg-slate-800/50" onclick="location.reload()" aria-label="Cerrar consola">
-                        ✕
-                    </button>
+                    <!-- Empty div for layout symmetry -->
                 </div>
             </div>
 
@@ -50,12 +29,15 @@ import ProjectCard from '../components/ProjectCard.astro';
                 
                 <!-- State 1: Interactive Tree Menu -->
                 <div id="console-menu" class="flex-grow flex flex-col overflow-hidden">
+                    
+                    <!-- Search Indicator -->
+                    <div id="search-indicator" class="hidden shrink-0 px-3 py-1.5 mb-2 text-sm font-mono text-indigo-600 dark:text-indigo-400 bg-indigo-50/50 dark:bg-indigo-950/30 rounded border border-indigo-100 dark:border-indigo-900/50">
+                        <span class="opacity-70">> find: </span><span id="search-query-text" class="font-bold"></span><span class="animate-pulse">_</span>
+                    </div>
 
                     <div id="menu-container" class="space-y-1 flex-grow outline-none font-['JetBrains_Mono',monospace] text-sm sm:text-base text-slate-700 dark:text-slate-300 overflow-y-auto pr-2" tabindex="0">
-                        <!-- Renderizado por JS -->
                     </div>
                     
-                    <!-- Footer con instrucciones -->
                     <div class="mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 text-xs text-slate-400 dark:text-slate-500 hidden sm:flex flex-wrap gap-4 shrink-0">
                         <div class="flex items-center gap-1.5">
                             <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↑</span>
@@ -78,58 +60,7 @@ import ProjectCard from '../components/ProjectCard.astro';
             </div>
         </div>
         
-        <!-- Classic View Outer Container -->
-        <div id="classic-view" class="hidden w-full animate-fade-in flex-col items-center">
-            <div class="mb-4 sm:mb-6 mt-8 sm:mt-10 w-full flex justify-end px-4 sm:px-0">
-                <button id="btn-escape-classic" class="text-xs sm:text-sm font-bold bg-slate-800/80 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg transition-all duration-300 shadow-md border border-slate-700/50 flex items-center gap-2" onclick="location.reload()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M15 18l-6-6 6-6"/></svg>
-                    <span data-es="Cambiar Vista" data-en="Change View">Cambiar Vista</span>
-                </button>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-6 p-4 w-full">
-                <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
-                    <ProjectCard 
-                        icon="analytics"
-                        imgSrc="/project-icons/lta_icon.png"
-                                demoHref="/life-tracker-analytics/"
-                                githubHref="https://github.com/AnaCataVC/life-tracker-analytics"
-                                badgeKey="badge_life"
-                                title="Life Tracker Analytics"
-                                descKey="desc_life"
-                                btnDemoKey="btn_view_app"
-                                btnGithubKey="btn_view_github"
-                            />
-                        </div>
-                        <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
-                            <ProjectCard 
-                                icon="ai"
-                                imgSrc="/project-icons/ami-icon.png"
-                                demoHref="/amiga-ia/"
-                                githubHref="https://github.com/AnaCataVC/amiga-ia"
-                                badgeKey="badge_amiga"
-                                title="Amiga IA"
-                                descKey="desc_amiga"
-                                btnDemoKey="btn_landing"
-                                btnGithubKey="btn_view_github"
-                            />
-                        </div>
-                        <div class="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex">
-                            <ProjectCard 
-                                icon="cv"
-                                imgSrc="/project-icons/cv-icon.svg"
-                                demoHref="/my-cv/"
-                                githubHref="https://github.com/AnaCataVC/my-cv"
-                                badgeKey="badge_cv"
-                                title="My CV Template"
-                                descKey="desc_cv"
-                            />
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </div>
 
     </div>
 
@@ -211,6 +142,7 @@ import ProjectCard from '../components/ProjectCard.astro';
                     { 
                         title: 'Life Tracker Analytics', 
                         type: 'folder', 
+                        icon: '/project-icons/lta_icon.png',
                         expanded: false, 
                         children: [
                             { title: '▪ Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos.', type: 'text' },
@@ -221,6 +153,7 @@ import ProjectCard from '../components/ProjectCard.astro';
                     { 
                         title: 'Amiga IA', 
                         type: 'folder', 
+                        icon: '/project-icons/ami-icon.png',
                         expanded: false, 
                         children: [
                             { title: '▪ Repositorio centralizado de habilidades y agentes para asistentes IA. Facilita la programación y asegura la calidad del código.', type: 'text' },
@@ -231,6 +164,7 @@ import ProjectCard from '../components/ProjectCard.astro';
                     { 
                         title: 'My CV Template', 
                         type: 'folder', 
+                        icon: '/project-icons/cv-icon.svg',
                         expanded: false, 
                         children: [
                             { title: '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.', type: 'text' },
@@ -245,7 +179,22 @@ import ProjectCard from '../components/ProjectCard.astro';
         let currentPath = [];
         let flatList = [];
         let selectedIndex = 0;
+        let searchQuery = '';
         const container = document.getElementById('menu-container');
+
+        function updateSearchIndicator() {
+            const indicator = document.getElementById('search-indicator');
+            const textEl = document.getElementById('search-query-text');
+            if (!indicator || !textEl) return;
+
+            if (searchQuery.length > 0) {
+                indicator.classList.remove('hidden');
+                textEl.innerText = searchQuery;
+            } else {
+                indicator.classList.add('hidden');
+                textEl.innerText = '';
+            }
+        }
 
         window.handleMenuClick = function(idx, e) {
             if (e) e.stopPropagation();
@@ -281,6 +230,51 @@ import ProjectCard from '../components/ProjectCard.astro';
                 });
             }
 
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                let searchResults = [];
+
+                function searchNodes(nodes, currentLineage = []) {
+                    nodes.forEach(node => {
+                        const cleanTitle = node.title.replace('~/', '');
+                        const matchTitle = cleanTitle.toLowerCase().includes(query);
+                        const matchDesc = node.desc && node.desc.toLowerCase().includes(query);
+                        
+                        const matchChildText = node.children && node.children.some(child => 
+                            child.type === 'text' && child.title.toLowerCase().includes(query)
+                        );
+                        
+                        const newLineage = [...currentLineage, node];
+
+                        // Skip 'text' nodes, we only want folders or actionable items in search results
+                        if (node.type !== 'text') {
+                            if (matchTitle || matchDesc || matchChildText) {
+                                const pathHtml = currentLineage.map(n => {
+                                    const nTitle = n.title.replace('~/', '').replace('[es] ', '').replace('[en] ', '').replace('[☀] ', '').replace('[☾] ', '');
+                                    if (n.color) {
+                                        return `<span class="${n.color}">${nTitle}</span>`;
+                                    }
+                                    return nTitle;
+                                }).join(' <span class="opacity-50">/</span> ');
+                                
+                                searchResults.push({
+                                    ...node,
+                                    searchTitle: pathHtml ? `${pathHtml} <span class="opacity-50">/</span> ${cleanTitle}` : cleanTitle,
+                                    lineage: newLineage
+                                });
+                            }
+                        }
+                        
+                        if (node.children) {
+                            searchNodes(node.children, newLineage);
+                        }
+                    });
+                }
+                
+                searchNodes(menuData);
+                nodesToRender = searchResults;
+            }
+
             nodesToRender.forEach(node => flatList.push(node));
             
             // Ensure selectedIndex is within bounds
@@ -309,7 +303,7 @@ import ProjectCard from '../components/ProjectCard.astro';
                             class="flex px-3 py-1.5 sm:py-1 rounded transition-colors ${bgClass}"
                         >
                             <div class="flex-grow flex items-start">
-                                <span class="${textColor} font-medium ${opacityClass} whitespace-normal leading-relaxed break-words pr-2">${icon}${item.title}</span>
+                                <span class="${textColor} font-medium ${opacityClass} whitespace-normal leading-relaxed break-words pr-2">${icon}${item.searchTitle || item.title}</span>
                                 ${item.desc ? `<span class="ml-3 text-slate-400 dark:text-slate-500 text-xs sm:text-sm hidden sm:inline shrink-0 mt-0.5">${item.desc}</span>` : ''}
                             </div>
                         </div>
@@ -322,7 +316,7 @@ import ProjectCard from '../components/ProjectCard.astro';
                             onmousemove="window.handleMenuHover(${idx}, event)"
                         >
                             <div class="flex-grow flex items-baseline pointer-events-none">
-                                <span class="${textColor} font-medium ${opacityClass}">${icon}${item.title}</span>
+                                <span class="${textColor} font-medium ${opacityClass}">${icon}${item.searchTitle || item.title}</span>
                                 ${item.desc ? `<span class="ml-3 text-slate-400 dark:text-slate-500 text-xs sm:text-sm hidden sm:inline">${item.desc}</span>` : ''}
                             </div>
                         </button>
@@ -342,7 +336,15 @@ import ProjectCard from '../components/ProjectCard.astro';
                 }
             }
 
-            // Auto scroll
+            const headerIconEl = document.getElementById('console-header-icon');
+            if (headerIconEl) {
+                if (currentPath.length > 0 && currentPath[currentPath.length - 1].icon) {
+                    headerIconEl.src = currentPath[currentPath.length - 1].icon;
+                } else {
+                    headerIconEl.src = '/favicon.svg';
+                }
+            }
+
             const selectedEl = container.querySelector(`[data-idx="${selectedIndex}"]`);
             if (selectedEl) {
                 selectedEl.scrollIntoView({ block: 'nearest' });
@@ -354,17 +356,28 @@ import ProjectCard from '../components/ProjectCard.astro';
             if (!item) return;
 
             if (item.type === 'folder') {
-                currentPath.push(item);
+                if (item.lineage) {
+                    currentPath = [...item.lineage];
+                } else {
+                    currentPath.push(item);
+                }
+                searchQuery = '';
+                updateSearchIndicator();
                 selectedIndex = 0;
                 renderMenu();
             } else if (item.action) {
                 item.action();
+                searchQuery = '';
+                updateSearchIndicator();
+                renderMenu();
             }
         }
         
         function handleCollapse() {
             if (currentPath.length > 0) {
                 currentPath.pop();
+                searchQuery = '';
+                updateSearchIndicator();
                 selectedIndex = 0;
                 renderMenu();
             }
@@ -489,62 +502,54 @@ import ProjectCard from '../components/ProjectCard.astro';
             } else if (e.key === 'Enter' || e.key === 'ArrowRight') {
                 e.preventDefault();
                 handleAction();
-            } else if (e.key === 'Escape' || e.key === 'ArrowLeft' || e.key === 'Backspace') {
+            } else if (e.key === 'Backspace') {
+                if (searchQuery.length > 0) {
+                    searchQuery = searchQuery.slice(0, -1);
+                    selectedIndex = 0;
+                    updateSearchIndicator();
+                    renderMenu();
+                } else {
+                    e.preventDefault();
+                    if (currentPath.length > 0) {
+                        handleCollapse();
+                    }
+                }
+            } else if (e.key === 'Escape') {
                 e.preventDefault();
-                if (currentPath.length > 0) {
-                    handleCollapse();
-                } else if (e.key === 'Escape') {
+                if (searchQuery.length > 0) {
+                    searchQuery = '';
+                    selectedIndex = 0;
+                    updateSearchIndicator();
+                    renderMenu();
+                } else {
                     location.reload();
                 }
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (searchQuery.length > 0) {
+                    searchQuery = '';
+                    updateSearchIndicator();
+                }
+                if (currentPath.length > 0) {
+                    handleCollapse();
+                }
+            } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                // Ignore space bar if we're not searching, otherwise scrolling happens
+                if (e.key === ' ' && searchQuery.length === 0) return;
+                
+                searchQuery += e.key;
+                selectedIndex = 0;
+                updateSearchIndicator();
+                renderMenu();
             }
         });
 
         // Initialize App
-        const selectionScreen = document.getElementById('selection-screen');
-        const consoleWindow = document.getElementById('console-window');
-        const classicViewEl = document.getElementById('classic-view');
-        const mainWrapper = document.getElementById('main-wrapper');
-
-        window.startHub = function(mode) {
-            selectionScreen?.classList.add('hidden');
-            
-            if (mode === 'console') {
-                consoleWindow?.classList.remove('hidden');
-                consoleWindow?.classList.add('flex');
-                document.getElementById('menu-container')?.focus();
-                
-                // Hide global language button (terminal has its own)
-                document.getElementById('global-actions')?.classList.add('hidden');
-                document.body.classList.add('terminal-active');
-            } else {
-                classicViewEl?.classList.remove('hidden');
-                classicViewEl?.classList.add('flex');
-                
-                document.body.classList.remove('terminal-active');
-                
-                // Remove vertical centering so classic view moves up
-                if (mainWrapper) {
-                    mainWrapper.classList.remove('items-center', 'justify-center');
-                    mainWrapper.classList.add('items-start', 'pt-8', 'sm:pt-10');
-                }
-                
-                // Easter Egg: Respect terminal-selected theme in classic view. Otherwise, force dark mode.
-                if (localStorage.getItem('terminalThemeSet') === 'true') {
-                    const isDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                    if (window.setThemeGlobal) {
-                        window.setThemeGlobal(isDark, false);
-                    } else {
-                        document.documentElement.classList.toggle('dark', isDark);
-                    }
-                } else {
-                    if (window.setThemeGlobal) {
-                        window.setThemeGlobal(true, false);
-                    } else {
-                        document.documentElement.classList.add('dark');
-                    }
-                }
-            }
-        };
+        document.getElementById('menu-container')?.focus();
+        
+        // Hide global language button (terminal has its own)
+        document.getElementById('global-actions')?.classList.add('hidden');
+        document.body.classList.add('terminal-active');
 
         // Initial render
         renderMenu();
