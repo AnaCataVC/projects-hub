@@ -9,10 +9,6 @@ export default defineConfig({
           target: 'https://identity-map-xi.vercel.app',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/identity-map/, '')
-        },
-        '/assets': {
-          target: 'https://identity-map-xi.vercel.app',
-          changeOrigin: true
         }
       }
     }

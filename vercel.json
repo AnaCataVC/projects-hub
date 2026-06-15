@@ -31,10 +31,6 @@
     {
       "source": "/identity-map/(.*)",
       "destination": "https://identity-map-xi.vercel.app/$1"
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "https://identity-map-xi.vercel.app/assets/$1"
     }
   ]
 }
