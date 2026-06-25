@@ -1,33 +1,33 @@
-# Proyecto: Ana-Catalina | Projects Hub
+# Project: Ana-Catalina | Projects Hub
 
-## Descripción General
-Projects Hub es el portafolio y directorio central de proyectos y aplicaciones de Ana-Catalina. Actualmente cuenta con un diseño bilingüe (Inglés/Español) y sirve como puerta de enlace a proyectos como "My CV Template".
+## Overview
+Projects Hub is Ana-Catalina's personal portfolio and central directory of projects and applications. It currently features a bilingual design (English/Spanish) and serves as the gateway to projects like "My CV Template".
 
-## Stack Tecnológico Actual
-- **Estructura:** HTML5
-- **Estilos:** CSS Vanilla (CSS Variables, animaciones y micro-interacciones)
-- **Lógica:** JavaScript Vanilla (para el cambio de idioma)
-- **Tipografía:** Outfit (Google Fonts)
-- **Despliegue:** Preparado para Vercel (`vercel.json` incluido)
+## Current Tech Stack
+- **Structure:** HTML5
+- **Styling:** Vanilla CSS (CSS Variables, animations, and micro-interactions)
+- **Logic:** Vanilla JavaScript (for language switching)
+- **Typography:** Outfit (Google Fonts)
+- **Deployment:** Configured for Vercel
 
-## Análisis de Migración: ¿Conviene usar Astro?
+## Migration Analysis: Should we use Astro?
 
-**Conclusión: Sí, es muy recomendable migrar este proyecto a Astro.**
+**Conclusion: Yes, migrating this project to Astro is highly recommended.**
 
-### Razones:
-1. **Ideal para Sitios de Contenido:** Astro brilla en proyectos como portafolios, blogs y hubs, donde la velocidad y el contenido estático son la prioridad.
-2. **Componentización sin Bloat:** Podremos dividir el código en componentes reutilizables (por ejemplo, `<ProjectCard />`, `<LanguageToggle />`, `<Header />`) manteniendo un bundle de JavaScript casi nulo ("Zero JS by default").
-3. **Escalabilidad y Mantenimiento:** A medida que agregues más proyectos, mantener un solo archivo `index.html` se volverá complicado. Con Astro podemos usar listas de datos o archivos Markdown/MDX para renderizar los proyectos dinámicamente.
-4. **Islands Architecture:** El botón de cambio de idioma puede seguir siendo un componente interactivo aislado sin afectar el rendimiento del resto de la página estática.
-5. **Preparado para el Futuro:** Si un proyecto futuro requiere incrustar un componente interactivo complejo de React, Svelte o Vue en este Hub, Astro permite integrarlo de forma nativa.
+### Reasons:
+1. **Ideal for Content Sites:** Astro shines in projects like portfolios, blogs, and hubs, where speed and static content are the priority.
+2. **Componentization without Bloat:** We can split the code into reusable components (e.g., `<ProjectCard />`, `<LanguageToggle />`, `<Header />`) while maintaining near-zero JavaScript bundle sizes ("Zero JS by default").
+3. **Scalability and Maintenance:** As you add more projects, maintaining a single `index.html` file will become cumbersome. With Astro, we can use content collections or Markdown/MDX files to render projects dynamically.
+4. **Islands Architecture:** The language toggle button can remain an isolated interactive component without affecting the performance of the rest of the static page.
+5. **Future-Proof:** If a future project requires embedding a complex interactive component from React, Svelte, or Vue into this Hub, Astro allows native integration.
 
-## Estándares de Diseño y Desarrollo (Reglas del Proyecto)
-- Mantener una estética moderna, limpia y atractiva ("Premium Design").
-- Priorizar animaciones sutiles (micro-interacciones) y fluidez.
-- Asegurar responsividad total (Mobile-first).
-- Uso estricto de variables CSS para la paleta de colores.
-- Toda nueva característica debe soportar la internacionalización (i18n) en ES y EN.
-- **Subaplicaciones externas:** Si un proyecto externo (Vite, React, Astro, etc.) va a ser embebido o enrutado dentro de este Hub mediante rewrites de Vercel (ej. `/identity-map`), el proyecto externo DEBE estar compilado con rutas relativas para sus assets (ej. `base: './'` en Vite) para evitar errores 404.
-- **Rendimiento Móvil & Scroll:** En vistas con mucho contenido, evita layouts Flexbox complejos con alturas dinámicas acoplados con animaciones de GPU si estas provocan problemas de scroll en dispositivos táctiles. Conmutar a `display: block` e inyectar paddings inferiores holgados (ej. `pb-24`) y remover clases de animación (ej. `animate-gui-boot`) vía JS cliente tras la carga.
-- **Detección de Dispositivos Táctiles:** No confíes en breakpoints de ancho de pantalla para cambiar la ayuda táctil. Utiliza media queries de características del puntero de hardware: `@media (pointer: coarse)` para táctiles y `@media (pointer: fine)` para ratón/teclado.
-- **Limpieza de Redirecciones Locales:** Al convertir cualquier enrutamiento externo a una ruta local dinámica de Astro en el Hub, asegúrate de eliminar cualquier rewrite/redirección residual en `vercel.json` para prevenir bucles infinitos de red en el servidor.
+## Design and Development Standards (Project Rules)
+- Maintain a modern, clean, and appealing aesthetics ("Premium Design").
+- Prioritize subtle animations (micro-interactions) and smoothness.
+- Ensure full responsiveness (Mobile-first).
+- Strict use of CSS variables for the color palette.
+- Every new feature must support internationalization (i18n) in ES and EN.
+- **External sub-applications:** If an external project (Vite, React, Astro, etc.) is to be embedded or routed within this Hub using Vercel rewrites (e.g., `/identity-map`), the external project MUST be compiled with relative paths for its assets (e.g., `base: './'` in Vite) to prevent 404 errors.
+- **Mobile Performance & Scrolling:** In content-heavy views, avoid complex Flexbox layouts with dynamic heights coupled with GPU animations if they cause scrolling issues on touch devices. Switch to `display: block`, inject generous bottom padding (e.g., `pb-24`), and remove animation classes (e.g., `animate-gui-boot`) via client-side JS after loading.
+- **Touch Device Detection:** Do not rely on screen-width breakpoints to toggle touch help. Use hardware pointer capability media queries: `@media (pointer: coarse)` for touch devices and `@media (pointer: fine)` for mouse/keyboard.
+- **Local Redirection Cleanup:** When converting any external routing into a dynamic local Astro route in the Hub, make sure to delete any residual rewrite/redirection rules in `vercel.json` to prevent infinite network redirect loops on the server.
