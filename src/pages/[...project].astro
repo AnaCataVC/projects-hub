@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectLayout from '../layouts/ProjectLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(entry => {
+    const [lang, slug] = entry.id.split('/');
+    const projectPath = lang === 'es' ? slug : `${lang}/${slug}`;
+    return {
+      params: { project: projectPath },
+      props: { entry, lang },
+    };
+  });
+}
+
+const { entry, lang } = Astro.props;
+---
+
+<ProjectLayout 
+  lang={lang}
+  title={entry.data.title}
+  description={entry.data.description}
+  icon={entry.data.icon}
+  technologies={entry.data.technologies}
+  categories={entry.data.categories}
+  githubUrl={entry.data.githubUrl}
+  liveAppUrl={entry.data.liveAppUrl}
+  websiteUrl={entry.data.websiteUrl}
+  isLiveApp={entry.data.isLiveApp}
+  problem={entry.data.problem}
+  solution={entry.data.solution}
+  status={entry.data.status}
+  learnings={entry.data.learnings}
+  websiteActionText={entry.data.websiteActionText}
+/>
