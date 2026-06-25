@@ -28,3 +28,26 @@
 .delay-100 { animation-delay: 100ms; opacity: 0; }
 .delay-200 { animation-delay: 200ms; opacity: 0; }
 .delay-300 { animation-delay: 300ms; opacity: 0; }
+
+/* Responsive interaction helpers (coarse = touch, fine = mouse/keyboard) */
+@media (pointer: coarse) {
+  .touch-only {
+    display: inline !important;
+  }
+  .no-touch {
+    display: none !important;
+  }
+}
+
+@media (pointer: fine), (pointer: none) {
+  .touch-only {
+    display: none !important;
+  }
+  .no-touch {
+    display: inline !important;
+  }
+  /* Ensure flex containers respect no-touch display overrides */
+  div.no-touch {
+    display: flex !important;
+  }
+}

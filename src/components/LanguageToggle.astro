@@ -70,12 +70,20 @@
         }
     };
 
-    let currentLang = localStorage.getItem('lang') as LangKeys | null;
+    const path = window.location.pathname;
+    let pathLang: LangKeys | null = null;
+    if (path !== '/' && path !== '') {
+        const segments = path.split('/').filter(Boolean);
+        pathLang = segments[0] === 'en' ? 'en' : 'es';
+    }
+
+    let currentLang = pathLang || (localStorage.getItem('lang') as LangKeys | null);
+    
     if (!currentLang) {
         const browserLang = navigator.language || (navigator as any).userLanguage;
         currentLang = browserLang.toLowerCase().startsWith('es') ? 'es' : 'en';
-        localStorage.setItem('lang', currentLang); 
     }
+    localStorage.setItem('lang', currentLang); 
 
     const btnEs = document.getElementById('lang-es');
     const btnEn = document.getElementById('lang-en');
@@ -93,6 +101,25 @@
     }
 
     function setLanguage(lang: LangKeys) {
+        if (currentLang !== lang) {
+            const path = window.location.pathname;
+            if (path !== '/' && path !== '') {
+                const segments = path.split('/').filter(Boolean);
+                const isEnRoute = segments[0] === 'en';
+                
+                if (lang === 'en' && !isEnRoute) {
+                    localStorage.setItem('lang', lang);
+                    window.location.href = `/en/${segments.join('/')}`;
+                    return;
+                } else if (lang === 'es' && isEnRoute) {
+                    localStorage.setItem('lang', lang);
+                    segments.shift();
+                    window.location.href = `/${segments.join('/')}`;
+                    return;
+                }
+            }
+        }
+
         currentLang = lang;
         localStorage.setItem('lang', lang);
         

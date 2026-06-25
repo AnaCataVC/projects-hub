@@ -7,9 +7,10 @@ import Analytics from '@vercel/analytics/astro';
 
 interface Props {
 	title: string;
+	isProjectPage?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, isProjectPage = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -43,30 +44,54 @@ const { title } = Astro.props;
 			};
 		</script>
 	</head>
-	<body class="relative min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900 dark:selection:bg-indigo-900 dark:selection:text-indigo-100">
+	<body class:list={[
+		"relative min-h-screen selection:bg-indigo-200 selection:text-indigo-900 dark:selection:bg-indigo-900 dark:selection:text-indigo-100",
+		isProjectPage ? "block" : "flex flex-col"
+	]}>
 		<Analytics />
 		<PoppyBackground />
 		
-		<!-- Discreet Logo in corner -->
-		<header id="global-logo" class="absolute top-8 left-8 sm:top-12 sm:left-12 z-10 animate-fade-in">
-			<a href="https://ana-catalina.com">
-				<img src="/favicon.svg" alt="ACVC Logo" class="w-8 h-8 sm:w-10 sm:h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" />
-			</a>
-		</header>
+		<!-- Top Bar Controls (Relative flow on mobile for project pages, absolute on desktop and index) -->
+		<div class:list={[
+			"w-full z-20 animate-fade-in transition-all duration-300",
+			isProjectPage 
+				? "flex justify-between items-center px-6 pt-6 pb-2 sm:p-0 relative sm:absolute" 
+				: "absolute"
+		]}>
+			<!-- Discreet Logo in corner -->
+			<header id="global-logo" class:list={[
+				"z-10",
+				isProjectPage 
+					? "relative top-0 left-0 sm:absolute sm:top-8 sm:left-8 lg:sm:top-12 lg:sm:left-12" 
+					: "absolute top-8 left-8 sm:top-12 sm:left-12"
+			]}>
+				<a href="https://ana-catalina.com">
+					<img src="/favicon.svg" alt="ACVC Logo" class="w-8 h-8 sm:w-10 sm:h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" />
+				</a>
+			</header>
 
-		<!-- Top Right Actions -->
-		<div id="global-actions" class="absolute top-8 right-8 sm:top-12 sm:right-12 z-20 flex gap-4 animate-fade-in">
-			<LanguageToggle />
+			<!-- Top Right Actions -->
+			<div id="global-actions" class:list={[
+				"flex gap-4",
+				isProjectPage 
+					? "relative top-0 right-0 sm:absolute sm:top-8 sm:right-8 lg:sm:top-12 lg:sm:right-12" 
+					: "absolute top-8 right-8 sm:top-12 sm:right-12"
+			]}>
+				<LanguageToggle />
+			</div>
 		</div>
 		<div class="hidden">
 			<ThemeToggle />
 		</div>
 
-		<main id="main-content" class="flex-grow flex flex-col px-4 sm:px-12 w-full max-w-4xl mx-auto py-8 sm:py-12 mt-16 sm:mt-0 transition-all duration-300">
+		<main id="main-content" class:list={[
+			"px-4 sm:px-12 w-full max-w-5xl mx-auto pt-8 sm:pt-12 transition-all duration-300",
+			isProjectPage ? "block pb-24 sm:pb-36 mt-4 sm:mt-0" : "flex-grow flex flex-col pb-8 sm:pb-12 mt-16 sm:mt-0"
+		]}>
 			<slot />
 		</main>
 
-		<div id="global-footer" class="hidden sm:flex w-full mt-auto animate-fade-in delay-300 justify-center">
+		<div id="global-footer" class="flex w-full mt-auto animate-fade-in delay-300 justify-center px-6 sm:px-0">
 			<footer class="w-full max-w-2xl border-t border-slate-200/50 dark:border-slate-800/50 pt-8 pb-4">
 				<div class="flex flex-col sm:flex-row justify-center sm:justify-end items-center sm:items-start gap-8">
 					<div class="flex flex-col items-center sm:items-end gap-3">

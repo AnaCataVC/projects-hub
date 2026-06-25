@@ -1,13 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+
+const allProjects = await getCollection('projects');
+const serializedProjects = allProjects.map(p => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  icon: p.data.icon,
+  githubUrl: p.data.githubUrl
+}));
 ---
 
 <Layout title="Ana-Catalina | Projects Hub">
-    <div id="main-wrapper" class="relative z-10 w-full flex-grow flex items-center justify-center transition-all duration-500">
+    <div id="projects-data" data-projects={JSON.stringify(serializedProjects)} class="hidden"></div>
+    <div id="main-wrapper" class="relative z-10 w-full flex-grow flex items-start sm:items-center justify-center pt-2 sm:pt-0 transition-all duration-500">
         
-
         <!-- Console Window -->
-        <div id="console-window" class="flex w-full max-w-4xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex-col flex-grow">
+        <div id="console-window" class="flex w-full max-w-5xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex-col flex-grow transition-all duration-500">
             <!-- Window Header -->
             <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0 bg-white/50 dark:bg-slate-900/50">
                 <div class="w-16 shrink-0 flex justify-start">
@@ -41,7 +51,7 @@ import Layout from '../layouts/Layout.astro';
                         <input type="text" id="mobile-input" class="absolute inset-0 opacity-0 z-10 cursor-text w-full h-full" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="none" />
                     </div></div>
                     
-                    <div class="mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 text-xs text-slate-400 dark:text-slate-500 hidden sm:flex flex-wrap gap-4 shrink-0">
+                    <div class="mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 text-xs text-slate-400 dark:text-slate-500 hidden sm:flex no-touch flex-wrap gap-4 shrink-0">
                         <div class="flex items-center gap-1.5">
                             <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↑</span>
                             <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↓</span>
@@ -78,10 +88,10 @@ import Layout from '../layouts/Layout.astro';
                 type: 'folder', 
                 expanded: false, 
                 children: [
-                    { title: '<span class="hidden sm:inline">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="inline sm:hidden">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>', type: 'text' },
-                    { title: '<span class="hidden sm:inline">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="inline sm:hidden">Toca la opción ".." para regresar a la carpeta anterior.</span>', type: 'text' },
-                    { title: '<span class="hidden sm:inline">Empieza a escribir en cualquier momento para buscar.</span><span class="inline sm:hidden">Toca la barra inferior para buscar.</span>', type: 'text' },
-                    { title: '<span class="hidden sm:inline">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="inline sm:hidden">Borra el texto para limpiar la búsqueda actual.</span>', type: 'text' }
+                    { title: '<span class="no-touch">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="touch-only">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>', type: 'text' },
+                    { title: '<span class="no-touch">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="touch-only">Toca la opción ".." para regresar a la carpeta anterior.</span>', type: 'text' },
+                    { title: '<span class="no-touch">Empieza a escribir en cualquier momento para buscar.</span><span class="touch-only">Toca la barra inferior para buscar.</span>', type: 'text' },
+                    { title: '<span class="no-touch">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="touch-only">Borra el texto para limpiar la búsqueda actual.</span>', type: 'text' }
                 ]
             },
             {
@@ -92,7 +102,9 @@ import Layout from '../layouts/Layout.astro';
                 type: 'folder',
                 expanded: false,
                 children: [
-                    { title: 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.', type: 'text' },
+                    { title: '<span class="hidden sm:inline">¡Hola! Soy Ana-Catalina. Este espacio es mi directorio centralizado de desarrollo, diseñado como una interfaz de consola interactiva para explorar mi trabajo de forma rápida y de alto rendimiento.</span><span class="inline sm:hidden">¡Hola! Soy Ana-Catalina. Este es mi directorio de desarrollo personal (independiente de mi trabajo oficial).</span>', type: 'text' },
+                    { title: '<span class="hidden sm:inline">Aquí recopilo mis proyectos personales independientes de mi trabajo oficial, desarrollados por diversión, como hobbie y por el deseo de seguir aprendiendo constantemente. Estos abarcan desde skills/agentes de IA y plantillas de código abierto, hasta aplicaciones analíticas completas.</span><span class="inline sm:hidden">Los desarrollo como hobbie para divertirme y aprender, abarcando desde agentes de IA hasta aplicaciones completas.</span>', type: 'text' },
+                    { title: '<span class="hidden sm:block">Cada proyecto cuenta con una ficha técnica detallada (modo GUI) que documenta el problema de partida, las decisiones de arquitectura, el stack de tecnologías y los aprendizajes clave obtenidos.</span>', type: 'text' },
                     { title: ' ', type: 'text' },
                     { title: `© ${new Date().getFullYear()} Ana-Catalina.`, type: 'text' }
                 ]
@@ -155,52 +167,7 @@ import Layout from '../layouts/Layout.astro';
                 color: 'text-emerald-600 dark:text-emerald-400',
                 type: 'folder', 
                 expanded: false, 
-                children: [
-                    { 
-                        title: 'Life Tracker Analytics', 
-                        type: 'folder', 
-                        icon: '/project-icons/lta_icon.png',
-                        expanded: false, 
-                        children: [
-                            { title: '▪ Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos.', type: 'text' },
-                            { title: '↳ Ver app', action: () => window.location.href = '/life-tracker-analytics/' },
-                            { title: '↳ Ver en GitHub', action: () => window.open('https://github.com/AnaCataVC/life-tracker-analytics', '_blank') }
-                        ]
-                    },
-                    { 
-                        title: 'Amiga IA', 
-                        type: 'folder', 
-                        icon: '/project-icons/ami-icon.png',
-                        expanded: false, 
-                        children: [
-                            { title: '▪ Repositorio centralizado de habilidades y agentes para asistentes IA. Facilita la programación y asegura la calidad del código.', type: 'text' },
-                            { title: '↳ Ver página de producto', action: () => window.location.href = '/amiga-ia/' },
-                            { title: '↳ Ver en GitHub', action: () => window.open('https://github.com/AnaCataVC/amiga-ia', '_blank') }
-                        ]
-                    },
-                    { 
-                        title: 'My CV Template', 
-                        type: 'folder', 
-                        icon: '/project-icons/cv-icon.svg',
-                        expanded: false, 
-                        children: [
-                            { title: '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.', type: 'text' },
-                            { title: '↳ Ver demo interactiva', type: 'action', action: () => window.location.href = '/my-cv/' },
-                            { title: '↳ Ver en GitHub', type: 'action', action: () => window.open('https://github.com/AnaCataVC/my-cv', '_blank') }
-                        ]
-                    },
-                    { 
-                        title: 'Identity Map', 
-                        type: 'folder', 
-                        icon: '/project-icons/identitymap_icon.png',
-                        expanded: false, 
-                        children: [
-                            { title: '▪ Aplicación web interactiva para visualizar y explorar mapas de identidad.', type: 'text' },
-                            { title: '↳ Ver app', type: 'action', action: () => window.location.href = '/identity-map/' },
-                            { title: '↳ Ver en GitHub', type: 'action', action: () => window.open('https://github.com/AnaCataVC/identity-map', '_blank') }
-                        ]
-                    }
-                ]
+                children: [] // Populated dynamically
             }
         ];
 
@@ -209,6 +176,65 @@ import Layout from '../layouts/Layout.astro';
         let selectedIndex = 0;
         let searchQuery = '';
         const container = document.getElementById('menu-container');
+
+        // Dynamic Projects
+        const projectsDataEl = document.getElementById('projects-data');
+        const rawProjects = projectsDataEl ? JSON.parse(projectsDataEl.dataset.projects || '[]') : [];
+        const esProjects = rawProjects.filter(p => p.id.startsWith('es/')).map(p => ({...p, baseId: p.id.replace('es/', '')}));
+        const enProjects = rawProjects.filter(p => p.id.startsWith('en/')).map(p => ({...p, baseId: p.id.replace('en/', '')}));
+
+        function getProjectItems(lang) {
+            const list = lang === 'es' ? esProjects : enProjects;
+            return list.map(p => ({
+                title: `⚡ ./${p.baseId}.sh`,
+                type: 'action',
+                color: 'text-indigo-600 dark:text-indigo-400 font-bold',
+                action: () => window.launchProject(p.baseId, p.id)
+            }));
+        }
+
+        window.launchProject = function(displayId, fullId) {
+            const input = document.getElementById('mobile-input');
+            if(input) input.blur();
+
+            const textEl = document.getElementById('search-query-text');
+            const promptSymbol = document.getElementById('prompt-symbol');
+            
+            searchQuery = '';
+            selectedIndex = -1; 
+            
+            if (textEl && promptSymbol) {
+                textEl.innerText = '';
+                promptSymbol.innerText = '❯';
+                promptSymbol.classList.replace('text-emerald-500', 'text-indigo-600');
+                promptSymbol.classList.replace('dark:text-emerald-400', 'dark:text-indigo-400');
+            }
+            
+            if(container) container.innerHTML = '';
+            
+            const cmd = `./launch ${displayId} --gui`;
+            let i = 0;
+            
+            function typeChar() {
+                if (i < cmd.length) {
+                    textEl.innerText += cmd.charAt(i);
+                    i++;
+                    setTimeout(typeChar, 35);
+                } else {
+                    setTimeout(() => {
+                        const win = document.getElementById('console-window');
+                        if(win) win.classList.add('booting-up');
+                        
+                        setTimeout(() => {
+                            const parts = fullId.split('/');
+                            const targetPath = parts[0] === 'es' ? `/${parts[1]}` : `/${fullId}`;
+                            window.location.href = targetPath;
+                        }, 500); 
+                    }, 250); 
+                }
+            }
+            typeChar();
+        };
 
         function updateSearchIndicator() {
             const textEl = document.getElementById('search-query-text');
@@ -347,7 +373,7 @@ import Layout from '../layouts/Layout.astro';
                         icon = `<span class="animate-pulse-fast">${icon.trim()}</span> `;
                     } else {
                         // For actions that have their icon baked into the title
-                        displayTitle = displayTitle.replace(/(↳|\[☀\]|\[☾\])/, '<span class="animate-pulse-fast">$1</span>');
+                        displayTitle = displayTitle.replace(/(↳|\[☀\]|\[☾\]|⚡)/, '<span class="animate-pulse-fast">$1</span>');
                     }
                 }
 
@@ -447,15 +473,17 @@ import Layout from '../layouts/Layout.astro';
 
             if (lang === 'en') {
                 menuData[0].desc = '# Help and commands';
-                menuData[0].children[0].title = '<span class="hidden sm:inline">Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.</span><span class="inline sm:hidden">Tap any item in the list to select or open it.</span>';
-                menuData[0].children[1].title = '<span class="hidden sm:inline">Press [←] or [Backspace] to go back to the previous folder.</span><span class="inline sm:hidden">Tap the ".." option to go back to the previous folder.</span>';
-                menuData[0].children[2].title = '<span class="hidden sm:inline">Start typing at any time to search.</span><span class="inline sm:hidden">Tap the bottom bar to search.</span>';
-                menuData[0].children[3].title = '<span class="hidden sm:inline">Press [Esc] to clear the current search, or return to the root path.</span><span class="inline sm:hidden">Delete the text to clear the current search.</span>';
+                menuData[0].children[0].title = '<span class="no-touch">Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.</span><span class="touch-only">Tap any item in the list to select or open it.</span>';
+                menuData[0].children[1].title = '<span class="no-touch">Press [←] or [Backspace] to go back to the previous folder.</span><span class="touch-only">Tap the ".." option to go back to the previous folder.</span>';
+                menuData[0].children[2].title = '<span class="no-touch">Start typing at any time to search.</span><span class="touch-only">Tap the bottom bar to search.</span>';
+                menuData[0].children[3].title = '<span class="no-touch">Press [Esc] to clear the current search, or return to the root path.</span><span class="touch-only">Delete the text to clear the current search.</span>';
 
                 menuData[1].desc = '# About this hub';
-                menuData[1].children[0].title = 'Personal projects developed to explore, learn and share with the community.';
-                menuData[1].children[1].title = ' ';
-                menuData[1].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
+                menuData[1].children[0].title = '<span class="hidden sm:inline">Hi! I\'m Ana-Catalina. This space is my centralized development directory, designed as an interactive console interface to explore my work in a fast, high-performance environment.</span><span class="inline sm:hidden">Hi! I\'m Ana-Catalina. This is my personal development directory (independent of my official work).</span>';
+                menuData[1].children[1].title = '<span class="hidden sm:inline">Here I gather my personal projects, which are independent of my official work and developed as a hobby, for learning, and just for fun. These range from AI skills/agents and open-source templates to full analytical applications.</span><span class="inline sm:hidden">I build them as a hobby to learn and have fun, ranging from AI agents to full web applications.</span>';
+                menuData[1].children[2].title = '<span class="hidden sm:block">Each project features a detailed case study (GUI mode) documenting the initial problem, architectural decisions, technology stack, and key technical learnings.</span>';
+                menuData[1].children[3].title = ' ';
+                menuData[1].children[4].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
                 menuData[2].desc = '# Contact and links';
 
@@ -469,33 +497,20 @@ import Layout from '../layouts/Layout.astro';
 
                 menuData[5].title = '~/projects';
                 menuData[5].desc = '# Web development';
-                
-                menuData[5].children[0].children[0].title = '▪ Web application to track and analyze life metrics and daily habits through data visualizations.';
-                menuData[5].children[0].children[1].title = '↳ View app';
-                menuData[5].children[0].children[2].title = '↳ View on GitHub';
-
-                menuData[5].children[1].children[0].title = '▪ Centralized repository of skills and agents for AI assistants. It makes programming easier and ensures code quality.';
-                menuData[5].children[1].children[1].title = '↳ View product page';
-                menuData[5].children[1].children[2].title = '↳ View on GitHub';
-
-                menuData[5].children[2].children[0].title = '▪ A modern and interactive template to build your own resume or professional portfolio. Easy to configure and deploy.';
-                menuData[5].children[2].children[1].title = '↳ View interactive demo';
-                menuData[5].children[2].children[2].title = '↳ View on GitHub';
-
-                menuData[5].children[3].children[0].title = '▪ Interactive web application to visualize and explore identity maps.';
-                menuData[5].children[3].children[1].title = '↳ View app';
-                menuData[5].children[3].children[2].title = '↳ View on GitHub';
+                menuData[5].children = getProjectItems('en');
             } else {
                 menuData[0].desc = '# Ayuda y comandos';
-                menuData[0].children[0].title = '<span class="hidden sm:inline">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="inline sm:hidden">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>';
-                menuData[0].children[1].title = '<span class="hidden sm:inline">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="inline sm:hidden">Toca la opción ".." para regresar a la carpeta anterior.</span>';
-                menuData[0].children[2].title = '<span class="hidden sm:inline">Empieza a escribir en cualquier momento para buscar.</span><span class="inline sm:hidden">Toca la barra inferior para buscar.</span>';
-                menuData[0].children[3].title = '<span class="hidden sm:inline">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="inline sm:hidden">Borra el texto para limpiar la búsqueda actual.</span>';
+                menuData[0].children[0].title = '<span class="no-touch">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="touch-only">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>';
+                menuData[0].children[1].title = '<span class="no-touch">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="touch-only">Toca la opción ".." para regresar a la carpeta anterior.</span>';
+                menuData[0].children[2].title = '<span class="no-touch">Empieza a escribir en cualquier momento para buscar.</span><span class="touch-only">Toca la barra inferior para buscar.</span>';
+                menuData[0].children[3].title = '<span class="no-touch">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="touch-only">Borra el texto para limpiar la búsqueda actual.</span>';
 
                 menuData[1].desc = '# Sobre este hub';
-                menuData[1].children[0].title = 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.';
-                menuData[1].children[1].title = ' ';
-                menuData[1].children[2].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
+                menuData[1].children[0].title = '<span class="hidden sm:inline">¡Hola! Soy Ana-Catalina. Este espacio es mi directorio centralizado de desarrollo, diseñado como una interfaz de consola interactiva para explorar mi trabajo de forma rápida y de alto rendimiento.</span><span class="inline sm:hidden">¡Hola! Soy Ana-Catalina. Este es mi directorio de desarrollo personal (independiente de mi trabajo oficial).</span>';
+                menuData[1].children[1].title = '<span class="hidden sm:inline">Aquí recopilo mis proyectos personales independientes de mi trabajo oficial, desarrollados por diversión, como hobbie y por el deseo de seguir aprendiendo constantemente. Estos abarcan desde skills/agentes de IA y plantillas de código abierto, hasta aplicaciones analíticas completas.</span><span class="inline sm:hidden">Los desarrollo como hobbie para divertirme y aprender, abarcando desde agentes de IA hasta aplicaciones completas.</span>';
+                menuData[1].children[2].title = '<span class="hidden sm:block">Cada proyecto cuenta con una ficha técnica detallada (modo GUI) que documenta el problema de partida, las decisiones de arquitectura, el stack de tecnologías y los aprendizajes clave obtenidos.</span>';
+                menuData[1].children[3].title = ' ';
+                menuData[1].children[4].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
                 menuData[2].desc = '# Contacto y redes';
 
@@ -509,22 +524,7 @@ import Layout from '../layouts/Layout.astro';
 
                 menuData[5].title = '~/proyectos';
                 menuData[5].desc = '# Explorar portfolio';
-                
-                menuData[5].children[0].children[0].title = '▪ Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos.';
-                menuData[5].children[0].children[1].title = '↳ Ver app';
-                menuData[5].children[0].children[2].title = '↳ Ver en GitHub';
-
-                menuData[5].children[1].children[0].title = '▪ Repositorio centralizado de habilidades y agentes para asistentes IA. Facilita la programación y asegura la calidad del código.';
-                menuData[5].children[1].children[1].title = '↳ Ver página de producto';
-                menuData[5].children[1].children[2].title = '↳ Ver en GitHub';
-
-                menuData[5].children[2].children[0].title = '▪ Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.';
-                menuData[5].children[2].children[1].title = '↳ Ver demo interactiva';
-                menuData[5].children[2].children[2].title = '↳ Ver en GitHub';
-
-                menuData[5].children[3].children[0].title = '▪ Aplicación web interactiva para visualizar y explorar mapas de identidad.';
-                menuData[5].children[3].children[1].title = '↳ Ver app';
-                menuData[5].children[3].children[2].title = '↳ Ver en GitHub';
+                menuData[5].children = getProjectItems('es');
             }
 
             renderMenu();
@@ -666,6 +666,8 @@ import Layout from '../layouts/Layout.astro';
             padding-bottom: 0 !important;
             height: calc(100vh - 2rem);
             max-height: calc(100vh - 2rem);
+            height: calc(100dvh - 2rem);
+            max-height: calc(100dvh - 2rem);
         }
         @media (min-width: 640px) {
             body.terminal-active #main-content {
@@ -673,7 +675,16 @@ import Layout from '../layouts/Layout.astro';
                 margin-bottom: 2rem !important;
                 height: calc(100vh - 4rem);
                 max-height: calc(100vh - 4rem);
+                height: calc(100dvh - 4rem);
+                max-height: calc(100dvh - 4rem);
             }
+        }
+
+        .booting-up {
+            transform: scale(1.15) translateY(-10px);
+            opacity: 0;
+            filter: blur(12px);
+            pointer-events: none;
         }
     </style>
 </Layout>

@@ -1,0 +1,249 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  lang?: string;
+  title: string;
+  description: string;
+  icon?: string;
+  tags?: string[]; // Deprecated, kept for backward compatibility if needed temporarily
+  technologies?: string[];
+  categories?: string[];
+  githubUrl?: string;
+  liveAppUrl?: string;
+  websiteUrl?: string;
+  isLiveApp?: boolean;
+  problem?: string;
+  solution?: string;
+  status?: string;
+  learnings?: string[];
+  websiteActionText?: string;
+}
+
+const { lang = 'es', title, description, icon, technologies = [], categories = [], githubUrl, liveAppUrl, websiteUrl, isLiveApp, problem, solution, status, learnings = [], websiteActionText } = Astro.props;
+
+const t = {
+  back: lang === 'en' ? "Back to Hub" : "Volver al Hub",
+  problem: lang === 'en' ? "The Problem" : "El Problema",
+  solution: lang === 'en' ? "The Solution" : "La Solución",
+  learnings: lang === 'en' ? "Key Learnings" : "Aprendizajes Clave",
+  visitApp: lang === 'en' ? "View App" : "Ver App",
+  visitSite: websiteActionText || (lang === 'en' ? "Visit Website" : "Visitar Sitio Web"),
+  backHeader: lang === 'en' ? "back" : "volver",
+  pathPrefix: lang === 'en' ? 'projects' : 'proyectos',
+};
+
+const slug = Astro.params.project?.split('/').pop() || '';
+---
+
+<Layout title={`${title} | Ana-Catalina Projects`} isProjectPage={true}>
+  <div class="relative z-10 w-full transition-all duration-500">
+    <!-- Console Window (GUI Mode) -->
+    <div id="console-window" class="flex w-full max-w-5xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden flex-col transition-all duration-500 animate-gui-boot my-6 sm:my-10">
+      
+      <!-- Window Header (Matches index.astro structure but optimized for navigation) -->
+      <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0 bg-white/50 dark:bg-slate-900/50">
+        <div class="w-20 shrink-0 flex justify-start">
+          <a href="/" class="exit-gui-btn group flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity font-mono text-xs text-slate-500 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-0.5"><path d="m15 18-6-6 6-6"/></svg>
+            <span>{t.backHeader}</span>
+          </a>
+        </div>
+        <div class="flex-grow min-w-0 flex justify-center px-4">
+          <span id="header-path" class="text-xs sm:text-sm font-mono text-slate-500 truncate text-center w-full">
+            ~/projects-hub/{t.pathPrefix}/{slug}
+          </span>
+        </div>
+        <div class="w-20 shrink-0 flex justify-end">
+          <!-- Empty div for layout symmetry -->
+        </div>
+      </div>
+
+      <!-- Window Content Body -->
+      <div class="p-6 sm:p-10 flex flex-col">
+        
+        <!-- 1. The Open Hero -->
+        <header class="pb-10 border-b border-slate-200/50 dark:border-slate-800/50 mb-8 relative z-10">
+          
+          {status && (
+            <div class="flex mb-6 animate-fade-in">
+              <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                <span class={`w-2 h-2 rounded-full ${status === 'Completado' || status === 'Completed' ? 'bg-emerald-500' : status === 'En progreso' || status === 'Active maintenance' ? 'bg-amber-500' : 'bg-indigo-500'}`}></span>
+                {status}
+              </div>
+            </div>
+          )}
+
+          <div class="flex items-center gap-6 mb-8 animate-fade-in" style="animation-delay: 50ms;">
+            {icon && (
+              <div class="w-20 h-20 shrink-0 bg-white dark:bg-slate-800 rounded-3xl p-4 shadow-xl border border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center">
+                <img src={icon} alt={`${title} icon`} class="w-full h-full object-contain" />
+              </div>
+            )}
+            
+            <div class="flex flex-col gap-3">
+              {categories.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                  {categories.map(cat => (
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-700 dark:text-slate-300 text-xs rounded-full font-medium border border-slate-200/60 dark:border-slate-700/60">
+                      <svg class="w-3 h-3 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {technologies.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                  {technologies.map(tech => (
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-indigo-50/80 dark:bg-indigo-900/20 backdrop-blur-sm text-indigo-700 dark:text-indigo-300 text-xs rounded-full font-medium border border-indigo-200/60 dark:border-indigo-800/40">
+                      <svg class="w-3 h-3 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white mb-6 leading-tight animate-fade-in" style="animation-delay: 100ms;">
+            {title}
+          </h1>
+          
+          <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl leading-relaxed font-inter animate-fade-in" style="animation-delay: 200ms;">
+            {description}
+          </p>
+          
+          <div class="flex flex-wrap gap-4 animate-fade-in" style="animation-delay: 300ms;">
+              {githubUrl && (
+                <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  GitHub
+                </a>
+              )}
+              
+              {isLiveApp && liveAppUrl && (
+                <a href={liveAppUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200 dark:shadow-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  {t.visitApp}
+                </a>
+              )}
+              
+              {!isLiveApp && websiteUrl && (
+                <a href={websiteUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-200 dark:shadow-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                  {t.visitSite}
+                </a>
+              )}
+          </div>
+        </header>
+
+        <!-- 2. The Context Grid (Bento Style) -->
+        <section class="relative z-10 animate-fade-in mb-6" style="animation-delay: 400ms;">
+          {(problem || solution) && (
+            <div class="grid sm:grid-cols-2 gap-6 mb-6">
+              {problem && (
+                <div class="group relative p-6 sm:p-8 rounded-3xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-sm transition-all hover:bg-white/60 dark:hover:bg-slate-900/60">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400">
+                      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h3 class="text-lg font-bold font-outfit text-slate-900 dark:text-white">{t.problem}</h3>
+                  </div>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-inter text-sm sm:text-base">{problem}</p>
+                </div>
+              )}
+
+              {solution && (
+                <div class="group relative p-6 sm:p-8 rounded-3xl bg-indigo-50/50 dark:bg-indigo-900/10 backdrop-blur-md border border-indigo-100/50 dark:border-indigo-800/30 shadow-sm transition-all hover:bg-indigo-50/80 dark:hover:bg-indigo-900/20">
+                  <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                    </div>
+                    <h3 class="text-lg font-bold font-outfit text-indigo-950 dark:text-indigo-100">{t.solution}</h3>
+                  </div>
+                  <p class="text-indigo-800/80 dark:text-indigo-200/80 leading-relaxed font-inter text-sm sm:text-base">{solution}</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {learnings.length > 0 && (
+            <div class="group relative p-6 sm:p-8 rounded-3xl bg-slate-50/50 dark:bg-slate-800/20 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-sm transition-all hover:bg-slate-100/50 dark:hover:bg-slate-800/40">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.45.62 2.84 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/><path d="M12 2v2"/></svg>
+                </div>
+                <h3 class="text-xl font-bold font-outfit text-slate-900 dark:text-white">{t.learnings}</h3>
+              </div>
+              <ul class="space-y-3.5">
+                {learnings.map(learning => (
+                  <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 leading-relaxed font-inter text-sm sm:text-base">
+                    <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    <span>{learning}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Client-side navigation transition handler -->
+  <script>
+    // Ensure terminal body class is removed so page scrolling works naturally
+    document.body.classList.remove('terminal-active');
+
+    // Clean boot animation classes after completion to restore smooth scroll on mobile devices
+    const win = document.getElementById('console-window');
+    if (win) {
+      setTimeout(() => {
+        win.classList.remove('animate-gui-boot');
+      }, 500);
+    }
+
+    document.querySelectorAll('.exit-gui-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = btn.getAttribute('href');
+        const win = document.getElementById('console-window');
+        if (win) {
+          win.classList.remove('animate-gui-boot');
+          win.classList.add('gui-shutting-down');
+        }
+        setTimeout(() => {
+          window.location.href = href || '/';
+        }, 350);
+      });
+    });
+  </script>
+
+  <style is:global>
+    @keyframes guiBootIn {
+      from {
+        transform: scale(1.06) translateY(-8px);
+        opacity: 0;
+        filter: blur(8px);
+      }
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+    .animate-gui-boot {
+      animation: guiBootIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .gui-shutting-down {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      transform: scale(0.94) translateY(8px) !important;
+      opacity: 0 !important;
+      filter: blur(8px) !important;
+      pointer-events: none;
+    }
+  </style>
+</Layout>
+
