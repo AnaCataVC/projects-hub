@@ -7,7 +7,7 @@ liveAppUrl: "https://plot-this.ana-catalina.com"
 isLiveApp: true
 technologies: ["Python", "Streamlit", "Plotly Express", "Pandas"]
 categories: ["Web App", "Data Visualization", "Analytics"]
-status: "Completed"
+status: "Active"
 problem: "Analyzing datasets, choosing the right visualizations, and generating statistical insights dynamically without relying on external AI APIs or compromising data privacy."
 solution: "A local Streamlit application that uses fg-data-profiling as a headless analysis engine and Plotly Express to render custom, premium-styled interactive charts."
 learnings:

@@ -8,7 +8,7 @@ liveAppUrl: "https://identity-map.ana-catalina.com"
 isLiveApp: true
 technologies: ["Python", "JavaScript", "d3-force"]
 categories: ["Web App", "Herramienta Interactiva", "Teoría de Grafos"]
-status: "Completado"
+status: "Activo"
 problem: "Explorar la intersección entre matemáticas y autoconocimiento, integrando Python en el backend con una interfaz dinámica."
 solution: "Una aplicación web que renderiza relaciones complejas como un grafo interactivo, permitiendo navegar conexiones de identidad."
 learnings:

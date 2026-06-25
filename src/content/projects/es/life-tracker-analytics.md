@@ -8,7 +8,7 @@ liveAppUrl: "https://life-tracker-analytics.ana-catalina.com"
 isLiveApp: true
 technologies: ["React", "CSS", "Recharts"]
 categories: ["Visualización de Datos", "Analíticas", "Herramienta Personal"]
-status: "Completado"
+status: "Activo"
 problem: "Entender matemáticamente cómo los hábitos diarios impactan la calidad de vida, dado que las herramientas analíticas existentes eran limitadas o de pago."
 solution: "Un dashboard analítico personalizado que cruza datos y visualiza correlaciones ocultas entre acciones diarias y bienestar."
 learnings:

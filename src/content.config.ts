@@ -17,7 +17,7 @@ const projectsCollection = defineCollection({
     // Nuevos campos estandarizados para Fichas
     problem: z.string().optional(),
     solution: z.string().optional(),
-    status: z.enum(["Completado", "En progreso", "Archivado", "Mantenimiento activo", "Completed", "In progress", "Archived", "Active maintenance"]).default("Completado"),
+    status: z.enum(["En Desarrollo", "Archivado", "Activo", "In Development", "Archived", "Active"]).default("Activo"),
     learnings: z.array(z.string()).default([]),
     websiteActionText: z.string().optional(),
   }),

@@ -7,7 +7,7 @@ websiteUrl: "https://my-cv-template.ana-catalina.com"
 isLiveApp: false
 technologies: ["Astro", "Tailwind CSS"]
 categories: ["Template", "Portfolio"]
-status: "Completed"
+status: "Active"
 problem: "Sharing the design of a personal interactive resume so the code doesn't remain isolated and private."
 solution: "Refactoring the logic to abstract personal information and convert it into a generic template, allowing any developer to deploy their portfolio in minutes."
 learnings:

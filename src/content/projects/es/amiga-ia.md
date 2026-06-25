@@ -8,7 +8,7 @@ websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
 technologies: ["Node.js", "npm"]
 categories: ["IA", "Agentes", "Productividad"]
-status: "Mantenimiento activo"
+status: "Activo"
 problem: "La pérdida de tiempo lidiando con tareas repetitivas y la necesidad de dar contexto infinito a asistentes de IA genéricos."
 solution: "Creación de una suite de agentes (skills) hiper-especializados para automatizar flujos de trabajo, empaquetados en un repositorio público."
 learnings:

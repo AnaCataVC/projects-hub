@@ -8,7 +8,7 @@ websiteUrl: "https://my-cv-template.ana-catalina.com"
 isLiveApp: false
 technologies: ["Astro", "Tailwind CSS"]
 categories: ["Plantilla", "Portafolio"]
-status: "Completado"
+status: "Activo"
 problem: "Compartir el diseño de un currículum interactivo personal para que no quede como un código aislado y privado."
 solution: "Refactorización de la lógica para abstraer la información y convertirla en una plantilla genérica, permitiendo a cualquier desarrollador desplegar su portafolio en minutos."
 learnings:

@@ -7,7 +7,7 @@ websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
 technologies: ["Node.js", "npm"]
 categories: ["AI", "Agents", "Productivity"]
-status: "Active maintenance"
+status: "Active"
 problem: "The time wasted dealing with repetitive tasks and the need to provide endless context to generic AI assistants."
 solution: "Creation of a suite of hyper-specialized AI agents (skills) to automate workflows, packaged in a public repository."
 learnings:

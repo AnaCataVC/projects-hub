@@ -7,7 +7,7 @@ liveAppUrl: "https://identity-map.ana-catalina.com"
 isLiveApp: true
 technologies: ["Python", "JavaScript", "d3-force"]
 categories: ["Web App", "Interactive Tool", "Graph Theory"]
-status: "Completed"
+status: "Active"
 problem: "Exploring the intersection between mathematics and self-knowledge by integrating a Python backend with a dynamic visual interface."
 solution: "A web application that renders complex relationships as an interactive graph, allowing users to navigate identity connections."
 learnings:
