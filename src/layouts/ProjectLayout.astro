@@ -68,7 +68,15 @@ const slug = Astro.params.project?.split('/').pop() || '';
           {status && (
             <div class="flex mb-6 animate-fade-in">
               <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                <span class={`w-2 h-2 rounded-full ${status === 'Completado' || status === 'Completed' ? 'bg-emerald-500' : status === 'En progreso' || status === 'Active maintenance' ? 'bg-amber-500' : 'bg-indigo-500'}`}></span>
+                <span class={`w-2 h-2 rounded-full ${
+                  status === 'Completado' || status === 'Completed'
+                    ? 'bg-emerald-500'
+                    : status === 'En progreso' || status === 'In progress'
+                      ? 'bg-amber-500'
+                      : status === 'Mantenimiento activo' || status === 'Active maintenance'
+                        ? 'bg-indigo-500'
+                        : 'bg-slate-500'
+                }`}></span>
                 {status}
               </div>
             </div>
