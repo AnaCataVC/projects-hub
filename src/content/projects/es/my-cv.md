@@ -8,7 +8,7 @@ websiteUrl: "https://my-cv-template.ana-catalina.com"
 isLiveApp: false
 technologies: ["Vite", "Handlebars", "Tailwind CSS"]
 categories: ["Plantilla", "Portafolio", "SSG"]
-status: "Activo"
+status: "Archivado"
 problem: "Compartir el diseño de un currículum interactivo personal para que no quede como un código aislado y privado."
 solution: "Refactorización de la lógica para abstraer la información y convertirla en una plantilla genérica pura SSG, permitiendo a cualquier desarrollador desplegar su portafolio editando un único archivo data.js."
 learnings:

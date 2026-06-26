@@ -7,7 +7,7 @@ websiteUrl: "https://my-cv-template.ana-catalina.com"
 isLiveApp: false
 technologies: ["Vite", "Handlebars", "Tailwind CSS"]
 categories: ["Template", "Portfolio", "SSG"]
-status: "Active"
+status: "Archived"
 problem: "Sharing the design of a personal interactive resume so the code doesn't remain isolated and private."
 solution: "Refactoring the logic to abstract personal information and convert it into a pure SSG generic template, allowing any developer to deploy their portfolio by just editing a single data.js file."
 learnings:
