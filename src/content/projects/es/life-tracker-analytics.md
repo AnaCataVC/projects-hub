@@ -1,18 +1,18 @@
 ---
 title: "Life Tracker Analytics"
-description: "Aplicación web para rastrear y analizar métricas de vida y hábitos diarios mediante visualizaciones de datos."
-descriptionEn: "Web application to track and analyze life metrics and daily habits through data visualizations."
+description: "Aplicación Web Progresiva (PWA) centrada en la privacidad para rastrear y analizar métricas de vida y hábitos mediante visualizaciones de datos."
+descriptionEn: "Privacy-focused Progressive Web App (PWA) to track and analyze life metrics and daily habits through local-first data visualizations."
 icon: "/project-icons/lta_icon.png"
 githubUrl: "https://github.com/AnaCataVC/life-tracker-analytics"
 liveAppUrl: "https://life-tracker-analytics.ana-catalina.com"
 isLiveApp: true
-technologies: ["React", "CSS", "Recharts"]
+technologies: ["React 19", "Tailwind CSS v4", "Dexie.js", "Framer Motion", "Recharts"]
 categories: ["Visualización de Datos", "Analíticas", "Herramienta Personal"]
 status: "Activo"
-problem: "Entender matemáticamente cómo los hábitos diarios impactan la calidad de vida, dado que las herramientas analíticas existentes eran limitadas o de pago."
-solution: "Un dashboard analítico personalizado que cruza datos y visualiza correlaciones ocultas entre acciones diarias y bienestar."
+problem: "Entender matemáticamente cómo los hábitos diarios impactan la calidad de vida, sin entregar datos personales sensibles a servicios backend propietarios."
+solution: "Un dashboard PWA analítico que cruza datos localmente para visualizar correlaciones ocultas, usando una arquitectura BYOD (Bring-Your-Own-Data)."
 learnings:
-  - "Cruzar datos dispares aporta un inmenso valor para encontrar correlaciones reales (ej. sueño vs. productividad)."
-  - "El diseño de arquitecturas de estado complejas en React es clave para mantener múltiples visualizaciones sincronizadas."
-  - "La privacidad desde el diseño (Local First) aumenta dramáticamente la confianza en herramientas analíticas."
+  - "Adoptar una arquitectura de nube BYOD mediante remoteStorage.js permite la sincronización multiplataforma sin depender de BaaS propietarios."
+  - "Aprender a almacenar y manejar datos localmente (Dexie.js) de manera segura sin necesidad de recurrir a bases de datos externas complejas."
+  - "Aplicar conocimientos de visualización utilizando Recharts para generar gráficos interactivos de impacto real, en lugar de métricas engañosas."
 ---

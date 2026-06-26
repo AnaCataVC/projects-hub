@@ -1,17 +1,17 @@
 ---
 title: "Life Tracker Analytics"
-description: "Web application to track and analyze life metrics and daily habits through data visualizations."
+description: "Privacy-focused Progressive Web App (PWA) to track and analyze life metrics and daily habits through local-first data visualizations."
 icon: "/project-icons/lta_icon.png"
 githubUrl: "https://github.com/AnaCataVC/life-tracker-analytics"
 liveAppUrl: "https://life-tracker-analytics.ana-catalina.com"
 isLiveApp: true
-technologies: ["React", "CSS", "Recharts"]
+technologies: ["React 19", "Tailwind CSS v4", "Dexie.js", "Framer Motion", "Recharts"]
 categories: ["Data Visualization", "Analytics", "Personal Tool"]
 status: "Active"
-problem: "Understanding mathematically how daily habits impact quality of life, given that existing analytical tools were limited or paid."
-solution: "A custom analytical dashboard that cross-references data and visualizes hidden correlations between daily actions and well-being."
+problem: "Understanding mathematically how daily habits impact quality of life, without handing over sensitive personal data to proprietary BaaS."
+solution: "A custom analytical PWA dashboard that cross-references data locally to visualize hidden correlations, utilizing a BYOD (Bring-Your-Own-Data) architecture."
 learnings:
-  - "Crossing disparate data provides immense value for finding real correlations (e.g., sleep vs. productivity)."
-  - "Designing complex state architectures in React is key to keeping multiple visualizations synchronized."
-  - "Privacy by design (Local First) dramatically increases trust in analytical tools."
+  - "Adopting a BYOD cloud architecture via remoteStorage.js enables cross-platform synchronization without relying on proprietary BaaS."
+  - "Learning to securely manage and store simple data locally using Dexie.js (IndexedDB) without complex external databases."
+  - "Applying data visualization knowledge using Recharts to create meaningful interactive charts, avoiding misleading analytics."
 ---

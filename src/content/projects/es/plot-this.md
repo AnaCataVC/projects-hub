@@ -10,9 +10,9 @@ technologies: ["Python", "Streamlit", "Plotly Express", "Pandas"]
 categories: ["Aplicación Web", "Visualización de Datos", "Analíticas"]
 status: "Activo"
 problem: "Analizar datasets, seleccionar las visualizaciones adecuadas y generar insights estadísticos de forma dinámica sin depender de APIs externas de IA ni comprometer la privacidad de los datos."
-solution: "Una aplicación local en Streamlit que utiliza fg-data-profiling como motor de análisis desacoplado (headless) y Plotly Express para renderizar gráficos interactivos con estilos personalizados de alta calidad."
+solution: "Una aplicación local en Streamlit que utiliza un motor matemático personalizado y altamente optimizado en Pandas puro para inferir tipos semánticos en milisegundos sin colapsos, y Plotly Express para renderizar gráficos interactivos premium."
 learnings:
-  - "Utilizar una librería de profiling madura (fg-data-profiling) en memoria para extraer tipos semánticos y estadísticas en lugar de reprogramar grafos de inferencia complejos."
+  - "Descubrir que el uso de librerías de profiling pesadas causan deadlocks de multiprocesamiento en Streamlit, y reemplazarlas con un motor nativo personalizado de Pandas."
   - "Implementar un motor de reglas determinista que evalúa coeficientes de Pearson/Spearman y diferencias de medias para sugerir gráficos idóneos."
   - "Personalizar las propiedades del layout de Plotly Express (tipografía, eliminación de bordes de eje y paletas coordinadas) para producir gráficos con acabado visual moderno y premium."
 ---
