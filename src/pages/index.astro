@@ -109,19 +109,6 @@ const serializedProjects = allProjects.map(p => ({
                     { title: `© ${new Date().getFullYear()} Ana-Catalina.`, type: 'text' }
                 ]
             },
-            {
-                id: 'links',
-                title: '~/links',
-                desc: '# Contacto y redes',
-                color: 'text-pink-600 dark:text-pink-400',
-                type: 'folder',
-                expanded: false,
-                children: [
-                    { title: '↳ ana-catalina.com', type: 'action', action: () => window.location.href = 'https://ana-catalina.com' },
-                    { title: '↳ LinkedIn', type: 'action', action: () => window.open('https://linkedin.com/in/ana-catalina/', '_blank') },
-                    { title: '↳ GitHub', type: 'action', action: () => window.open('https://github.com/AnaCataVC/', '_blank') }
-                ]
-            },
             { 
                 id: 'idioma', 
                 title: '~/idioma', 
@@ -485,19 +472,17 @@ const serializedProjects = allProjects.map(p => ({
                 menuData[1].children[3].title = ' ';
                 menuData[1].children[4].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
-                menuData[2].desc = '# Contact and links';
-
-                menuData[3].title = '~/language';
-                menuData[3].desc = '# Change language';
+                menuData[2].title = '~/language';
+                menuData[2].desc = '# Change language';
                 
-                menuData[4].title = '~/theme';
-                menuData[4].desc = '# Change theme';
-                menuData[4].children[0].title = '↳ Light mode';
-                menuData[4].children[1].title = '↳ Dark mode';
+                menuData[3].title = '~/theme';
+                menuData[3].desc = '# Change theme';
+                menuData[3].children[0].title = '↳ Light mode';
+                menuData[3].children[1].title = '↳ Dark mode';
 
-                menuData[5].title = '~/projects';
-                menuData[5].desc = '# Web development';
-                menuData[5].children = getProjectItems('en');
+                menuData[4].title = '~/projects';
+                menuData[4].desc = '# Web development';
+                menuData[4].children = getProjectItems('en');
             } else {
                 menuData[0].desc = '# Ayuda y comandos';
                 menuData[0].children[0].title = '<span class="no-touch">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="touch-only">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>';
@@ -512,19 +497,17 @@ const serializedProjects = allProjects.map(p => ({
                 menuData[1].children[3].title = ' ';
                 menuData[1].children[4].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
-                menuData[2].desc = '# Contacto y redes';
-
-                menuData[3].title = '~/idioma';
-                menuData[3].desc = '# Cambiar idioma';
+                menuData[2].title = '~/idioma';
+                menuData[2].desc = '# Cambiar idioma';
                 
-                menuData[4].title = '~/tema';
-                menuData[4].desc = '# Cambiar apariencia';
-                menuData[4].children[0].title = '[☀] Claro';
-                menuData[4].children[1].title = '[☾] Oscuro';
+                menuData[3].title = '~/tema';
+                menuData[3].desc = '# Cambiar apariencia';
+                menuData[3].children[0].title = '[☀] Claro';
+                menuData[3].children[1].title = '[☾] Oscuro';
 
-                menuData[5].title = '~/proyectos';
-                menuData[5].desc = '# Explorar portfolio';
-                menuData[5].children = getProjectItems('es');
+                menuData[4].title = '~/proyectos';
+                menuData[4].desc = '# Explorar portfolio';
+                menuData[4].children = getProjectItems('es');
             }
 
             renderMenu();
