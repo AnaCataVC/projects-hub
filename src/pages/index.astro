@@ -613,6 +613,30 @@ const serializedProjects = allProjects.map(p => ({
         document.getElementById('global-actions')?.classList.add('hidden');
         document.body.classList.add('terminal-active');
 
+        // Handle bfcache (back button)
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                const win = document.getElementById('console-window');
+                if (win) win.classList.remove('booting-up');
+                
+                searchQuery = '';
+                const textEl = document.getElementById('search-query-text');
+                const promptSymbol = document.getElementById('prompt-symbol');
+                const mobileInput = document.getElementById('mobile-input');
+                
+                if (textEl) textEl.innerText = '';
+                if (mobileInput) mobileInput.value = '';
+                if (promptSymbol) {
+                    promptSymbol.innerText = '❯';
+                    promptSymbol.classList.remove('text-emerald-500', 'dark:text-emerald-400');
+                    promptSymbol.classList.add('text-indigo-600', 'dark:text-indigo-400');
+                }
+                
+                selectedIndex = 0;
+                renderMenu(true);
+            }
+        });
+
         // Initial render
         renderMenu();
     </script>
