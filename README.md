@@ -16,15 +16,16 @@ Welcome to **Projects Hub**, the central portfolio and application directory for
 
 ### 2. Technologies Used
 The project was migrated to Astro for maximum performance and scalability, maintaining a "Zero JS by default" approach.
-- **Framework:** [Astro](https://astro.build/)
+- **Framework:** [Astro](https://astro.build/) (v7.0)
 - **Structure:** HTML5 / Astro Components (`.astro`)
-- **Styling:** TailwindCSS (utility-first styling and animations)
+- **Styling:** TailwindCSS v4 (utility-first styling and animations via `@tailwindcss/vite`)
 - **Logic:** Vanilla JavaScript (for local storage, i18n language toggling, and interactive terminal navigation logic)
 - **Deployment:** Vercel
 
 ### 3. Key Learnings
 During the development of this hub, the main technical takeaways were:
 - **Astro Basics:** Learning how to use Astro for the first time, understanding its `.astro` component structure and "islands" architecture.
+- **Astro 7 & Tailwind v4 Migration:** Adapting to the strict HTML validation of Astro 7's new Rust compiler and configuring the modern `@tailwindcss/vite` integration.
 - **Routing & Deployment:** Practicing and implementing redirects directly in Vercel.
 
 ### 4. Live Demo
@@ -41,15 +42,16 @@ Bienvenido a **Projects Hub**, el directorio central de aplicaciones y portafoli
 
 ### 2. Tecnologías Utilizadas
 El proyecto fue migrado a Astro para maximizar el rendimiento y la escalabilidad, manteniendo un enfoque "Cero JS por defecto".
-- **Framework:** [Astro](https://astro.build/)
+- **Framework:** [Astro](https://astro.build/) (v7.0)
 - **Estructura:** HTML5 / Componentes Astro (`.astro`)
-- **Estilos:** TailwindCSS (para diseño basado en utilidades y animaciones)
+- **Estilos:** TailwindCSS v4 (para diseño basado en utilidades y animaciones vía `@tailwindcss/vite`)
 - **Lógica:** Vanilla JavaScript (para *local storage*, cambio de idioma i18n, y lógica de navegación interactiva de la terminal)
 - **Despliegue:** Vercel
 
 ### 3. Aprendizajes Destacados
 Durante el desarrollo de este portal, los principales aprendizajes técnicos fueron:
 - **Fundamentos de Astro:** Aprender a utilizar Astro por primera vez, asimilando su estructura de componentes `.astro` y arquitectura de "islas".
+- **Migración a Astro 7 y Tailwind v4:** Adaptación al nuevo compilador estricto de HTML en Rust de Astro 7 y la configuración de la integración moderna `@tailwindcss/vite`.
 - **Enrutamiento y Despliegue:** Practicar e implementar redirecciones utilizando la configuración de Vercel.
 
 ### 4. Enlace de Despliegue (Live Demo)
