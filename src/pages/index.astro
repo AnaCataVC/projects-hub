@@ -21,13 +21,21 @@ const serializedProjects = allProjects.map(p => ({
             <!-- Window Header -->
             <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0 bg-white/50 dark:bg-slate-900/50">
                 <div class="w-16 shrink-0 flex justify-start">
-                    <img id="console-header-icon" src="/favicon.svg" alt="App Icon" class="w-5 h-5 opacity-80" />
+                    <a href="https://ana-catalina.com" class="hover:opacity-100 transition-opacity flex items-center" title="Ana-Catalina Homepage">
+                        <img id="console-header-icon" src="/favicon.svg" alt="App Icon" class="w-5 h-5 opacity-80 hover:opacity-100 transition-opacity" />
+                    </a>
                 </div>
                 <div class="flex-grow min-w-0 flex justify-center px-4">
                     <span id="header-path" class="text-xs sm:text-sm font-mono text-slate-500 truncate text-center w-full">~/projects-hub</span>
                 </div>
-                <div class="w-16 shrink-0 flex justify-end">
-                    <!-- Empty div for layout symmetry -->
+                <div class="w-16 shrink-0 flex justify-end gap-3 items-center text-slate-500 dark:text-slate-400">
+                    <button type="button" onclick="if(window.setLanguageGlobal) { window.setLanguageGlobal(document.documentElement.lang === 'es' ? 'en' : 'es'); }" class="p-2 -m-2 hover:text-slate-800 dark:hover:text-slate-200 transition-colors cursor-pointer font-['JetBrains_Mono',monospace] text-[13px] font-semibold tracking-wider pointer-events-auto" title="Toggle Language">
+                        <span data-es="ES" data-en="EN">ES</span>
+                    </button>
+                    <button type="button" onclick="if(window.setThemeGlobal) { const isDark = document.documentElement.classList.contains('dark'); window.setThemeGlobal(!isDark); localStorage.setItem('terminalThemeSet', 'true'); }" class="p-2 -m-2 hover:text-slate-800 dark:hover:text-slate-200 transition-colors cursor-pointer" title="Toggle Theme">
+                        <svg class="block dark:hidden pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg class="hidden dark:block pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
                 </div>
             </div>
 
@@ -38,7 +46,7 @@ const serializedProjects = allProjects.map(p => ({
                 <div id="console-menu" class="flex-grow flex flex-col overflow-hidden">
 
                     <div id="menu-container" class="space-y-1 flex-grow outline-none font-['JetBrains_Mono',monospace] text-sm sm:text-base text-slate-700 dark:text-slate-300 overflow-y-auto pr-2" tabindex="0">
-                        <!-- Renderizado por JS -->
+                        <!-- Rendered by JS -->
                     </div>
                     
                     <!-- Simulated Command Line Prompt -->
@@ -51,32 +59,30 @@ const serializedProjects = allProjects.map(p => ({
                         <input type="text" id="mobile-input" class="absolute inset-0 opacity-0 z-10 cursor-text w-full h-full" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="none" />
                     </div>
                     
-                    <div class="mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 text-xs text-slate-400 dark:text-slate-500 hidden sm:flex no-touch flex-wrap gap-4 shrink-0">
-                        <div class="flex items-center gap-1.5">
-                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↑</span>
-                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↓</span>
-                            <span data-es="Navegar" data-en="Navigate">Navegar</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↵</span>
-                            <span data-es="Expandir/Ejecutar" data-en="Expand/Execute">Expandir/Ejecutar</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">←</span>
-                            <span data-es="o" data-en="or">o</span>
-                            <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]" data-es="Retroceso" data-en="Backspace">Retroceso</span>
-                            <span data-es="Contraer" data-en="Collapse">Contraer</span>
+                    <div class="mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-800/50 flex flex-wrap items-center justify-between gap-4 w-full shrink-0">
+                        <!-- Navigation help (hidden on mobile) -->
+                        <div class="hidden sm:flex no-touch flex-wrap gap-4 text-xs text-slate-400 dark:text-slate-500">
+                            <div class="flex items-center gap-1.5">
+                                <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↑</span>
+                                <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↓</span>
+                                <span data-es="Navegar" data-en="Navigate">Navegar</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">↵</span>
+                                <span data-es="Expandir/Ejecutar" data-en="Expand/Execute">Expandir/Ejecutar</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]">←</span>
+                                <span data-es="o" data-en="or">o</span>
+                                <span class="bg-slate-200 dark:bg-slate-700 px-1.5 rounded font-mono text-[9px] sm:text-[10px]" data-es="Retroceso" data-en="Backspace">Retroceso</span>
+                                <span data-es="Contraer" data-en="Collapse">Contraer</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        
-
-
     </div>
-
     <script>
         // Data Structure
         const menuData = [
@@ -109,44 +115,7 @@ const serializedProjects = allProjects.map(p => ({
                     { title: `© ${new Date().getFullYear()} Ana-Catalina.`, type: 'text' }
                 ]
             },
-            { 
-                id: 'idioma', 
-                title: '~/idioma', 
-                desc: '# Cambiar idioma', 
-                color: 'text-blue-600 dark:text-blue-400',
-                type: 'folder', 
-                expanded: false, 
-                children: [
-                    { title: '[es] Español', action: () => { 
-                        if(window.setLanguageGlobal) window.setLanguageGlobal('es'); 
-                        handleCollapse();
-                    } },
-                    { title: '[en] English', action: () => { 
-                        if(window.setLanguageGlobal) window.setLanguageGlobal('en'); 
-                        handleCollapse();
-                    } }
-                ]
-            },
-            { 
-                id: 'tema', 
-                title: '~/tema', 
-                desc: '# Cambiar apariencia', 
-                color: 'text-cyan-600 dark:text-cyan-400',
-                type: 'folder', 
-                expanded: false, 
-                children: [
-                    { title: '[☀] Claro', action: () => { 
-                        if(window.setThemeGlobal) window.setThemeGlobal(false); 
-                        localStorage.setItem('terminalThemeSet', 'true');
-                        handleCollapse();
-                    } },
-                    { title: '[☾] Oscuro', action: () => { 
-                        if(window.setThemeGlobal) window.setThemeGlobal(true); 
-                        localStorage.setItem('terminalThemeSet', 'true');
-                        handleCollapse();
-                    } }
-                ]
-            },
+
             { 
                 id: 'proyectos', 
                 title: '~/proyectos', 
@@ -472,17 +441,9 @@ const serializedProjects = allProjects.map(p => ({
                 menuData[1].children[3].title = ' ';
                 menuData[1].children[4].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
-                menuData[2].title = '~/language';
-                menuData[2].desc = '# Change language';
-                
-                menuData[3].title = '~/theme';
-                menuData[3].desc = '# Change theme';
-                menuData[3].children[0].title = '↳ Light mode';
-                menuData[3].children[1].title = '↳ Dark mode';
-
-                menuData[4].title = '~/projects';
-                menuData[4].desc = '# Web development';
-                menuData[4].children = getProjectItems('en');
+                menuData[2].title = '~/projects';
+                menuData[2].desc = '# Web development';
+                menuData[2].children = getProjectItems('en');
             } else {
                 menuData[0].desc = '# Ayuda y comandos';
                 menuData[0].children[0].title = '<span class="no-touch">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="touch-only">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>';
@@ -497,17 +458,9 @@ const serializedProjects = allProjects.map(p => ({
                 menuData[1].children[3].title = ' ';
                 menuData[1].children[4].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
-                menuData[2].title = '~/idioma';
-                menuData[2].desc = '# Cambiar idioma';
-                
-                menuData[3].title = '~/tema';
-                menuData[3].desc = '# Cambiar apariencia';
-                menuData[3].children[0].title = '[☀] Claro';
-                menuData[3].children[1].title = '[☾] Oscuro';
-
-                menuData[4].title = '~/proyectos';
-                menuData[4].desc = '# Explorar portfolio';
-                menuData[4].children = getProjectItems('es');
+                menuData[2].title = '~/proyectos';
+                menuData[2].desc = '# Explorar portfolio';
+                menuData[2].children = getProjectItems('es');
             }
 
             renderMenu();
@@ -530,7 +483,6 @@ const serializedProjects = allProjects.map(p => ({
         // Keyboard events
         window.addEventListener('keydown', (e) => {
             const menuVisible = !document.getElementById('console-menu')?.classList.contains('hidden');
-            
             if (!menuVisible) {
                 if (e.key === 'Escape') {
                     e.preventDefault();
@@ -662,6 +614,7 @@ const serializedProjects = allProjects.map(p => ({
         body.terminal-active {
             overflow: hidden;
         }
+        body.terminal-active #global-top-bar,
         body.terminal-active #global-logo,
         body.terminal-active #global-footer {
             display: none !important;

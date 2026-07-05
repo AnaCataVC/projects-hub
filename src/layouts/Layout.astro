@@ -52,32 +52,26 @@ const { title, isProjectPage = false } = Astro.props;
 		<PoppyBackground />
 		
 		<!-- Top Bar Controls (Relative flow on mobile for project pages, absolute on desktop and index) -->
-		<div class:list={[
-			"w-full z-20 animate-fade-in transition-all duration-300",
+		<div id="global-top-bar" class:list={[
+			"w-full z-20 animate-fade-in transition-all duration-300 pointer-events-none",
 			isProjectPage 
-				? "flex justify-between items-center px-6 pt-6 pb-2 sm:p-0 relative sm:absolute" 
-				: "absolute"
+				? "relative sm:absolute top-0 left-0" 
+				: "absolute top-0 left-0"
 		]}>
-			<!-- Discreet Logo in corner -->
-			<header id="global-logo" class:list={[
-				"z-10",
-				isProjectPage 
-					? "relative top-0 left-0 sm:absolute sm:top-8 sm:left-8 lg:sm:top-12 lg:sm:left-12" 
-					: "absolute top-8 left-8 sm:top-12 sm:left-12"
-			]}>
-				<a href="https://ana-catalina.com">
-					<img src="/favicon.svg" alt="ACVC Logo" class="w-8 h-8 sm:w-10 sm:h-10 opacity-70 hover:opacity-100 transition-opacity duration-300" />
-				</a>
-			</header>
+			<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex items-center justify-between h-16 pointer-events-auto">
+					<!-- Discreet Logo in corner -->
+					<header id="global-logo" class="z-10">
+						<a href="https://ana-catalina.com">
+							<img src="/favicon.svg" alt="ACVC Logo" class="w-8 h-8 rounded-lg object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+						</a>
+					</header>
 
-			<!-- Top Right Actions -->
-			<div id="global-actions" class:list={[
-				"flex gap-4",
-				isProjectPage 
-					? "relative top-0 right-0 sm:absolute sm:top-8 sm:right-8 lg:sm:top-12 lg:sm:right-12" 
-					: "absolute top-8 right-8 sm:top-12 sm:right-12"
-			]}>
-				<LanguageToggle />
+					<!-- Top Right Actions -->
+					<div id="global-actions" class="flex gap-4">
+						<LanguageToggle />
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="hidden">
