@@ -14,6 +14,8 @@
 ### 1. Project Description
 Welcome to **Projects Hub**, the central portfolio and application directory for Ana-Catalina. This project serves as a gateway to various open-source projects, including "My CV Template", "Amiga IA", and "Life Tracker Analytics". It features a **Dual Interface** (Classic UI Cards vs. Interactive Terminal Console), a modern bilingual design (English/Spanish), and provides a fast, accessible hub for all showcased works.
 
+**Development Philosophy:** All projects showcased in this hub, including the hub itself, are built using **AI-Assisted workflows**. This approach accelerates code implementation, allowing me to focus on system architecture, business logic, and user experience.
+
 ### 2. Technologies Used
 The project was migrated to Astro for maximum performance and scalability, maintaining a "Zero JS by default" approach.
 - **Framework:** [Astro](https://astro.build/) (v7.0)
@@ -39,6 +41,8 @@ During the development of this hub, the main technical takeaways were:
 
 ### 1. Descripción del Proyecto
 Bienvenido a **Projects Hub**, el directorio central de aplicaciones y portafolio de Ana-Catalina. Este proyecto sirve como un portal hacia varios proyectos de código abierto, incluyendo "My CV Template", "Amiga IA" y "Life Tracker Analytics". Destaca por su **Interfaz Dual** (Tarjetas UI Clásicas vs. Consola Interactiva tipo Terminal), un diseño bilingüe (Inglés/Español) y proporciona un centro rápido y accesible para todos los trabajos destacados.
+
+**Filosofía de Desarrollo:** Todos los proyectos presentados en este portal, incluyendo este mismo hub, son construidos utilizando **flujos de trabajo asistidos por IA**. Este enfoque acelera la implementación de código, permitiéndome enfocarme en la arquitectura del sistema, la lógica de negocio y la experiencia del usuario.
 
 ### 2. Tecnologías Utilizadas
 El proyecto fue migrado a Astro para maximizar el rendimiento y la escalabilidad, manteniendo un enfoque "Cero JS por defecto".
