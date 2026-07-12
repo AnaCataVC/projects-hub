@@ -1,6 +1,7 @@
 ---
 title: "Prima Focus"
 description: "Native local-first Android mobile application focused on productivity through a predictive priority system."
+icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus-showcase"
 websiteUrl: "https://github.com/AnaCataVC/prima-focus-showcase/releases/latest"
 isLiveApp: true
