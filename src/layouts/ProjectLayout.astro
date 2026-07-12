@@ -195,6 +195,10 @@ const slug = Astro.params.project?.split('/').pop() || '';
           )}
         </section>
 
+        <section class="relative z-10 animate-fade-in mt-2 text-slate-600 dark:text-slate-400 font-inter text-sm sm:text-base leading-relaxed [&>blockquote]:border-l-4 [&>blockquote]:border-indigo-400 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:bg-indigo-50/30 dark:[&>blockquote]:bg-indigo-900/10 [&>blockquote]:py-3 [&>blockquote]:pr-4 [&>blockquote]:rounded-r-xl [&>blockquote]:my-4 [&>a]:text-indigo-600 dark:[&>a]:text-pastel-blue [&>a]:underline [&>a]:underline-offset-4 hover:[&>a]:text-indigo-500 [&>p>a]:text-indigo-600 dark:[&>p>a]:text-pastel-blue [&>p>a]:underline [&>p>a]:underline-offset-4 hover:[&>p>a]:text-indigo-500 [&>blockquote>p>a]:text-indigo-600 dark:[&>blockquote>p>a]:text-pastel-blue [&>blockquote>p>a]:underline [&>blockquote>p>a]:underline-offset-4 hover:[&>blockquote>p>a]:text-indigo-500" style="animation-delay: 500ms;">
+          <slot />
+        </section>
+
       </div>
     </div>
   </div>

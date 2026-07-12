@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import ProjectLayout from '../layouts/ProjectLayout.astro';
 
 export async function getStaticPaths() {
@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { entry, lang } = Astro.props;
+const { Content } = await render(entry);
 ---
 
 <ProjectLayout 
@@ -33,4 +34,6 @@ const { entry, lang } = Astro.props;
   status={entry.data.status}
   learnings={entry.data.learnings}
   websiteActionText={entry.data.websiteActionText}
-/>
+>
+  <Content />
+</ProjectLayout>
