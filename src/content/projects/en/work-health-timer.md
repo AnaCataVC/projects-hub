@@ -1,8 +1,9 @@
 ---
 title: "Work Health Timer"
+icon: "/project-icons/work-health-timer-icon.png"
 description: "A lightweight Windows desktop application that sends periodic health alerts while you work."
 githubUrl: "https://github.com/AnaCataVC/work-health-timer"
-websiteUrl: "https://github.com/AnaCataVC/work-health-timer/releases/latest"
+websiteUrl: "https://work-health-timer.ana-catalina.com/"
 isLiveApp: true
 technologies: ["Python", "Tkinter", "PyInstaller", "Windows API"]
 categories: ["Health", "Desktop", "Windows"]
@@ -14,7 +15,7 @@ learnings:
   - "Resource Optimization: Designing a background application that consumes minimal system resources."
   - "Packaging and Distribution: Overcoming the challenges of bundling a Python application into a standalone .exe using PyInstaller."
   - "Concurrency & IPC Quirks: Managing single-instance locks with a robust TCP socket-based mechanism."
-websiteActionText: "Download Installer"
+websiteActionText: "Visit Website"
 ---
 
 > **Note**: You can download the pre-compiled standalone `.exe` installer from the GitHub Releases page. No Python installation is required to run the application.
