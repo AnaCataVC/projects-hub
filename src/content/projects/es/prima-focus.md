@@ -4,9 +4,7 @@ description: "Aplicación móvil Android nativa (local-first) enfocada en la pro
 descriptionEn: "Native local-first Android mobile application focused on productivity through a predictive priority system."
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus-showcase"
-liveAppUrl: "https://github.com/AnaCataVC/prima-focus-showcase/releases/latest"
 websiteUrl: "https://prima-focus.ana-catalina.com"
-isLiveApp: true
 technologies: ["Kotlin", "Jetpack Compose", "Room Database"]
 categories: ["Productividad", "Mobile", "Android"]
 status: "Activo"
