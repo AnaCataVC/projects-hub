@@ -1,18 +1,18 @@
 ---
 title: "Amiga IA"
-description: "Universal centralized repository of declarative skills and agents for AI assistants. 100% cross-compatible with Antigravity (Gemini) and Claude Code."
+description: "Comprehensive ecosystem of autonomous subagents, stateless guardrail hooks, and portable declarative skills. 100% cross-compatible with Antigravity (Gemini) and Claude Code."
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
-technologies: ["Agent Skills", "Markdown", "Node.js"]
+technologies: ["Subagent Orchestration", "Agent Skills", "Markdown", "Node.js"]
 categories: ["AI", "Agents", "Productivity"]
 status: "Active"
-problem: "The time wasted dealing with repetitive tasks and the need to provide endless context to generic AI assistants."
-solution: "A single source of truth for modern, modular AI capabilities formatted using the Agent Skills (Markdown + Lazy Loading) standard, cross-compatible with multiple CLI assistants."
+problem: "Traditional step-by-step imperative instructions break down as codebases scale, alongside increased token consumption from retaining redundant context in generic AI assistants."
+solution: "A unified agentic ecosystem (v3) featuring autonomous subagents that discover local tools and execute parallel reviews and health audits statelessly without constant human supervision."
 learnings:
-  - "Extensible Plugin Architecture is fundamental to making a system truly modular."
-  - "Creating, semantically versioning, and distributing public packages on NPM requires rigorous processes."
-  - "Structured prompt design and automated context handling are key to interacting effectively with LLMs."
+  - "Agentic vs. Passive Prompting: Transitioning to autonomous subagent profiles that reason about project goals and deploy worker threads in parallel proved dramatically more robust and scalable than monolithic prompt engineering."
+  - "Token Economy & Statelessness: Retaining stale context across session restarts degrades inference speed and inflates token usage. Deprecating session caching in favor of stateless, reactive inspections boosted system responsiveness."
+  - "Cross-Platform & Multi-Engine Unification: Achieving 100% cross-compatibility between disparate AI runtimes (Claude Code and Antigravity) across multiple operating systems required universal Node.js wrappers and strict XML capability indexing."
 websiteActionText: "Visit Page"
 ---
