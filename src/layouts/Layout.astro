@@ -8,22 +8,79 @@ import Analytics from '@vercel/analytics/astro';
 interface Props {
 	title: string;
 	isProjectPage?: boolean;
+	description?: string;
+	lang?: string;
+	image?: string;
+	ogType?: string;
+	canonicalURL?: string;
 }
 
-const { title, isProjectPage = false } = Astro.props;
+const {
+	title,
+	isProjectPage = false,
+	description = "Ana-Catalina's central portfolio and applications directory. Featuring AI-assisted workflows, software engineering projects, and modern interactive web design.",
+	lang = 'es',
+	image = '/favicon.svg',
+	ogType = 'website',
+	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://projects.ana-catalina.com').href,
+} = Astro.props;
+
+// Ensure absolute URL for social image previews (Open Graph & Twitter Cards)
+const absoluteImageURL = new URL(image, Astro.site || 'https://projects.ana-catalina.com').href;
+
+// Schema.org structured data for WebSite and Person profile
+const schemaOrgJSONLD = JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"name": "Ana-Catalina Projects Hub",
+	"url": Astro.site ? Astro.site.toString() : 'https://projects.ana-catalina.com',
+	"author": {
+		"@type": "Person",
+		"name": "Ana-Catalina",
+		"url": "https://ana-catalina.com",
+		"sameAs": [
+			"https://linkedin.com/in/ana-catalina/",
+			"https://github.com/AnaCataVC/"
+		]
+	},
+	"description": description
+});
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Ana-Catalina | Projects Hub" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Ana-Catalina" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Favicon and Fonts -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+		<!-- Open Graph / Facebook / LinkedIn -->
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={absoluteImageURL} />
+		<meta property="og:site_name" content="Ana-Catalina | Projects Hub" />
+		<meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={absoluteImageURL} />
+
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json" set:html={schemaOrgJSONLD}></script>
 		<script is:inline>
 			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 				document.documentElement.classList.add('dark');

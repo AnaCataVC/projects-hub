@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://projects.ana-catalina.com/sitemap-index.xml

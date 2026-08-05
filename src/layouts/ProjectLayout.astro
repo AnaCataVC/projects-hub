@@ -34,9 +34,36 @@ const t = {
 };
 
 const slug = Astro.params.project?.split('/').pop() || '';
+
+// Schema.org structured data for software project / application
+const projectJSONLD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": title,
+  "description": description,
+  "applicationCategory": categories.join(', ') || "SoftwareApplication",
+  "operatingSystem": "Web, Multiplatform",
+  "url": liveAppUrl || websiteUrl || (Astro.site ? new URL(Astro.url.pathname, Astro.site).href : 'https://projects.ana-catalina.com'),
+  "author": {
+    "@type": "Person",
+    "name": "Ana-Catalina",
+    "url": "https://ana-catalina.com"
+  },
+  ...(githubUrl ? { "codeRepository": githubUrl } : {})
+});
 ---
 
-<Layout title={`${title} | Ana-Catalina Projects`} isProjectPage={true}>
+<Layout 
+  title={`${title} | Ana-Catalina Projects`}
+  description={description}
+  lang={lang}
+  image={icon || '/favicon.svg'}
+  ogType="article"
+  isProjectPage={true}
+>
+  <!-- Project Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={projectJSONLD}></script>
+  
   <div class="relative z-10 w-full transition-all duration-500">
     <!-- Console Window (GUI Mode) -->
     <div id="console-window" class="flex w-full max-w-5xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden flex-col transition-all duration-500 animate-gui-boot my-6 sm:my-10">
