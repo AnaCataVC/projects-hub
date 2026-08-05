@@ -29,6 +29,7 @@ During the development of this hub, the main technical takeaways were:
 - **Astro Basics:** Learning how to use Astro for the first time, understanding its `.astro` component structure and "islands" architecture.
 - **Astro 7 & Tailwind v4 Migration:** Adapting to the strict HTML validation of Astro 7's new Rust compiler and configuring the modern `@tailwindcss/vite` integration.
 - **Routing & Deployment:** Practicing and implementing redirects directly in Vercel.
+- **Advanced SEO & Semantic Web:** Implementing automated sitemap generation via `@astrojs/sitemap`, dynamic absolute Canonical URLs, Open Graph / Twitter Cards, and structured Schema.org (`WebSite`, `Person`, and `SoftwareApplication`) JSON-LD payloads using Astro's server-side `set:html` directives without inflating client JavaScript bundle sizes.
 
 ### 4. Live Demo
 [https://projects.ana-catalina.com](https://projects.ana-catalina.com)
@@ -57,6 +58,7 @@ Durante el desarrollo de este portal, los principales aprendizajes técnicos fue
 - **Fundamentos de Astro:** Aprender a utilizar Astro por primera vez, asimilando su estructura de componentes `.astro` y arquitectura de "islas".
 - **Migración a Astro 7 y Tailwind v4:** Adaptación al nuevo compilador estricto de HTML en Rust de Astro 7 y la configuración de la integración moderna `@tailwindcss/vite`.
 - **Enrutamiento y Despliegue:** Practicar e implementar redirecciones utilizando la configuración de Vercel.
+- **SEO Avanzado y Web Semántica:** Implementación de generación automática de sitemap mediante `@astrojs/sitemap`, URLs canónicas absolutas dinámicas, Open Graph / Twitter Cards y esquemas estructurados JSON-LD de Schema.org (`WebSite`, `Person` y `SoftwareApplication`) empleando la directiva de servidor `set:html` del framework para conservar el paradigma "Cero JS por defecto".
 
 ### 4. Enlace de Despliegue (Live Demo)
 [https://projects.ana-catalina.com](https://projects.ana-catalina.com)
