@@ -8,7 +8,8 @@ const serializedProjects = allProjects.map(p => ({
   title: p.data.title,
   description: p.data.description,
   icon: p.data.icon,
-  githubUrl: p.data.githubUrl
+  githubUrl: p.data.githubUrl,
+  status: p.data.status
 }));
 ---
 
@@ -142,12 +143,34 @@ const serializedProjects = allProjects.map(p => ({
 
         function getProjectItems(lang) {
             const list = lang === 'es' ? esProjects : enProjects;
-            return list.map(p => ({
+            const activeProjects = list.filter(p => p.status !== 'Archivado' && p.status !== 'Archived');
+            const archivedProjects = list.filter(p => p.status === 'Archivado' || p.status === 'Archived');
+
+            const items = activeProjects.map(p => ({
                 title: `⚡ ./${p.baseId}.sh`,
                 type: 'action',
                 color: 'text-indigo-600 dark:text-pastel-blue font-bold',
                 action: () => window.launchProject(p.baseId, p.id)
             }));
+
+            if (archivedProjects.length > 0) {
+                items.push({
+                    id: 'archived',
+                    title: 'archived',
+                    desc: lang === 'es' ? '# Proyectos y plantillas anteriores' : '# Historical and template projects',
+                    color: 'text-slate-500 dark:text-slate-400',
+                    type: 'folder',
+                    expanded: false,
+                    children: archivedProjects.map(p => ({
+                        title: `📦 ./${p.baseId}.sh`,
+                        type: 'action',
+                        color: 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200',
+                        action: () => window.launchProject(p.baseId, p.id)
+                    }))
+                });
+            }
+
+            return items;
         }
 
         window.launchProject = function(displayId, fullId) {
@@ -330,7 +353,7 @@ const serializedProjects = allProjects.map(p => ({
                         icon = `<span class="animate-pulse-fast">${icon.trim()}</span> `;
                     } else {
                         // For actions that have their icon baked into the title
-                        displayTitle = displayTitle.replace(/(↳|\[☀\]|\[☾\]|⚡)/, '<span class="animate-pulse-fast">$1</span>');
+                        displayTitle = displayTitle.replace(/(↳|\[☀\]|\[☾\]|⚡|📦)/, '<span class="animate-pulse-fast">$1</span>');
                     }
                 }
 
@@ -443,6 +466,7 @@ const serializedProjects = allProjects.map(p => ({
                 menuData[1].children[4].title = ' ';
                 menuData[1].children[5].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
+                menuData[2].id = 'projects';
                 menuData[2].title = '~/projects';
                 menuData[2].desc = '# Web development';
                 menuData[2].children = getProjectItems('en');
@@ -461,9 +485,23 @@ const serializedProjects = allProjects.map(p => ({
                 menuData[1].children[4].title = ' ';
                 menuData[1].children[5].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
 
+                menuData[2].id = 'proyectos';
                 menuData[2].title = '~/proyectos';
                 menuData[2].desc = '# Explorar portfolio';
                 menuData[2].children = getProjectItems('es');
+            }
+
+            if (currentPath.length > 0) {
+                let newPath = [];
+                let currentLevel = menuData;
+                for (const node of currentPath) {
+                    const found = currentLevel.find(n => n.id === node.id || (node.id === 'projects' && n.id === 'proyectos') || (node.id === 'proyectos' && n.id === 'projects'));
+                    if (found) {
+                        newPath.push(found);
+                        currentLevel = found.children || [];
+                    }
+                }
+                currentPath = newPath;
             }
 
             renderMenu();
