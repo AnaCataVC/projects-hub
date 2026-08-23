@@ -8,6 +8,7 @@ websiteUrl: "https://screen-health-guardian.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET 9", "WPF", "XAML", "Win32 API", "H.NotifyIcon", "Fluent Design"]
 categories: ["Salud", "Desktop", "Windows", "Productividad"]
+type: "desktop"
 status: "Activo"
 problem: "Fatiga visual y sobrecarga postural tras largas horas continuas frente a la pantalla, sumado a las limitaciones de herramientas empaquetadas en Python (PyInstaller) que generaban falsos positivos en antivirus, alto consumo de memoria RAM (~50 MB) y bloqueos en el hilo de interfaz."
 solution: "Una aplicación de escritorio nativa en C# y .NET 9 con WPF y aceleración por GPU que actúa como un servicio ultraligero en la bandeja del sistema (<16 MB RAM, <0.1% CPU), detecta inactividad real con Win32 GetLastInputInfo y proyecta overlays translúcidos con auto-cierre para descansos visuales (regla 20-20-20) y postura."

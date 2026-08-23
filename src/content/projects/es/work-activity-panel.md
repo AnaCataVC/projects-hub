@@ -8,6 +8,7 @@ websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "iCalendar RFC 5545"]
 categories: ["Desktop", "Productividad", "Windows", "Automatización"]
+type: "desktop"
 status: "Activo"
 problem: "Fricción y descuidos diarios al tener que recordar abrir las herramientas de comunicación (Slack), consultar la agenda del día y preparar notas en Granola minutos antes de reuniones importantes."
 solution: "Una aplicación de escritorio nativa en WinUI 3 y .NET 9 con diseño Fluent y fondos Mica que automatiza la apertura de Slack al inicio de la jornada laboral, se sincroniza con Google Calendar vía iCal privado y abre Granola 5 minutos antes de cualquier reunión."

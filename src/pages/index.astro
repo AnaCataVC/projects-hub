@@ -9,7 +9,8 @@ const serializedProjects = allProjects.map(p => ({
   description: p.data.description,
   icon: p.data.icon,
   githubUrl: p.data.githubUrl,
-  status: p.data.status
+  status: p.data.status,
+  type: p.data.type
 }));
 ---
 
@@ -146,18 +147,60 @@ const serializedProjects = allProjects.map(p => ({
             const activeProjects = list.filter(p => p.status !== 'Archivado' && p.status !== 'Archived');
             const archivedProjects = list.filter(p => p.status === 'Archivado' || p.status === 'Archived');
 
-            const items = activeProjects.map(p => ({
+            const desktopProjects = activeProjects.filter(p => p.type === 'desktop');
+            const mobileProjects = activeProjects.filter(p => p.type === 'mobile');
+            const webProjects = activeProjects.filter(p => p.type === 'web');
+
+            const mapAction = (p) => ({
                 title: `⚡ ./${p.baseId}.sh`,
                 type: 'action',
                 color: 'text-indigo-600 dark:text-pastel-blue font-bold',
                 action: () => window.launchProject(p.baseId, p.id)
-            }));
+            });
+
+            const categories = [];
+
+            if (desktopProjects.length > 0) {
+                categories.push({
+                    id: 'desktop',
+                    title: 'desktop',
+                    desc: lang === 'es' ? '# Aplicaciones de escritorio (.NET, WinUI, Rust, IA)' : '# Desktop applications (.NET, WinUI, Rust, AI)',
+                    color: 'text-sky-600 dark:text-sky-400',
+                    type: 'folder',
+                    expanded: false,
+                    children: desktopProjects.map(mapAction)
+                });
+            }
+
+            if (mobileProjects.length > 0) {
+                categories.push({
+                    id: 'mobile',
+                    title: 'mobile',
+                    desc: lang === 'es' ? '# Aplicaciones móviles (Android / Jetpack Compose)' : '# Mobile applications (Android / Jetpack Compose)',
+                    color: 'text-emerald-600 dark:text-pastel-mint',
+                    type: 'folder',
+                    expanded: false,
+                    children: mobileProjects.map(mapAction)
+                });
+            }
+
+            if (webProjects.length > 0) {
+                categories.push({
+                    id: 'web',
+                    title: 'web',
+                    desc: lang === 'es' ? '# Aplicaciones web y analítica (React, PWA)' : '# Web & analytics applications (React, PWA)',
+                    color: 'text-amber-600 dark:text-amber-400',
+                    type: 'folder',
+                    expanded: false,
+                    children: webProjects.map(mapAction)
+                });
+            }
 
             if (archivedProjects.length > 0) {
-                items.push({
+                categories.push({
                     id: 'archived',
                     title: 'archived',
-                    desc: lang === 'es' ? '# Proyectos y plantillas anteriores' : '# Historical and template projects',
+                    desc: lang === 'es' ? '# Proyectos anteriores' : '# Historical projects',
                     color: 'text-slate-500 dark:text-slate-400',
                     type: 'folder',
                     expanded: false,
@@ -170,7 +213,7 @@ const serializedProjects = allProjects.map(p => ({
                 });
             }
 
-            return items;
+            return categories;
         }
 
         window.launchProject = function(displayId, fullId) {
@@ -468,7 +511,7 @@ const serializedProjects = allProjects.map(p => ({
 
                 menuData[2].id = 'projects';
                 menuData[2].title = '~/projects';
-                menuData[2].desc = '# Web development';
+                menuData[2].desc = '# Explore portfolio';
                 menuData[2].children = getProjectItems('en');
             } else {
                 menuData[0].desc = '# Ayuda y comandos';

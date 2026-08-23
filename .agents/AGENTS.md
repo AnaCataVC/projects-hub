@@ -1,44 +1,93 @@
-# Project: Ana-Catalina | Projects Hub
+# AGENTS.md — AI Agent Guidelines & Architecture Manual
+
+## Project: Ana-Catalina | Projects Hub
 
 ## Overview
-Projects Hub is Ana-Catalina's personal portfolio and central directory of projects and applications. It currently features a bilingual design (English/Spanish) and serves as the gateway to projects like "My CV Template".
+**Projects Hub** (`projects.ana-catalina.com`) is Ana-Catalina's centralized portfolio and high-performance applications directory. Built as an interactive, keyboard-driven console/terminal interface paired with rich Bento-style GUI case studies, it showcases engineering work spanning desktop systems, native mobile applications, AI agents, and web tools.
 
-## Current Tech Stack
-- **Structure:** HTML5
-- **Styling:** Vanilla CSS (CSS Variables, animations, and micro-interactions)
-- **Logic:** Vanilla JavaScript (for language switching)
-- **Typography:** Outfit (Google Fonts)
-- **Deployment:** Configured for Vercel
+---
 
-## Migration Analysis: Should we use Astro?
+## Tech Stack & Architecture
 
-**Conclusion: Yes, migrating this project to Astro is highly recommended.**
+- **Framework:** [Astro 5](https://astro.build/) (Static Site Generation / Zero JS by default)
+- **Bundler & Compiler:** Vite 8 + Astro Rust Compiler
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (managed directly via `@tailwindcss/vite` plugin)
+- **Content Management:** Astro Content Collections (`glob` loader + Zod schema in `src/content.config.ts`)
+- **Typography:** JetBrains Mono (Console/Code), Outfit (Headings), Inter (Body)
+- **Deployment:** Vercel (with `@astrojs/sitemap` and `@vercel/analytics`)
 
-### Reasons:
-1. **Ideal for Content Sites:** Astro shines in projects like portfolios, blogs, and hubs, where speed and static content are the priority.
-2. **Componentization without Bloat:** We can split the code into reusable components (e.g., `<ProjectCard />`, `<LanguageToggle />`, `<Header />`) while maintaining near-zero JavaScript bundle sizes ("Zero JS by default").
-3. **Scalability and Maintenance:** As you add more projects, maintaining a single `index.html` file will become cumbersome. With Astro, we can use content collections or Markdown/MDX files to render projects dynamically.
-4. **Islands Architecture:** The language toggle button can remain an isolated interactive component without affecting the performance of the rest of the static page.
-5. **Future-Proof:** If a future project requires embedding a complex interactive component from React, Svelte, or Vue into this Hub, Astro allows native integration.
+---
+
+## Console Navigation & Categorization Model
+
+The interactive terminal (`src/pages/index.astro`) simulates a Unix-style tree filesystem:
+
+```text
+~/projects-hub/
+├── 📁 help/         # Interactive guide and keyboard shortcuts
+├── 📁 about/        # Developer background, goals, and AI-assisted workflow
+└── 📁 proyectos/    # (or ~/projects in EN) Categorized projects directory
+    ├── ▶ desktop/   # Desktop applications (.NET WPF, WinUI 3, Tauri/Rust, AI Agents)
+    ├── ▶ mobile/    # Mobile applications (Android Kotlin / Jetpack Compose)
+    ├── ▶ web/       # Web applications, PWAs & Data Analytics (React, Dexie, Streamlit)
+    └── ▶ archived/  # Historical projects (Proyectos anteriores)
+```
+
+### Key Navigation Behaviors
+1. **Tree Exploration:** Seamless navigation using `[↑]` `[↓]`, entering folders or executing actions with `[Enter]` or `[→]`, and returning with `[←]`, `[Backspace]` or the virtual `..` folder item.
+2. **Instant Search (`❯ find`):** Real-time filter typing in the prompt. Matches display full hierarchical lineage (e.g., `proyectos / web / ⚡ ./life-tracker-analytics.sh`) and can be launched immediately with `[Enter]`.
+3. **Dual Interface:** Selecting any active script executes a transition animation (`./launch <id> --gui`) to the dedicated high-level case study page (`src/layouts/ProjectLayout.astro`).
+
+---
+
+## Content Collections Schema (`src/content.config.ts`)
+
+Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Zod schema:
+
+```ts
+{
+  title: z.string(),
+  description: z.string(),
+  descriptionEn: z.string().optional(),
+  icon: z.string().optional(),
+  githubUrl: z.string().optional(),
+  liveAppUrl: z.string().optional(),
+  websiteUrl: z.string().optional(),
+  isLiveApp: z.boolean().default(false),
+  technologies: z.array(z.string()).default([]),
+  categories: z.array(z.string()).default([]),
+  type: z.enum(["desktop", "mobile", "web"]).default("desktop"),
+  status: z.enum(["En Desarrollo", "Archivado", "Activo", "In Development", "Archived", "Active"]).default("Activo"),
+  problem: z.string().optional(),
+  solution: z.string().optional(),
+  learnings: z.array(z.string()).default([]),
+  websiteActionText: z.string().optional()
+}
+```
+
+---
 
 ## Design and Development Standards (Project Rules)
-- Maintain a modern, clean, and appealing aesthetics ("Premium Design").
-- Prioritize subtle animations (micro-interactions) and smoothness.
-- Ensure full responsiveness (Mobile-first).
-- Strict use of CSS variables for the color palette.
-- Every new feature must support internationalization (i18n) in ES and EN.
-- **External sub-applications:** If an external project (Vite, React, Astro, etc.) is to be embedded or routed within this Hub using Vercel rewrites (e.g., `/identity-map`), the external project MUST be compiled with relative paths for its assets (e.g., `base: './'` in Vite) to prevent 404 errors.
-- **Mobile Performance & Scrolling:** In content-heavy views, avoid complex Flexbox layouts with dynamic heights coupled with GPU animations if they cause scrolling issues on touch devices. Switch to `display: block`, inject generous bottom padding (e.g., `pb-24`), and remove animation classes (e.g., `animate-gui-boot`) via client-side JS after loading.
-- **Touch Device Detection:** Do not rely on screen-width breakpoints to toggle touch help. Use hardware pointer capability media queries: `@media (pointer: coarse)` for touch devices and `@media (pointer: fine)` for mouse/keyboard.
-- **Local Redirection Cleanup:** When converting any external routing into a dynamic local Astro route in the Hub, make sure to delete any residual rewrite/redirection rules in `vercel.json` to prevent infinite network redirect loops on the server.
-- **Astro Dev Server Fallback (Windows):** If `npm run dev` reports it's running but the connection is refused at `localhost:4321` (silent background crash), the standard workaround for visual verification is to execute `npm run build` followed by `npx serve dist -l 4321` to run a synchronous static server.
-- **Astro 7 Rust Compiler:** The new `.astro` compiler is extremely strict with HTML syntax. Always ensure opening and closing tags match perfectly, otherwise the build will fail immediately.
-- **TailwindCSS v4 Integration:** In this Vite 8 environment, TailwindCSS is strictly managed via the Vite plugin (`@tailwindcss/vite` in `astro.config.mjs`). Do not attempt to configure or create legacy PostCSS files (`postcss.config.mjs`).
-- **Commits Language Requirement:** STRICTLY English. This applies to BOTH the commit title (e.g., `feat: ...`) AND the detailed commit body/description. Do not let the conversational language (Spanish) bleed into the commit messages.
-- **Architectural Decision - No Tech Docs in UI:** DO NOT attempt to add, render, or duplicate technical documentation (or "Technical Deep Dives") inside the portfolio's project UI. This violates DRY and SSOT (Single Source of Truth) principles. The GitHub repository's `README.md` is the industry standard and single source of truth for all technical details, architecture, and installation guides. Keep the portfolio UI strictly visual and high-level (Problem, Solution, Key Learnings) and rely on the "View on GitHub" buttons for technical recruiters or engineers.
-- **Cross-Project Visual Consistency (Header & Toggles):** To maintain a seamless visual flow across the three portfolio websites (Homepage, CV, and Projects Hub), the following constraints must be respected in all repositories:
-   - **Header Layout:** The logo and actions header must use the exact unified layout: absolute positioning at `top-0 left-0 w-full` (with `pointer-events-none`), wrapping a container of `max-w-6xl mx-auto px-4 sm:px-6 lg:px-8` and `h-16` (64px) height with `flex items-center justify-between` and `pointer-events-auto` for interactive child elements. For subpages like project detail pages, the outer wrapper can toggle to `relative sm:absolute`.
-   - **Language Toggle Dimensions:** The language toggle buttons must be styled identically with `w-10 sm:w-12 h-7 sm:h-8` dimensions, `text-[11px] sm:text-xs font-medium`, and `p-1` padding for the outer pill.
-   - **Language State Sync (`localStorage`):** Every language toggle interaction must store the chosen language in `localStorage.setItem('lang', 'es' | 'en')` so the selection translates seamlessly across projects.
-   - **SEO-Safe Redirection:** Client-side redirections based on language must ONLY occur if a saved preference exists in `localStorage` (e.g. `localStorage.getItem('lang')`). Never redirect on first load using browser language detection (`navigator.language`) to ensure search bots (Googlebot) can crawl all language versions natively without indexation issues.
-- **Zero-JS SEO & Structured Data:** Any metadata, Open Graph labels, or Schema.org structured payloads (`@type: WebSite`, `Person`, or `SoftwareApplication`) MUST be constructed server-side in `.astro` components and embedded via standard `<script type="application/ld+json" set:html={...}></script>` tags. Do not use client-side runtime JavaScript or external browser libraries to generate SEO tags or sitemaps, preserving Astro's zero-bundle philosophy and ensuring flawless indexing alongside `@astrojs/sitemap`.
+
+1. **Aesthetic & Micro-interactions:** Maintain a modern, clean, and appealing aesthetic ("Premium Design"). Prioritize smooth transitions, subtle console glowing states, and responsive fluid layouts.
+2. **Internationalization (i18n):** Full bilingual parity in Spanish (`es`) and English (`en`).
+   - Every language toggle interaction must synchronize with `localStorage.setItem('lang', 'es' | 'en')`.
+   - Client-side language redirection must ONLY occur if a saved preference exists in `localStorage`. Never redirect based on `navigator.language` on first visit (preserves search engine indexing).
+3. **Zero-JS SEO & Structured Data:**
+   - Structured JSON-LD payloads (`@type: WebSite`, `Person`, and `SoftwareApplication`) must be generated server-side in `.astro` components via `<script type="application/ld+json" set:html={...}></script>`.
+   - Never use client-side runtime libraries for SEO tag generation.
+4. **Architectural SSOT (No Technical Docs in UI):**
+   - Do NOT render or duplicate deep technical documentation or setup guides inside the portfolio UI.
+   - The GitHub repository's `README.md` is the industry standard Single Source of Truth (SSOT) for technical details and architecture. The UI remains focused on high-level problem, solution, and key learnings.
+5. **Cross-Project Visual Consistency (Header & Toggles):**
+   - Header Layout: absolute positioning at `top-0 left-0 w-full` (with `pointer-events-none`), wrapping a container of `max-w-6xl mx-auto px-4 sm:px-6 lg:px-8` and `h-16` (64px) height with `flex items-center justify-between` and `pointer-events-auto` for child actions.
+   - Language Toggle Dimensions: pill buttons styled with `w-10 sm:w-12 h-7 sm:h-8` and `text-[11px] sm:text-xs font-medium`.
+6. **Mobile Performance & Touch Optimization:**
+   - Touch Detection: Always use hardware pointer media queries (`@media (pointer: coarse)` for touch and `@media (pointer: fine)` for mouse/keyboard).
+   - In detail pages, ensure clean scroll performance by clearing GPU boot animations (`animate-gui-boot`) client-side after mounting.
+7. **Tailwind CSS v4 Integration:**
+   - Tailwind is strictly loaded via `@tailwindcss/vite` in `astro.config.mjs`. Do NOT create legacy `postcss.config.mjs` or `tailwind.config.js` files.
+8. **Commits Language Requirement:**
+   - STRICTLY English for both the commit title (`feat: ...`, `fix: ...`) and the body text.
+9. **Dev Server Fallback (Windows):**
+   - If `npm run dev` encounters silent socket issues on Windows, the verified static fallback is `npm run build` followed by `npx serve dist -l 4321`.

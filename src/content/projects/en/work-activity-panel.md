@@ -7,6 +7,7 @@ websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "iCalendar RFC 5545"]
 categories: ["Desktop", "Productivity", "Windows", "Automation"]
+type: "desktop"
 status: "Active"
 problem: "Daily friction and oversights remembering to launch workplace communication tools (Slack), check daily agendas, and prepare meeting note-taking apps (Granola) right before scheduled calls."
 solution: "A native Windows 11 desktop app built with WinUI 3 and .NET 9 featuring Fluent Design and Mica backdrops that automates Slack startup, syncs private Google Calendar feeds, and opens Granola 5 minutes before scheduled meetings."

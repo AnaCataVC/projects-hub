@@ -7,6 +7,7 @@ websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "Direct3D"]
 categories: ["Desktop", "Windows", "Performance", "Tools", "Telemetry"]
+type: "desktop"
 status: "Active"
 problem: "Bulky system telemetry monitors (built on heavy web runtimes or uncompiled scripts) consuming excessive memory overhead (~100-300 MB RAM), introducing UI thread contention, and triggering false-positive heuristic flags on modern antivirus software."
 solution: "A high-performance, ultra-lightweight native Windows telemetry dashboard engineered in compiled C# (.NET WPF/XAML) leveraging sub-millisecond Win32 P/Invoke telemetry (<0.01 ms), 1-click power scheme switching via PowrProf.dll, safe working set memory optimization, temporary file cleaning, and dynamic theme switching within a single 585 KB standalone executable."

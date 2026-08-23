@@ -8,6 +8,7 @@ websiteUrl: "https://workspace-companion.ana-catalina.com"
 isLiveApp: false
 technologies: ["Rust", "Tauri v2", "Svelte 5", "TypeScript", "Tailwind CSS", "Git Porcelain Protocol"]
 categories: ["Desktop", "Developer Tools", "Productividad", "Windows", "Rust"]
+type: "desktop"
 status: "Activo"
 problem: "Fricción constante al trabajar con múltiples ramas en paralelo con Git Worktrees, limpiar carpetas huérfanas sin perder cambios y cambiar de identidad en GitHub CLI entre cuentas personales y corporativas."
 solution: "Una micro-aplicación de escritorio residente en la bandeja del sistema (<40 MB RAM) con ventana flotante estilo Spotlight, dashboard de worktrees activos, detector/limpiador seguro con comprobación de estado sucio (dirty check) y conmutador instantáneo de perfiles de GitHub CLI sin parpadeos de consola Win32."

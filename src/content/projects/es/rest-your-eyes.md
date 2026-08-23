@@ -8,6 +8,7 @@ websiteUrl: "https://rest-your-eyes.ana-catalina.com"
 isLiveApp: false
 technologies: ["Kotlin", "Jetpack Compose", "Android"]
 categories: ["Mobile", "Salud", "Android"]
+type: "mobile"
 status: "Activo"
 problem: "La fatiga visual generada por el uso prolongado de dispositivos móviles sin pausas adecuadas."
 solution: "Una aplicación que implementa la regla 20-20-20 funcionando en segundo plano y mostrando notificaciones superpuestas para forzar descansos."

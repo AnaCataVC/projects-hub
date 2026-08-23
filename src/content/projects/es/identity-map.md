@@ -8,6 +8,7 @@ liveAppUrl: "https://identity-map.ana-catalina.com"
 isLiveApp: true
 technologies: ["React 19", "Python", "Tailwind CSS", "SQLite"]
 categories: ["Web App", "Herramienta CLI", "Teoría de Grafos"]
+type: "web"
 status: "Archivado"
 problem: "Explorar la intersección entre matemáticas y autoconocimiento mediante modelado de datos estructural y una interfaz visual dinámica."
 solution: "Un monorepo que ofrece un frontend independiente en React para exploración visual, y un backend CLI separado en Python con NetworkX para computar y exportar el modelo de identidad."

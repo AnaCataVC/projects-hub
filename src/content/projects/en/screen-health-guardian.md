@@ -7,6 +7,7 @@ websiteUrl: "https://screen-health-guardian.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET 9", "WPF", "XAML", "Win32 API", "H.NotifyIcon", "Fluent Design"]
 categories: ["Health", "Desktop", "Windows", "Productivity"]
+type: "desktop"
 status: "Active"
 problem: "Digital eye strain and postural fatigue caused by prolonged screen time, combined with packaging challenges in Python (PyInstaller) that caused heuristic antivirus false positives, high background RAM consumption (~50 MB), and main UI thread contention."
 solution: "A high-performance native Windows desktop application built with C# and .NET 9 featuring hardware-accelerated WPF overlays, residing silently in the system tray (<16 MB RAM, <0.1% CPU) while detecting user activity via Win32 GetLastInputInfo to schedule non-intrusive 20-20-20 eye rests and posture checks."

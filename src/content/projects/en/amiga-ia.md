@@ -7,6 +7,7 @@ websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
 technologies: ["Subagent Orchestration", "Agent Skills", "ADR-004 Token Economy", "PowerShell", "Node.js"]
 categories: ["AI", "Agents", "Productivity", "Developer Tools"]
+type: "desktop"
 status: "Active"
 problem: "Traditional step-by-step imperative instructions break down as codebases scale, alongside heavy recurring token taxes caused by bloated system prompts and repetitive multi-engine context."
 solution: "A unified agentic ecosystem (v3.0) featuring 9 autonomous orchestrating subagents and 24 declarative skills, optimized under the ADR-004 standard to drastically minimize token overhead while maintaining identical cross-engine behavior across Claude Code and Antigravity."

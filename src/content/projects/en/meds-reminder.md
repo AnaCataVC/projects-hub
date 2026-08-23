@@ -7,6 +7,7 @@ websiteUrl: "https://meds-reminder.ana-catalina.com"
 isLiveApp: false
 technologies: ["Kotlin", "Jetpack Compose", "Material Design 3", "Room Database", "Koin", "AlarmManager"]
 categories: ["Mobile", "Health", "Android", "Productivity"]
+type: "mobile"
 status: "Active"
 problem: "Medication forgetfulness across multi-member family profiles and inconsistent alarm reliability on Android due to aggressive battery-saving modes (Doze mode)."
 solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, a lockscreen popup (AlarmActivity), silent pre-alarm notifications with direct logging, and atomic SAF JSON backups."

@@ -6,6 +6,7 @@ githubUrl: "https://github.com/AnaCataVC/prima-focus-showcase"
 websiteUrl: "https://prima-focus.ana-catalina.com"
 technologies: ["Kotlin", "Jetpack Compose", "Jetpack Glance", "Room Database", "Nearby Connections P2P", "Material Design 3"]
 categories: ["Productivity", "Mobile", "Android"]
+type: "mobile"
 status: "Active"
 problem: "Analysis paralysis and lack of focus when facing long, overwhelming to-do lists, plus the friction of needing to open the app just to view or complete priority tasks."
 solution: "A privacy-focused (local-first) mobile application using a predictive scoring system for a single 'Today Task', interactive home screen widgets with Jetpack Glance (Top 3 and Quick Add), adaptive tablet split-views with calendar integration, and cloudless offline P2P synchronization."

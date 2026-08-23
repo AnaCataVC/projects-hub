@@ -8,6 +8,7 @@ websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
 technologies: ["Subagent Orchestration", "Agent Skills", "ADR-004 Token Economy", "PowerShell", "Node.js"]
 categories: ["IA", "Agentes", "Productividad", "Developer Tools"]
+type: "desktop"
 status: "Activo"
 problem: "La degradación en bases de código grandes al depender de instrucciones imperativas paso a paso, junto al consumo elevado de tokens al acumular contexto repetitivo en asistentes de IA genéricos."
 solution: "Un ecosistema agéntico unificado (v3.0) de 9 subagentes autónomos y 24 skills declarativas, optimizado bajo el estándar ADR-004 para reducir drásticamente el costo de tokens sin perder precisión en Claude Code y Antigravity."

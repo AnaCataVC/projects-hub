@@ -8,7 +8,8 @@ liveAppUrl: "https://life-tracker-analytics.ana-catalina.com"
 isLiveApp: true
 technologies: ["React 19", "Tailwind CSS v4", "Dexie.js", "Framer Motion", "Recharts"]
 categories: ["Visualización de Datos", "Analíticas", "Herramienta Personal"]
-status: "Archivado"
+type: "web"
+status: "Activo"
 problem: "Entender matemáticamente cómo los hábitos diarios impactan la calidad de vida, sin entregar datos personales sensibles a servicios backend propietarios."
 solution: "Un dashboard PWA analítico que cruza datos localmente para visualizar correlaciones ocultas, usando una arquitectura BYOD (Bring-Your-Own-Data)."
 learnings:

@@ -7,6 +7,7 @@ websiteUrl: "https://rest-your-eyes.ana-catalina.com"
 isLiveApp: false
 technologies: ["Kotlin", "Jetpack Compose", "Android"]
 categories: ["Mobile", "Health", "Android"]
+type: "mobile"
 status: "Active"
 problem: "Eye strain caused by prolonged mobile device usage without adequate breaks."
 solution: "An app that enforces the 20-20-20 rule running in the background and overlaying notifications to encourage breaks."

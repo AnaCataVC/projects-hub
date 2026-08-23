@@ -7,6 +7,7 @@ websiteUrl: "https://workspace-companion.ana-catalina.com"
 isLiveApp: false
 technologies: ["Rust", "Tauri v2", "Svelte 5", "TypeScript", "Tailwind CSS", "Git Porcelain Protocol"]
 categories: ["Desktop", "Developer Tools", "Productivity", "Windows", "Rust"]
+type: "desktop"
 status: "Active"
 problem: "Workflow friction when managing parallel feature branches with Git Worktrees, safely cleaning up merged or orphaned worktree directories, and switching GitHub CLI account identities."
 solution: "An ultra-lightweight Windows system tray micro-app (<40 MB RAM) with a Spotlight-style floating window, active worktrees dashboard, dirty-checked safe orphan cleaner, and 1-click GitHub CLI profile switching without terminal popups."

@@ -8,6 +8,7 @@ websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "Direct3D"]
 categories: ["Desktop", "Windows", "Rendimiento", "Herramientas", "Telemetría"]
+type: "desktop"
 status: "Activo"
 problem: "Monitores de recursos tradicionales pesados (basados en frameworks web/Electron o scripts interpretados) que consumen excesiva memoria RAM (~100-300 MB), provocan latencia en la interfaz y suelen disparar falsos positivos heurísticos en antivirus."
 solution: "Un panel de telemetría nativo y ultraligero compilado en C# (.NET WPF/XAML) que consulta métricas del sistema mediante llamadas P/Invoke a Win32 de submilisegundo (<0.01 ms), incorpora conmutación de planes de energía con PowrProf.dll, optimización de memoria de procesos, limpiador seguro de archivos temporales y 4 temas visuales en un ejecutable autónomo de 585 KB."
