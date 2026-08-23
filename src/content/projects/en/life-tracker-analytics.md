@@ -5,7 +5,7 @@ icon: "/project-icons/lta_icon.png"
 githubUrl: "https://github.com/AnaCataVC/life-tracker-analytics"
 liveAppUrl: "https://life-tracker-analytics.ana-catalina.com"
 isLiveApp: true
-technologies: ["React 19", "Tailwind CSS v4", "Dexie.js", "Framer Motion", "Recharts"]
+technologies: ["React 19", "TypeScript", "Tailwind CSS v4", "Dexie.js", "remoteStorage.js", "Recharts", "Framer Motion"]
 categories: ["Data Visualization", "Analytics", "Personal Tool"]
 type: "web"
 status: "Active"
