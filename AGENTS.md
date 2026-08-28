@@ -9,8 +9,8 @@
 
 ## Tech Stack & Architecture
 
-- **Framework:** [Astro 5](https://astro.build/) (Static Site Generation / Zero JS by default)
-- **Bundler & Compiler:** Vite 8 + Astro Rust Compiler
+- **Framework:** [Astro 7](https://astro.build/) (Static Site Generation / Zero JS by default)
+- **Bundler & Compiler:** Vite + Astro Rust Compiler
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (managed directly via `@tailwindcss/vite` plugin)
 - **Content Management:** Astro Content Collections (`glob` loader + Zod schema in `src/content.config.ts`)
 - **Typography:** JetBrains Mono (Console/Code), Outfit (Headings), Inter (Body)
