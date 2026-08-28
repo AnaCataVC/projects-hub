@@ -15,60 +15,6 @@
 
 <script>
     type LangKeys = 'es' | 'en';
-    const translations: Record<string, Record<LangKeys, string>> = {
-        'badge_cv': { 
-            'es': 'Plantilla', 
-            'en': 'Template' 
-        },
-        'desc_cv': { 
-            'es': 'Una plantilla moderna e interactiva para crear tu propio currículum o portafolio profesional. Fácil de configurar y desplegar.', 
-            'en': 'A modern and interactive template to build your own resume or professional portfolio. Easy to configure and deploy.' 
-        },
-        'badge_life': { 
-            'es': 'Aplicación Web', 
-            'en': 'Web App' 
-        },
-        'desc_life': { 
-            'es': 'Una aplicación web para hacer seguimiento y analizar tus métricas de vida y hábitos diarios mediante visualizaciones de datos.', 
-            'en': 'A web application to track and analyze your life metrics and daily habits through data visualizations.' 
-        },
-        'badge_amiga': { 
-            'es': 'Herramienta IA', 
-            'en': 'AI Tool' 
-        },
-        'desc_amiga': { 
-            'es': 'Repositorio centralizado de skills y agentes para asistentes IA. Hace más fácil la programación y garantiza la calidad del código.', 
-            'en': 'Centralized repository of skills and agents for AI assistants. It makes programming easier and ensures code quality.' 
-        },
-        'btn_view': { 
-            'es': 'Ver proyecto', 
-            'en': 'View project' 
-        },
-        'btn_view_app': {
-            'es': 'Ver app',
-            'en': 'View App'
-        },
-        'btn_landing': {
-            'es': 'Página de producto',
-            'en': 'Product Page'
-        },
-        'btn_demo': {
-            'es': 'Ver demo',
-            'en': 'Live Demo'
-        },
-        'btn_github': {
-            'es': 'Fork en GitHub',
-            'en': 'Fork on GitHub'
-        },
-        'btn_view_github': {
-            'es': 'Ver en GitHub',
-            'en': 'View on GitHub'
-        },
-        'subtitle_main': {
-            'es': 'Proyectos personales desarrollados para explorar, aprender y compartir con la comunidad.',
-            'en': 'Personal projects built to explore, learn, and share with the community.'
-        }
-    };
 
     const path = window.location.pathname;
     let pathLang: LangKeys | null = null;
@@ -88,17 +34,6 @@
     const btnEs = document.getElementById('lang-es');
     const btnEn = document.getElementById('lang-en');
     const indicator = document.getElementById('lang-indicator');
-
-    function updateTexts(lang: LangKeys) {
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (key && translations[key] && translations[key][lang]) {
-                el.innerHTML = translations[key][lang];
-            }
-        });
-        document.documentElement.lang = lang;
-    }
 
     function setLanguage(lang: LangKeys) {
         if (currentLang !== lang) {
@@ -128,7 +63,6 @@
         } else {
             (window as any).updateToggleUI(btnEn, btnEs, indicator, true);
         }
-        updateTexts(lang);
         if (typeof (window as any).updateUIText === 'function') {
             (window as any).updateUIText(lang);
         }
