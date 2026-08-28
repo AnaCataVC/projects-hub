@@ -10,12 +10,12 @@ categories: ["Mobile", "Health", "Android", "Productivity"]
 type: "mobile"
 status: "Active"
 problem: "Medication forgetfulness across multi-member family profiles and inconsistent alarm reliability on Android due to aggressive battery-saving modes (Doze mode)."
-solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, a lockscreen popup (AlarmActivity), silent pre-alarm notifications with direct logging, and atomic SAF JSON backups."
+solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, lockscreen popups (AlarmActivity), pre-alarm quick-actions, per-person alarm suspension, and early intake resolution."
 learnings:
+  - "Early Intake Lifecycle Management: Synchronizing in-memory state and Room DB to automatically cancel active snoozes and upcoming pre-alarms when doses are logged ahead of time."
+  - "Per-Person Alarm Suspension: Implementing temporary notification and alarm suppression per profile without corrupting underlying treatment schedules."
   - "Ensuring sub-second alarm accuracy on Android 14/15/16 using AlarmManager.setAlarmClock() and USE_EXACT_ALARM under healthcare exemption guidelines."
   - "Resolving Android 8.0+ notification channel sound immutability by dynamically generating deterministic channels keyed by custom ringtone URI hashes."
-  - "Designing declarative Compose UI with Material 3 for interactive full-screen alarms over lockscreens (setShowWhenLocked and setTurnScreenOn)."
-  - "Maintaining robust local persistence with Room (KSP) and schema-versioned atomic backups via kotlinx.serialization and Storage Access Framework (SAF)."
 websiteActionText: "View Page"
 ---
 

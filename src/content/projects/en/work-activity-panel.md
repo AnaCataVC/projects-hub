@@ -1,21 +1,21 @@
 ---
 title: "Work Activity Panel"
 icon: "/project-icons/work-activity-panel-icon.png"
-description: "Native Windows 11 desktop application designed to streamline daily work routines: auto-launches Slack, syncs Google Calendar, and opens Granola 5 minutes before meetings."
+description: "Native Windows 11 desktop application designed to streamline daily work routines: auto-launches work tools, syncs Google Calendar, backs up to Google Drive, and discovers unversioned AI context."
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
-technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "iCalendar RFC 5545"]
+technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545"]
 categories: ["Desktop", "Productivity", "Windows", "Automation"]
 type: "desktop"
 status: "Active"
-problem: "Daily friction and oversights remembering to launch workplace communication tools (Slack), check daily agendas, and prepare meeting note-taking apps (Granola) right before scheduled calls."
-solution: "A native Windows 11 desktop app built with WinUI 3 and .NET 9 featuring Fluent Design and Mica backdrops that automates Slack startup, syncs private Google Calendar feeds, and opens Granola 5 minutes before scheduled meetings."
+problem: "Daily friction manually opening work tools, calendar desynchronization, lost local configurations, and lack of visibility into unversioned AI context files across projects."
+solution: "A native Windows 11 desktop app built with WinUI 3 and .NET 9 featuring Fluent Design and Mica backdrops that automates Slack/Granola launches, syncs Google Calendar, backs up settings to Google Drive with non-blocking background concurrency control, and discovers unversioned AI context."
 learnings:
-  - "Building native unpackaged WinUI 3 desktop applications with MVVM architecture and Windows 11 Mica backdrops."
-  - "Designing an RFC 5545 iCalendar parsing engine supporting line unfolding, timezone normalization, and video conference link extraction."
-  - "Building high-performance, non-polling scheduled timer architectures in C# and .NET 9."
-  - "Integrating system tray workflows and creating standalone single-file Windows installers with Inno Setup 6."
+  - "Building native unpackaged WinUI 3 desktop applications with MVVM architecture, Windows 11 Mica backdrops, and startup diagnostics."
+  - "Architecting non-blocking background Google Drive backup synchronization with robust concurrency control (LockService) to prevent UI thread freezes."
+  - "Designing an unversioned AI context discovery engine (CLAUDE.md, .agent folders, and references) with batched Git checking and secret scanning."
+  - "Building an RFC 5545 iCalendar parsing engine supporting line unfolding, timezone normalization, and video conference link extraction."
 websiteActionText: "Visit Website"
 ---
 

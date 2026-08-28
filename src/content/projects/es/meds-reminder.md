@@ -11,12 +11,12 @@ categories: ["Mobile", "Salud", "Android", "Productividad"]
 type: "mobile"
 status: "Activo"
 problem: "El olvido recurrente de tomas de medicamentos en grupos familiares o multi-perfil, sumado a la falta de fiabilidad de las alarmas en Android debido a modos agresivos de ahorro de batería (Doze mode)."
-solution: "Una aplicación local-first sin nube con soporte multi-perfil y catálogo maestro de fármacos, dotada de alarmas exactas que rompen el modo Doze, popup sobre pantalla bloqueada (AlarmActivity), avisos previos silenciosos con toma rápida y copias de seguridad atómicas en JSON mediante SAF."
+solution: "Una aplicación local-first sin nube con soporte multi-perfil y catálogo maestro de fármacos, dotada de alarmas exactas que rompen el modo Doze, popup sobre pantalla bloqueada (AlarmActivity), pre-alarmas con toma rápida, suspensión temporal de alarmas por persona y resolución inteligente ante tomas anticipadas."
 learnings:
+  - "Gestión del Ciclo de Vida de Tomas Anticipadas: Sincronización del estado en memoria y Room DB para cancelar automáticamente repeticiones (snooze) y pre-alarmas al registrar una toma antes de tiempo."
+  - "Suspensión Temporal de Alarmas por Perfil: Implementación de mecanismos de pausa selectiva de notificaciones y alarmas sin alterar los horarios programados del tratamiento."
   - "Garantía de precisión milimétrica en Android 14/15/16 utilizando AlarmManager.setAlarmClock() y USE_EXACT_ALARM bajo directrices de salud."
   - "Superación de la inmutabilidad de sonido en canales de notificación de Android 8.0+ mediante la generación dinámica de canales por hash de URI de tono personalizado."
-  - "Diseño de interfaces declarativas con Jetpack Compose y Material 3 para pantallas de alarma sobre pantalla de bloqueo (setShowWhenLocked / setTurnScreenOn)."
-  - "Persistencia local limpia con Room DB (KSP) y respaldos atómicos versionados con kotlinx.serialization vía Android Storage Access Framework (SAF)."
 websiteActionText: "Ver Página"
 ---
 
