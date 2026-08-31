@@ -147,13 +147,12 @@ const serializedProjects = allProjects.map(p => ({
             const activeProjects = list.filter(p => p.status !== 'Archivado' && p.status !== 'Archived');
             const archivedProjects = list.filter(p => p.status === 'Archivado' || p.status === 'Archived');
 
-            const desktopProjects = activeProjects.filter(p => p.type === 'desktop');
-            const mobileProjects = activeProjects.filter(p => p.type === 'mobile');
-            const webProjects = activeProjects.filter(p => p.type === 'web');
+            const dataScienceProjects = activeProjects.filter(p => p.type === 'data-science');
             const aiProjects = activeProjects.filter(p => p.type === 'ai');
+            const seProjects = activeProjects.filter(p => ['desktop', 'mobile', 'web'].includes(p.type));
 
-            const mapAction = (p) => ({
-                title: `⚡ ./${p.baseId}.sh`,
+            const mapAction = (p, overrideIcon) => ({
+                title: `${overrideIcon || '⚡'} ./${p.baseId}.sh`,
                 type: 'action',
                 color: 'text-indigo-600 dark:text-pastel-blue font-bold',
                 action: () => window.launchProject(p.baseId, p.id)
@@ -161,51 +160,45 @@ const serializedProjects = allProjects.map(p => ({
 
             const categories = [];
 
-            if (desktopProjects.length > 0) {
+            if (dataScienceProjects.length > 0) {
                 categories.push({
-                    id: 'desktop',
-                    title: 'desktop',
-                    desc: lang === 'es' ? '# Aplicaciones de escritorio (.NET, WinUI, Rust, IA)' : '# Desktop applications (.NET, WinUI, Rust, AI)',
-                    color: 'text-sky-600 dark:text-sky-400',
+                    id: 'data-science',
+                    title: 'data-science',
+                    desc: lang === 'es' ? '# Analítica, Dashboards y Pipelines' : '# Analytics, Dashboards, and Pipelines',
+                    color: 'text-cyan-600 dark:text-cyan-400',
                     type: 'folder',
                     expanded: false,
-                    children: desktopProjects.map(mapAction)
-                });
-            }
-
-            if (mobileProjects.length > 0) {
-                categories.push({
-                    id: 'mobile',
-                    title: 'mobile',
-                    desc: lang === 'es' ? '# Aplicaciones móviles (Android / Jetpack Compose)' : '# Mobile applications (Android / Jetpack Compose)',
-                    color: 'text-emerald-600 dark:text-pastel-mint',
-                    type: 'folder',
-                    expanded: false,
-                    children: mobileProjects.map(mapAction)
-                });
-            }
-
-            if (webProjects.length > 0) {
-                categories.push({
-                    id: 'web',
-                    title: 'web',
-                    desc: lang === 'es' ? '# Aplicaciones web y analítica (React, PWA)' : '# Web & analytics applications (React, PWA)',
-                    color: 'text-amber-600 dark:text-amber-400',
-                    type: 'folder',
-                    expanded: false,
-                    children: webProjects.map(mapAction)
+                    children: dataScienceProjects.map(p => mapAction(p, '📊'))
                 });
             }
 
             if (aiProjects.length > 0) {
                 categories.push({
-                    id: 'ai',
-                    title: lang === 'es' ? 'ia' : 'ai',
-                    desc: lang === 'es' ? '# Proyectos de Inteligencia Artificial (LLMs, MCP)' : '# Artificial Intelligence projects (LLMs, MCP)',
+                    id: 'ai-and-agents',
+                    title: 'ai-and-agents',
+                    desc: lang === 'es' ? '# Inteligencia Artificial, LLMs, y Agentes' : '# Artificial Intelligence, LLMs, and Agents',
                     color: 'text-fuchsia-600 dark:text-fuchsia-400',
                     type: 'folder',
                     expanded: false,
-                    children: aiProjects.map(mapAction)
+                    children: aiProjects.map(p => mapAction(p, '🤖'))
+                });
+            }
+
+            if (seProjects.length > 0) {
+                categories.push({
+                    id: 'software-engineering',
+                    title: 'software-engineering',
+                    desc: lang === 'es' ? '# Sistemas de escritorio, web y móvil' : '# Desktop, web, and mobile systems',
+                    color: 'text-emerald-600 dark:text-emerald-400',
+                    type: 'folder',
+                    expanded: false,
+                    children: seProjects.map(p => {
+                        let icon = '⚡';
+                        if (p.type === 'desktop') icon = '💻';
+                        else if (p.type === 'mobile') icon = '📱';
+                        else if (p.type === 'web') icon = '🌐';
+                        return mapAction(p, icon);
+                    })
                 });
             }
 

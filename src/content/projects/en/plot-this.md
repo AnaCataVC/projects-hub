@@ -7,7 +7,7 @@ liveAppUrl: "https://plot-this.ana-catalina.com"
 isLiveApp: true
 technologies: ["Python", "Streamlit", "Plotly Express", "Pandas"]
 categories: ["Web Application", "Data Visualization", "Analytics"]
-type: "web"
+type: "data-science"
 status: "Archived"
 problem: "Analyzing datasets, choosing the right visualizations, and generating statistical insights dynamically without relying on external AI APIs or compromising data privacy."
 solution: "A local Streamlit application that uses a custom, highly-optimized pure Pandas engine in the background to infer semantic types and compile summaries in milliseconds, avoiding third-party deadlocks, while using Plotly Express for premium-styled charts."
