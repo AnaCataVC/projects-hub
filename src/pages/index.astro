@@ -150,6 +150,7 @@ const serializedProjects = allProjects.map(p => ({
             const desktopProjects = activeProjects.filter(p => p.type === 'desktop');
             const mobileProjects = activeProjects.filter(p => p.type === 'mobile');
             const webProjects = activeProjects.filter(p => p.type === 'web');
+            const aiProjects = activeProjects.filter(p => p.type === 'ai');
 
             const mapAction = (p) => ({
                 title: `⚡ ./${p.baseId}.sh`,
@@ -193,6 +194,18 @@ const serializedProjects = allProjects.map(p => ({
                     type: 'folder',
                     expanded: false,
                     children: webProjects.map(mapAction)
+                });
+            }
+
+            if (aiProjects.length > 0) {
+                categories.push({
+                    id: 'ai',
+                    title: lang === 'es' ? 'ia' : 'ai',
+                    desc: lang === 'es' ? '# Proyectos de Inteligencia Artificial (LLMs, MCP)' : '# Artificial Intelligence projects (LLMs, MCP)',
+                    color: 'text-fuchsia-600 dark:text-fuchsia-400',
+                    type: 'folder',
+                    expanded: false,
+                    children: aiProjects.map(mapAction)
                 });
             }
 

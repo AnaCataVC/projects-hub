@@ -18,7 +18,7 @@ const projectsCollection = defineCollection({
     problem: z.string().optional(),
     solution: z.string().optional(),
     status: z.enum(["En Desarrollo", "Archivado", "Activo", "In Development", "Archived", "Active"]).default("Activo"),
-    type: z.enum(["desktop", "mobile", "web"]).default("desktop"),
+    type: z.enum(["desktop", "mobile", "web", "ai"]).default("desktop"),
     learnings: z.array(z.string()).default([]),
     websiteActionText: z.string().optional(),
   }),
