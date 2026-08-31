@@ -4,8 +4,8 @@ description: "Model Context Protocol (MCP) server that enables AI assistants to 
 descriptionEn: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
 icon: "/favicon.svg"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
-liveAppUrl: "https://anacatalina-mcp-165536131179.us-central1.run.app/"
-isLiveApp: true
+websiteUrl: "https://anacatalina-mcp-165536131179.us-central1.run.app/"
+isLiveApp: false
 technologies: ["Python 3.12", "FastAPI", "Pydantic v2", "Server-Sent Events (SSE)", "Docker", "Google Cloud Run", "Model Context Protocol"]
 categories: ["AI", "API", "Backend", "Cloud"]
 type: "ai"
@@ -16,12 +16,31 @@ learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Server-Sent Events (SSE)."
   - "Resolution of complex dependencies and compatibility issues when migrating from FastMCP v1 to v2, ensuring version pinning for service stability."
   - "Optimized serverless deployment on Google Cloud Run using lightweight Docker containers, leveraging 'Scale to Zero' functionality to reduce operational costs to zero during idle times."
-websiteActionText: "Explore Endpoint"
+websiteActionText: "API Endpoint (Cloud Run)"
 ---
 
 The **AI-Native Interactive Resume** project is a complete redesign of the resume or portfolio concept. Instead of merely offering a visual interface (GUI) for human recruiters, it exposes an official server under the **Model Context Protocol (MCP)**, standardized by Anthropic.
 
 This allows any LLM client supporting MCP (such as Claude Desktop or IDEs like Cursor or Windsurf) to connect to the server and execute predefined tools to query my tech stack, featured projects, and professional experience, processing the data in a structured and interactive way rather than reading plain text or performing web scraping.
+
+### ⚡ Quick Connect (Claude Desktop & Cursor)
+
+To interact with my professional experience in real-time using your own AI assistant, add this configuration to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "anacatalina-resume": {
+      "url": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+    }
+  }
+}
+```
+
+**Key tools exposed for LLM reasoning:**
+* `query_experience`: Query career trajectory, detailed roles, and achievements.
+* `match_job_fit`: Algorithmic evaluation of technical compatibility with job descriptions.
+* `search_stack`: Granular search and proficiency levels across specific technologies.
 
 ### Technical Architecture
 

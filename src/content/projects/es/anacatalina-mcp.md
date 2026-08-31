@@ -4,8 +4,8 @@ description: "Servidor Model Context Protocol (MCP) que permite a Inteligencias 
 descriptionEn: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
 icon: "/favicon.svg"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
-liveAppUrl: "https://anacatalina-mcp-165536131179.us-central1.run.app/"
-isLiveApp: true
+websiteUrl: "https://anacatalina-mcp-165536131179.us-central1.run.app/"
+isLiveApp: false
 technologies: ["Python 3.12", "FastAPI", "Pydantic v2", "Server-Sent Events (SSE)", "Docker", "Google Cloud Run", "Model Context Protocol"]
 categories: ["IA", "API", "Backend", "Cloud"]
 type: "ai"
@@ -16,12 +16,31 @@ learnings:
   - "Integración exitosa del protocolo emergente MCP, adaptando la arquitectura para soportar comunicación bidireccional asíncrona mediante Server-Sent Events (SSE)."
   - "Resolución de dependencias complejas y problemas de compatibilidad al migrar de FastMCP v1 a v2, asegurando el anclaje de versiones para garantizar la estabilidad del servicio."
   - "Despliegue serverless optimizado en Google Cloud Run utilizando contenedores Docker ligeros, aprovechando la funcionalidad 'Scale to Zero' para reducir costos operativos a cero durante la inactividad."
-websiteActionText: "Explorar Endpoint"
+websiteActionText: "Endpoint API (Cloud Run)"
 ---
 
 El proyecto de **AI-Native Interactive Resume** es un rediseño completo del concepto de currículum o portafolio. En lugar de ofrecer únicamente una interfaz visual (GUI) para reclutadores humanos, expone un servidor oficial bajo el **Model Context Protocol (MCP)**, estandarizado por Anthropic.
 
 Esto permite que cualquier cliente LLM que soporte MCP (como Claude Desktop o editores IDE como Cursor o Windsurf) pueda conectarse al servidor y ejecutar herramientas (tools) predefinidas para consultar mi stack tecnológico, proyectos destacados y experiencia profesional, procesando los datos de forma estructurada e interactiva en lugar de leer texto plano o realizar web scraping.
+
+### ⚡ Conexión Rápida (Claude Desktop & Cursor)
+
+Para interactuar con mi experiencia profesional en tiempo real desde tu propio asistente de IA, agrega esta configuración a tu archivo `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "anacatalina-resume": {
+      "url": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+    }
+  }
+}
+```
+
+**Herramientas clave expuestas para el razonamiento de la IA:**
+* `query_experience`: Consulta de trayectoria profesional, roles y logros detallados.
+* `match_job_fit`: Evaluación algorítmica de compatibilidad técnica con descripciones de vacantes.
+* `search_stack`: Búsqueda granular y nivel de dominio en tecnologías específicas.
 
 ### Arquitectura Técnica
 

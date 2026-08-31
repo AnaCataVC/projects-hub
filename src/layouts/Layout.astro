@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import LanguageToggle from '../components/LanguageToggle.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 import PoppyBackground from '../components/PoppyBackground.astro';
 import Analytics from '@vercel/analytics/astro';
 
@@ -88,6 +87,16 @@ const schemaOrgJSONLD = JSON.stringify({
 				document.documentElement.classList.remove('dark');
 			}
 
+			window.setThemeGlobal = function(isDark, saveToStorage = true) {
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+					if (saveToStorage) localStorage.setItem('theme', 'dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+					if (saveToStorage) localStorage.setItem('theme', 'light');
+				}
+			};
+
 			window.updateToggleUI = function(activeBtn, inactiveBtn, indicatorEl, isRight) {
 				if (indicatorEl) indicatorEl.style.transform = isRight ? 'translateX(100%)' : 'translateX(0)';
 				if (activeBtn) {
@@ -130,9 +139,6 @@ const schemaOrgJSONLD = JSON.stringify({
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="hidden">
-			<ThemeToggle />
 		</div>
 
 		<main id="main-content" class:list={[

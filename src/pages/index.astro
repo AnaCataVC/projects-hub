@@ -5,10 +5,6 @@ import Layout from '../layouts/Layout.astro';
 const allProjects = await getCollection('projects');
 const serializedProjects = allProjects.map(p => ({
   id: p.id,
-  title: p.data.title,
-  description: p.data.description,
-  icon: p.data.icon,
-  githubUrl: p.data.githubUrl,
   status: p.data.status,
   type: p.data.type
 }));
@@ -86,6 +82,52 @@ const serializedProjects = allProjects.map(p => ({
         </div>
     </div>
     <script>
+        // i18n Content Dictionary
+        const terminalI18n = {
+            es: {
+                helpDesc: '# Ayuda y comandos',
+                helpLines: [
+                    '<span class="no-touch">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="touch-only">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>',
+                    '<span class="no-touch">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="touch-only">Toca la opción ".." para regresar a la carpeta anterior.</span>',
+                    '<span class="no-touch">Empieza a escribir en cualquier momento para buscar.</span><span class="touch-only">Toca la barra inferior para buscar.</span>',
+                    '<span class="no-touch">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="touch-only">Borra el texto para limpiar la búsqueda actual.</span>'
+                ],
+                aboutDesc: '# Sobre este hub',
+                aboutLines: [
+                    '<span class="hidden sm:inline">¡Hola! Soy Ana-Catalina. Este espacio es mi directorio centralizado de desarrollo, diseñado como una interfaz de consola interactiva para explorar mi trabajo de forma rápida y de alto rendimiento.</span><span class="inline sm:hidden">¡Hola! Soy Ana-Catalina. Este es mi directorio de desarrollo personal (independiente de mi trabajo oficial).</span>',
+                    '<span class="hidden sm:inline mt-2"><strong>[🎯 Objetivo]:</strong> Aprender haciendo. Construyo herramientas que me sirven en el día a día (por más sencillas que sean) para automatizar mi vida y resolver problemas reales.</span><span class="inline sm:hidden mt-2"><strong>[🎯 Objetivo]:</strong> Crear herramientas útiles para mi día a día, por más sencillas que sean.</span>',
+                    '<span class="hidden sm:block text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI-Assisted Coding]:</strong> Además, uso estos proyectos deliberadamente como un campo de entrenamiento para mejorar mi uso de la IA al programar. Esto me permite iterar rápido, explorar nuevas tecnologías y enfocarme en la arquitectura.</span><span class="block sm:hidden text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI Coding]:</strong> Uso estos proyectos para perfeccionar mi flujo de trabajo asistido por IA.</span>',
+                    '<span class="hidden sm:block mt-2">Cada proyecto cuenta con una ficha técnica detallada (modo GUI) que documenta la arquitectura y los aprendizajes clave.</span>',
+                    ' ',
+                    `© ${new Date().getFullYear()} Ana-Catalina.`
+                ],
+                projectsId: 'proyectos',
+                projectsTitle: '~/proyectos',
+                projectsDesc: '# Explorar portfolio'
+            },
+            en: {
+                helpDesc: '# Help and commands',
+                helpLines: [
+                    '<span class="no-touch">Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.</span><span class="touch-only">Tap any item in the list to select or open it.</span>',
+                    '<span class="no-touch">Press [←] or [Backspace] to go back to the previous folder.</span><span class="touch-only">Tap the ".." option to go back to the previous folder.</span>',
+                    '<span class="no-touch">Start typing at any time to search.</span><span class="touch-only">Tap the bottom bar to search.</span>',
+                    '<span class="no-touch">Press [Esc] to clear the current search, or return to the root path.</span><span class="touch-only">Delete the text to clear the current search.</span>'
+                ],
+                aboutDesc: '# About this hub',
+                aboutLines: [
+                    '<span class="hidden sm:inline">Hi! I\'m Ana-Catalina. This space is my centralized development directory, designed as an interactive console interface to explore my work in a fast, high-performance environment.</span><span class="inline sm:hidden">Hi! I\'m Ana-Catalina. This is my personal development directory (independent of my official work).</span>',
+                    '<span class="hidden sm:inline mt-2"><strong>[🎯 Objective]:</strong> Learning by doing. I build tools that serve me in my daily life (no matter how simple) to automate tasks and solve real problems.</span><span class="inline sm:hidden mt-2"><strong>[🎯 Objective]:</strong> Building useful tools for my daily life, no matter how simple.</span>',
+                    '<span class="hidden sm:block text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI-Assisted Coding]:</strong> Furthermore, I deliberately use these projects as a training ground to improve my use of AI when programming. This allows me to iterate fast, explore new technologies, and focus on architecture.</span><span class="block sm:hidden text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI Coding]:</strong> I use these projects to perfect my AI-assisted workflow.</span>',
+                    '<span class="hidden sm:block mt-2">Each project features a detailed case study (GUI mode) documenting the architecture and key learnings.</span>',
+                    ' ',
+                    `© ${new Date().getFullYear()} Ana-Catalina.`
+                ],
+                projectsId: 'projects',
+                projectsTitle: '~/projects',
+                projectsDesc: '# Explore portfolio'
+            }
+        };
+
         // Data Structure
         const menuData = [
             { 
@@ -95,12 +137,7 @@ const serializedProjects = allProjects.map(p => ({
                 color: 'text-pink-600 dark:text-pastel-pink',
                 type: 'folder', 
                 expanded: false, 
-                children: [
-                    { title: '<span class="no-touch">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="touch-only">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>', type: 'text' },
-                    { title: '<span class="no-touch">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="touch-only">Toca la opción ".." para regresar a la carpeta anterior.</span>', type: 'text' },
-                    { title: '<span class="no-touch">Empieza a escribir en cualquier momento para buscar.</span><span class="touch-only">Toca la barra inferior para buscar.</span>', type: 'text' },
-                    { title: '<span class="no-touch">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="touch-only">Borra el texto para limpiar la búsqueda actual.</span>', type: 'text' }
-                ]
+                children: [] 
             },
             {
                 id: 'about',
@@ -109,16 +146,8 @@ const serializedProjects = allProjects.map(p => ({
                 color: 'text-violet-600 dark:text-violet-400',
                 type: 'folder',
                 expanded: false,
-                children: [
-                    { title: '<span class="hidden sm:inline">¡Hola! Soy Ana-Catalina. Este espacio es mi directorio centralizado de desarrollo, diseñado como una interfaz de consola interactiva para explorar mi trabajo de forma rápida y de alto rendimiento.</span><span class="inline sm:hidden">¡Hola! Soy Ana-Catalina. Este es mi directorio de desarrollo personal (independiente de mi trabajo oficial).</span>', type: 'text' },
-                    { title: '<span class="hidden sm:inline mt-2"><strong>[🎯 Objetivo]:</strong> Aprender haciendo. Construyo herramientas que me sirven en el día a día (por más sencillas que sean) para automatizar mi vida y resolver problemas reales.</span><span class="inline sm:hidden mt-2"><strong>[🎯 Objetivo]:</strong> Crear herramientas útiles para mi día a día, por más sencillas que sean.</span>', type: 'text' },
-                    { title: '<span class="hidden sm:block text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI-Assisted Coding]:</strong> Además, uso estos proyectos deliberadamente como un campo de entrenamiento para mejorar mi uso de la IA al programar. Esto me permite iterar rápido, explorar nuevas tecnologías y enfocarme en la arquitectura.</span><span class="block sm:hidden text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI Coding]:</strong> Uso estos proyectos para perfeccionar mi flujo de trabajo asistido por IA.</span>', type: 'text' },
-                    { title: '<span class="hidden sm:block mt-2">Cada proyecto cuenta con una ficha técnica detallada (modo GUI) que documenta la arquitectura y los aprendizajes clave.</span>', type: 'text' },
-                    { title: ' ', type: 'text' },
-                    { title: `© ${new Date().getFullYear()} Ana-Catalina.`, type: 'text' }
-                ]
+                children: []
             },
-
             { 
                 id: 'proyectos', 
                 title: '~/proyectos', 
@@ -126,7 +155,7 @@ const serializedProjects = allProjects.map(p => ({
                 color: 'text-emerald-600 dark:text-pastel-mint',
                 type: 'folder', 
                 expanded: false, 
-                children: [] // Populated dynamically
+                children: []
             }
         ];
 
@@ -500,45 +529,17 @@ const serializedProjects = allProjects.map(p => ({
                 if (lang === 'en' && el.dataset.en) el.innerHTML = el.dataset.en;
             });
 
-            if (lang === 'en') {
-                menuData[0].desc = '# Help and commands';
-                menuData[0].children[0].title = '<span class="no-touch">Use arrows [↑] and [↓] to navigate, and [Enter] or [→] to select or enter a folder.</span><span class="touch-only">Tap any item in the list to select or open it.</span>';
-                menuData[0].children[1].title = '<span class="no-touch">Press [←] or [Backspace] to go back to the previous folder.</span><span class="touch-only">Tap the ".." option to go back to the previous folder.</span>';
-                menuData[0].children[2].title = '<span class="no-touch">Start typing at any time to search.</span><span class="touch-only">Tap the bottom bar to search.</span>';
-                menuData[0].children[3].title = '<span class="no-touch">Press [Esc] to clear the current search, or return to the root path.</span><span class="touch-only">Delete the text to clear the current search.</span>';
+            const t = terminalI18n[lang] || terminalI18n.es;
+            menuData[0].desc = t.helpDesc;
+            menuData[0].children = t.helpLines.map(title => ({ title, type: 'text' }));
 
-                menuData[1].desc = '# About this hub';
-                menuData[1].children[0].title = '<span class="hidden sm:inline">Hi! I\'m Ana-Catalina. This space is my centralized development directory, designed as an interactive console interface to explore my work in a fast, high-performance environment.</span><span class="inline sm:hidden">Hi! I\'m Ana-Catalina. This is my personal development directory (independent of my official work).</span>';
-                menuData[1].children[1].title = '<span class="hidden sm:inline mt-2"><strong>[🎯 Objective]:</strong> Learning by doing. I build tools that serve me in my daily life (no matter how simple) to automate tasks and solve real problems.</span><span class="inline sm:hidden mt-2"><strong>[🎯 Objective]:</strong> Building useful tools for my daily life, no matter how simple.</span>';
-                menuData[1].children[2].title = '<span class="hidden sm:block text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI-Assisted Coding]:</strong> Furthermore, I deliberately use these projects as a training ground to improve my use of AI when programming. This allows me to iterate fast, explore new technologies, and focus on architecture.</span><span class="block sm:hidden text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI Coding]:</strong> I use these projects to perfect my AI-assisted workflow.</span>';
-                menuData[1].children[3].title = '<span class="hidden sm:block mt-2">Each project features a detailed case study (GUI mode) documenting the architecture and key learnings.</span>';
-                menuData[1].children[4].title = ' ';
-                menuData[1].children[5].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
+            menuData[1].desc = t.aboutDesc;
+            menuData[1].children = t.aboutLines.map(title => ({ title, type: 'text' }));
 
-                menuData[2].id = 'projects';
-                menuData[2].title = '~/projects';
-                menuData[2].desc = '# Explore portfolio';
-                menuData[2].children = getProjectItems('en');
-            } else {
-                menuData[0].desc = '# Ayuda y comandos';
-                menuData[0].children[0].title = '<span class="no-touch">Usa las flechas [↑] y [↓] para navegar, y [Enter] o [→] para seleccionar o entrar a una carpeta.</span><span class="touch-only">Toca cualquier elemento de la lista para seleccionarlo o abrirlo.</span>';
-                menuData[0].children[1].title = '<span class="no-touch">Presiona [←] o [Retroceso] para regresar a la carpeta anterior.</span><span class="touch-only">Toca la opción ".." para regresar a la carpeta anterior.</span>';
-                menuData[0].children[2].title = '<span class="no-touch">Empieza a escribir en cualquier momento para buscar.</span><span class="touch-only">Toca la barra inferior para buscar.</span>';
-                menuData[0].children[3].title = '<span class="no-touch">Presiona [Esc] para limpiar la búsqueda actual, o regresar a la ruta principal.</span><span class="touch-only">Borra el texto para limpiar la búsqueda actual.</span>';
-
-                menuData[1].desc = '# Sobre este hub';
-                menuData[1].children[0].title = '<span class="hidden sm:inline">¡Hola! Soy Ana-Catalina. Este espacio es mi directorio centralizado de desarrollo, diseñado como una interfaz de consola interactiva para explorar mi trabajo de forma rápida y de alto rendimiento.</span><span class="inline sm:hidden">¡Hola! Soy Ana-Catalina. Este es mi directorio de desarrollo personal (independiente de mi trabajo oficial).</span>';
-                menuData[1].children[1].title = '<span class="hidden sm:inline mt-2"><strong>[🎯 Objetivo]:</strong> Aprender haciendo. Construyo herramientas que me sirven en el día a día (por más sencillas que sean) para automatizar mi vida y resolver problemas reales.</span><span class="inline sm:hidden mt-2"><strong>[🎯 Objetivo]:</strong> Crear herramientas útiles para mi día a día, por más sencillas que sean.</span>';
-                menuData[1].children[2].title = '<span class="hidden sm:block text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI-Assisted Coding]:</strong> Además, uso estos proyectos deliberadamente como un campo de entrenamiento para mejorar mi uso de la IA al programar. Esto me permite iterar rápido, explorar nuevas tecnologías y enfocarme en la arquitectura.</span><span class="block sm:hidden text-slate-500 dark:text-slate-400 mt-2"><strong>[🤖 AI Coding]:</strong> Uso estos proyectos para perfeccionar mi flujo de trabajo asistido por IA.</span>';
-                menuData[1].children[3].title = '<span class="hidden sm:block mt-2">Cada proyecto cuenta con una ficha técnica detallada (modo GUI) que documenta la arquitectura y los aprendizajes clave.</span>';
-                menuData[1].children[4].title = ' ';
-                menuData[1].children[5].title = `© ${new Date().getFullYear()} Ana-Catalina.`;
-
-                menuData[2].id = 'proyectos';
-                menuData[2].title = '~/proyectos';
-                menuData[2].desc = '# Explorar portfolio';
-                menuData[2].children = getProjectItems('es');
-            }
+            menuData[2].id = t.projectsId;
+            menuData[2].title = t.projectsTitle;
+            menuData[2].desc = t.projectsDesc;
+            menuData[2].children = getProjectItems(lang);
 
             if (currentPath.length > 0) {
                 let newPath = [];
