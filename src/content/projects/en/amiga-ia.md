@@ -7,7 +7,7 @@ websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
 technologies: ["Subagent Orchestration", "Agent Skills", "Delimited Block Protocol", "Release Automation", "PowerShell", "Node.js"]
 categories: ["AI", "Agents", "Productivity", "Developer Tools"]
-type: "desktop"
+type: "ai"
 status: "Active"
 problem: "Traditional step-by-step imperative instructions break down as codebases scale, alongside heavy recurring token taxes caused by bloated system prompts and repetitive multi-engine context."
 solution: "A unified agentic ecosystem featuring autonomous orchestrating subagents and declarative skills, utilizing a delimited block protocol for clean directive distribution and rigorous release verification gates."

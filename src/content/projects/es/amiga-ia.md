@@ -8,7 +8,7 @@ websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
 technologies: ["Subagent Orchestration", "Agent Skills", "Delimited Block Protocol", "Release Automation", "PowerShell", "Node.js"]
 categories: ["IA", "Agentes", "Productividad", "Developer Tools"]
-type: "desktop"
+type: "ai"
 status: "Activo"
 problem: "La degradación en bases de código grandes al depender de instrucciones imperativas paso a paso, junto al consumo elevado de tokens al acumular contexto repetitivo en asistentes de IA genéricos."
 solution: "Un ecosistema agéntico unificado de subagentes autónomos y skills declarativas, dotado de un protocolo de bloques delimitados para distribución limpia de directivas y compuertas estrictas de verificación en compilación de releases."
