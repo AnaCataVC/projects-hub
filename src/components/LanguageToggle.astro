@@ -23,31 +23,28 @@
         pathLang = segments[0] === 'en' ? 'en' : 'es';
     }
 
-    let currentLang = pathLang || (localStorage.getItem('lang') as LangKeys | null);
-    
-    if (!currentLang) {
-        const browserLang = navigator.language || (navigator as any).userLanguage;
-        currentLang = browserLang.toLowerCase().startsWith('es') ? 'es' : 'en';
-    }
-    localStorage.setItem('lang', currentLang); 
+    let currentLang: LangKeys = pathLang || (localStorage.getItem('lang') as LangKeys | null) || 'es';
+    document.documentElement.lang = currentLang;
 
     const btnEs = document.getElementById('lang-es');
     const btnEn = document.getElementById('lang-en');
     const indicator = document.getElementById('lang-indicator');
 
-    function setLanguage(lang: LangKeys) {
-        if (currentLang !== lang) {
+    function setLanguage(lang?: LangKeys) {
+        const targetLang: LangKeys = lang || (currentLang === 'es' ? 'en' : 'es');
+
+        if (currentLang !== targetLang) {
             const path = window.location.pathname;
             if (path !== '/' && path !== '') {
                 const segments = path.split('/').filter(Boolean);
                 const isEnRoute = segments[0] === 'en';
                 
-                if (lang === 'en' && !isEnRoute) {
-                    localStorage.setItem('lang', lang);
+                if (targetLang === 'en' && !isEnRoute) {
+                    localStorage.setItem('lang', targetLang);
                     window.location.href = `/en/${segments.join('/')}`;
                     return;
-                } else if (lang === 'es' && isEnRoute) {
-                    localStorage.setItem('lang', lang);
+                } else if (targetLang === 'es' && isEnRoute) {
+                    localStorage.setItem('lang', targetLang);
                     segments.shift();
                     window.location.href = `/${segments.join('/')}`;
                     return;
@@ -55,23 +52,26 @@
             }
         }
 
-        currentLang = lang;
-        localStorage.setItem('lang', lang);
+        currentLang = targetLang;
+        document.documentElement.lang = targetLang;
+        localStorage.setItem('lang', targetLang);
         
-        if (lang === 'es') {
-            (window as any).updateToggleUI(btnEs, btnEn, indicator, false);
+        if (targetLang === 'es') {
+            (window as any).updateToggleUI?.(btnEs, btnEn, indicator, false);
         } else {
-            (window as any).updateToggleUI(btnEn, btnEs, indicator, true);
+            (window as any).updateToggleUI?.(btnEn, btnEs, indicator, true);
         }
         if (typeof (window as any).updateUIText === 'function') {
-            (window as any).updateUIText(lang);
+            (window as any).updateUIText(targetLang);
         }
     }
+
     (window as any).setLanguageGlobal = setLanguage;
+    (window as any).toggleLanguageGlobal = () => setLanguage();
 
     if (btnEs && btnEn) {
         btnEs.addEventListener('click', () => setLanguage('es'));
         btnEn.addEventListener('click', () => setLanguage('en'));
-        setLanguage(currentLang);
     }
+    setLanguage(currentLang);
 </script>

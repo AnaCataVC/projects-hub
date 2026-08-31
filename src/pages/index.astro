@@ -27,7 +27,14 @@ const serializedProjects = allProjects.map(p => ({
                     <span id="header-path" class="text-xs sm:text-sm font-mono text-slate-500 truncate text-center w-full">~/projects-hub</span>
                 </div>
                 <div class="w-16 shrink-0 flex justify-end gap-3 items-center text-slate-500 dark:text-slate-400">
-                    <button type="button" onclick="if(window.setLanguageGlobal) { window.setLanguageGlobal(document.documentElement.lang === 'es' ? 'en' : 'es'); }" class="p-2 -m-2 hover:text-slate-800 dark:hover:text-slate-200 transition-colors cursor-pointer font-['JetBrains_Mono',monospace] text-[13px] font-semibold tracking-wider pointer-events-auto" title="Toggle Language">
+                    <button 
+                        id="terminal-lang-btn"
+                        type="button" 
+                        onclick="if(window.toggleLanguageGlobal) { window.toggleLanguageGlobal(); } else if(window.setLanguageGlobal) { window.setLanguageGlobal(); }" 
+                        class="p-2 -m-2 hover:text-slate-800 dark:hover:text-slate-200 transition-colors cursor-pointer font-['JetBrains_Mono',monospace] text-[13px] font-semibold tracking-wider pointer-events-auto" 
+                        title="Cambiar idioma / Switch language"
+                        aria-label="Toggle language"
+                    >
                         <span data-es="ES" data-en="EN">ES</span>
                     </button>
                     <button type="button" onclick="if(window.setThemeGlobal) { const isDark = document.documentElement.classList.contains('dark'); window.setThemeGlobal(!isDark); localStorage.setItem('terminalThemeSet', 'true'); }" class="p-2 -m-2 hover:text-slate-800 dark:hover:text-slate-200 transition-colors cursor-pointer" title="Toggle Theme">
@@ -524,6 +531,7 @@ const serializedProjects = allProjects.map(p => ({
         }
 
         window.updateUIText = function(lang) {
+            document.documentElement.lang = lang;
             document.querySelectorAll('[data-es]').forEach(el => {
                 if (lang === 'es' && el.dataset.es) el.innerHTML = el.dataset.es;
                 if (lang === 'en' && el.dataset.en) el.innerHTML = el.dataset.en;
@@ -662,6 +670,11 @@ const serializedProjects = allProjects.map(p => ({
                 const win = document.getElementById('console-window');
                 if (win) win.classList.remove('booting-up');
                 
+                const currentLang = (localStorage.getItem('lang') || 'es');
+                if (window.updateUIText) {
+                    window.updateUIText(currentLang);
+                }
+
                 searchQuery = '';
                 const textEl = document.getElementById('search-query-text');
                 const promptSymbol = document.getElementById('prompt-symbol');
