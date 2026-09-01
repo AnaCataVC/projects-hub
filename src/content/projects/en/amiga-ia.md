@@ -18,3 +18,15 @@ learnings:
   - "System Token Optimization (ADR-004): Verified 36.3% reduction (-1,211 tokens per conversation turn) by compacting the universal adapter and modularizing hook scripts."
 websiteActionText: "Visit Page"
 ---
+
+### Technical Architecture & Orchestration
+
+**Amiga IA** elevates AI-assisted software engineering from linear chat prompts to an **autonomous subagent mesh** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, etc.). Each agent operates with bounded tools, declarative skills, and explicit verification gates.
+
+*   **Universal Adapter & Hooks:** Injects stateless guardrails that intercept high-risk operations and enforce pre-commit linting and automated test runs.
+*   **Delimited Block Protocol:** An idempotent synchronization engine that distributes and updates global agent directives across projects without overwriting custom developer settings.
+
+### Optimization & Quality Gates
+
+*   **Token Tax Reduction:** Decoupling bloated system prompts into *on-demand declarative skills* reduced initial context token consumption by **36.3%**.
+*   **Anti-Hallucination Gate:** Automated CI/CD release pipelines featuring live verification checks that physically compile, test, and validate binary hashes before triggering official GitHub releases.

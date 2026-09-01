@@ -19,4 +19,17 @@ learnings:
 websiteActionText: "Descargar App"
 ---
 
+### Arquitectura Modular y Dominio Compartido
+
+**Prima Focus** es una suite de productividad multiplataforma construida con una estricta separación de responsabilidades:
+
+*   **Núcleo Compartido (`:shared`):** Módulo en Kotlin puro que encapsula la lógica de negocio, entidades y el algoritmo de puntuación predictiva para priorizar tareas automáticamente.
+*   **Android Nativo (`:app`):** Interfaz moderna construida 100% en **Jetpack Compose** con soporte adaptable para teléfonos y tablets mediante `WindowSizeClass`.
+*   **Acompañante de Escritorio (`:desktop`):** Cliente liviano en Java que se comunica bidireccionalmente con el dispositivo móvil dentro de la misma red local (LAN).
+
+### Sincronización P2P Offline y Widgets de Pantalla
+
+*   **Google Nearby Connections & Room v5:** Sincronización descentralizada dispositivo-a-dispositivo (P2P) que no requiere servidores ni conexión a internet, utilizando resolución de conflictos LWW (*Last-Write-Wins*) y lápidas (*tombstones*) para eliminaciones consistentes.
+*   **Widgets con Jetpack Glance:** Widgets interactivos de inicio que permiten visualizar y completar la tarea prioritaria del día en un solo toque sin abrir la aplicación.
+
 > **Nota**: El código fuente completo reside en un repositorio privado, pero he creado un repositorio público (**Showcase**) donde puedes explorar la documentación técnica y descargar el APK y el bundle para escritorio.

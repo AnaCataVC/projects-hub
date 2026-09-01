@@ -19,4 +19,17 @@ learnings:
 websiteActionText: "Visit Website"
 ---
 
+### Native Desktop Architecture (.NET 9 & WinUI 3)
+
+**Work Activity Panel** is a native Windows 11 desktop application engineered using **Windows App SDK** and **WinUI 3**:
+
+*   **MVVM Pattern & Fluent Design:** Clean architectural separation using `CommunityToolkit.Mvvm`, delivering hardware-accelerated **Mica** translucent surfaces without UI thread overhead.
+*   **Startup Diagnostics & Crash Resilience:** Global exception boundary handlers (`AppDomain.UnhandledException`, `TaskScheduler.UnobservedTaskException`) with automatic persistent disk crash dumps ensuring full observability.
+
+### Specialized Engines & Background Services
+
+*   **RFC 5545 iCalendar Parser:** In-house calendar deserialization engine handling recurring events, multi-line unfolding, local/UTC timezone normalization, and automated video meeting link extraction (Google Meet, Zoom, Teams).
+*   **AI Context Discovery Engine:** Batched background scanner identifying unversioned AI configuration files (`CLAUDE.md`, `.agent` folders, local references) and checking their Git status to prevent accidental secret leakage.
+*   **Asynchronous Google Drive Synchronization:** Background sync worker utilizing mutex synchronization (`LockService`) to guarantee thread safety and prevent UI freezes.
+
 > **Note**: You can download the pre-compiled standalone `.exe` installer from the GitHub Releases page or build the solution locally using the .NET 9 SDK.

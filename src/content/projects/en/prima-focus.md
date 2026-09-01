@@ -18,4 +18,17 @@ learnings:
 websiteActionText: "Download App"
 ---
 
+### Modular Architecture & Shared Domain Core
+
+**Prima Focus** is a cross-platform productivity suite architected around clean boundary separation:
+
+*   **Shared Domain (`:shared`):** Pure Kotlin module encapsulating business logic, domain models, and a predictive scoring algorithm that calculates the optimal "Today's Task" without cloud dependency.
+*   **Native Android Client (`:app`):** 100% **Jetpack Compose** UI with adaptive multi-window support (`WindowSizeClass`) providing custom split-pane layouts for tablets and foldable devices.
+*   **Java Desktop Companion (`:desktop`):** Lightweight desktop client enabling zero-friction task capture and real-time bidirectional sync over the local network (LAN).
+
+### Offline P2P Synchronization & Glance Widgets
+
+*   **Google Nearby Connections & Room DB v5:** Serverless device-to-device synchronization operating completely offline, utilizing *Last-Write-Wins* (LWW) conflict resolution and database *tombstones* for deterministic deletions.
+*   **Jetpack Glance Widgets:** Interactive Android home screen widgets that allow users to inspect and complete priority tasks in 1-tap directly from the launcher.
+
 > **Note**: The full source code is kept in a private repository, but I have created a public **Showcase** repository where you can explore the technical documentation and download the APK and desktop standalone bundle.

@@ -17,3 +17,15 @@ learnings:
   - "BYOD Cloud Architecture: Integrated remoteStorage.js to ensure complete user sovereignty and ownership of health and habits data."
   - "Meaningful Data Visualization: Built interactive visualizations with Recharts to uncover real multivariate correlations without statistical distortion."
 ---
+
+### Local-First Architecture & BYOD Sync
+
+**Life Tracker Analytics** is built on a strict **Local-First** paradigm, ensuring that users retain absolute sovereignty over their personal habit and health data without relying on a centralized cloud backend.
+
+*   **In-Browser Relational Engine:** Powered by **Dexie.js** on top of IndexedDB with type-safe TypeScript schemas, enabling sub-millisecond offline analytical queries.
+*   **BYOD (Bring Your Own Data) Sync:** Optional connection to open personal servers via **remoteStorage.js**, handling multi-device sync and clock-drift conflicts through deterministic merge algorithms.
+
+### Analytics Pipeline & Data Visualization
+
+*   **Client-Side Correlation Analysis:** In-memory analytics pipeline processing time-series data to compute statistical correlation matrices between disparate quantitative metrics (sleep quality, focus hours, mood).
+*   **Reactive Rendering with Recharts:** High-performance charting layer optimized for React 19 and Tailwind CSS v4, delivering fluid 60 fps interactions across thousands of historical data points.

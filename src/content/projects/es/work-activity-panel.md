@@ -20,4 +20,17 @@ learnings:
 websiteActionText: "Visitar Sitio"
 ---
 
+### Arquitectura Nativa de Escritorio (.NET 9 & WinUI 3)
+
+**Work Activity Panel** es una aplicación de escritorio de alto rendimiento diseñada para la plataforma moderna de Windows 11 utilizando **Windows App SDK** y **WinUI 3**:
+
+*   **Patrón MVVM & Fluent Design:** Arquitectura desacoplada mediante `CommunityToolkit.Mvvm`, integrando efectos visuales nativos **Mica** y controles modernos sin impactar los ciclos de renderizado de la GPU.
+*   **Diagnóstico Temprano de Inicio:** Manejadores globales de excepciones en arranque (`AppDomain.UnhandledException`, `TaskScheduler.UnobservedTaskException`) con volcado automático a disco para garantizar estabilidad ante fallos de hardware o red.
+
+### Motores Especializados y Tareas en Segundo Plano
+
+*   **Parser iCalendar RFC 5545:** Motor propio de deserialización de calendarios que procesa eventos recurrentes, despliega líneas multipartes (*line unfolding*), normaliza husos horarios UTC/Locales y extrae automáticamente enlaces de videollamadas (Google Meet, Zoom, Teams).
+*   **Discovery Engine de Contextos IA:** Escáner por lotes en segundo plano que detecta archivos de configuración de IA (`CLAUDE.md`, `.agent`, directivas) en repositorios locales y valida su estado en Git para prevenir fuga involuntaria de secretos.
+*   **Sincronización Asíncrona con Google Drive:** Servicio de respaldo en hilos secundarios con control de exclusión mutua (`LockService`), evitando cuellos de botella en el hilo principal de la UI.
+
 > **Nota**: Puedes descargar el instalador `.exe` precompilado desde la página de Releases en GitHub o compilar la solución localmente con .NET 9 SDK.
