@@ -19,4 +19,17 @@ learnings:
 websiteActionText: "View Page"
 ---
 
+### Offline-First Architecture & Alarm Reliability
+
+**Meds Reminder** is engineered for 100% medication adherence reliability operating completely offline:
+
+*   **Doze-Resilient Precision with `AlarmManager`:** Built with `setAlarmClock()` and `USE_EXACT_ALARM` permissions under health categorization, ensuring exact second-precision triggers even when Android enters deep sleep (*Doze mode*).
+*   **Lock Screen Full-Screen Overlay (`AlarmActivity`):** Leverages `showWhenLocked` and `turnScreenOn` flags to surface critical dosage reminders above the keyguard without requiring manual unlocking.
+*   **Multi-Profile Relational Room DB:** Clean data layer powered by Koin DI and Kotlin Coroutines/Flow to model multi-family regimens and flexible dosage intervals.
+
+### Lifecycle Management & Dynamic Notification Channels
+
+*   **Intelligent Early-Dose Resolution:** State synchronization algorithm that detects when medication was taken ahead of schedule, automatically cancelling pending pre-alarms and snoozes to eliminate redundant notifications.
+*   **Dynamic Sound Channels on Android 8.0+:** Generates distinct notification channels hashed by custom audio URI on-the-fly, bypassing Android's built-in channel audio immutability.
+
 > **Note**: You can explore the source code, review technical documentation, and build the APK directly from the GitHub repository.

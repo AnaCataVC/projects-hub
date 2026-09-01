@@ -19,4 +19,16 @@ learnings:
 websiteActionText: "View Page"
 ---
 
+### Rust & Tauri v2 Architecture with Svelte 5
+
+**Workspace Companion** pairs **Rust's memory safety** and low-level OS capabilities with **Svelte 5 Runes** inside **Tauri v2**:
+
+*   **Git Porcelain Engine in Rust:** High-speed parser consuming machine-readable `git worktree list --porcelain` streams across background worker threads with `CREATE_NO_WINDOW` flags, preventing console window flashing on Windows.
+*   **Spotlight Floating Utility & System Tray:** Fast keyboard-driven HUD anchored dynamically to the Windows Taskbar Notification Area with an ultra-low working set under **35 MB RAM**.
+
+### Pre-Flight Safety Checks & GitHub CLI Identity Switching
+
+*   **Dirty State Safeguards:** Strict validation engine running `git status --porcelain` checks prior to worktree removal, preventing accidental loss of uncommitted local modifications.
+*   **1-Click GitHub CLI Profile Switching:** Native `gh auth switch` automation enabling seamless identity swapping between personal and corporate accounts based on the active repository context.
+
 > **Note**: You can explore the source code, review Architectural Decision Records (ADRs), and compile the Windows desktop binary from the GitHub repository.

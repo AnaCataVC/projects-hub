@@ -19,4 +19,16 @@ learnings:
 websiteActionText: "Visit Website"
 ---
 
+### Native Win32 Architecture & HUD Telemetry
+
+**Simple PC Monitor** is a high-performance system telemetry HUD compiled into a single **585 KB standalone executable** with zero external runtime dependencies:
+
+*   **Sub-Millisecond P/Invoke Telemetry (<0.01 ms):** Queries low-level hardware metrics (CPU, RAM, GPU, and Network) via direct Win32 API calls instead of sluggish WMI bridges.
+*   **Instant Power Scheme Toggling via `PowrProf.dll`:** Invokes `PowerSetActiveScheme` to seamlessly switch Windows energy profiles (*High Performance*, *Balanced*, *Power Saver*) without requiring elevated Administrator (UAC) prompts.
+
+### Memory Optimization & Process Safety
+
+*   **Controlled Working Set Compaction:** Diagnostic routine invoking `EmptyWorkingSet` and `SetProcessWorkingSetSize` to flush idle physical memory pages without provoking disk thrashing.
+*   **Kernel-Safe Process Inspection:** Process termination guardrails leveraging `QueryFullProcessImageName` with an immutable kernel-process blacklist to prevent OS instability.
+
 > **Note**: You can download the pre-compiled standalone `.exe` directly from the GitHub Releases section without needing an installer.

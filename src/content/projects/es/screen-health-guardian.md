@@ -20,4 +20,15 @@ learnings:
 websiteActionText: "Visitar Sitio"
 ---
 
+### Arquitectura Nativa de Escritorio (.NET 9 / WPF)
+
+**Screen Health Guardian** fue reescrito desde cero en C# y .NET 9 tras superar las limitaciones de consumo y falsos positivos heurísticos asociados a empaquetadores como PyInstaller:
+
+*   **Daemon Ultraligero en System Tray:** Opera en segundo plano con una huella de memoria inferior a **14 MB de RAM** y menos del **0.05% de CPU**, utilizando `H.NotifyIcon.Wpf` y un mutex global de Win32 para ejecución de instancia única.
+*   **Detección de Inactividad con Win32:** Llamada P/Invoke a `GetLastInputInfo` para pausar contadores automáticamente si el usuario se retira del escritorio, asegurando que solo se contabilice el tiempo de exposición visual activa.
+
+### Soporte Multimonitor y Composición DWM
+
+*   **Overlays Translúcidos con Aceleración GPU:** Renderizado simultáneo de alertas visuales sincronizadas en todas las pantallas detectadas mediante `Screen.AllScreens`, adaptándose a configuraciones de DPI mixto y orientación vertical/horizontal.
+
 > **Nota**: Puedes descargar el instalador standalone `.exe` o el binario sin dependencias directamente desde la sección de Releases en GitHub.

@@ -20,4 +20,17 @@ learnings:
 websiteActionText: "Ver Página"
 ---
 
+### Arquitectura Offline-First y Resiliencia de Alarmas
+
+**Meds Reminder** está diseñado para garantizar una confiabilidad del 100% en la adherencia médica sin depender de conexión a internet:
+
+*   **Precisión Anti-Doze con `AlarmManager`:** Implementación de `setAlarmClock()` con el permiso `USE_EXACT_ALARM`, garantizando disparos exactos al segundo incluso cuando Android entra en suspensión profunda (*Doze mode*).
+*   **Pantalla Completa sobre Bloqueo (`AlarmActivity`):** Uso de `showWhenLocked` y `turnScreenOn` para presentar alertas críticas directamente sobre la pantalla de bloqueo sin requerir interacción previa del usuario.
+*   **Persistencia Multi-Perfil en Room DB:** Esquema relacional con Koin y Kotlin Coroutines para modelar tratamientos complejos, horarios variables y dependientes familiares.
+
+### Ciclo de Vida y Notificaciones Dinámicas
+
+*   **Resolución Inteligente de Tomas Anticipadas:** Algoritmo que detecta cuando una dosis fue registrada antes de la hora programada, cancelando automáticamente pre-alarmas y posposiciones (*snooze*) pendientes para evitar recordatorios redundantes.
+*   **Canales de Notificación Dinámicos:** Solución para Android 8.0+ que crea canales de notificación sobre la marcha mediante hashes de URI de sonido personalizado, superando la inmutabilidad de audio impuesta por el sistema operativo.
+
 > **Nota**: Puedes explorar el código fuente, la documentación técnica y compilar el APK directamente desde el repositorio en GitHub.

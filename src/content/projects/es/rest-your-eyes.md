@@ -18,3 +18,14 @@ learnings:
   - "Implementación de notificaciones superpuestas (SYSTEM_ALERT_WINDOW) para interactuar proactivamente con el usuario."
 websiteActionText: "Ver Página"
 ---
+
+### Arquitectura y Monitoreo en Segundo Plano
+
+**Rest Your Eyes** implementa la regla oftalmológica **20-20-20** (descansar la vista 20 segundos cada 20 minutos de uso) mediante un servicio de fondo en Android altamente eficiente:
+
+*   **Foreground Service & BroadcastReceivers:** Rastreo en tiempo real del estado de la pantalla (`ACTION_SCREEN_ON`, `ACTION_SCREEN_OFF`) para acumular únicamente el tiempo de uso visual efectivo.
+*   **Overlay Proactivo (`SYSTEM_ALERT_WINDOW`):** Despliegue de una superposición visual translúcida y no intrusiva con Jetpack Compose que recuerda al usuario relajar el enfoque ocular sin interrumpir bruscamente sus tareas.
+
+### Optimización Energética
+
+*   **Cero Consumo con Pantalla Apagada:** El temporizador se pausa automáticamente cuando la pantalla se bloquea, liberando bloqueos de activación (*WakeLocks*) y preservando la batería del dispositivo móvil.

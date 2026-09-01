@@ -20,4 +20,16 @@ learnings:
 websiteActionText: "Ver Página"
 ---
 
+### Arquitectura Rust & Tauri v2 con Svelte 5
+
+**Workspace Companion** combina la seguridad de memoria de **Rust** con la velocidad reactiva de **Svelte 5 (Runes)** dentro del framework **Tauri v2**:
+
+*   **Motor Git Porcelain en Rust:** Parser de salida estructurada (`git worktree list --porcelain`) que ejecuta comandos asíncronos en subprocesos con el flag `CREATE_NO_WINDOW`, evitando cualquier parpadeo de consolas cmd/PowerShell en Windows.
+*   **Gestor Flotante Spotlight & System Tray:** Interfaz con atajo global que posiciona la ventana automáticamente sobre el área de notificación de la barra de tareas, con un consumo de memoria inferior a **35 MB de RAM**.
+
+### Salvaguardas Pre-Flight y Conmutación de Identidad
+
+*   **Dirty Check & Eliminación Segura:** Algoritmo de seguridad que valida el estado del árbol de trabajo (`git status --porcelain`) antes de permitir la poda o borrado de worktrees, impidiendo la pérdida accidental de código sin commitear.
+*   **Conmutador de Cuentas GitHub CLI:** Integración con `gh auth switch` para alternar perfiles personales y corporativos al instante con detección automática según el directorio activo.
+
 > **Nota**: Puedes explorar el código fuente, consultar las Decisiones de Arquitectura (ADRs) y compilar la aplicación para Windows desde el repositorio en GitHub.

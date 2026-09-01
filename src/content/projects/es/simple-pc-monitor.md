@@ -20,4 +20,16 @@ learnings:
 websiteActionText: "Visitar Sitio"
 ---
 
+### Arquitectura Nativa Win32 y Telemetría HUD
+
+**Simple PC Monitor** es una herramienta de diagnóstico compactada en un ejecutable *standalone* de solo **585 KB** con cero dependencias externas:
+
+*   **P/Invoke de Submilisegundo (<0.01 ms):** Consulta de contadores de hardware y telemetría de CPU, RAM y red mediante llamadas directas a APIs nativas de Win32 en lugar de capas lentas WMI.
+*   **Conmutación Energética con `PowrProf.dll`:** Cambio instantáneo entre esquemas de energía de Windows (*Alto Rendimiento*, *Equilibrado*, *Ahorro*) invocando `PowerSetActiveScheme` sin requerir elevación de privilegios de Administrador (UAC).
+
+### Optimización de Memoria y Resiliencia
+
+*   **Recorte Controlado de Working Set:** Función de optimización que invoca `EmptyWorkingSet` y `SetProcessWorkingSetSize` para compactar páginas de memoria inactivas sin forzar *paging thrashing*.
+*   **Gestión Segura de Procesos:** Algoritmo con lista blanca/negra de procesos del sistema mediante `QueryFullProcessImageName` para prevenir la terminación de procesos del núcleo de Windows.
+
 > **Nota**: Puedes descargar el ejecutable standalone `.exe` directamente desde la sección de Releases en GitHub sin necesidad de instaladores.
