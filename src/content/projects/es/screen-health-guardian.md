@@ -30,5 +30,6 @@ websiteActionText: "Visitar Sitio"
 ### Soporte Multimonitor y Composición DWM
 
 *   **Overlays Translúcidos con Aceleración GPU:** Renderizado simultáneo de alertas visuales sincronizadas en todas las pantallas detectadas mediante `Screen.AllScreens`, adaptándose a configuraciones de DPI mixto y orientación vertical/horizontal.
+*   **Evolución Arquitectónica Python → C#/.NET:** La migración desde un prototipo PyInstaller eliminó completamente los falsos positivos en Windows Defender, redujo la huella de RAM de ~50 MB a menos de 14 MB y eliminó la contención del GIL en bucles de temporizador de alta frecuencia.
 
 > **Nota**: Puedes descargar el instalador standalone `.exe` o el binario sin dependencias directamente desde la sección de Releases en GitHub.

@@ -28,3 +28,4 @@ websiteActionText: "Visit Page"
 ### Battery & Resource Optimization
 
 *   **Zero Battery Drain when Locked:** The timer automatically pauses when the device is locked or asleep, avoiding CPU WakeLocks and preserving battery longevity.
+*   **Android 14+ Compliance (`FOREGROUND_SERVICE_HEALTH`):** The Foreground Service explicitly declares the `health` service type, satisfying Android 14+'s stricter background process restrictions and preventing the OS from killing the monitor during active sessions.

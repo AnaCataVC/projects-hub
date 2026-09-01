@@ -29,3 +29,4 @@ websiteActionText: "Ver Página"
 ### Optimización Energética
 
 *   **Cero Consumo con Pantalla Apagada:** El temporizador se pausa automáticamente cuando la pantalla se bloquea, liberando bloqueos de activación (*WakeLocks*) y preservando la batería del dispositivo móvil.
+*   **Compatibilidad Android 14+ (`FOREGROUND_SERVICE_HEALTH`):** El Foreground Service declara el tipo `health` para cumplir con las restricciones de background más estrictas de Android 14 y versiones posteriores, garantizando que el sistema no lo mate durante el monitoreo continuo.

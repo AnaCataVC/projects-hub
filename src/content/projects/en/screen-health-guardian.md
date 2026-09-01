@@ -29,5 +29,6 @@ websiteActionText: "Visit Website"
 ### Multi-Monitor DWM Composition
 
 *   **GPU-Accelerated Translucent Overlays:** Synchronized visual reminder overlays projected across all active displays via `Screen.AllScreens`, seamlessly handling mixed-DPI scaling and dynamic monitor reconnection events.
+*   **Architectural Evolution Python → C#/.NET:** Migration from a PyInstaller prototype completely eliminated Windows Defender false positives, reduced RAM footprint from ~50 MB to under 14 MB, and removed GIL contention in high-frequency timer loops.
 
 > **Note**: You can download the pre-compiled standalone `.exe` installer or self-contained binary directly from the GitHub Releases section.

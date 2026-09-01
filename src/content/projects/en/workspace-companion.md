@@ -29,6 +29,6 @@ websiteActionText: "View Page"
 ### Pre-Flight Safety Checks & GitHub CLI Identity Switching
 
 *   **Dirty State Safeguards:** Strict validation engine running `git status --porcelain` checks prior to worktree removal, preventing accidental loss of uncommitted local modifications.
-*   **1-Click GitHub CLI Profile Switching:** Native `gh auth switch` automation enabling seamless identity swapping between personal and corporate accounts based on the active repository context.
+*   **Recursive Discovery & JSON Config Persistence:** Multi-level directory scan that detects local Git repositories and their associated worktrees, persisting root paths and preferences to a local JSON config file dynamically without restarting the app or triggering Win32 console flashes.
 
 > **Note**: You can explore the source code, review Architectural Decision Records (ADRs), and compile the Windows desktop binary from the GitHub repository.

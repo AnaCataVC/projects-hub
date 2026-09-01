@@ -30,6 +30,6 @@ websiteActionText: "Ver Página"
 ### Salvaguardas Pre-Flight y Conmutación de Identidad
 
 *   **Dirty Check & Eliminación Segura:** Algoritmo de seguridad que valida el estado del árbol de trabajo (`git status --porcelain`) antes de permitir la poda o borrado de worktrees, impidiendo la pérdida accidental de código sin commitear.
-*   **Conmutador de Cuentas GitHub CLI:** Integración con `gh auth switch` para alternar perfiles personales y corporativos al instante con detección automática según el directorio activo.
+*   **Descubrimiento Recursivo & Persistencia de Configuración:** Escaneo multinivel de directorios locales para detectar repositorios Git y sus worktrees, persistiendo la configuración dinámica de rutas raíz en un archivo JSON local sin reiniciar la aplicación ni disparar flashes de consola Win32.
 
 > **Nota**: Puedes explorar el código fuente, consultar las Decisiones de Arquitectura (ADRs) y compilar la aplicación para Windows desde el repositorio en GitHub.
