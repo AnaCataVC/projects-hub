@@ -1,35 +1,34 @@
 ---
 title: "Work Activity Panel"
 icon: "/project-icons/work-activity-panel-icon.png"
-description: "Native Windows 11 desktop application designed to streamline daily work routines: auto-launches work tools, syncs Google Calendar, backs up to Google Drive, and discovers unversioned AI context."
+description: "Native Windows 11 desktop application designed to streamline daily work routines: auto-launches work tools, reconciles Google Calendar in real-time, backs up to Google Drive, and updates in-place."
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
-technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545"]
+technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545", "GitHub Releases API"]
 categories: ["Desktop", "Productivity", "Windows", "Automation"]
 type: "desktop"
 status: "Active"
 problem: "Daily friction manually opening work tools, calendar desynchronization, lost local configurations, and lack of visibility into unversioned AI context files across projects."
-solution: "A native Windows 11 desktop app built with WinUI 3 and .NET 9 featuring Fluent Design and Mica backdrops that automates Slack/Granola launches, syncs Google Calendar, backs up settings to Google Drive with non-blocking background concurrency control, and discovers unversioned AI context."
+solution: "A native Windows 11 desktop app built with WinUI 3 and .NET 9 with Mica backdrops that automates Slack/Granola launches, reconciles mutated Google Calendar events with anti-cache headers, backs up to Google Drive with deferred Fast-Path Hash Cache, and updates in-place via GitHub Releases."
 learnings:
-  - "Building native unpackaged WinUI 3 desktop applications with MVVM architecture, Windows 11 Mica backdrops, and startup diagnostics."
-  - "Architecting non-blocking background Google Drive backup synchronization with robust concurrency control (LockService) to prevent UI thread freezes."
-  - "Designing an unversioned AI context discovery engine (CLAUDE.md, .agent folders, and references) with batched Git checking and secret scanning."
-  - "Building an RFC 5545 iCalendar parsing engine supporting line unfolding, timezone normalization, and video conference link extraction."
+  - "Accelerated Google Drive Synchronization: Background backup engine with deferred Fast-Path Hash Cache and batched unversioned AI context scanning with secret filtering."
+  - "Integrated In-App Auto-Updater: Background GitHub Releases API client with live progress reporting and seamless in-place Inno Setup execution."
+  - "Resilient RFC 5545 iCalendar Engine: Custom deserialization engine featuring in-place mutation reconciliation, timezone normalization, and video conference link extraction."
+  - "Native WinUI 3 (.NET 9) Architecture: MVVM pattern with CommunityToolkit, native Mica backdrops, and early crash diagnostics."
 websiteActionText: "Visit Website"
 ---
 
-### Native Desktop Architecture (.NET 9 & WinUI 3)
+### WinUI 3 (.NET 9) Architecture & Daily Routine Automation
 
 **Work Activity Panel** is a native Windows 11 desktop application engineered using **Windows App SDK** and **WinUI 3**:
 
-*   **MVVM Pattern & Fluent Design:** Clean architectural separation using `CommunityToolkit.Mvvm`, delivering hardware-accelerated **Mica** translucent surfaces without UI thread overhead.
-*   **Startup Diagnostics & Crash Resilience:** Global exception boundary handlers (`AppDomain.UnhandledException`, `TaskScheduler.UnobservedTaskException`) with automatic persistent disk crash dumps ensuring full observability.
+*   **MVVM Pattern & Fluent Design:** Clean architectural separation using `CommunityToolkit.Mvvm`, delivering hardware-accelerated **Mica** translucent backdrops and automated Slack/Granola execution 5 minutes before scheduled meetings.
+*   **Integrated In-App Auto-Updater:** Automated update client querying the GitHub Releases API in the background, downloading installers with reactive progress tracking and applying in-place upgrades.
 
-### Specialized Engines & Background Services
+### Calendar Reconciliation & Accelerated Storage Engines
 
-*   **RFC 5545 iCalendar Parser:** In-house calendar deserialization engine handling recurring events, multi-line unfolding, local/UTC timezone normalization, and automated video meeting link extraction (Google Meet, Zoom, Teams).
-*   **AI Context Discovery Engine:** Batched background scanner identifying unversioned AI configuration files (`CLAUDE.md`, `.agent` folders, local references) and checking their Git status to prevent accidental secret leakage.
-*   **Asynchronous Google Drive Synchronization:** Background sync worker utilizing mutex synchronization (`LockService`) to guarantee thread safety and prevent UI freezes.
+*   **RFC 5545 iCalendar Reconciliation:** In-house calendar parser with anti-cache headers that reconciles mutated events in real time, normalizes timezones, and extracts video conference links (Meet, Zoom, Teams).
+*   **Google Drive Sync & AI Contexts:** Accelerated incremental backups using deferred *Fast-Path Hash Cache* (on-demand SHA-256 computation) and batched scanning for unversioned AI directives (`CLAUDE.md`, `.agent`) with secret protection.
 
 > **Note**: You can download the pre-compiled standalone `.exe` installer from the GitHub Releases page or build the solution locally using the .NET 9 SDK.

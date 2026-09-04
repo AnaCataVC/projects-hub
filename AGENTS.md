@@ -56,7 +56,7 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
   isLiveApp: z.boolean().default(false),
   technologies: z.array(z.string()).default([]),
   categories: z.array(z.string()).default([]),
-  type: z.enum(["desktop", "mobile", "web"]).default("desktop"),
+  type: z.enum(["desktop", "mobile", "web", "ai", "data-science"]).default("desktop"),
   status: z.enum(["En Desarrollo", "Archivado", "Activo", "In Development", "Archived", "Active"]).default("Activo"),
   problem: z.string().optional(),
   solution: z.string().optional(),

@@ -5,7 +5,7 @@ icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"
 isLiveApp: false
-technologies: ["Kotlin", "Jetpack Compose", "Android"]
+technologies: ["Kotlin", "Jetpack Compose", "Foreground Services"]
 categories: ["Mobile", "Health", "Android"]
 type: "mobile"
 status: "Active"

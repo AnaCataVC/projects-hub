@@ -1,34 +1,34 @@
 ---
 title: "Workspace Companion"
-description: "Ultra-lightweight native Windows system tray and Spotlight floating utility to manage Git Worktrees with hierarchical trees, recursive scanning, and 1-click GitHub CLI switching."
+description: "Ultra-lightweight native Windows system tray and Spotlight utility to manage Git Worktrees, decoupled IDE/terminal launchers, and 1-click GitHub CLI switching."
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
 isLiveApp: false
 technologies: ["Rust", "Tauri v2", "Svelte 5", "TypeScript", "Tailwind CSS", "Git Porcelain Protocol"]
-categories: ["Desktop", "Developer Tools", "Productivity", "Windows", "Rust"]
+categories: ["Desktop", "Developer Tools", "Productivity", "Windows"]
 type: "desktop"
 status: "Active"
 problem: "Workflow friction when managing parallel feature branches with Git Worktrees, safely cleaning up merged or orphaned worktree directories, and switching GitHub CLI account identities."
-solution: "An ultra-lightweight Windows system tray micro-app (<40 MB RAM) with a Spotlight-style floating window, hierarchical worktrees tree management with 1-click dock, recursive repo discovery scanner, and dirty-checked safe batch cleaner."
+solution: "An ultra-lightweight Windows system tray micro-app (<35 MB RAM) with a Spotlight-style HUD featuring tree worktree management, independent IDE and terminal launchers, recursive repo discovery, and dirty-checked orphan cleanup with Toast alerts."
 learnings:
-  - "Hybrid Git Worktree management with hierarchical tree views, multifaceted status filters, and 1-click dock switching."
-  - "Safe batch deletion of orphaned worktrees with strict pre-flight dirty checks to prevent uncommitted data loss."
-  - "Recursive local repository discovery and dynamic configuration persistence without Win32 console flashes (CREATE_NO_WINDOW in Rust)."
-  - "Building ultra-fast reactive UIs with Svelte 5 (Runes) and Tauri v2 tray positioning integrations."
+  - "Decoupled IDE & Terminal Launchers (ADR-0004): Direct binary resolution for GUI editors (VS Code, Antigravity, Cursor, Windsurf) and consoles (Windows Terminal, Git Bash, AGY CLI) without flashing console prompts."
+  - "Hardened Orphan Worktree Cleaner: Pruning algorithm with pre-flight dirty checks, root directory false-positive guards, and native Windows Toast notifications."
+  - "Git Worktree Tree Management: Background Porcelain stream parsing with 1-click dock switching and swift GitHub CLI identity profiles."
+  - "Ultra-Fast Reactive UI with Svelte 5 (Runes) and Tauri v2 with automatic taskbar anchoring and minimal working set memory."
 websiteActionText: "View Page"
 ---
 
 ### Rust & Tauri v2 Architecture with Svelte 5
 
-**Workspace Companion** pairs **Rust's memory safety** and low-level OS capabilities with **Svelte 5 Runes** inside **Tauri v2**:
+**Workspace Companion** pairs **Rust's memory safety** and low-level OS capabilities with **Svelte 5 (Runes)** inside **Tauri v2**:
 
-*   **Git Porcelain Engine in Rust:** High-speed parser consuming machine-readable `git worktree list --porcelain` streams across background worker threads with `CREATE_NO_WINDOW` flags, preventing console window flashing on Windows.
+*   **Git Porcelain Engine in Rust:** High-speed parser consuming machine-readable `git worktree list --porcelain` streams across background worker threads with `CREATE_NO_WINDOW` flags, preventing console flashes on Windows.
 *   **Spotlight Floating Utility & System Tray:** Fast keyboard-driven HUD anchored dynamically to the Windows Taskbar Notification Area with an ultra-low working set under **35 MB RAM**.
 
-### Pre-Flight Safety Checks & GitHub CLI Identity Switching
+### Decoupled Launchers & Hardened Orphan Pruning
 
-*   **Dirty State Safeguards:** Strict validation engine running `git status --porcelain` checks prior to worktree removal, preventing accidental loss of uncommitted local modifications.
-*   **Recursive Discovery & JSON Config Persistence:** Multi-level directory scan that detects local Git repositories and their associated worktrees, persisting root paths and preferences to a local JSON config file dynamically without restarting the app or triggering Win32 console flashes.
+*   **Dual IDE & Terminal Launchers (ADR-0004):** 1-click launching for preferred code editors (VS Code, Antigravity IDE, Cursor) and developer consoles with direct executable resolution and swift GitHub CLI identity switching (`gh auth switch`).
+*   **Orphan Cleaner & Toast Notifications:** Automatic discovery of deleted upstream branches with *dirty check* guards, root worktree isolation, and native Windows Toast notifications.
 
 > **Note**: You can explore the source code, review Architectural Decision Records (ADRs), and compile the Windows desktop binary from the GitHub repository.

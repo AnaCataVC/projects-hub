@@ -6,30 +6,30 @@ descriptionEn: "Visual, lightweight HUD system telemetry dashboard and performan
 githubUrl: "https://github.com/AnaCataVC/simple-pc-monitor"
 websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
 isLiveApp: false
-technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "Direct3D"]
+technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
 categories: ["Desktop", "Windows", "Rendimiento", "Herramientas", "Telemetría"]
 type: "desktop"
 status: "Activo"
 problem: "Monitores de recursos tradicionales pesados (basados en frameworks web/Electron o scripts interpretados) que consumen excesiva memoria RAM (~100-300 MB), provocan latencia en la interfaz y suelen disparar falsos positivos heurísticos en antivirus."
-solution: "Un panel de telemetría HUD nativo y ultraligero compilado en C# (.NET WPF/XAML) que consulta métricas del sistema mediante llamadas P/Invoke a Win32 de submilisegundo (<0.01 ms), incorpora un centro de comandos con acciones rápidas, conmutación de planes de energía con PowrProf.dll, optimización de memoria y limpiador seguro del sistema."
+solution: "Un panel de telemetría HUD y centro de comandos en C# nativo (.NET WPF/XAML) de solo 585 KB que combina métricas P/Invoke de submilisegundo, monitor de sesiones de Agentes IA y servidores MCP, terminación de procesos en árbol inverso, congelación con NtSuspendProcess y planes de energía en 1 clic."
 learnings:
-  - "Diseño de interfaz HUD de alto rendimiento con centro de comandos, métricas en tiempo real y botones de acción rápida para control de energía y limpieza del sistema."
-  - "Conmutación de Planes de Energía con Win32: Uso de PowrProf.dll (PowerSetActiveScheme) para alternar perfiles energéticos al instante sin requerir elevación de permisos UAC de Administrador."
-  - "Gestión de Procesos Segura y Resiliente: Integración de QueryFullProcessImageName con lista negra estricta para prevenir la terminación accidental de procesos críticos del sistema operativo."
-  - "Optimización Segura de Memoria RAM: Recorte del Working Set mediante SetProcessWorkingSetSize y EmptyWorkingSet para liberar páginas físicas de memoria de forma controlada y segura."
+  - "Monitor de Agentes IA & MCP: Telemetría en tiempo real de sesiones CLI (claude, gemini, cursor, antigravity) y servidores MCP con Reverse Tree Kill para evitar procesos huérfanos."
+  - "Control de Procesos a Nivel de Kernel: Congelación y reanudación segura de procesos desbocados con ntdll.dll (NtSuspendProcess / NtResumeProcess) y cierre elegante en dos fases."
+  - "Conmutación Energética con PowrProf.dll: Alternancia instantánea de perfiles de energía (PowerSetActiveScheme) combinada con recorte seguro de páginas de memoria inactivas (EmptyWorkingSet)."
+  - "Limpiador Seguro Multizona: Purga higiénica de archivos temporales del sistema protegida contra enlaces simbólicos (NTFS Junctions) y validación de marcas temporales duales."
 websiteActionText: "Visitar Sitio"
 ---
 
-### Arquitectura Nativa Win32 y Telemetría HUD
+### Arquitectura Nativa Win32 y Sesiones de Agentes IA
 
-**Simple PC Monitor** es una herramienta de diagnóstico compactada en un ejecutable *standalone* de solo **585 KB** con cero dependencias externas:
+**Simple PC Monitor** es un centro de comandos de alto rendimiento compactado en un único ejecutable *standalone* de **585 KB** con cero dependencias externas:
 
-*   **P/Invoke de Submilisegundo (<0.01 ms):** Consulta de contadores de hardware y telemetría de CPU, RAM y red mediante llamadas directas a APIs nativas de Win32 en lugar de capas lentas WMI.
-*   **Conmutación Energética con `PowrProf.dll`:** Cambio instantáneo entre esquemas de energía de Windows (*Alto Rendimiento*, *Equilibrado*, *Ahorro*) invocando `PowerSetActiveScheme` sin requerir elevación de privilegios de Administrador (UAC).
+*   **P/Invoke y Telemetría HUD (<0.01 ms):** Consulta de contadores de hardware y red mediante llamadas directas a APIs nativas de Win32, sin la latencia de WMI ni runtimes externos.
+*   **Monitor de Agentes IA & Servidores MCP:** Detección en vivo de sesiones de desarrollo (`claude.exe`, `gemini.exe`, `cursor.exe`, `antigravity.exe`) y subprocesos MCP, con terminación jerárquica en árbol inverso (*Reverse Topological Tree Kill*) que elimina procesos huérfanos en segundo plano.
 
-### Optimización de Memoria y Resiliencia
+### Control a Nivel de Kernel y Optimización
 
-*   **Recorte Controlado de Working Set:** Función de optimización que invoca `EmptyWorkingSet` y `SetProcessWorkingSetSize` para compactar páginas de memoria inactivas sin forzar *paging thrashing*.
-*   **Gestión Segura de Procesos:** Algoritmo con lista blanca/negra de procesos del sistema mediante `QueryFullProcessImageName` para prevenir la terminación de procesos del núcleo de Windows.
+*   **Control de Procesos en Kernel (`ntdll.dll`):** Suspensión y reactivación instantánea de hilos con `NtSuspendProcess` y `NtResumeProcess` para congelar tareas intensivas sin perder datos, junto a un protocolo de cierre elegante en dos fases con detección de System Tray.
+*   **Centro de Comandos en 1 Clic:** Conmutación de esquemas de energía mediante `PowrProf.dll`, modo Turbo con recorte de memoria RAM (`EmptyWorkingSet`), vaciado de caché DNS y limpiador multizona inmune a *Junctions* de NTFS.
 
 > **Nota**: Puedes descargar el ejecutable standalone `.exe` directamente desde la sección de Releases en GitHub sin necesidad de instaladores.
