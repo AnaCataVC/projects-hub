@@ -57,17 +57,17 @@
         localStorage.setItem('lang', targetLang);
         
         if (targetLang === 'es') {
-            (window as any).updateToggleUI?.(btnEs, btnEn, indicator, false);
+            window.updateToggleUI?.(btnEs, btnEn, indicator, false);
         } else {
-            (window as any).updateToggleUI?.(btnEn, btnEs, indicator, true);
+            window.updateToggleUI?.(btnEn, btnEs, indicator, true);
         }
-        if (typeof (window as any).updateUIText === 'function') {
-            (window as any).updateUIText(targetLang);
+        if (typeof window.updateUIText === 'function') {
+            window.updateUIText(targetLang);
         }
     }
 
-    (window as any).setLanguageGlobal = setLanguage;
-    (window as any).toggleLanguageGlobal = () => setLanguage();
+    window.setLanguageGlobal = setLanguage;
+    window.toggleLanguageGlobal = () => setLanguage();
 
     if (btnEs && btnEn) {
         btnEs.addEventListener('click', () => setLanguage('es'));
