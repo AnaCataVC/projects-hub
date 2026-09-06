@@ -16,3 +16,17 @@ learnings:
   - "Implementing a deterministic rules engine using Pearson/Spearman coefficients and mean variances to recommend specific chart types."
   - "Fine-tuning Plotly layouts (custom typography, removing axis borders, and applying curated color palettes) to produce modern, publication-ready charts."
 ---
+
+### Custom Pandas Engine Instead of Heavy Profiling Libraries
+
+**PlotThis** replaced third-party data-profiling libraries after they caused multiprocessing deadlocks inside Streamlit's reactive runtime:
+
+*   **Native Pandas Engine:** A custom, highly-optimized Pandas-only engine infers semantic column types and compiles statistical summaries in milliseconds, with no external profiling dependency to deadlock.
+*   **Deterministic Chart Recommendation:** A rules engine built on Pearson/Spearman correlation coefficients and variance comparisons suggests the chart type that best fits each dataset, without calling any AI API.
+
+### Local-First, Privacy-Focused Analysis
+
+*   **Plotly Express Styling:** Custom typography, borderless axes, and curated color palettes turn default Plotly charts into publication-ready visuals.
+*   **No External APIs:** Every computation runs locally inside the Streamlit app — datasets never leave the machine.
+
+> **Note**: Archived after validating the local-first analysis approach — the source is available on GitHub.

@@ -2,12 +2,11 @@
 title: "Screen Health Guardian"
 icon: "/project-icons/screen-health-guardian-icon.png"
 description: "Aplicación de escritorio nativa y ultraligera para Windows que promueve la salud visual y postural monitoreando la actividad real del usuario con soporte multimonitor."
-descriptionEn: "High-performance, ultra-lightweight native Windows desktop application designed to promote ocular and postural wellness with multi-monitor reminder support."
 githubUrl: "https://github.com/AnaCataVC/screen-health-guardian"
 websiteUrl: "https://screen-health-guardian.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET 9", "WPF", "XAML", "Win32 API", "Multi-Monitor", "Fluent Design"]
-categories: ["Salud", "Desktop", "Windows", "Productividad"]
+categories: ["Salud", "Windows", "Productividad"]
 type: "desktop"
 status: "Activo"
 problem: "Fatiga visual y sobrecarga postural tras largas horas continuas frente a la pantalla, sumado a las limitaciones de herramientas empaquetadas en Python (PyInstaller) que generaban falsos positivos en antivirus y falta de cobertura multimonitor."

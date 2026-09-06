@@ -6,7 +6,7 @@ githubUrl: "https://github.com/AnaCataVC/screen-health-guardian"
 websiteUrl: "https://screen-health-guardian.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET 9", "WPF", "XAML", "Win32 API", "Multi-Monitor", "Fluent Design"]
-categories: ["Health", "Desktop", "Windows", "Productivity"]
+categories: ["Health", "Windows", "Productivity"]
 type: "desktop"
 status: "Active"
 problem: "Digital eye strain and postural fatigue caused by prolonged screen time, combined with packaging challenges in Python (PyInstaller) that caused heuristic antivirus false positives, high background RAM consumption (~50 MB), and lack of multi-monitor coverage."

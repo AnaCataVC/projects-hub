@@ -2,12 +2,11 @@
 title: "Simple PC Monitor"
 icon: "/project-icons/simple-pc-monitor-icon.png"
 description: "Panel interactivo de telemetría HUD y suite de control de rendimiento para Windows en C# nativo (.NET WPF/XAML) en un único ejecutable standalone de 585 KB sin dependencias externas."
-descriptionEn: "Visual, lightweight HUD system telemetry dashboard and performance control suite for Windows built in native C# (.NET WPF/XAML) in a standalone 585 KB executable with zero external dependencies."
 githubUrl: "https://github.com/AnaCataVC/simple-pc-monitor"
 websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
-categories: ["Desktop", "Windows", "Rendimiento", "Herramientas", "Telemetría"]
+categories: ["Windows", "Rendimiento", "Herramientas", "Telemetría"]
 type: "desktop"
 status: "Activo"
 problem: "Monitores de recursos tradicionales pesados (basados en frameworks web/Electron o scripts interpretados) que consumen excesiva memoria RAM (~100-300 MB), provocan latencia en la interfaz y suelen disparar falsos positivos heurísticos en antivirus."

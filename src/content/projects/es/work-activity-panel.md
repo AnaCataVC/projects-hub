@@ -2,12 +2,11 @@
 title: "Work Activity Panel"
 icon: "/project-icons/work-activity-panel-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 que optimiza la jornada laboral: auto-inicia herramientas, automatiza Granola previo a reuniones, reconcilia Google Calendar, conmuta cuentas de GitHub CLI y respalda en Google Drive."
-descriptionEn: "Native Windows 11 desktop application designed to streamline daily work routines: auto-launches work tools, automates Granola before meetings, reconciles Google Calendar, switches GitHub CLI accounts, and backs up to Google Drive."
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545", "GitHub CLI Integration", "GitHub Releases API"]
-categories: ["Desktop", "Productividad", "Windows", "Automatización"]
+categories: ["Productividad", "Windows", "Automatización"]
 type: "desktop"
 status: "Activo"
 problem: "Fricción diaria al abrir herramientas manualmente, desincronización de agendas, falta de preparación previa para reuniones, pérdida de respaldos de carpetas de trabajo y tedio al cambiar credenciales de GitHub CLI entre cuentas personales y laborales."

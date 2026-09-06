@@ -6,7 +6,7 @@ githubUrl: "https://github.com/AnaCataVC/simple-pc-monitor"
 websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
-categories: ["Desktop", "Windows", "Performance", "Tools", "Telemetry"]
+categories: ["Windows", "Performance", "Tools", "Telemetry"]
 type: "desktop"
 status: "Active"
 problem: "Bulky system telemetry monitors (built on heavy web runtimes or uncompiled scripts) consuming excessive memory overhead (~100-300 MB RAM), introducing UI thread contention, and triggering false-positive heuristic flags on modern antivirus software."

@@ -1,7 +1,6 @@
 ---
 title: "Prima Focus"
 description: "Aplicación multiplataforma local-first (Android nativo y cliente de escritorio en Java) enfocada en la productividad mediante un sistema predictivo de prioridades, widgets con Jetpack Glance y sincronización P2P/LAN."
-descriptionEn: "Local-first cross-platform application (native Android and Java desktop companion) focused on productivity through a predictive priority system, Jetpack Glance widgets, and P2P/LAN sync."
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus-showcase"
 websiteUrl: "https://prima-focus.ana-catalina.com"

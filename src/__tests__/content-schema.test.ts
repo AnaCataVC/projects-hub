@@ -8,7 +8,6 @@ import { z } from "zod";
 const projectSchema = z.object({
   title: z.string(),
   description: z.string(),
-  descriptionEn: z.string().optional(),
   icon: z.string().optional(),
   githubUrl: z.string().optional(),
   liveAppUrl: z.string().optional(),
@@ -132,14 +131,6 @@ describe("content schema — type enum", () => {
 // Optional fields
 // ---------------------------------------------------------------------------
 describe("content schema — optional fields", () => {
-  it("accepts descriptionEn when provided", () => {
-    const result = projectSchema.safeParse({
-      ...minimalValid,
-      descriptionEn: "English description.",
-    });
-    expect(result.success).toBe(true);
-  });
-
   it("accepts githubUrl when provided", () => {
     const result = projectSchema.safeParse({
       ...minimalValid,
@@ -151,7 +142,6 @@ describe("content schema — optional fields", () => {
   it("accepts a full entry with all optional fields", () => {
     const full = {
       ...minimalValid,
-      descriptionEn: "English desc",
       icon: "🚀",
       githubUrl: "https://github.com/x/y",
       liveAppUrl: "https://example.com/app",

@@ -1,7 +1,6 @@
 ---
 title: "Rest Your Eyes"
 description: "Aplicación nativa para Android diseñada para prevenir la fatiga visual generada por el uso prolongado de dispositivos móviles."
-descriptionEn: "Native Android application designed to prevent eye strain caused by prolonged mobile device usage."
 icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"

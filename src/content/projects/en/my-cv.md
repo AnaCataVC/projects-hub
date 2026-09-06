@@ -17,3 +17,17 @@ learnings:
   - "Integrating dynamic theming using Tailwind and CSS variables facilitates scalability and personalization."
 websiteActionText: "View Demo"
 ---
+
+### From Personal Resume to Reusable SSG Template
+
+**My CV Template** started as a one-off personal resume and was refactored into a distributable template:
+
+*   **Single Config File:** All personal content lives in one `data.js` file — anyone can deploy their own portfolio by editing data, never touching HTML or CSS.
+*   **Handlebars Templating:** Markup structure is fully decoupled from personal content, so forking the repo requires no HTML edits at all.
+
+### Zero-JS, Themeable Output
+
+*   **Vite Static Build:** Compiles to fully static HTML with no client-side framework runtime, keeping the final bundle dependency-free.
+*   **Tailwind + CSS Variables:** Dynamic theming is driven by CSS custom properties on top of Tailwind, so color schemes can be swapped without editing component markup.
+
+> **Note**: Archived after serving its purpose as a shareable template — the source is available on GitHub.

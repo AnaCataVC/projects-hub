@@ -2,12 +2,11 @@
 title: "Claude Desktop Tools"
 icon: "/project-icons/claude-desktop-tools-icon.png"
 description: "Centro de comando visual autónomo para Windows 11 que audita almacenamiento local, poda transcripts CLI y sesiones de Claude Desktop de forma segura, filtra secretos y respalda directivas IA en Google Drive."
-descriptionEn: "Autonomous visual workstation hub for Windows 11 designed to audit local storage, safely prune CLI transcripts and Claude Desktop sessions, filter secrets, and back up AI steering directives to Google Drive."
 githubUrl: "https://github.com/AnaCataVC/claude-desktop-tools"
 websiteUrl: "https://claude-desktop-tools.ana-catalina.com"
 isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "Regex Secret Scanning", "Claude CLI", "Claude Desktop", "Inno Setup"]
-categories: ["Desktop", "IA", "Windows", "Developer Tools", "Productividad"]
+categories: ["IA", "Windows", "Developer Tools", "Productividad"]
 type: "desktop"
 status: "Activo"
 problem: "El uso intensivo de Claude Code (CLI) y Claude Desktop acumula gigabytes de transcripts (.jsonl), satura las listas de sesiones de la interfaz gráfica y expone directivas IA no versionadas (CLAUDE.md, skills, agents, hooks) al riesgo de pérdida local o fuga de credenciales sensibles."

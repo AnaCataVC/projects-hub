@@ -6,7 +6,7 @@ githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545", "GitHub CLI Integration", "GitHub Releases API"]
-categories: ["Desktop", "Productivity", "Windows", "Automation"]
+categories: ["Productivity", "Windows", "Automation"]
 type: "desktop"
 status: "Active"
 problem: "Daily friction manually launching work tools, calendar desynchronization, lack of automated meeting preparedness, risk of losing local work file changes, and tedious account switching between personal and work GitHub CLI profiles."

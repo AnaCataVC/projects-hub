@@ -6,7 +6,7 @@ githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
 isLiveApp: false
 technologies: ["Rust", "Tauri v2", "Svelte 5", "TypeScript", "Tailwind CSS", "Git Porcelain Protocol"]
-categories: ["Desktop", "Developer Tools", "Productivity", "Windows"]
+categories: ["Developer Tools", "Productivity", "Windows"]
 type: "desktop"
 status: "Active"
 problem: "Workflow friction when managing parallel feature branches with Git Worktrees, safely cleaning up merged or orphaned worktree directories, and switching GitHub CLI account identities."

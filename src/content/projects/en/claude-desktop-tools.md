@@ -6,7 +6,7 @@ githubUrl: "https://github.com/AnaCataVC/claude-desktop-tools"
 websiteUrl: "https://claude-desktop-tools.ana-catalina.com"
 isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "Regex Secret Scanning", "Claude CLI", "Claude Desktop", "Inno Setup"]
-categories: ["Desktop", "AI", "Windows", "Developer Tools", "Productivity"]
+categories: ["AI", "Windows", "Developer Tools", "Productivity"]
 type: "desktop"
 status: "Active"
 problem: "Heavy usage of Claude Code (CLI) and Claude Desktop accumulates gigabytes of transcript files (.jsonl), clutters graphical session lists, and puts unversioned AI steering directives (CLAUDE.md, skills, agents, hooks) at risk of local loss or accidental secret leaks."

@@ -1,7 +1,6 @@
 ---
 title: "PlotThis"
 description: "Aplicación web interactiva local, enfocada en la privacidad, diseñada para analizar datasets estructurados, sugerir los tipos de gráficos más adecuados y generar insights estadísticos automáticos, sin recurrir a Inteligencia Artificial (IA) ni a APIs externas."
-descriptionEn: "A local, privacy-focused interactive web application to analyze structured datasets, suggest the most appropriate chart types, and generate automated statistical insights, without using Artificial Intelligence (AI) or third-party APIs."
 icon: "/project-icons/plot-this-icon.png"
 githubUrl: "https://github.com/AnaCataVC/plot-this"
 liveAppUrl: "https://plot-this.ana-catalina.com"
@@ -17,3 +16,17 @@ learnings:
   - "Implementar un motor de reglas determinista que evalúa coeficientes de Pearson/Spearman y diferencias de medias para sugerir gráficos idóneos."
   - "Personalizar las propiedades del layout de Plotly Express (tipografía, eliminación de bordes de eje y paletas coordinadas) para producir gráficos con acabado visual moderno y premium."
 ---
+
+### Motor Propio en Pandas en Vez de Librerías de Profiling Pesadas
+
+**PlotThis** reemplazó librerías de profiling de terceros después de que causaran deadlocks de multiprocesamiento dentro del entorno reactivo de Streamlit:
+
+*   **Motor Nativo en Pandas:** Un motor propio y altamente optimizado, construido sólo con Pandas, infiere tipos semánticos de columnas y compila resúmenes estadísticos en milisegundos, sin depender de librerías externas de profiling.
+*   **Recomendación Determinista de Gráficos:** Un motor de reglas basado en coeficientes de correlación de Pearson/Spearman y comparaciones de varianza sugiere el tipo de gráfico más adecuado para cada dataset, sin llamar a ninguna API de IA.
+
+### Análisis Local y Enfocado en Privacidad
+
+*   **Estilizado con Plotly Express:** Tipografía personalizada, ejes sin bordes y paletas de colores curadas convierten los gráficos por defecto de Plotly en visualizaciones listas para publicar.
+*   **Sin APIs Externas:** Todo el cómputo corre localmente dentro de la app de Streamlit — los datasets nunca salen de la máquina.
+
+> **Nota**: Archivado tras validar el enfoque de análisis local-first — el código está disponible en GitHub.
