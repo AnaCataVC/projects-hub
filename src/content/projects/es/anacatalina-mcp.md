@@ -3,7 +3,7 @@ title: "AI-Native Interactive Resume (MCP Server)"
 description: "Servidor Model Context Protocol (MCP) que permite a Inteligencias Artificiales interactuar con mi experiencia profesional."
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
-websiteUrl: "https://anacatalina-mcp-165536131179.us-central1.run.app/"
+websiteUrl: "https://mcp.ana-catalina.com/"
 isLiveApp: false
 technologies: ["Python 3.12", "FastAPI", "Pydantic v2", "Server-Sent Events (SSE)", "Docker", "Google Cloud Run", "Model Context Protocol"]
 categories: ["IA", "API", "Backend", "Cloud"]
