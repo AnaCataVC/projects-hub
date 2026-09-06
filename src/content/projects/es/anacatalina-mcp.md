@@ -10,7 +10,7 @@ categories: ["IA", "API", "Backend", "Cloud"]
 type: "ai"
 status: "Activo"
 problem: "Los currículums web tradicionales están diseñados para ser leídos por humanos, pero hoy en día los asistentes de IA (como Claude o Gemini) son quienes procesan esta información inicialmente, limitados por la necesidad de scraping y la falta de estructuración de los datos."
-solution: "Una API nativa para Inteligencias Artificiales, construida bajo el Model Context Protocol oficial, que expone 8 tools especializadas para consultar experiencia, evaluar perfiles matemáticos con vacantes y buscar en el stack tecnológico, diseñada específicamente para el razonamiento de LLMs mediante schemas estrictos en Pydantic."
+solution: "Una API nativa para Inteligencias Artificiales, construida bajo el Model Context Protocol oficial, que expone 9 tools especializadas para consultar experiencia, evaluar perfiles matemáticos con vacantes y buscar en el stack tecnológico, diseñada específicamente para el razonamiento de LLMs mediante schemas estrictos en Pydantic."
 learnings:
   - "Integración exitosa del protocolo emergente MCP, adaptando la arquitectura para soportar comunicación bidireccional asíncrona mediante Server-Sent Events (SSE)."
   - "Resolución de conflictos complejos de dependencias fijando deliberadamente la versión en FastMCP v1 en vez de migrar a v2, manteniendo el servicio estable sin necesidad de una reescritura inmediata."
@@ -37,9 +37,9 @@ Para interactuar con mi experiencia profesional en tiempo real desde tu propio a
 ```
 
 **Herramientas clave expuestas para el razonamiento de la IA:**
-* `query_experience`: Consulta de trayectoria profesional, roles y logros detallados.
-* `match_job_fit`: Evaluación algorítmica de compatibilidad técnica con descripciones de vacantes.
-* `search_stack`: Búsqueda granular y nivel de dominio en tecnologías específicas.
+* `obtener_experiencia`: Consulta de trayectoria profesional, roles y logros detallados.
+* `evaluar_fit_puesto`: Evaluación algorítmica de compatibilidad técnica con descripciones de vacantes.
+* `obtener_stack_tecnologico`: Búsqueda granular y nivel de dominio en tecnologías específicas.
 
 ### Arquitectura Técnica
 

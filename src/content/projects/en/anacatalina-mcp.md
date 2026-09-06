@@ -10,7 +10,7 @@ categories: ["AI", "API", "Backend", "Cloud"]
 type: "ai"
 status: "Active"
 problem: "Traditional web resumes are designed for humans to read, but today AI assistants (like Claude or Gemini) are often the ones initially processing this information, limited by the need for scraping and unstructured data."
-solution: "A native API for Artificial Intelligences, built using the official Model Context Protocol, exposing 8 specialized tools to query experience, mathematically evaluate profile fit for job openings, and search the tech stack, designed specifically for LLM reasoning using strict Pydantic schemas."
+solution: "A native API for Artificial Intelligences, built using the official Model Context Protocol, exposing 9 specialized tools to query experience, mathematically evaluate profile fit for job openings, and search the tech stack, designed specifically for LLM reasoning using strict Pydantic schemas."
 learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Server-Sent Events (SSE)."
   - "Resolution of complex dependency conflicts by deliberately pinning to FastMCP v1 instead of migrating to v2, keeping the service stable without an immediate rewrite."
@@ -37,9 +37,9 @@ To interact with my professional experience in real-time using your own AI assis
 ```
 
 **Key tools exposed for LLM reasoning:**
-* `query_experience`: Query career trajectory, detailed roles, and achievements.
-* `match_job_fit`: Algorithmic evaluation of technical compatibility with job descriptions.
-* `search_stack`: Granular search and proficiency levels across specific technologies.
+* `obtener_experiencia`: Query career trajectory, detailed roles, and achievements.
+* `evaluar_fit_puesto`: Algorithmic evaluation of technical compatibility with job descriptions.
+* `obtener_stack_tecnologico`: Granular search and proficiency levels across specific technologies.
 
 ### Technical Architecture
 
