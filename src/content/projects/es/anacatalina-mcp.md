@@ -24,13 +24,29 @@ Esto permite que cualquier cliente LLM que soporte MCP (como Claude Desktop o ed
 
 ### ⚡ Conexión Rápida (Claude Desktop & Cursor)
 
-Para interactuar con mi experiencia profesional en tiempo real desde tu propio asistente de IA, agrega esta configuración a tu archivo `claude_desktop_config.json`:
+**Cursor** soporta servidores MCP remotos por URL de forma nativa. Agrega esto a tu `mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "anacatalina-resume": {
       "url": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+    }
+  }
+}
+```
+
+**Claude Desktop**, en cambio, solo admite servidores locales por `stdio` en su `claude_desktop_config.json` (un campo `url` ahí no se conecta). Para usarlo, clona este repositorio y agrega esta configuración apuntando al puente `conecta_cata.py` incluido:
+
+```json
+{
+  "mcpServers": {
+    "anacatalina-resume": {
+      "command": "python",
+      "args": ["<ruta-local>/conecta_cata.py"],
+      "env": {
+        "MCP_SERVER_SSE_URL": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+      }
     }
   }
 }

@@ -24,13 +24,29 @@ This allows any LLM client supporting MCP (such as Claude Desktop or IDEs like C
 
 ### ⚡ Quick Connect (Claude Desktop & Cursor)
 
-To interact with my professional experience in real-time using your own AI assistant, add this configuration to your `claude_desktop_config.json`:
+**Cursor** natively supports remote MCP servers over a URL. Add this to your `mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "anacatalina-resume": {
       "url": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+    }
+  }
+}
+```
+
+**Claude Desktop**, on the other hand, only supports local `stdio` servers in its `claude_desktop_config.json` (a bare `url` field there won't connect). To use it, clone this repository and add this configuration pointing to the included `conecta_cata.py` bridge:
+
+```json
+{
+  "mcpServers": {
+    "anacatalina-resume": {
+      "command": "python",
+      "args": ["<local-path>/conecta_cata.py"],
+      "env": {
+        "MCP_SERVER_SSE_URL": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+      }
     }
   }
 }
