@@ -10,10 +10,13 @@
 ## Tech Stack & Architecture
 
 - **Framework:** [Astro 7](https://astro.build/) (Static Site Generation / Zero JS by default)
+- **Runtime:** Node.js `>= 22.12.0` (LTS)
 - **Bundler & Compiler:** Vite + Astro Rust Compiler
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (managed directly via `@tailwindcss/vite` plugin)
 - **Content Management:** Astro Content Collections (`glob` loader + Zod schema in `src/content.config.ts`)
 - **Typography:** JetBrains Mono (Console/Code), Outfit (Headings), Inter (Body)
+- **Testing & Quality:** Vitest 4 (`astro/container` component tests) + ESLint 10 + TypeScript Strict
+- **CI / Automation:** GitHub Actions (`.github/workflows/ci.yml`) on Node.js 22 LTS
 - **Deployment:** Vercel (with `@astrojs/sitemap` and `@vercel/analytics`)
 
 ---
@@ -90,4 +93,6 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
    - STRICTLY English for both the commit title (`feat: ...`, `fix: ...`) and the body text.
 9. **Dev Server Fallback (Windows):**
    - If `npm run dev` encounters silent socket issues on Windows, the verified static fallback is `npm run build` followed by `npx serve dist -l 4321`.
+10. **Runtime Engine Requirement (Node.js 22+):**
+   - Astro 7 strictly requires Node.js `>= 22.12.0`. All local development environments, CI workflows, and container runtimes must use Node 22 LTS or newer to execute type-checking (`astro check`) and production builds.
 

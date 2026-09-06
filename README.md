@@ -48,8 +48,11 @@ The hub features a **Dual Interface Architecture**: an interactive, keyboard-dri
 ### 4. Tech Stack
 
 - **Framework:** [Astro 7](https://astro.build/) (Static Site Generation / Zero JS by default)
+- **Runtime:** [Node.js](https://nodejs.org/) v22.12.0+ (LTS)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) via `@tailwindcss/vite`
 - **Content Engine:** Astro Content Collections (`glob` loader + Zod schema in `src/content.config.ts`)
+- **Testing & Quality:** [Vitest 4](https://vitest.dev/) (`astro/container` component tests) + [ESLint 10](https://eslint.org/) + TypeScript Strict
+- **CI / Automation:** GitHub Actions (`.github/workflows/ci.yml`) on Node.js 22 LTS
 - **Typography:** JetBrains Mono (Terminal & Code), Outfit (Headings), Inter (Body)
 - **Deployment & Analytics:** Vercel + `@astrojs/sitemap` + `@vercel/analytics`
 
@@ -59,12 +62,16 @@ The hub features a **Dual Interface Architecture**: an interactive, keyboard-dri
 
 ```text
 projects-hub/
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # Automated 5-stage CI workflow (Node 22 LTS)
 ├── docs/
 │   └── DESIGN_SYSTEM.md         # Color tokens, typography, and UI guidelines
 ├── public/
 │   ├── project-icons/           # High-resolution application badges
 │   └── favicon.svg              # Vector brand icon
 ├── src/
+│   ├── __tests__/               # Vitest suites (content schema, component rendering, terminal logic)
 │   ├── components/              # Reusable Astro components (ThemeToggle, LanguageToggle, etc.)
 │   ├── content/
 │   │   └── projects/            # Bilingual Markdown case studies (15 en / 15 es)
@@ -78,10 +85,15 @@ projects-hub/
 │   │   └── [...project].astro   # Dynamic route generator for case studies
 │   ├── styles/
 │   │   └── global.css           # Tailwind v4 theme variables & animations
-│   └── content.config.ts        # Content Collections schema validation
+│   ├── utils/                   # Pure terminal navigation & categorization helpers
+│   ├── content.config.ts        # Content Collections schema validation
+│   └── env.d.ts                 # TypeScript global window definitions
 ├── AGENTS.md                    # AI Agent steering & architectural standards
 ├── astro.config.mjs             # Astro & Vite plugin configuration
+├── eslint.config.js             # ESLint 10 flat configuration
 ├── package.json
+├── tsconfig.json                # Strict TypeScript configuration
+├── vitest.config.ts             # Vitest test runner configuration
 └── README.md
 ```
 
@@ -90,7 +102,7 @@ projects-hub/
 ### 6. Local Development
 
 #### Prerequisites
-- [Node.js](https://nodejs.org/) (v18.17.0+ or v20+)
+- [Node.js](https://nodejs.org/) (v22.12.0+ LTS — required by Astro 7)
 - `npm`
 
 #### Installation
@@ -99,8 +111,8 @@ projects-hub/
 git clone https://github.com/AnaCataVC/projects-hub.git
 cd projects-hub
 
-# Install dependencies
-npm install
+# Install dependencies deterministically
+npm ci
 ```
 
 #### Running the Development Server
@@ -108,6 +120,16 @@ npm install
 npm run dev
 ```
 Open [http://localhost:4321](http://localhost:4321) in your browser.
+
+#### Running Tests & Code Quality Checks
+```bash
+# Run unit tests
+npm test
+
+# Run static type checking & linter
+npm run type-check
+npm run lint
+```
 
 #### Building for Production
 ```bash
@@ -126,6 +148,10 @@ npx serve dist -l 4321
 ### 7. Key Learnings & Engineering Takeaways
 
 - **Astro 7 & Rust Compiler:** Leveraging the strict Rust-based compiler for HTML integrity, rapid hot-module replacement, and zero-JS static payload generation.
+- **Node.js 22 LTS Runtime Requirement:** Managing framework engine constraints where Astro 7 strictly enforces Node.js `>= 22.12.0`, requiring alignment across developer machines, container setups, and GitHub Actions runners.
+- **Automated 5-Layer CI Quality Gate:** Architecting a headless GitHub Actions pipeline that validates locks (`npm ci`), types (`astro check`), linting (`eslint`), unit tests (`vitest`), and builds (`astro build`) in under 30 seconds before merging or deploying to production.
+- **Deterministic Dependency Management:** Enforcing committed lockfiles (`package-lock.json`) coupled with `npm ci` in clean Linux runners to eliminate version drift and peer-dependency inconsistencies.
+- **Headless Component Testing via `astro/container`:** Validating server-rendered markup, prop injection, and DOM attributes in Vitest without incurring browser spin-up overhead.
 - **Tailwind CSS v4 Integration:** Utilizing the first-class `@tailwindcss/vite` plugin with native `@theme` CSS custom properties, eliminating legacy PostCSS boilerplate.
 - **Pure Terminal State Machine:** Implementing Unix-like folder navigation, history tracking, dynamic search indexing, and touch-pointer branch switches without third-party UI dependencies.
 - **Zero-JS SEO Architecture:** Injecting rich Schema.org structured data directly at build time to maintain top-tier Lighthouse scores and perfect search crawler indexability.
@@ -174,8 +200,11 @@ El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal
 ### 4. Tecnologías Utilizadas
 
 - **Framework:** [Astro 7](https://astro.build/) (Generación de Sitio Estático / Cero JS por defecto)
+- **Entorno de Ejecución:** [Node.js](https://nodejs.org/) v22.12.0+ (LTS)
 - **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/) mediante `@tailwindcss/vite`
 - **Gestor de Contenido:** Colecciones de Contenido de Astro (`glob` loader + validación Zod en `src/content.config.ts`)
+- **Pruebas y Calidad:** [Vitest 4](https://vitest.dev/) (pruebas de componentes con `astro/container`) + [ESLint 10](https://eslint.org/) + TypeScript Estricto
+- **CI / Automatización:** GitHub Actions (`.github/workflows/ci.yml`) en Node.js 22 LTS
 - **Tipografía:** JetBrains Mono (Terminal y Código), Outfit (Encabezados), Inter (Cuerpo)
 - **Despliegue y Métricas:** Vercel + `@astrojs/sitemap` + `@vercel/analytics`
 
@@ -185,12 +214,16 @@ El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal
 
 ```text
 projects-hub/
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # Pipeline automatizado de CI en 5 etapas (Node 22 LTS)
 ├── docs/
 │   └── DESIGN_SYSTEM.md         # Tokens de color, tipografía y lineamientos de UI
 ├── public/
 │   ├── project-icons/           # Íconos de aplicación en alta resolución
 │   └── favicon.svg              # Ícono vectorial de marca
 ├── src/
+│   ├── __tests__/               # Suites de Vitest (esquema de contenido, renderizado de componentes y terminal)
 │   ├── components/              # Componentes Astro reutilizables (ThemeToggle, LanguageToggle, etc.)
 │   ├── content/
 │   │   └── projects/            # Fichas técnicas Markdown bilingües (15 es / 15 en)
@@ -204,10 +237,15 @@ projects-hub/
 │   │   └── [...project].astro   # Generador dinámico de rutas para estudios de caso
 │   ├── styles/
 │   │   └── global.css           # Variables de tema y animaciones de Tailwind v4
-│   └── content.config.ts        # Validación de esquemas de Colecciones de Contenido
+│   ├── utils/                   # Utilidades puras de navegación y categorización de terminal
+│   ├── content.config.ts        # Validación de esquemas de Colecciones de Contenido
+│   └── env.d.ts                 # Definiciones globales de TypeScript para window
 ├── AGENTS.md                    # Directrices y estándares de arquitectura para agentes de IA
 ├── astro.config.mjs             # Configuración de integración de Astro y Vite
+├── eslint.config.js             # Configuración Flat de ESLint 10
 ├── package.json
+├── tsconfig.json                # Configuración estricta de TypeScript
+├── vitest.config.ts             # Configuración del ejecutor de pruebas Vitest
 └── README.md
 ```
 
@@ -216,7 +254,7 @@ projects-hub/
 ### 6. Desarrollo Local
 
 #### Requisitos Previos
-- [Node.js](https://nodejs.org/) (v18.17.0+ o v20+)
+- [Node.js](https://nodejs.org/) (v22.12.0+ LTS — requerido por Astro 7)
 - `npm`
 
 #### Instalación
@@ -225,8 +263,8 @@ projects-hub/
 git clone https://github.com/AnaCataVC/projects-hub.git
 cd projects-hub
 
-# Instalar dependencias
-npm install
+# Instalar dependencias de forma determinista
+npm ci
 ```
 
 #### Iniciar el Servidor de Desarrollo
@@ -234,6 +272,16 @@ npm install
 npm run dev
 ```
 Abre [http://localhost:4321](http://localhost:4321) en tu navegador.
+
+#### Ejecutar Pruebas y Control de Calidad
+```bash
+# Ejecutar suite de pruebas unitarias
+npm test
+
+# Ejecutar verificación estática de tipos y linter
+npm run type-check
+npm run lint
+```
 
 #### Compilación para Producción
 ```bash
@@ -252,6 +300,10 @@ npx serve dist -l 4321
 ### 7. Aprendizajes Destacados y Decisiones Técnicas
 
 - **Astro 7 y Compilador Rust:** Aprovechamiento del compilador estricto basado en Rust para garantizar integridad HTML, recarga rápida en caliente y entrega de sitios con cero JavaScript innecesario.
+- **Requisito Estricto de Node.js 22 LTS:** Adaptación a las exigencias de motor de Astro 7 (`>= 22.12.0`), alineando los entornos locales de desarrollo, contenedores y runners de GitHub Actions.
+- **Quality Gate Automatizado en CI (5 Capas):** Diseño de un pipeline de GitHub Actions que valida dependencias selladas (`npm ci`), tipos (`astro check`), linting (`eslint`), pruebas unitarias (`vitest`) y compilación (`astro build`) en menos de 30 segundos previo a producción.
+- **Gestión Determinista de Dependencias:** Mantenimiento de `package-lock.json` junto a `npm ci` en runners limpios de Linux para evitar derivas silenciosas de dependencias.
+- **Pruebas de Componentes Headless con `astro/container`:** Verificación del marcado renderizado en servidor, inyección de props y atributos DOM en Vitest sin la sobrecarga de levantar un navegador completo.
 - **Integración de Tailwind CSS v4:** Uso del plugin de primera clase `@tailwindcss/vite` junto a variables CSS personalizadas nativas `@theme`, eliminando configuraciones obsoletas de PostCSS.
 - **Máquina de Estado para la Terminal Pura:** Implementación de navegación de carpetas, historial de búsqueda dinámica y compatibilidad con interfaces táctiles y de ratón sin dependencias pesadas de terceros.
 - **Arquitectura SEO Cero-JS:** Inyección de esquemas estructurados de Schema.org directamente durante el tiempo de compilación para maximizar los puntajes de rendimiento en Lighthouse e indexación.
