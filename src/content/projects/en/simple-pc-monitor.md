@@ -5,11 +5,11 @@ description: "Visual, lightweight HUD system telemetry dashboard and performance
 githubUrl: "https://github.com/AnaCataVC/simple-pc-monitor"
 websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
 isLiveApp: false
-technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
+technologies: ["C#", ".NET Framework 4.8", "WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
 categories: ["Windows", "Performance", "Tools", "Telemetry"]
 type: "desktop"
 status: "Active"
-problem: "Bulky system telemetry monitors (built on heavy web runtimes or uncompiled scripts) consuming excessive memory overhead (~100-300 MB RAM), introducing UI thread contention, and triggering false-positive heuristic flags on modern antivirus software."
+problem: "Bulky system telemetry monitors (built on heavy web runtimes or uncompiled scripts) consuming excessive memory overhead, introducing UI thread contention, and triggering false-positive heuristic flags on modern antivirus software."
 solution: "A high-performance native Windows HUD telemetry dashboard and command center engineered in compiled C# (.NET WPF/XAML) in a 585 KB standalone binary, combining sub-millisecond Win32 P/Invoke telemetry, AI Agent & MCP session monitoring, reverse tree kill, NtSuspendProcess freezing, and 1-click power schemes."
 learnings:
   - "AI Agent & MCP Session Monitor: Live telemetry of developer CLI sessions (claude, gemini, cursor, antigravity) and MCP servers with Reverse Tree Kill to prevent orphaned background processes."

@@ -5,12 +5,12 @@ icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
 isLiveApp: false
-technologies: ["Rust", "Tauri v2", "Svelte 5", "TypeScript", "Tailwind CSS", "Git Porcelain Protocol"]
+technologies: ["Rust", "Tauri v2", "Svelte 5", "TypeScript", "Tailwind CSS", "Git Porcelain Protocol", "GitHub CLI"]
 categories: ["Developer Tools", "Productividad", "Windows"]
 type: "desktop"
 status: "Activo"
 problem: "Fricción constante al trabajar con múltiples ramas en paralelo con Git Worktrees, limpiar carpetas huérfanas sin perder cambios y cambiar de identidad en GitHub CLI entre cuentas personales y corporativas."
-solution: "Una micro-aplicación de escritorio residente en el System Tray (<35 MB RAM) con ventana Spotlight que ofrece gestión de worktrees en árbol, lanzadores independientes para IDEs y terminales, escáner recursivo de repositorios y poda segura de ramas huérfanas con notificaciones Toast."
+solution: "Una micro-aplicación de escritorio residente en el System Tray (<40 MB RAM) con ventana Spotlight que ofrece descubrimiento recursivo de Git worktrees, lanzadores independientes para IDEs y terminales, conmutación de cuentas GitHub CLI en 1 clic y poda segura de ramas huérfanas con notificaciones Toast."
 learnings:
   - "Lanzadores Duales Independientes (ADR-0004): Resolución directa de ejecutables GUI (VS Code, Antigravity, Cursor, Windsurf) y consolas (Windows Terminal, Git Bash, AGY CLI) sin ventanas parpadeantes."
   - "Limpiador Seguro de Worktrees Huérfanos: Algoritmo de poda con pre-flight dirty checks, prevención de falsos positivos en el worktree raíz y notificaciones Toast nativas de Windows."
@@ -24,7 +24,7 @@ websiteActionText: "Ver Página"
 **Workspace Companion** combina la seguridad de memoria de **Rust** con la reactividad de **Svelte 5 (Runes)** sobre **Tauri v2**:
 
 *   **Motor Git Porcelain en Rust:** Parser de salida estructurada (`git worktree list --porcelain`) que ejecuta comandos asíncronos en subprocesos con el flag `CREATE_NO_WINDOW`, eliminando cualquier parpadeo de consolas en Windows.
-*   **Ventana Flotante Spotlight & System Tray:** Interfaz con atajo global anclada al área de notificación de la barra de tareas, con un consumo ligero inferior a **35 MB de RAM**.
+*   **Ventana Flotante Spotlight & System Tray:** Interfaz con atajo global anclada al área de notificación de la barra de tareas, con un consumo ligero inferior a **40 MB de RAM**.
 
 ### Lanzadores Duales y Poda Segura de Worktrees
 

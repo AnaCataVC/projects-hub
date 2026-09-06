@@ -5,11 +5,11 @@ description: "Panel interactivo de telemetría HUD y suite de control de rendimi
 githubUrl: "https://github.com/AnaCataVC/simple-pc-monitor"
 websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
 isLiveApp: false
-technologies: ["C#", ".NET WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
+technologies: ["C#", ".NET Framework 4.8", "WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
 categories: ["Windows", "Rendimiento", "Herramientas", "Telemetría"]
 type: "desktop"
 status: "Activo"
-problem: "Monitores de recursos tradicionales pesados (basados en frameworks web/Electron o scripts interpretados) que consumen excesiva memoria RAM (~100-300 MB), provocan latencia en la interfaz y suelen disparar falsos positivos heurísticos en antivirus."
+problem: "Monitores de recursos tradicionales pesados (basados en frameworks web/Electron o scripts interpretados) que consumen memoria RAM excesiva, provocan latencia en la interfaz y suelen disparar falsos positivos heurísticos en antivirus."
 solution: "Un panel de telemetría HUD y centro de comandos en C# nativo (.NET WPF/XAML) de solo 585 KB que combina métricas P/Invoke de submilisegundo, monitor de sesiones de Agentes IA y servidores MCP, terminación de procesos en árbol inverso, congelación con NtSuspendProcess y planes de energía en 1 clic."
 learnings:
   - "Monitor de Agentes IA & MCP: Telemetría en tiempo real de sesiones CLI (claude, gemini, cursor, antigravity) y servidores MCP con Reverse Tree Kill para evitar procesos huérfanos."

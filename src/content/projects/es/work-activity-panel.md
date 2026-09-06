@@ -10,7 +10,7 @@ categories: ["Productividad", "Windows", "Automatización"]
 type: "desktop"
 status: "Activo"
 problem: "Fricción diaria al abrir herramientas manualmente, desincronización de agendas, falta de preparación previa para reuniones, pérdida de respaldos de carpetas de trabajo y tedio al cambiar credenciales de GitHub CLI entre cuentas personales y laborales."
-solution: "Una aplicación nativa en WinUI 3 y .NET 9 con fondos Mica que automatiza Slack y Granola previo a videollamadas, reconcilia eventos de Google Calendar con cabeceras anti-caché, ofrece conmutación de cuentas GitHub CLI en 1 clic y respalda incrementalmente en Google Drive con hashing SHA-256 diferido."
+solution: "Una aplicación nativa en WinUI 3 y .NET 9 con fondos Mica que abre Slack al iniciar la jornada laboral, ejecuta Granola automáticamente 5 minutos antes de cada reunión agendada, reconcilia eventos de Google Calendar con cabeceras anti-caché, ofrece conmutación de cuentas GitHub CLI en 1 clic y respalda incrementalmente en Google Drive con hashing SHA-256 diferido."
 learnings:
   - "Conmutación de Perfiles GitHub CLI: Integración directa con 'gh auth switch' y deserialización YAML de 'hosts.yml' para alternar instantáneamente identidades personales y de trabajo en la terminal."
   - "Motor iCalendar RFC 5545 Resiliente: Parser de deserialización con reconciliación in-place de eventos mutados, normalización de zonas horarias y extracción de enlaces de videollamadas (Meet, Zoom, Teams, Webex)."

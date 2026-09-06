@@ -10,7 +10,7 @@ categories: ["Productivity", "Windows", "Automation"]
 type: "desktop"
 status: "Active"
 problem: "Daily friction manually launching work tools, calendar desynchronization, lack of automated meeting preparedness, risk of losing local work file changes, and tedious account switching between personal and work GitHub CLI profiles."
-solution: "A native Windows 11 desktop application crafted with WinUI 3 and .NET 9 featuring Mica backdrops that automates Slack/Granola launches before meetings, reconciles mutated Google Calendar events with anti-cache headers, provides 1-click GitHub CLI switching, and performs incremental Google Drive backups with streaming SHA-256 hashing."
+solution: "A native Windows 11 desktop application crafted with WinUI 3 and .NET 9 featuring Mica backdrops that launches Slack at the start of the workday, auto-launches Granola 5 minutes before scheduled meetings, reconciles mutated Google Calendar events with anti-cache headers, provides 1-click GitHub CLI switching, and performs incremental Google Drive backups with streaming SHA-256 hashing."
 learnings:
   - "GitHub CLI Multi-Account Management: Direct integration with 'gh auth switch' and YAML hosts parsing to seamlessly switch between personal and corporate terminal credentials in 1 click."
   - "Resilient RFC 5545 iCalendar Engine: Custom deserialization engine featuring in-place mutation reconciliation, timezone normalization, and video conference link extraction (Meet, Zoom, Teams, Webex)."
