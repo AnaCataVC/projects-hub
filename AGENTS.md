@@ -24,18 +24,18 @@ The interactive terminal (`src/pages/index.astro`) simulates a Unix-style tree f
 
 ```text
 ~/projects-hub/
-├── 📁 help/         # Interactive guide and keyboard shortcuts
-├── 📁 about/        # Developer background, goals, and AI-assisted workflow
-└── 📁 proyectos/    # (or ~/projects in EN) Categorized projects directory
-    ├── ▶ desktop/   # Desktop applications (.NET WPF, WinUI 3, Tauri/Rust, AI Agents)
-    ├── ▶ mobile/    # Mobile applications (Android Kotlin / Jetpack Compose)
-    ├── ▶ web/       # Web applications, PWAs & Data Analytics (React, Dexie, Streamlit)
-    └── ▶ archived/  # Historical projects (Proyectos anteriores)
+├── 📁 help/                 # Interactive guide and keyboard shortcuts
+├── 📁 about/                # Developer background, goals, and AI-assisted workflow
+└── 📁 proyectos/            # (or ~/projects in EN) Categorized projects directory
+    ├── ▶ data-science/      # Data science, statistics, and analytics
+    ├── ▶ ai-and-agents/     # AI systems, LLM agents, and MCP servers
+    ├── ▶ software-engineering/ # Desktop, mobile, and web applications
+    └── ▶ archived/          # Historical projects (Proyectos anteriores)
 ```
 
 ### Key Navigation Behaviors
 1. **Tree Exploration:** Seamless navigation using `[↑]` `[↓]`, entering folders or executing actions with `[Enter]` or `[→]`, and returning with `[←]`, `[Backspace]` or the virtual `..` folder item.
-2. **Instant Search (`❯ find`):** Real-time filter typing in the prompt. Matches display full hierarchical lineage (e.g., `proyectos / web / ⚡ ./life-tracker-analytics.sh`) and can be launched immediately with `[Enter]`.
+2. **Instant Search (`❯ find`):** Real-time filter typing in the prompt. Matches display full hierarchical lineage (e.g., `proyectos / data-science / ⚡ ./life-tracker-analytics.sh`) and can be launched immediately with `[Enter]`.
 3. **Dual Interface:** Selecting any active script executes a transition animation (`./launch <id> --gui`) to the dedicated high-level case study page (`src/layouts/ProjectLayout.astro`).
 
 ---
@@ -48,7 +48,6 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
 {
   title: z.string(),
   description: z.string(),
-  descriptionEn: z.string().optional(),
   icon: z.string().optional(),
   githubUrl: z.string().optional(),
   liveAppUrl: z.string().optional(),

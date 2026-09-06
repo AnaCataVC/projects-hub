@@ -15,7 +15,7 @@
 ## English
 
 ### 1. Project Overview & Philosophy
-**Projects Hub** (`projects.ana-catalina.com`) is the centralized applications directory and software engineering portfolio for **Ana-Catalina**. It serves as an interactive gateway to showcase 12 multiplatform projects across desktop systems, native mobile applications, AI agent frameworks, and web tools.
+**Projects Hub** (`projects.ana-catalina.com`) is the centralized applications directory and software engineering portfolio for **Ana-Catalina**. It serves as an interactive gateway to showcase 15 multiplatform projects across desktop systems, native mobile applications, AI agent frameworks, and web tools.
 
 The hub features a **Dual Interface Architecture**: an interactive, keyboard-driven Unix-style terminal console paired with rich, responsive Bento-style GUI case study viewports.
 
@@ -34,13 +34,14 @@ The hub features a **Dual Interface Architecture**: an interactive, keyboard-dri
 
 ---
 
-### 3. Showcase Catalog (12 Projects)
+### 3. Showcase Catalog (15 Projects)
 
 | Category | Projects | Core Technologies |
 | :--- | :--- | :--- |
-| 🖥️ **Desktop & AI Systems** | **Amiga IA**, **Screen Health Guardian**, **Simple PC Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, AI Agent Protocols |
+| 🖥️ **Desktop & AI Systems** | **Amiga IA**, **Claude Desktop Tools**, **Screen Health Guardian**, **Simple PC Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, AI Agent Protocols |
 | 📱 **Native Mobile** | **Meds Reminder**, **Prima Focus**, **Rest Your Eyes** | Kotlin, Jetpack Compose, Material Design 3, Room, AlarmManager |
 | 🌐 **Web & Data Analytics** | **Identity Map**, **Life Tracker Analytics**, **My CV**, **Plot This** | Astro 7, React 19, Tailwind CSS v4, Dexie.js, Python, NetworkX |
+| 🤖 **AI Agents & Tools** | **Anacatalina MCP**, **Emotion Finder** | Model Context Protocol, Python, AI/ML |
 
 ---
 
@@ -66,7 +67,7 @@ projects-hub/
 ├── src/
 │   ├── components/              # Reusable Astro components (ThemeToggle, LanguageToggle, etc.)
 │   ├── content/
-│   │   └── projects/            # Bilingual Markdown case studies (12 en / 12 es)
+│   │   └── projects/            # Bilingual Markdown case studies (15 en / 15 es)
 │   │       ├── en/
 │   │       └── es/
 │   ├── layouts/
@@ -140,7 +141,7 @@ npx serve dist -l 4321
 ## Español
 
 ### 1. Descripción del Proyecto y Filosofía
-**Projects Hub** (`projects.ana-catalina.com`) es el directorio centralizado de aplicaciones y portafolio de ingeniería de software de **Ana-Catalina**. Funciona como un portal interactivo para explorar 12 proyectos multiplataforma en áreas de sistemas de escritorio, aplicaciones móviles nativas, frameworks de agentes de IA y herramientas web.
+**Projects Hub** (`projects.ana-catalina.com`) es el directorio centralizado de aplicaciones y portafolio de ingeniería de software de **Ana-Catalina**. Funciona como un portal interactivo para explorar 15 proyectos multiplataforma en áreas de sistemas de escritorio, aplicaciones móviles nativas, frameworks de agentes de IA y herramientas web.
 
 El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal interactiva estilo Unix operada por teclado, combinada con vistas de estudio de caso estilo Bento detalladas y responsivas.
 
@@ -159,13 +160,14 @@ El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal
 
 ---
 
-### 3. Catálogo de Proyectos (12 Proyectos)
+### 3. Catálogo de Proyectos (15 Proyectos)
 
 | Categoría | Proyectos | Tecnologías Principales |
 | :--- | :--- | :--- |
-| 🖥️ **Escritorio y Sistemas de IA** | **Amiga IA**, **Screen Health Guardian**, **Simple PC Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, Protocolos de Agentes de IA |
+| 🖥️ **Escritorio y Sistemas de IA** | **Amiga IA**, **Claude Desktop Tools**, **Screen Health Guardian**, **Simple PC Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, Protocolos de Agentes de IA |
 | 📱 **Móvil Nativo** | **Meds Reminder**, **Prima Focus**, **Rest Your Eyes** | Kotlin, Jetpack Compose, Material Design 3, Room, AlarmManager |
 | 🌐 **Web y Analítica de Datos** | **Identity Map**, **Life Tracker Analytics**, **My CV**, **Plot This** | Astro 7, React 19, Tailwind CSS v4, Dexie.js, Python, NetworkX |
+| 🤖 **Agentes de IA y Herramientas** | **Anacatalina MCP**, **Emotion Finder** | Model Context Protocol, Python, AI/ML |
 
 ---
 
@@ -191,7 +193,7 @@ projects-hub/
 ├── src/
 │   ├── components/              # Componentes Astro reutilizables (ThemeToggle, LanguageToggle, etc.)
 │   ├── content/
-│   │   └── projects/            # Fichas técnicas Markdown bilingües (12 es / 12 en)
+│   │   └── projects/            # Fichas técnicas Markdown bilingües (15 es / 15 en)
 │   │       ├── es/
 │   │       └── en/
 │   ├── layouts/
