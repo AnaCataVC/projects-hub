@@ -5,12 +5,12 @@ icon: "/project-icons/plot-this-icon.png"
 githubUrl: "https://github.com/AnaCataVC/plot-this"
 liveAppUrl: "https://plot-this.ana-catalina.com"
 isLiveApp: true
-technologies: ["Python", "Streamlit", "Plotly Express", "Pandas"]
+technologies: ["Python", "Streamlit", "Plotly Express", "Pandas", "NumPy"]
 categories: ["Aplicación Web", "Visualización de Datos", "Analíticas"]
 type: "data-science"
 status: "Archivado"
 problem: "Analizar datasets, seleccionar las visualizaciones adecuadas y generar insights estadísticos de forma dinámica sin depender de APIs externas de IA ni comprometer la privacidad de los datos."
-solution: "Una aplicación local en Streamlit que utiliza un motor matemático personalizado y altamente optimizado en Pandas puro para inferir tipos semánticos en milisegundos sin colapsos, y Plotly Express para renderizar gráficos interactivos premium."
+solution: "Una aplicación local en Streamlit que utiliza un motor matemático personalizado y altamente optimizado en Pandas/NumPy puro para inferir tipos semánticos y compilar resúmenes en milisegundos (reemplazando librerías de profiling de terceros que causaban deadlocks de más de 60 segundos), y Plotly Express para renderizar gráficos interactivos premium."
 learnings:
   - "Descubrir que el uso de librerías de profiling pesadas causan deadlocks de multiprocesamiento en Streamlit, y reemplazarlas con un motor nativo personalizado de Pandas."
   - "Implementar un motor de reglas determinista que evalúa coeficientes de Pearson/Spearman y diferencias de medias para sugerir gráficos idóneos."
@@ -21,7 +21,7 @@ learnings:
 
 **PlotThis** reemplazó librerías de profiling de terceros después de que causaran deadlocks de multiprocesamiento dentro del entorno reactivo de Streamlit:
 
-*   **Motor Nativo en Pandas:** Un motor propio y altamente optimizado, construido sólo con Pandas, infiere tipos semánticos de columnas y compila resúmenes estadísticos en milisegundos, sin depender de librerías externas de profiling.
+*   **Motor Nativo en Pandas/NumPy:** Un motor propio y altamente optimizado, construido con Pandas y NumPy, infiere tipos semánticos de columnas y compila resúmenes estadísticos en milisegundos — reemplazando librerías de profiling de terceros que tardaban más de 60 segundos y colapsaban dentro del modelo de multiprocesamiento de Streamlit.
 *   **Recomendación Determinista de Gráficos:** Un motor de reglas basado en coeficientes de correlación de Pearson/Spearman y comparaciones de varianza sugiere el tipo de gráfico más adecuado para cada dataset, sin llamar a ninguna API de IA.
 
 ### Análisis Local y Enfocado en Privacidad

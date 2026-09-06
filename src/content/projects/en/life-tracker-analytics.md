@@ -10,7 +10,7 @@ categories: ["Data Visualization", "Analytics", "Personal Tool"]
 type: "data-science"
 status: "Active"
 problem: "Understanding mathematically how daily habits impact quality of life, without handing over sensitive personal data to proprietary BaaS."
-solution: "A custom analytical, local-first PWA dashboard that cross-references metrics locally to visualize hidden correlations, combining Dexie.js persistence with BYOD (Bring-Your-Own-Data) cloud sync."
+solution: "A custom analytical, local-first PWA dashboard that cross-references metrics locally using Pearson correlation with minimum-sample-size guards (N≥5) and Cohen's-d effect-size scoring to surface statistically meaningful, strictly associative (never causal) insights, combining Dexie.js persistence with BYOD (Bring-Your-Own-Data) cloud sync."
 learnings:
   - "Granular Entity Synchronization: Implemented conflict-safe entity merge algorithms to maintain multi-device consistency without proprietary backend servers."
   - "Type-Safe Local Persistence with Dexie.js: Unified relational IndexedDB storage with TypeScript for reactive and instantaneous browser queries."

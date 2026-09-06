@@ -5,12 +5,12 @@ icon: "/project-icons/plot-this-icon.png"
 githubUrl: "https://github.com/AnaCataVC/plot-this"
 liveAppUrl: "https://plot-this.ana-catalina.com"
 isLiveApp: true
-technologies: ["Python", "Streamlit", "Plotly Express", "Pandas"]
+technologies: ["Python", "Streamlit", "Plotly Express", "Pandas", "NumPy"]
 categories: ["Web Application", "Data Visualization", "Analytics"]
 type: "data-science"
 status: "Archived"
 problem: "Analyzing datasets, choosing the right visualizations, and generating statistical insights dynamically without relying on external AI APIs or compromising data privacy."
-solution: "A local Streamlit application that uses a custom, highly-optimized pure Pandas engine in the background to infer semantic types and compile summaries in milliseconds, avoiding third-party deadlocks, while using Plotly Express for premium-styled charts."
+solution: "A local Streamlit application that uses a custom, highly-optimized pure Pandas/NumPy engine in the background to infer semantic types and compile summaries in milliseconds (replacing third-party profiling libraries that caused 60+ second multiprocessing deadlocks), while using Plotly Express for premium-styled charts."
 learnings:
   - "Discovering that heavy third-party data profiling libraries cause severe multiprocessing deadlocks in Streamlit's reactive environment, and replacing them with a custom native Pandas engine."
   - "Implementing a deterministic rules engine using Pearson/Spearman coefficients and mean variances to recommend specific chart types."
@@ -21,7 +21,7 @@ learnings:
 
 **PlotThis** replaced third-party data-profiling libraries after they caused multiprocessing deadlocks inside Streamlit's reactive runtime:
 
-*   **Native Pandas Engine:** A custom, highly-optimized Pandas-only engine infers semantic column types and compiles statistical summaries in milliseconds, with no external profiling dependency to deadlock.
+*   **Native Pandas/NumPy Engine:** A custom, highly-optimized Pandas/NumPy engine infers semantic column types and compiles statistical summaries in milliseconds — replacing third-party profiling libraries that took 60+ seconds and deadlocked inside Streamlit's multiprocessing model.
 *   **Deterministic Chart Recommendation:** A rules engine built on Pearson/Spearman correlation coefficients and variance comparisons suggests the chart type that best fits each dataset, without calling any AI API.
 
 ### Local-First, Privacy-Focused Analysis
