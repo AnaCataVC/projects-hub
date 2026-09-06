@@ -5,12 +5,12 @@ icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"
 isLiveApp: false
-technologies: ["Kotlin", "Jetpack Compose", "Foreground Services"]
+technologies: ["Kotlin", "Jetpack Compose", "Foreground Services", "Broadcast Receivers", "Jetpack DataStore", "MVVM"]
 categories: ["Mobile", "Salud", "Android"]
 type: "mobile"
 status: "Activo"
-problem: "La fatiga visual generada por el uso prolongado de dispositivos móviles sin pausas adecuadas."
-solution: "Una aplicación que implementa la regla 20-20-20 funcionando en segundo plano y mostrando notificaciones superpuestas para forzar descansos."
+problem: "La fatiga visual por el uso prolongado y continuo del celular, sin una forma real de registrar el tiempo efectivo de pantalla encendida ni de recibir recordatorios proactivos de descanso — y las restricciones más estrictas de servicios en segundo plano de Android 14+ hacen poco confiables las soluciones basadas en polling simple."
+solution: "Una app nativa para Android que impone la regla 20-20-20 registrando el tiempo real de pantalla encendida mediante un Foreground Service y BroadcastReceivers (ACTION_SCREEN_ON/OFF), pausándose automáticamente cuando el dispositivo se bloquea para no gastar batería. Muestra un recordatorio superpuesto (SYSTEM_ALERT_WINDOW) con alertas de sonido personalizables y auto-dismiss, y declara el tipo de servicio `health` de Android 14+ para que el sistema nunca mate el monitoreo a mitad de sesión."
 learnings:
   - "Creación de una aplicación capaz de registrar el uso real del teléfono (tiempo de pantalla encendida/apagada)."
   - "Uso de Foreground Services y Broadcast Receivers en Android para monitoreo en segundo plano."

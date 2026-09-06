@@ -5,12 +5,12 @@ icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"
 isLiveApp: false
-technologies: ["Kotlin", "Jetpack Compose", "Foreground Services"]
+technologies: ["Kotlin", "Jetpack Compose", "Foreground Services", "Broadcast Receivers", "Jetpack DataStore", "MVVM"]
 categories: ["Mobile", "Health", "Android"]
 type: "mobile"
 status: "Active"
-problem: "Eye strain caused by prolonged mobile device usage without adequate breaks."
-solution: "An app that enforces the 20-20-20 rule running in the background and overlaying notifications to encourage breaks."
+problem: "Eye strain from prolonged, continuous mobile screen use, with no built-in way to track real screen-on time or receive proactive rest reminders — and Android 14+'s stricter background service restrictions make naive polling solutions unreliable."
+solution: "A native Android app that enforces the 20-20-20 rule by tracking real screen-on time via a Foreground Service and BroadcastReceivers (ACTION_SCREEN_ON/OFF), pausing automatically when the device is locked to avoid battery drain. It overlays a gentle SYSTEM_ALERT_WINDOW reminder with customizable sound alerts and auto-dismiss, and declares the Android 14+ `health` foreground service type so the OS never kills the monitor mid-session."
 learnings:
   - "Building an app capable of tracking real device usage (screen on/off time)."
   - "Using Foreground Services and Broadcast Receivers in Android for background monitoring."

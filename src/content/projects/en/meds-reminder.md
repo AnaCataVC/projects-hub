@@ -10,7 +10,7 @@ categories: ["Mobile", "Health", "Android", "Productivity"]
 type: "mobile"
 status: "Active"
 problem: "Medication forgetfulness across multi-member family profiles and inconsistent alarm reliability on Android due to aggressive battery-saving modes (Doze mode)."
-solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, lockscreen popups (AlarmActivity), pre-alarm quick-actions, per-person alarm suspension, and early intake resolution."
+solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, lockscreen popups (AlarmActivity), pre-alarm quick-actions, per-person alarm suspension, early intake resolution, and a fully deterministic Room-as-single-source-of-truth alarm engine with zero artificial delays."
 learnings:
   - "Early Intake Lifecycle Management: Synchronizing in-memory state and Room DB to automatically cancel active snoozes and upcoming pre-alarms when doses are logged ahead of time."
   - "Per-Person Alarm Suspension: Implementing temporary notification and alarm suppression per profile without corrupting underlying treatment schedules."

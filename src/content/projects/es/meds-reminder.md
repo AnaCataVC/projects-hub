@@ -10,7 +10,7 @@ categories: ["Mobile", "Salud", "Android", "Productividad"]
 type: "mobile"
 status: "Activo"
 problem: "El olvido recurrente de tomas de medicamentos en grupos familiares o multi-perfil, sumado a la falta de fiabilidad de las alarmas en Android debido a modos agresivos de ahorro de batería (Doze mode)."
-solution: "Una aplicación local-first sin nube con soporte multi-perfil y catálogo maestro de fármacos, dotada de alarmas exactas que rompen el modo Doze, popup sobre pantalla bloqueada (AlarmActivity), pre-alarmas con toma rápida, suspensión temporal de alarmas por persona y resolución inteligente ante tomas anticipadas."
+solution: "Una aplicación local-first sin nube con soporte multi-perfil y catálogo maestro de fármacos, dotada de alarmas exactas que rompen el modo Doze, popup sobre pantalla bloqueada (AlarmActivity), pre-alarmas con toma rápida, suspensión temporal de alarmas por persona, resolución inteligente ante tomas anticipadas, y un motor de alarmas completamente determinista con Room como fuente única de verdad, sin delays artificiales."
 learnings:
   - "Gestión del Ciclo de Vida de Tomas Anticipadas: Sincronización del estado en memoria y Room DB para cancelar automáticamente repeticiones (snooze) y pre-alarmas al registrar una toma antes de tiempo."
   - "Suspensión Temporal de Alarmas por Perfil: Implementación de mecanismos de pausa selectiva de notificaciones y alarmas sin alterar los horarios programados del tratamiento."
