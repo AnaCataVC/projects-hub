@@ -1,8 +1,7 @@
 {
   "name": "projects-hub",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Interactive terminal portfolio and high-performance applications directory by Ana-Catalina",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,7 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "type-check": "astro check",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,11 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "eslint": "^10.10.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.69.0",
     "vitest": "^4.1.11"
   }
 }
