@@ -17,6 +17,7 @@ learnings:
   - "Zero-JS Hypermedia with FastHTML and HTMX: Eliminating client build tooling and multi-megabyte SPA bundles using pure server-rendered Python components with declarative partial DOM swaps."
   - "Lightweight Serverless ML on Vercel: Compressing inference pipelines to ~27 KB via L2-regularized linear classifiers, achieving sub-1.5s cold starts and avoiding heavy Transformer overhead."
   - "Honest Accuracy Ceiling: Accuracy on figurative language never seen during training tops out at ~29% (ES) / ~40% (EN) — the app is explicitly early-stage, with an in-product confirmation step and disclaimer that turn every correction into training data."
+  - "Silent Framework Injection Pitfalls: Adding session-scoped rate limiting to the feedback endpoint surfaced a subtler bug — an explicit `Any` type annotation on a route's `session` parameter silently defeated FastHTML's special-name parameter injection, collapsing per-user session identity into a single IP+user-agent value shared by everyone behind the same NAT. Fixed by dropping the annotation; a reminder that an anonymized rate-limiting key is only as strong as the session plumbing feeding it."
 ---
 
 ### Hybrid Affective Classification & Circumplex Model

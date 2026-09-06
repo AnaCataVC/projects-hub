@@ -17,6 +17,7 @@ learnings:
   - "Arquitectura Hypermedia Zero-JS con FastHTML y HTMX: Reemplazo de frameworks SPA pesados por renderizado server-side en Python y reemplazos parciales de DOM, eliminando por completo los bundles de JavaScript en el cliente."
   - "Inferencia Serverless Ultraligera en Vercel: Compresión de pipelines ML a ~27 KB mediante modelos lineales regularizados y tokenización desacoplada, asegurando arranques en frío de <1.5s e inferencias en <5ms."
   - "Techo de Precisión Honesto: La precisión frente a lenguaje figurado nunca visto durante el entrenamiento tiene un techo de ~29% (ES) / ~40% (EN) — la app se declara explícitamente en etapa temprana, con un paso de confirmación y un aviso in-app que convierten cada corrección del usuario en dato de entrenamiento."
+  - "Fallos Silenciosos de Inyección del Framework: Agregar rate limiting por sesión al endpoint de feedback destapó un bug más sutil — una anotación de tipo `Any` en el parámetro `session` de una ruta anulaba silenciosamente la inyección especial de FastHTML, colapsando la identidad de sesión de cada usuario en un único valor de IP+user-agent compartido por todos detrás del mismo NAT. Corregido quitando la anotación; un recordatorio de que una clave de rate-limiting anonimizada vale lo que valga la plomería de sesión que la alimenta."
 ---
 
 ### Clasificación Afectiva Híbrida y Modelo Circunflejo
