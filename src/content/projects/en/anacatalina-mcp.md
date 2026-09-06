@@ -1,7 +1,7 @@
 ---
 title: "AI-Native Interactive Resume (MCP Server)"
 description: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
-icon: "/project-icons/anacatalina-mcp-icon.svg"
+icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://anacatalina-mcp-165536131179.us-central1.run.app/"
 isLiveApp: false
@@ -13,7 +13,7 @@ problem: "Traditional web resumes are designed for humans to read, but today AI 
 solution: "A native API for Artificial Intelligences, built using the official Model Context Protocol, exposing 8 specialized tools to query experience, mathematically evaluate profile fit for job openings, and search the tech stack, designed specifically for LLM reasoning using strict Pydantic schemas."
 learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Server-Sent Events (SSE)."
-  - "Resolution of complex dependencies and compatibility issues when migrating from FastMCP v1 to v2, ensuring version pinning for service stability."
+  - "Resolution of complex dependency conflicts by deliberately pinning to FastMCP v1 instead of migrating to v2, keeping the service stable without an immediate rewrite."
   - "Optimized serverless deployment on Google Cloud Run using lightweight Docker containers, leveraging 'Scale to Zero' functionality to reduce operational costs to zero during idle times."
 websiteActionText: "API Endpoint (Cloud Run)"
 ---

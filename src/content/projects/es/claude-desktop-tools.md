@@ -10,7 +10,7 @@ categories: ["IA", "Windows", "Developer Tools", "Productividad"]
 type: "desktop"
 status: "Activo"
 problem: "El uso intensivo de Claude Code (CLI) y Claude Desktop acumula gigabytes de transcripts (.jsonl), satura las listas de sesiones de la interfaz gráfica y expone directivas IA no versionadas (CLAUDE.md, skills, agents, hooks) al riesgo de pérdida local o fuga de credenciales sensibles."
-solution: "Una aplicación de escritorio nativa en WinUI 3 y .NET 9 con fondos Mica que recupera espacio en disco bajo una guarda inviolable de 24 horas, poda índices de sesiones con bloqueo de colisión de procesos (claude.exe), verifica la vida real de sesiones CLI por PID y respalda selectivamente directivas en Google Drive tras escanear secretos."
+solution: "Una aplicación de escritorio nativa en WinUI 3 y .NET 9 con fondos Mica que recupera espacio en disco bajo una guarda inviolable de 24 horas, poda índices de sesiones con bloqueo de colisión de procesos (claude.exe), verifica la vida real de sesiones CLI por PID, monitorea y ajusta en vivo el uso de RAM/CPU de los procesos claude.exe, y respalda selectivamente directivas en Google Drive tras escanear secretos."
 learnings:
   - "Guarda Inviolable de 24 Horas & Poda Atómica: Algoritmo de depuración que garantiza inmunidad a sesiones activas recientes y mutación quirúrgica in-place de cabeceras JSON con archivos temporales atómicos."
   - "Explorador de Sesiones CLI con Verificación de Liveness: Cruce en tiempo real contra ~/.claude/sessions/<pid>.json validando PID y tiempo de inicio de proceso para evitar falsos positivos ante reciclaje de PIDs en Windows."
@@ -30,6 +30,7 @@ websiteActionText: "Visitar Sitio"
 
 *   **Detección Confiable de Sesiones Activas:** A diferencia de simples inspecciones de archivos estáticos, el explorador cruza cada transcript contra el registro vivo de sesiones (`~/.claude/sessions/<pid>.json`) y comprueba el `StartTime` del proceso en Windows, descartando colisiones de PID reciclados por el sistema operativo.
 *   **Gestión Granular:** Permite terminar sesiones activas directamente o eliminar transcripts individuales e inactivos de forma masiva según umbrales de antigüedad.
+*   **Monitor de Recursos en Vivo:** Una pestaña dedicada lista los procesos `claude.exe` activos con RAM/CPU en tiempo real, permitiendo liberar RAM (`EmptyWorkingSet`) o ajustar su prioridad (`Process.PriorityClass`) sin cerrar la sesión.
 
 ### Descubrimiento de Directivas de IA y Respaldo Cloud
 

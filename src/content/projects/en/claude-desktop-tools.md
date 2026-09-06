@@ -10,7 +10,7 @@ categories: ["AI", "Windows", "Developer Tools", "Productivity"]
 type: "desktop"
 status: "Active"
 problem: "Heavy usage of Claude Code (CLI) and Claude Desktop accumulates gigabytes of transcript files (.jsonl), clutters graphical session lists, and puts unversioned AI steering directives (CLAUDE.md, skills, agents, hooks) at risk of local loss or accidental secret leaks."
-solution: "A native Windows 11 desktop application crafted in WinUI 3 and .NET 9 featuring Mica backdrops that safely reclaims disk space with an inviolable 24-hour grace window, prunes session indexes with active process locks (claude.exe), verifies real-world CLI session liveness via PID inspection, and selectively backs up sanitized directives to Google Drive."
+solution: "A native Windows 11 desktop application crafted in WinUI 3 and .NET 9 featuring Mica backdrops that safely reclaims disk space with an inviolable 24-hour grace window, prunes session indexes with active process locks (claude.exe), verifies real-world CLI session liveness via PID inspection, monitors and throttles live Claude Code CLI RAM/CPU usage, and selectively backs up sanitized directives to Google Drive."
 learnings:
   - "Inviolable 24-Hour Grace Window & Atomic Pruning: Deletion algorithm guaranteeing immunity for recently modified sessions and surgical in-place JSON header mutation using atomic temporary files."
   - "CLI Session Explorer with Verified Liveness: Real-time cross-referencing against ~/.claude/sessions/<pid>.json validating PID and process start time to prevent false positives from Windows PID recycling."
@@ -30,6 +30,7 @@ websiteActionText: "Visit Website"
 
 *   **Reliable Active Session Detection:** Rather than relying purely on static timestamps, the session explorer cross-references transcripts against Claude's live registry (`~/.claude/sessions/<pid>.json`) and checks the Windows process `StartTime`, neutralizing false positives caused by OS PID recycling.
 *   **Granular Operations:** Close active CLI processes directly behind safe modal dialogs or bulk-delete inactive transcripts based on age thresholds.
+*   **Live Process Resource Monitor:** A dedicated tab lists running `claude.exe` processes with real-time RAM/CPU usage, letting you reclaim RAM (`EmptyWorkingSet`) or throttle priority (`Process.PriorityClass`) without closing the session.
 
 ### AI Directive Discovery & Cloud Backup
 
