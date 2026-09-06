@@ -1,6 +1,6 @@
 ---
 title: "My CV Template"
-description: "Plantilla moderna e interactiva para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar."
+description: "Plantilla moderna, interactiva y sin dependencias (salida Zero-JS) para construir tu propio currículum o portafolio profesional. Fácil de configurar y desplegar."
 icon: "/project-icons/cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/my-cv"
 websiteUrl: "https://my-cv-template.ana-catalina.com"
