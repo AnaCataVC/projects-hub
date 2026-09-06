@@ -15,7 +15,7 @@ learnings:
   - "Integración exitosa del protocolo emergente MCP, adaptando la arquitectura para soportar comunicación bidireccional asíncrona mediante Server-Sent Events (SSE)."
   - "Resolución de conflictos complejos de dependencias fijando deliberadamente la versión en FastMCP v1 en vez de migrar a v2, manteniendo el servicio estable sin necesidad de una reescritura inmediata."
   - "Despliegue serverless optimizado en Google Cloud Run utilizando contenedores Docker ligeros, aprovechando la funcionalidad 'Scale to Zero' para reducir costos operativos a cero durante la inactividad."
-websiteActionText: "Endpoint API (Cloud Run)"
+websiteActionText: "MCP Server"
 ---
 
 El proyecto de **AI-Native Interactive Resume** es un rediseño completo del concepto de currículum o portafolio. En lugar de ofrecer únicamente una interfaz visual (GUI) para reclutadores humanos, expone un servidor oficial bajo el **Model Context Protocol (MCP)**, estandarizado por Anthropic.
@@ -29,8 +29,8 @@ Esto permite que cualquier cliente LLM que soporte MCP (como Claude Desktop o ed
 ```json
 {
   "mcpServers": {
-    "anacatalina-resume": {
-      "url": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+    "anacatalina-cv": {
+      "url": "https://mcp.ana-catalina.com/sse"
     }
   }
 }
@@ -41,11 +41,13 @@ Esto permite que cualquier cliente LLM que soporte MCP (como Claude Desktop o ed
 ```json
 {
   "mcpServers": {
-    "anacatalina-resume": {
+    "anacatalina-cv": {
       "command": "python",
-      "args": ["<ruta-local>/conecta_cata.py"],
+      "args": [
+        "conecta_cata.py"
+      ],
       "env": {
-        "MCP_SERVER_SSE_URL": "https://anacatalina-mcp-165536131179.us-central1.run.app/sse"
+        "MCP_SERVER_SSE_URL": "https://mcp.ana-catalina.com/sse"
       }
     }
   }
