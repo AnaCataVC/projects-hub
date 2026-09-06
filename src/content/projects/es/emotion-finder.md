@@ -8,7 +8,7 @@ isLiveApp: true
 technologies: ["Python 3.11", "FastHTML", "HTMX", "scikit-learn", "Pico CSS", "TF-IDF", "Turso LibSQL", "Vercel Serverless"]
 categories: ["Data Science", "NLP", "Machine Learning", "Psicología Afectiva"]
 type: "data-science"
-status: "Activo"
+status: "En Desarrollo"
 problem: "Transformar sensaciones somáticas y pensamientos vagos en etiquetas emocionales precisas suele abrumar al usuario con largas listas descontextualizadas de términos abstractos."
 solution: "Una arquitectura híbrida con salida temprana: el texto libre se clasifica primero en los 4 cuadrantes del Modelo Circunflejo de Russell mediante TF-IDF y Regresión Logística (0 KB de JS en cliente, <5ms de inferencia), luego se compara por similitud coseno contra las 16 emociones del cuadrante —recurriendo al árbol de decisión somático binario de 4 pasos solo cuando ningún match es suficientemente confiable— y se refina continuamente mediante un ciclo de feedback humano con reentrenamiento automático semanal, validado por cross-validation y pruebas de regresión dialectal."
 learnings:
@@ -16,6 +16,7 @@ learnings:
   - "Preservación Selectiva de Moduladores Afectivos: Whitelisting en el tokenizador para preservar marcadores de negación ('no', 'sin') e intensificadores ('muy', 'demasiado') críticos para determinar la polaridad de valencia y activación."
   - "Arquitectura Hypermedia Zero-JS con FastHTML y HTMX: Reemplazo de frameworks SPA pesados por renderizado server-side en Python y reemplazos parciales de DOM, eliminando por completo los bundles de JavaScript en el cliente."
   - "Inferencia Serverless Ultraligera en Vercel: Compresión de pipelines ML a ~27 KB mediante modelos lineales regularizados y tokenización desacoplada, asegurando arranques en frío de <1.5s e inferencias en <5ms."
+  - "Techo de Precisión Honesto: La precisión frente a lenguaje figurado nunca visto durante el entrenamiento tiene un techo de ~29% (ES) / ~40% (EN) — la app se declara explícitamente en etapa temprana, con un paso de confirmación y un aviso in-app que convierten cada corrección del usuario en dato de entrenamiento."
 ---
 
 ### Clasificación Afectiva Híbrida y Modelo Circunflejo

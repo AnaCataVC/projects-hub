@@ -8,7 +8,7 @@ isLiveApp: true
 technologies: ["Python 3.11", "FastHTML", "HTMX", "scikit-learn", "Pico CSS", "TF-IDF", "Turso LibSQL", "Vercel Serverless"]
 categories: ["Data Science", "NLP", "Machine Learning", "Affective Psychology"]
 type: "data-science"
-status: "Active"
+status: "In Development"
 problem: "Converting vague somatic sensations and diffuse thoughts into accurate emotional labels often frustrates or overwhelms users when presented with long, decontextualized lists of abstract psychological terms."
 solution: "A hybrid architecture with an early-exit shortcut: freeform input is first classified into Russell's 4 affective quadrants via TF-IDF and Logistic Regression (0 KB client JS, <5ms inference), then matched by cosine similarity against the quadrant's 16 emotions — falling back to a 4-step binary somatic decision tree only when no match is confident enough — and continuously refined by a human-in-the-loop feedback loop with automated weekly retraining gated on cross-validation and dialectal regression tests."
 learnings:
@@ -16,6 +16,7 @@ learnings:
   - "Affective Stopword Whitelisting: Overriding standard NLP stopword removers to retain critical negation particles ('not', 'without') and intensifiers ('very', 'extremely') essential for valence and arousal fidelity."
   - "Zero-JS Hypermedia with FastHTML and HTMX: Eliminating client build tooling and multi-megabyte SPA bundles using pure server-rendered Python components with declarative partial DOM swaps."
   - "Lightweight Serverless ML on Vercel: Compressing inference pipelines to ~27 KB via L2-regularized linear classifiers, achieving sub-1.5s cold starts and avoiding heavy Transformer overhead."
+  - "Honest Accuracy Ceiling: Accuracy on figurative language never seen during training tops out at ~29% (ES) / ~40% (EN) — the app is explicitly early-stage, with an in-product confirmation step and disclaimer that turn every correction into training data."
 ---
 
 ### Hybrid Affective Classification & Circumplex Model
