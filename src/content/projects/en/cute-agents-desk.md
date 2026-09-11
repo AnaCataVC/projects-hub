@@ -3,6 +3,7 @@ title: "Cute Agents Desk"
 icon: "/project-icons/cute-agents-desk-icon.png"
 description: "Native desktop control panel and agent dispatcher to orchestrate command-line AI agents (Claude Code and Antigravity CLI) across local repositories with Git Worktree isolation."
 githubUrl: "https://github.com/AnaCataVC/cute-agents-desk"
+websiteUrl: "https://cute-agents-desk.ana-catalina.com"
 isLiveApp: false
 technologies: ["Electron 44", "Node.js", "node-pty", "Claude Code", "Antigravity CLI", "Git Worktrees", "ES Modules", "Pastel-Tech CSS"]
 categories: ["AI", "Agents", "Windows", "Desktop", "Developer Tools"]
