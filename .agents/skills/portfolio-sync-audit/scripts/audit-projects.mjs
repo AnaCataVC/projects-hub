@@ -175,26 +175,33 @@ function runAudit() {
       continue;
     }
 
-    // Check if repo has recent updates
+    // Check if repo has recent updates or missing bilingual parity
     const esFile = path.join(PROJECTS_ES_DIR, `${targetProjectName}.md`);
-    let fileModTime = null;
+    const enFile = path.join(PROJECTS_EN_DIR, `${targetProjectName}.md`);
+    const hasEnglish = fs.existsSync(enFile);
+    const latestActivity = info.lastCommitDate || info.ghPushedAt;
+
+    let isNewerThanDoc = false;
     if (fs.existsSync(esFile)) {
       const stat = fs.statSync(esFile);
-      fileModTime = stat.mtime;
+      if (latestActivity && latestActivity > stat.mtime) {
+        isNewerThanDoc = true;
+      }
     }
 
-    const latestActivity = info.lastCommitDate || info.ghPushedAt;
     const isRecent = latestActivity && (
       (sinceFilter && latestActivity >= sinceFilter) ||
-      (!sinceFilter && latestActivity >= fourteenDaysAgo)
+      (!sinceFilter && latestActivity >= fourteenDaysAgo) ||
+      isNewerThanDoc ||
+      !hasEnglish
     );
 
     if (isRecent) {
       results.pendingUpdates.push({
         repo: repoName,
         projectFile: `${targetProjectName}.md`,
-        lastCommit: latestActivity.toISOString().split('T')[0],
-        commitMsg: info.commitMsg || '',
+        lastCommit: latestActivity ? latestActivity.toISOString().split('T')[0] : 'N/A',
+        commitMsg: info.commitMsg || (!hasEnglish ? 'Missing English documentation' : ''),
       });
     } else {
       results.upToDate.push({
