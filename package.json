@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "type-check": "astro check",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "audit:projects": "node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs"
   },
   "repository": {
     "type": "git",
