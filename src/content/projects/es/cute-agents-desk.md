@@ -16,7 +16,7 @@ learnings:
   - "Canal de Retorno vía PTY: Implementación de un buzón donde el worker reporta eventos al coordinador directamente escribiendo en su terminal interactiva PTY (spawn-request, bloqueado, terminado), evitando llamadas de red innecesarias."
   - "Cero Build & Protocolo app:// en Electron: Carga de módulos ES nativos a través de un esquema app:// personalizado que preserva orígenes seguros y elimina la necesidad de bundlers o servidores HTTP locales."
   - "Aislamiento por Git Worktrees: Desacoplamiento de tareas de escritura en árboles de trabajo temporales fuera del directorio principal para prevenir condiciones de carrera y colisiones de estado en repositorios compartidos."
-websiteActionText: "Ver Repositorio"
+websiteActionText: "Ver Página Web"
 ---
 
 ### Despacho Local de Agentes y Orquestación Multi-Motor

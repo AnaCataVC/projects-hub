@@ -16,7 +16,7 @@ learnings:
   - "PTY-Based Mailbox Communication: Structured worker-to-coordinator messaging routed directly through the coordinator's interactive terminal PTY session without external network requests."
   - "Zero-Build Architecture via app:// Protocol: Loading native ES modules in Electron through a custom secure scheme that eliminates bundler overhead and local HTTP port vulnerabilities."
   - "Concurrency Protection with Git Worktrees: Isolating write-mode agents into dedicated git worktrees outside the main checkout to prevent race conditions and concurrent mutation collisions."
-websiteActionText: "View Repository"
+websiteActionText: "View Website"
 ---
 
 ### Local Agent Dispatch & Multi-Engine Orchestration
