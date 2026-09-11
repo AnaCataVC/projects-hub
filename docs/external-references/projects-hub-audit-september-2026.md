@@ -51,9 +51,3 @@ This document summarizes the September 2026 audit of Ana-Catalina's active softw
   - **Release v1.6.1:** 107 unit/integration tests verified.
   - **Context Discovery Navigation:** Preserved synchronization and discovery state across window transitions.
   - **Zero Broken Mockups Compliance:** Pruned non-functional toggles and unreleased commands.
-
----
-
-## 3. Excluded Repositories & Rationale
-- **`munder-difflin`:** Third-party fork, explicitly excluded by the user.
-- **`anacatalina-homepage`:** Root personal landing site (`ana-catalina.com`), linked globally from the console header icon rather than an individual application entry.

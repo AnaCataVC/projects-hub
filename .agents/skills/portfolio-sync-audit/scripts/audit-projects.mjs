@@ -24,7 +24,6 @@ const IGNORED_REPOS = new Set([
   'projects-hub',         // Portfolio itself
   'anacatalina-homepage', // Root personal domain (ana-catalina.com)
   'antigravity-config',   // Machine environment configuration
-  'munder-difflin',       // Third-party fork
 ]);
 
 // Mappings for repositories that map to a differently named markdown file
