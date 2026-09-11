@@ -95,4 +95,11 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
    - If `npm run dev` encounters silent socket issues on Windows, the verified static fallback is `npm run build` followed by `npx serve dist -l 4321`.
 10. **Runtime Engine Requirement (Node.js 22+):**
    - Astro 7 strictly requires Node.js `>= 22.12.0`. All local development environments, CI workflows, and container runtimes must use Node 22 LTS or newer to execute type-checking (`astro check`) and production builds.
+11. **Mandatory Full Quality Gate (Lint + Type-Check + Test):**
+   - In GitHub Actions CI (`.github/workflows/ci.yml`), `npm run lint` (`eslint .`) runs as a mandatory blocking gate auditing all JavaScript/TypeScript files, including workspace automation scripts in `.agents/skills/**/scripts/`.
+   - Always execute `npm run lint` alongside `npm run type-check` and `npm test` before committing or pushing changes to prevent CI build breaks due to unused variables (`@typescript-eslint/no-unused-vars`).
+12. **Automated Portfolio Sync & Third-Party Fork Filtering:**
+   - To audit and synchronize personal repositories, use `npm run audit:projects` (powered by `.agents/skills/portfolio-sync-audit/`).
+   - Repository discovery must remain 100% path-agnostic (resolving sibling repos at `..` or `$env:REPOS_DIR`).
+   - Personal portfolio audits MUST automatically ignore forks (`isFork: true` on GitHub API) and non-software repositories, focusing exclusively on original projects authored by the user.
 
