@@ -2,7 +2,7 @@
 title: "Prima Focus"
 description: "Aplicación multiplataforma local-first (Android nativo y cliente de escritorio en Java) enfocada en la productividad mediante un sistema predictivo de prioridades, widgets con Jetpack Glance y sincronización P2P/LAN."
 icon: "/project-icons/prima-focus-icon.png"
-githubUrl: "https://github.com/AnaCataVC/prima-focus-showcase"
+githubUrl: "https://github.com/AnaCataVC/prima-focus"
 websiteUrl: "https://prima-focus.ana-catalina.com"
 technologies: ["Kotlin Multiplatform", "Jetpack Compose", "Jetpack Glance", "Room Database v6", "HMAC-SHA256 LAN Protocol", "P2P Nearby Connections"]
 categories: ["Productividad", "Mobile", "Android", "Desktop"]
@@ -30,4 +30,4 @@ websiteActionText: "Descargar App"
 *   **Sincronización LAN Autenticada con HMAC-SHA256:** Comunicación bidireccional entre la app móvil y el companion de escritorio (`DesktopSyncServer`, puerto 8765) blindada por PIN de 6 dígitos y firmas criptográficas HMAC por petición.
 *   **Widgets con Jetpack Glance & Nearby P2P:** Widgets interactivos de inicio para completar tareas al instante y modo anfitrión/cliente para sincronización P2P offline mediante Google Nearby Connections.
 
-> **Nota**: El código fuente completo reside en un repositorio privado, pero he creado un repositorio público (**Showcase**) donde puedes explorar la documentación técnica y descargar el APK y el bundle para escritorio.
+> **Nota**: El código fuente completo, la arquitectura modular KMP y las versiones oficiales compiladas están disponibles públicamente en el repositorio principal bajo licencia *Source-Available*.
