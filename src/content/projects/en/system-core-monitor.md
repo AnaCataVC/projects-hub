@@ -1,5 +1,5 @@
 ---
-title: "Simple PC Monitor"
+title: "System Core Monitor"
 icon: "/project-icons/system-core-monitor-icon.png"
 description: "Visual, lightweight HUD system telemetry dashboard and performance control suite for Windows built in native C# (.NET WPF/XAML) in a standalone 585 KB executable with zero external dependencies."
 githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
@@ -21,7 +21,7 @@ websiteActionText: "Visit Website"
 
 ### Native Win32 Architecture & AI Agent Sessions
 
-**Simple PC Monitor** is a high-performance system command center packaged into a single **585 KB standalone executable** with zero external dependencies:
+**System Core Monitor** is a high-performance system command center packaged into a single **585 KB standalone executable** with zero external dependencies:
 
 *   **Sub-Millisecond P/Invoke Telemetry (<0.01 ms):** Direct native Win32 API polling for hardware and network throughput without sluggish WMI abstractions or runtime overhead.
 *   **AI Agent & MCP Session Monitor:** Real-time discovery of active AI developer sessions (`claude.exe`, `gemini.exe`, `cursor.exe`, `antigravity.exe`) and child MCP servers, with *Reverse Topological Tree Kill* that terminates leaves before parent CLIs to prevent orphaned memory leaks.

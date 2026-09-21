@@ -38,7 +38,7 @@ The hub features a **Dual Interface Architecture**: an interactive, keyboard-dri
 
 | Category | Projects | Core Technologies |
 | :--- | :--- | :--- |
-| 🖥️ **Desktop & AI Systems** | **Amiga IA**, **Claude Desktop Tools**, **Screen Health Guardian**, **Simple PC Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, AI Agent Protocols |
+| 🖥️ **Desktop & AI Systems** | **Amiga IA**, **Claude Desktop Tools**, **Screen Health Guardian**, **System Core Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, AI Agent Protocols |
 | 📱 **Native Mobile** | **Meds Reminder**, **Prima Focus**, **Rest Your Eyes** | Kotlin, Jetpack Compose, Material Design 3, Room, AlarmManager |
 | 🌐 **Web & Data Analytics** | **Identity Map**, **Life Tracker Analytics**, **My CV**, **Plot This** | Astro 7, React 19, Tailwind CSS v4, Dexie.js, Python, NetworkX |
 | 🤖 **AI Agents & Tools** | **Anacatalina MCP**, **Emotion Finder** | Model Context Protocol, Python, AI/ML |
@@ -190,7 +190,7 @@ El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal
 
 | Categoría | Proyectos | Tecnologías Principales |
 | :--- | :--- | :--- |
-| 🖥️ **Escritorio y Sistemas de IA** | **Amiga IA**, **Claude Desktop Tools**, **Screen Health Guardian**, **Simple PC Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, Protocolos de Agentes de IA |
+| 🖥️ **Escritorio y Sistemas de IA** | **Amiga IA**, **Claude Desktop Tools**, **Screen Health Guardian**, **System Core Monitor**, **Work Activity Panel**, **Workspace Companion** | C#, .NET, WPF, WinUI 3, Rust, PowerShell, Protocolos de Agentes de IA |
 | 📱 **Móvil Nativo** | **Meds Reminder**, **Prima Focus**, **Rest Your Eyes** | Kotlin, Jetpack Compose, Material Design 3, Room, AlarmManager |
 | 🌐 **Web y Analítica de Datos** | **Identity Map**, **Life Tracker Analytics**, **My CV**, **Plot This** | Astro 7, React 19, Tailwind CSS v4, Dexie.js, Python, NetworkX |
 | 🤖 **Agentes de IA y Herramientas** | **Anacatalina MCP**, **Emotion Finder** | Model Context Protocol, Python, AI/ML |
