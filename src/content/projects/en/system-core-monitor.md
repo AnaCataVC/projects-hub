@@ -1,9 +1,9 @@
 ---
 title: "Simple PC Monitor"
-icon: "/project-icons/simple-pc-monitor-icon.png"
+icon: "/project-icons/system-core-monitor-icon.png"
 description: "Visual, lightweight HUD system telemetry dashboard and performance control suite for Windows built in native C# (.NET WPF/XAML) in a standalone 585 KB executable with zero external dependencies."
-githubUrl: "https://github.com/AnaCataVC/simple-pc-monitor"
-websiteUrl: "https://simple-pc-monitor.ana-catalina.com"
+githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
+websiteUrl: "https://system-core-monitor.ana-catalina.com"
 isLiveApp: false
 technologies: ["C#", ".NET Framework 4.8", "WPF", "XAML", "Win32 P/Invoke", "PowrProf.dll", "ntdll Kernel API", "AI & MCP Process Monitor"]
 categories: ["Windows", "Performance", "Tools", "Telemetry"]
