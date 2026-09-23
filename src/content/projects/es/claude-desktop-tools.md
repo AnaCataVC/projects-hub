@@ -8,7 +8,7 @@ isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "Regex Secret Scanning", "Claude CLI", "Claude Desktop", "Inno Setup"]
 categories: ["IA", "Windows", "Developer Tools", "Productividad"]
 type: "desktop"
-status: "Activo"
+status: "Archivado"
 problem: "El uso intensivo de Claude Code (CLI) y Claude Desktop acumula gigabytes de transcripts (.jsonl), satura las listas de sesiones de la interfaz gráfica y expone directivas IA no versionadas (CLAUDE.md, skills, agents, hooks) al riesgo de pérdida local o fuga de credenciales sensibles."
 solution: "Una aplicación de escritorio nativa en WinUI 3 y .NET 9 con fondos Mica que recupera espacio en disco bajo una guarda inviolable de 24 horas, poda índices de sesiones con bloqueo de colisión de procesos (claude.exe), verifica la vida real de sesiones CLI por PID, monitorea y ajusta en vivo el uso de RAM/CPU de los procesos claude.exe, y respalda selectivamente directivas en Google Drive tras escanear secretos."
 learnings:

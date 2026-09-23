@@ -8,7 +8,7 @@ isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "Regex Secret Scanning", "Claude CLI", "Claude Desktop", "Inno Setup"]
 categories: ["AI", "Windows", "Developer Tools", "Productivity"]
 type: "desktop"
-status: "Active"
+status: "Archived"
 problem: "Heavy usage of Claude Code (CLI) and Claude Desktop accumulates gigabytes of transcript files (.jsonl), clutters graphical session lists, and puts unversioned AI steering directives (CLAUDE.md, skills, agents, hooks) at risk of local loss or accidental secret leaks."
 solution: "A native Windows 11 desktop application crafted in WinUI 3 and .NET 9 featuring Mica backdrops that safely reclaims disk space with an inviolable 24-hour grace window, prunes session indexes with active process locks (claude.exe), verifies real-world CLI session liveness via PID inspection, monitors and throttles live Claude Code CLI RAM/CPU usage, and selectively backs up sanitized directives to Google Drive."
 learnings:

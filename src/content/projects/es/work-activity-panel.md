@@ -8,7 +8,7 @@ isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545 RRULE", "Meeting Alert Popup", "GitHub CLI Integration", "GitHub Releases API"]
 categories: ["Productividad", "Windows", "Automatización"]
 type: "desktop"
-status: "Activo"
+status: "Archivado"
 problem: "Fricción diaria al abrir herramientas manualmente, desincronización de agendas y eventos recurrentes complejos, falta de preparación previa para reuniones, pérdida de respaldos de carpetas de trabajo y tedio al cambiar credenciales de GitHub CLI entre cuentas personales y laborales."
 solution: "Una aplicación nativa en WinUI 3 y .NET 9 con fondos Mica que abre Slack al iniciar la jornada laboral, ejecuta Granola automáticamente 5 minutos antes de cada reunión, lanza una ventana emergente interactiva de Meeting Alert con unión directa a la videollamada, reconcilia eventos recurrentes de Google Calendar (RFC 5545 RRULE) con cabeceras anti-caché, ofrece conmutación de cuentas GitHub CLI en 1 clic y respalda incrementalmente en Google Drive con hashing SHA-256 diferido."
 learnings:

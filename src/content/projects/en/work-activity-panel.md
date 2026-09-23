@@ -8,7 +8,7 @@ isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545 RRULE", "Meeting Alert Popup", "GitHub CLI Integration", "GitHub Releases API"]
 categories: ["Productivity", "Windows", "Automation"]
 type: "desktop"
-status: "Active"
+status: "Archived"
 problem: "Daily friction manually launching work tools, calendar desynchronization across complex recurring events, lack of automated meeting preparedness, risk of losing local work file changes, and tedious account switching between personal and work GitHub CLI profiles."
 solution: "A native Windows 11 desktop application crafted with WinUI 3 and .NET 9 featuring Mica backdrops that launches Slack at the start of the workday, auto-launches Granola 5 minutes before scheduled meetings, pops up a reactive Meeting Alert window with 1-click conference joining, reconciles recurring Google Calendar events (RFC 5545 RRULE) with anti-cache headers, provides 1-click GitHub CLI switching, and performs incremental Google Drive backups with streaming SHA-256 hashing."
 learnings:
