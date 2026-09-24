@@ -10,10 +10,12 @@ categories: ["Developer Tools", "Productividad", "Windows"]
 type: "desktop"
 status: "Activo"
 problem: "Fricción constante al trabajar con múltiples ramas en paralelo con Git Worktrees, limpiar carpetas huérfanas sin perder cambios y cambiar de identidad en GitHub CLI entre cuentas personales y corporativas."
-solution: "Una micro-aplicación de escritorio residente en el System Tray (<40 MB RAM) con ventana Spotlight que ofrece descubrimiento recursivo de Git worktrees, lanzadores independientes para IDEs y terminales, conmutación de cuentas GitHub CLI en 1 clic y poda segura de ramas huérfanas con notificaciones Toast."
+solution: "Una micro-aplicación de escritorio residente en el System Tray (<40 MB RAM) con ventana Spotlight que ofrece descubrimiento recursivo de Git worktrees, lanzadores independientes para IDEs y terminales, conmutación de cuentas GitHub CLI en 1 clic, limpieza masiva de ramas con guardas de seguridad, y resolución en 1 clic de worktrees sucios o bloqueados con notificaciones Toast."
 learnings:
   - "Lanzadores Duales Independientes (ADR-0004): Resolución directa de ejecutables GUI (VS Code, Antigravity, Cursor, Windsurf) y consolas (Windows Terminal, Git Bash, AGY CLI) sin ventanas parpadeantes."
   - "Limpiador Seguro de Worktrees Huérfanos: Algoritmo de poda con pre-flight dirty checks, prevención de falsos positivos en el worktree raíz y notificaciones Toast nativas de Windows."
+  - "Limpiador Masivo de Ramas Git (ADR-0006): Limpieza de ramas locales con selección múltiple que distingue guardas de seguridad omitidas de fallos reales de git, mostrando el estado de merge y remoto directamente en la vista de worktrees."
+  - "Resolución de Worktrees Sucios y Bloqueados: Acciones de Stash en 1 clic y Descarte con doble confirmación, además de un flujo de Forzar Desbloqueo y Eliminar para worktrees bloqueados por procesos de agentes externos."
   - "Gestión de Git Worktrees en Árbol: Parser de protocolo Porcelain en hilos secundarios con dock a 1 clic para alternar ramas y conmutación de cuentas GitHub CLI."
   - "Interfaces Reactivas Ultraligeras con Svelte 5 (Runes) y Tauri v2 con anclaje dinámico a la barra de tareas y memoria inferior a 35 MB."
 websiteActionText: "Ver Página"
@@ -30,5 +32,10 @@ websiteActionText: "Ver Página"
 
 *   **Lanzadores Desacoplados de IDE y Terminal (ADR-0004):** Lanzamiento en 1 clic de editores (VS Code, Antigravity IDE, Cursor) y consolas de desarrollo con resolución directa de binarios y conmutación ágil de identidades en GitHub CLI (`gh auth switch`).
 *   **Poda de Huérfanos y Notificaciones Toast:** Detección de ramas remotas eliminadas con salvaguarda *dirty check*, prevención estricta de falsos positivos en la raíz del repositorio y alertas Toast nativas del sistema.
+
+### Limpiador Masivo de Ramas y Resolución de Conflictos en Worktrees
+
+*   **Limpiador Masivo de Ramas (ADR-0006):** Limpieza de ramas locales con selección múltiple que distingue guardas de seguridad omitidas de fallos reales de git, con estado de merge y remoto expuesto directamente en la lista de worktrees.
+*   **Resolución de Worktrees Sucios y Bloqueados:** Acciones de Stash en 1 clic y Descarte con doble confirmación en el selector de ramas, más un flujo de Forzar Desbloqueo y Eliminar en el borrado masivo para worktrees bloqueados por procesos de agentes externos.
 
 > **Nota**: Puedes explorar el código fuente, consultar las Decisiones de Arquitectura (ADRs) y compilar la aplicación para Windows desde el repositorio en GitHub.

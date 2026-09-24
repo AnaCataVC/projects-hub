@@ -15,6 +15,7 @@ learnings:
   - "Generating print-ready PDFs from HTML/CSS with `@page` rules, driving the locally installed headless browser instead of pulling in Puppeteer or another PDF library."
   - "Keeping print templates separate from the web markup lets each format — a compact one-page résumé vs. a scrolling, animated page — be optimized on its own terms."
   - "Reusing a shared design system (pastel palette, typography) across several personal sites speeds up spinning up a new one without a redesign from scratch."
+  - "Single source of truth in TypeScript (`src/data/cv.ts`): centralizing all bilingual content in one typed file that powers both the interactive site and the print templates, with a build step that automatically verifies the strict 2-page budget and ATS-parser compatibility before publishing the PDFs."
 websiteActionText: "View Live CV"
 ---
 

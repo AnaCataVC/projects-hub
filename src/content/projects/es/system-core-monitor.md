@@ -13,6 +13,8 @@ problem: "Monitores de recursos tradicionales pesados (basados en frameworks web
 solution: "Un panel de telemetría HUD y centro de comandos en C# nativo (.NET WPF/XAML) de solo 585 KB que combina métricas P/Invoke de submilisegundo, monitor de sesiones de Agentes IA y servidores MCP, terminación de procesos en árbol inverso, congelación con NtSuspendProcess y planes de energía en 1 clic."
 learnings:
   - "Monitor de Agentes IA & MCP: Telemetría en tiempo real de sesiones CLI (claude, gemini, cursor, antigravity) y servidores MCP con Reverse Tree Kill para evitar procesos huérfanos."
+  - "Rastreo de Linaje de Agentes y Escáner de Residuos: AgentLineageTracker agrupa sesiones huérfanas por su proceso padre finalizado, mientras AiAgentLeftoverScanner realiza un barrido de disco completo en busca de worktrees de git colgantes, directorios scratch obsoletos y logs huérfanos dejados por sesiones de agentes IA."
+  - "Detección de Procesos Desbocados: Heurística de CPU sostenida que advierte proactivamente sobre tareas descontroladas en segundo plano antes de requerir intervención manual con NtSuspendProcess."
   - "Control de Procesos a Nivel de Kernel: Congelación y reanudación segura de procesos desbocados con ntdll.dll (NtSuspendProcess / NtResumeProcess) y cierre elegante en dos fases."
   - "Conmutación Energética con PowrProf.dll: Alternancia instantánea de perfiles de energía (PowerSetActiveScheme) combinada con recorte seguro de páginas de memoria inactivas (EmptyWorkingSet)."
   - "Limpiador Seguro Multizona: Purga higiénica de archivos temporales del sistema protegida contra enlaces simbólicos (NTFS Junctions) y validación de marcas temporales duales."
@@ -25,6 +27,7 @@ websiteActionText: "Visitar Sitio"
 
 *   **P/Invoke y Telemetría HUD (<0.01 ms):** Consulta de contadores de hardware y red mediante llamadas directas a APIs nativas de Win32, sin la latencia de WMI ni runtimes externos.
 *   **Monitor de Agentes IA & Servidores MCP:** Detección en vivo de sesiones de desarrollo (`claude.exe`, `gemini.exe`, `cursor.exe`, `antigravity.exe`) y subprocesos MCP, con terminación jerárquica en árbol inverso (*Reverse Topological Tree Kill*) que elimina procesos huérfanos en segundo plano.
+*   **Linaje de Agentes y Escáner de Residuos:** `AgentLineageTracker` agrupa sesiones huérfanas por su proceso padre finalizado, y `AiAgentLeftoverScanner` ejecuta un barrido de disco completo en busca de worktrees de git colgantes, directorios scratch obsoletos y logs huérfanos.
 
 ### Control a Nivel de Kernel y Optimización
 

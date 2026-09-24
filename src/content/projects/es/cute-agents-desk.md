@@ -16,6 +16,8 @@ learnings:
   - "Canal de Retorno vía PTY: Implementación de un buzón donde el worker reporta eventos al coordinador directamente escribiendo en su terminal interactiva PTY (spawn-request, bloqueado, terminado), evitando llamadas de red innecesarias."
   - "Cero Build & Protocolo app:// en Electron: Carga de módulos ES nativos a través de un esquema app:// personalizado que preserva orígenes seguros y elimina la necesidad de bundlers o servidores HTTP locales."
   - "Aislamiento por Git Worktrees: Desacoplamiento de tareas de escritura en árboles de trabajo temporales fuera del directorio principal para prevenir condiciones de carrera y colisiones de estado en repositorios compartidos."
+  - "Programador de Tareas como DAG con Cuotas Reales: Un scheduler propio limita la concurrencia global y por conversación, detecta ciclos de dependencia (DFS) y aborta en cascada, mientras consulta directamente `claude -p /usage` y `agy -p /usage` para telemetría en vivo del consumo real de suscripción (porcentaje semanal, ventanas de 5h, fecha de reinicio)."
+  - "Visualización Radial de Flujos: Grafo SVG hub-and-spoke (`ui/boss-graph.js`) que ubica al coordinador en el centro y a los workers orbitando en un anillo, con arcos animados representando dependencias y transferencias de contexto, y estados fantasma para tareas encoladas o abortadas antes de que empiecen a correr."
 websiteActionText: "Ver Página Web"
 ---
 

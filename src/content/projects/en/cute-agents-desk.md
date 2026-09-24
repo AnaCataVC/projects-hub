@@ -16,6 +16,8 @@ learnings:
   - "PTY-Based Mailbox Communication: Structured worker-to-coordinator messaging routed directly through the coordinator's interactive terminal PTY session without external network requests."
   - "Zero-Build Architecture via app:// Protocol: Loading native ES modules in Electron through a custom secure scheme that eliminates bundler overhead and local HTTP port vulnerabilities."
   - "Concurrency Protection with Git Worktrees: Isolating write-mode agents into dedicated git worktrees outside the main checkout to prevent race conditions and concurrent mutation collisions."
+  - "DAG-Based Task Scheduler with Real Quota Telemetry: A custom scheduler enforces global and per-conversation concurrency limits, detects dependency cycles via DFS with fail-fast cascading aborts, and queries `claude -p /usage` and `agy -p /usage` directly for live subscription usage telemetry (weekly percentage, 5-hour windows, reset dates)."
+  - "Radial Flow Visualization: A hub-and-spoke SVG graph (`ui/boss-graph.js`) placing the coordinator at the center with workers orbiting the ring, animated arcs for dependencies and context handoffs, and ghost entries for tasks queued or aborted before they start running."
 websiteActionText: "View Website"
 ---
 

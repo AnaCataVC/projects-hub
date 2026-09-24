@@ -13,6 +13,8 @@ problem: "Bulky system telemetry monitors (built on heavy web runtimes or uncomp
 solution: "A high-performance native Windows HUD telemetry dashboard and command center engineered in compiled C# (.NET WPF/XAML) in a 585 KB standalone binary, combining sub-millisecond Win32 P/Invoke telemetry, AI Agent & MCP session monitoring, reverse tree kill, NtSuspendProcess freezing, and 1-click power schemes."
 learnings:
   - "AI Agent & MCP Session Monitor: Live telemetry of developer CLI sessions (claude, gemini, cursor, antigravity) and MCP servers with Reverse Tree Kill to prevent orphaned background processes."
+  - "Agent Lineage Tracking & Leftover Scanner: AgentLineageTracker groups orphaned sessions by their ended parent process, while AiAgentLeftoverScanner performs a disk-wide scan for dangling git worktrees, stale scratch directories, and orphaned logs left behind by AI agent sessions."
+  - "Runaway Process Detection: Sustained-CPU heuristic that proactively warns of runaway background tasks before manual NtSuspendProcess intervention is needed."
   - "Kernel-Level Process Control: Safe freezing and resuming of runaway tasks using ntdll.dll (NtSuspendProcess / NtResumeProcess) paired with a Two-Phase Graceful Close protocol."
   - "Win32 Power Switching via PowrProf.dll: Instantaneous power profile switching (PowerSetActiveScheme) coupled with working set memory trimming (EmptyWorkingSet)."
   - "Hardened Multizone Cleaner: Safe cleanup of obsolete temporary files protected by NTFS Junction isolation and dual timestamp validation."
@@ -25,6 +27,7 @@ websiteActionText: "Visit Website"
 
 *   **Sub-Millisecond P/Invoke Telemetry (<0.01 ms):** Direct native Win32 API polling for hardware and network throughput without sluggish WMI abstractions or runtime overhead.
 *   **AI Agent & MCP Session Monitor:** Real-time discovery of active AI developer sessions (`claude.exe`, `gemini.exe`, `cursor.exe`, `antigravity.exe`) and child MCP servers, with *Reverse Topological Tree Kill* that terminates leaves before parent CLIs to prevent orphaned memory leaks.
+*   **Agent Lineage & Leftover Scanner:** `AgentLineageTracker` groups orphaned sessions by their ended parent process, and `AiAgentLeftoverScanner` runs a disk-wide scan for dangling git worktrees, stale scratch directories, and orphaned logs left behind by AI agent sessions.
 
 ### Kernel-Level Process Control & Optimization
 
