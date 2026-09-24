@@ -156,6 +156,7 @@ function runAudit() {
     newProjects: [],
     pendingUpdates: [],
     upToDate: [],
+    archived: [],
   };
 
   const fourteenDaysAgo = new Date();
@@ -178,6 +179,12 @@ function runAudit() {
     // Check if repo has recent updates or missing bilingual parity
     const esFile = path.join(PROJECTS_ES_DIR, `${targetProjectName}.md`);
     const enFile = path.join(PROJECTS_EN_DIR, `${targetProjectName}.md`);
+    // Archived entries are frozen on purpose even if the repo keeps receiving commits
+    if (fs.existsSync(esFile) && /^status:\s*["']?(Archivado|Archived)/m.test(fs.readFileSync(esFile, 'utf-8'))) {
+      results.archived.push({ repo: repoName, projectFile: `${targetProjectName}.md` });
+      continue;
+    }
+
     const hasEnglish = fs.existsSync(enFile);
     const latestActivity = info.lastCommitDate || info.ghPushedAt;
 
@@ -245,6 +252,7 @@ function runAudit() {
   }
 
   console.log(`✅ UP TO DATE PROJECTS: ${results.upToDate.length} projects synchronized.`);
+  console.log(`📦 ARCHIVED (skipped): ${results.archived.map(p => p.repo).join(', ') || 'none'}`);
   console.log('======================================================\n');
 }
 
