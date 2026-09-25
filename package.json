@@ -28,7 +28,6 @@
   "homepage": "https://github.com/AnaCataVC/projects-hub#readme",
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@esbuild/win32-x64": "0.28.1",
     "@tailwindcss/vite": "^4.3.1",
     "@vercel/analytics": "^2.0.1",
     "astro": "^7.0.3",
