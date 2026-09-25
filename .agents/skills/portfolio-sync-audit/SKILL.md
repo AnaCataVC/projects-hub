@@ -43,24 +43,11 @@ The script categorizes all discovered repositories into three status groups:
 - 🔄 **PENDING UPDATE:** An existing project whose latest commit or release date is newer than the portfolio markdown documentation or within a recent active timeframe.
 - ✅ **UP TO DATE:** A project whose portfolio entry is synchronized with recent activity.
 
-### 3. Synchronize New Projects
+### 3. Synchronize Flagged Projects
 
-For each **NEW PROJECT**:
-1. Inspect the sibling repository's `README.md`, `package.json`, `Cargo.toml`, or `.csproj` to extract its domain, architecture, and tech stack.
-2. If available, copy its primary application icon (`assets/icon.png` or `public/icon.png`) to `public/project-icons/<project-id>-icon.png`.
-3. Create bilingual content collection entries:
-   - `src/content/projects/es/<project-id>.md`
-   - `src/content/projects/en/<project-id>.md`
-4. Ensure all required frontmatter fields defined in `src/content.config.ts` are present (`title`, `description`, `icon`, `technologies`, `categories`, `type`, `status`, `problem`, `solution`, `learnings`).
+For each **NEW PROJECT** and **PENDING UPDATE**, run the `project-entry-update` skill (`.agents/skills/project-entry-update/SKILL.md`) with that project's id. It owns the per-entry procedure, including bilingual parity and the `lastUpdated` date.
 
-### 4. Synchronize Updated Projects
-
-For each **PENDING UPDATE**:
-1. Review recent commits (`git log -n 5 --oneline`) in the sibling repository.
-2. Note version bumps, architectural shifts, new features, or key learnings.
-3. Update both `es` and `en` versions in `src/content/projects/` preserving established technical accuracy and concise formatting.
-
-### 5. Quality Gate Verification
+### 4. Quality Gate Verification
 
 Before finalizing any changes:
 ```powershell

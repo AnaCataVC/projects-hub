@@ -63,7 +63,8 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
   problem: z.string().optional(),
   solution: z.string().optional(),
   learnings: z.array(z.string()).default([]),
-  websiteActionText: z.string().optional()
+  websiteActionText: z.string().optional(),
+  lastUpdated: z.coerce.date().optional()  // YYYY-MM-DD, shown on the case-study page
 }
 ```
 
@@ -100,6 +101,7 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
    - Always execute `npm run lint` alongside `npm run type-check` and `npm test` before committing or pushing changes to prevent CI build breaks due to unused variables (`@typescript-eslint/no-unused-vars`).
 12. **Automated Portfolio Sync & Third-Party Fork Filtering:**
    - To audit and synchronize personal repositories, use `npm run audit:projects` (powered by `.agents/skills/portfolio-sync-audit/`).
+   - To create or update a single entry, use `.agents/skills/project-entry-update/` (the audit calls it per flagged project). Any content change to an entry must set `lastUpdated` to the current date in both `es` and `en`, since the page shows it to readers.
    - Repository discovery must remain 100% path-agnostic (resolving sibling repos at `..` or `$env:REPOS_DIR`).
    - Personal portfolio audits MUST automatically ignore forks (`isFork: true` on GitHub API) and non-software repositories, focusing exclusively on original projects authored by the user.
 
