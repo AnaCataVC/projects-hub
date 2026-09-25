@@ -1,6 +1,7 @@
 ---
 title: "Anacatalina CV — Sitio Personal Bilingüe"
 description: "Mi CV como sitio web bilingüe con modo oscuro, más un PDF descargable generado imprimiendo plantillas HTML con el motor headless del navegador."
+lastUpdated: 2026-09-24
 icon: "/project-icons/anacatalina-cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-cv"
 liveAppUrl: "https://cv.ana-catalina.com"

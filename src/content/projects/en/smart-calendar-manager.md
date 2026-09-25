@@ -2,6 +2,7 @@
 title: "Smart Calendar Manager"
 icon: "/project-icons/smart-calendar-manager-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that bridges personal and work schedules through secret iCal feeds, blocks availability without OAuth, and automates video meeting preparation."
+lastUpdated: 2026-09-24
 githubUrl: "https://github.com/AnaCataVC/smart-calendar-manager"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "RFC 5545 iCalendar", "Google Apps Script", "xUnit"]

@@ -2,6 +2,7 @@
 title: "Claude Desktop Tools"
 icon: "/project-icons/claude-desktop-tools-icon.png"
 description: "Centro de comando visual autónomo para Windows 11 que audita almacenamiento local, poda transcripts CLI y sesiones de Claude Desktop de forma segura, filtra secretos y respalda directivas IA en Google Drive."
+lastUpdated: 2026-09-23
 githubUrl: "https://github.com/AnaCataVC/claude-desktop-tools"
 websiteUrl: "https://claude-desktop-tools.ana-catalina.com"
 isLiveApp: false

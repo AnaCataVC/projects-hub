@@ -1,6 +1,7 @@
 ---
 title: "Prima Focus"
 description: "Local-first native Android productivity application built with Kotlin Multiplatform, focused on productivity through a predictive priority system, Jetpack Glance widgets, and peer-to-peer sync via Google Nearby Connections."
+lastUpdated: 2026-09-24
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus"
 websiteUrl: "https://prima-focus.ana-catalina.com"

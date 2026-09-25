@@ -2,6 +2,7 @@
 title: "Claude Desktop Tools"
 icon: "/project-icons/claude-desktop-tools-icon.png"
 description: "Autonomous visual workstation hub for Windows 11 designed to audit local storage, safely prune CLI transcripts and Claude Desktop sessions, filter secrets, and back up AI steering directives to Google Drive."
+lastUpdated: 2026-09-23
 githubUrl: "https://github.com/AnaCataVC/claude-desktop-tools"
 websiteUrl: "https://claude-desktop-tools.ana-catalina.com"
 isLiveApp: false

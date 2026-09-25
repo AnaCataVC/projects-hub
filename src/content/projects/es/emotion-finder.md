@@ -1,6 +1,7 @@
 ---
 title: "Emotion Finder"
 description: "Detector interactivo de emociones y clasificador NLP afectivo basado en el Modelo Circunflejo de Russell y un árbol de decisión somático de 64 estados."
+lastUpdated: 2026-09-06
 icon: "/project-icons/emotion-finder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/emotion-finder"
 liveAppUrl: "https://emotion-finder.ana-catalina.com"

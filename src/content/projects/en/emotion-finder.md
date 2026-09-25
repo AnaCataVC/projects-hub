@@ -1,6 +1,7 @@
 ---
 title: "Emotion Finder"
 description: "Interactive emotion detector and affective NLP classifier based on Russell's Circumplex Model of Affect and a 64-state somatic binary decision tree."
+lastUpdated: 2026-09-06
 icon: "/project-icons/emotion-finder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/emotion-finder"
 liveAppUrl: "https://emotion-finder.ana-catalina.com"

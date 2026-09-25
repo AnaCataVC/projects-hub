@@ -17,9 +17,10 @@ interface Props {
   status?: string;
   learnings?: string[];
   websiteActionText?: string;
+  lastUpdated?: Date;
 }
 
-const { lang = 'es', title, description, icon, technologies = [], categories = [], githubUrl, liveAppUrl, websiteUrl, isLiveApp, problem, solution, status, learnings = [], websiteActionText } = Astro.props;
+const { lang = 'es', title, description, icon, technologies = [], categories = [], githubUrl, liveAppUrl, websiteUrl, isLiveApp, problem, solution, status, learnings = [], websiteActionText, lastUpdated } = Astro.props;
 
 const t = {
   back: lang === 'en' ? "Back to Hub" : "Volver al Hub",
@@ -30,6 +31,8 @@ const t = {
   visitSite: websiteActionText || (lang === 'en' ? "Visit Website" : "Visitar Sitio Web"),
   backHeader: lang === 'en' ? "back" : "volver",
   pathPrefix: lang === 'en' ? 'projects' : 'proyectos',
+  lastUpdated: lang === 'en' ? "Last updated" : "Última actualización",
+  sourceOfTruth: lang === 'en' ? "This page is a high-level summary. The GitHub repository is the source of truth for each tool's current features." : "Esta página es un resumen de alto nivel. El repositorio en GitHub es la fuente de verdad sobre las funcionalidades actuales de cada herramienta.",
 };
 
 const slug = Astro.params.project?.split('/').pop() || '';
@@ -169,6 +172,12 @@ const projectJSONLD = JSON.stringify({
                 </a>
               )}
           </div>
+
+          {lastUpdated && (
+            <p class="mt-5 text-xs font-mono text-slate-500 dark:text-slate-500 animate-fade-in" style="animation-delay: 350ms;">
+              {t.lastUpdated}: <time datetime={lastUpdated.toISOString().slice(0, 10)}>{lastUpdated.toLocaleDateString(lang === 'en' ? 'en-US' : 'es-CL', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>
+            </p>
+          )}
         </header>
 
         <!-- 2. The Context Grid (Bento Style) -->
@@ -224,6 +233,12 @@ const projectJSONLD = JSON.stringify({
         <section class="project-deep-dive relative z-10 animate-fade-in mt-4 text-slate-600 dark:text-slate-400 font-inter text-sm sm:text-base leading-relaxed" style="animation-delay: 500ms;">
           <slot />
         </section>
+
+        {githubUrl && (
+          <p class="relative z-10 mt-10 pt-6 border-t border-slate-200/60 dark:border-slate-800/60 text-xs text-slate-500 font-inter">
+            {t.sourceOfTruth} <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-700 dark:hover:text-slate-300">GitHub ↗</a>
+          </p>
+        )}
 
       </div>
     </div>

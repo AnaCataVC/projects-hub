@@ -20,6 +20,7 @@ const projectsCollection = defineCollection({
     type: z.enum(["desktop", "mobile", "web", "ai", "data-science"]).default("desktop"),
     learnings: z.array(z.string()).default([]),
     websiteActionText: z.string().optional(),
+    lastUpdated: z.coerce.date().optional(),
   }),
 });
 

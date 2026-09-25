@@ -1,6 +1,7 @@
 ---
 title: "Identity Map"
 description: "Un monorepo que contiene dos herramientas independientes: un frontend interactivo en React y un potente backend de consola (CLI) en Python para mapear tu identidad."
+lastUpdated: 2026-09-06
 icon: "/project-icons/identitymap_icon.png"
 githubUrl: "https://github.com/AnaCataVC/identity-map"
 liveAppUrl: "https://identity-map.ana-catalina.com"

@@ -1,6 +1,7 @@
 ---
 title: "Rest Your Eyes"
 description: "Native Android application designed to prevent eye strain caused by prolonged mobile device usage."
+lastUpdated: 2026-09-06
 icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"

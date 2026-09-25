@@ -1,6 +1,7 @@
 ---
 title: "Projects Hub — Terminal Interactiva"
 description: "El portafolio que estás viendo: una terminal Unix simulada 100% en el cliente para navegar mis proyectos por teclado o búsqueda, sin backend."
+lastUpdated: 2026-09-06
 icon: "/project-icons/projects-hub-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/projects-hub"
 liveAppUrl: "https://projects.ana-catalina.com"

@@ -1,6 +1,7 @@
 ---
 title: "PlotThis"
 description: "A local, privacy-focused interactive web application to analyze structured datasets, suggest the most appropriate chart types, and generate automated statistical insights, without using Artificial Intelligence (AI) or third-party APIs."
+lastUpdated: 2026-09-06
 icon: "/project-icons/plot-this-icon.png"
 githubUrl: "https://github.com/AnaCataVC/plot-this"
 liveAppUrl: "https://plot-this.ana-catalina.com"

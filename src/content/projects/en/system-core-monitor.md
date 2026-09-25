@@ -2,6 +2,7 @@
 title: "System Core Monitor"
 icon: "/project-icons/system-core-monitor-icon.png"
 description: "Visual, lightweight HUD system telemetry dashboard and performance control suite for Windows built in native C# (.NET WPF/XAML) in a standalone 585 KB executable with zero external dependencies."
+lastUpdated: 2026-09-24
 githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
 websiteUrl: "https://system-core-monitor.ana-catalina.com"
 isLiveApp: false

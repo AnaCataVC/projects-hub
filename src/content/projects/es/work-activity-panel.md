@@ -2,6 +2,7 @@
 title: "Work Activity Panel"
 icon: "/project-icons/work-activity-panel-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 que optimiza la jornada laboral: auto-inicia herramientas, automatiza Granola previo a reuniones, reconcilia Google Calendar con soporte RRULE, emite alertas emergentes con unión directa, conmuta cuentas de GitHub CLI y respalda en Google Drive."
+lastUpdated: 2026-09-23
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false

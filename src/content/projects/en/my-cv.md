@@ -1,6 +1,7 @@
 ---
 title: "My CV Template"
 description: "A modern, interactive, and dependency-free (Zero-JS output) template to build your own resume or professional portfolio. Easy to configure and deploy."
+lastUpdated: 2026-09-06
 icon: "/project-icons/cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/my-cv"
 websiteUrl: "https://my-cv-template.ana-catalina.com"

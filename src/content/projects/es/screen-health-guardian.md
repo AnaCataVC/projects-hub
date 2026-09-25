@@ -2,6 +2,7 @@
 title: "Screen Health Guardian"
 icon: "/project-icons/screen-health-guardian-icon.png"
 description: "Aplicación de escritorio nativa y ultraligera para Windows que promueve la salud visual y postural monitoreando la actividad real del usuario con soporte multimonitor."
+lastUpdated: 2026-09-06
 githubUrl: "https://github.com/AnaCataVC/screen-health-guardian"
 websiteUrl: "https://screen-health-guardian.ana-catalina.com"
 isLiveApp: false

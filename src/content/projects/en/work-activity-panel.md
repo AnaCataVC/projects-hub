@@ -2,6 +2,7 @@
 title: "Work Activity Panel"
 icon: "/project-icons/work-activity-panel-icon.png"
 description: "Native Windows 11 desktop application designed to streamline daily work routines: auto-launches work tools, automates Granola before meetings, reconciles Google Calendar with RRULE support, pops up meeting alerts with 1-click join, switches GitHub CLI accounts, and backs up to Google Drive."
+lastUpdated: 2026-09-23
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
