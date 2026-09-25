@@ -2,7 +2,7 @@
 title: "Claude Desktop Tools"
 icon: "/project-icons/claude-desktop-tools-icon.png"
 description: "Centro de comando visual autónomo para Windows 11 que audita almacenamiento local, poda transcripts CLI y sesiones de Claude Desktop de forma segura, filtra secretos y respalda directivas IA en Google Drive."
-lastUpdated: 2026-09-23
+lastUpdated: 2026-09-25
 githubUrl: "https://github.com/AnaCataVC/claude-desktop-tools"
 websiteUrl: "https://claude-desktop-tools.ana-catalina.com"
 isLiveApp: false
@@ -37,3 +37,5 @@ websiteActionText: "Visitar Sitio"
 
 *   **Inspección BFS y Escaneo de Secretos:** Escaneo exhaustivo de archivos de contexto (`CLAUDE.md`, referencias, habilidades, agentes y hooks) con comprobación Git acelerada por lotes de 50 elementos y filtrado preventivo por expresiones regulares contra tokens de AWS, GitHub, Slack y llaves privadas SSH.
 *   **Respaldo Resiliente en Google Drive:** Sincronización en la nube con selector individual de archivos, cancelación interactiva, cálculo de progreso en vivo y enrutamiento jerárquico hacia cubos organizados (`_sin-repo`, `_claude-config`).
+
+> **Archivado:** Su respaldo de directivas de IA a Google Drive siguió en **google-drive-work-sync**.

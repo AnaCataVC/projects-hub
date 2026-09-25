@@ -2,7 +2,7 @@
 title: "Work Activity Panel"
 icon: "/project-icons/work-activity-panel-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 que optimiza la jornada laboral: auto-inicia herramientas, automatiza Granola previo a reuniones, reconcilia Google Calendar con soporte RRULE, emite alertas emergentes con unión directa, conmuta cuentas de GitHub CLI y respalda en Google Drive."
-lastUpdated: 2026-09-23
+lastUpdated: 2026-09-25
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
@@ -36,3 +36,5 @@ websiteActionText: "Visitar Sitio"
 *   **Google Drive Incremental Sync:** Respaldo ágil de directorios de trabajo configurados hacia Google Drive mediante un puente ligero en Google Apps Script, con detección de cambios por hash SHA-256 y reglas de exclusión personalizables.
 
 > **Nota**: Puedes descargar el instalador `.exe` precompilado desde la página de Releases en GitHub o compilar la solución localmente con .NET 9 SDK.
+
+> **Archivado:** Sus funciones siguieron en **smart-calendar-manager** (calendario y alertas de reuniones), **google-drive-work-sync** (respaldo en Google Drive) y **workspace-companion** (cambio de cuentas de GitHub CLI).

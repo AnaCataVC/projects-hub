@@ -2,7 +2,7 @@
 title: "Work Activity Panel"
 icon: "/project-icons/work-activity-panel-icon.png"
 description: "Native Windows 11 desktop application designed to streamline daily work routines: auto-launches work tools, automates Granola before meetings, reconciles Google Calendar with RRULE support, pops up meeting alerts with 1-click join, switches GitHub CLI accounts, and backs up to Google Drive."
-lastUpdated: 2026-09-23
+lastUpdated: 2026-09-25
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
 websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
@@ -36,3 +36,5 @@ websiteActionText: "Visit Website"
 *   **Incremental Google Drive Sync:** Streamlined cloud backup for configured work directories via a lightweight Google Apps Script bridge with streaming SHA-256 change detection and custom exclusion rules.
 
 > **Note**: You can download the pre-compiled standalone `.exe` installer from the GitHub Releases page or build the solution locally using the .NET 9 SDK.
+
+> **Archived:** Its features continue in **smart-calendar-manager** (calendar and meeting alerts), **google-drive-work-sync** (Google Drive backup) and **workspace-companion** (GitHub CLI account switching).

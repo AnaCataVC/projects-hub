@@ -2,7 +2,7 @@
 title: "Claude Desktop Tools"
 icon: "/project-icons/claude-desktop-tools-icon.png"
 description: "Autonomous visual workstation hub for Windows 11 designed to audit local storage, safely prune CLI transcripts and Claude Desktop sessions, filter secrets, and back up AI steering directives to Google Drive."
-lastUpdated: 2026-09-23
+lastUpdated: 2026-09-25
 githubUrl: "https://github.com/AnaCataVC/claude-desktop-tools"
 websiteUrl: "https://claude-desktop-tools.ana-catalina.com"
 isLiveApp: false
@@ -37,3 +37,5 @@ websiteActionText: "Visit Website"
 
 *   **BFS Discovery & Multi-Secret Filtering:** Comprehensive scanning of project steering files (`CLAUDE.md`, references, skills, agents, and hooks) accelerated by batched Git verification (chunks of 50 files) and regex protection against AWS tokens, GitHub PATs, Slack credentials, and SSH private keys.
 *   **Resilient Google Drive Backup:** Cloud synchronization with per-file progress tracking (`IProgress`), user cancellation, and organized bucket destinations (`_sin-repo`, `_claude-config`).
+
+> **Archived:** Its AI-directive backup to Google Drive continues in **google-drive-work-sync**.
