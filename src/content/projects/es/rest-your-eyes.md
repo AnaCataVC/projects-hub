@@ -34,7 +34,7 @@ product:
     - src: "/product-screenshots/rest-your-eyes/mobile.jpeg"
       alt: "Captura de pantalla de Rest Your Eyes en un dispositivo Android"
   platforms: ["Android"]
-  downloadUrl: "https://github.com/AnaCataVC/rest-your-eyes/releases"
+  downloadUrl: "https://github.com/AnaCataVC/rest-your-eyes/releases/latest"
   downloadLabel: "Descargar APK"
 ---
 

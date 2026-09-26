@@ -40,7 +40,7 @@ product:
       title: "Bilingual with light/dark theme"
       text: "Full interface in English and Spanish, with a Material Design 3 palette that follows the system or can be set manually."
   platforms: ["Android"]
-  downloadUrl: "https://github.com/AnaCataVC/shopping-list-helper/releases"
+  downloadUrl: "https://github.com/AnaCataVC/shopping-list-helper/releases/latest"
   downloadLabel: "Download APK"
 ---
 

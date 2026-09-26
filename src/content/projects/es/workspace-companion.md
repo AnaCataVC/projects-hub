@@ -43,7 +43,7 @@ product:
       title: "Parsing del Protocolo Git Porcelain"
       text: "El parsing determinista de la salida legible por máquina de git worktree list maneja repos bare, estados bloqueados y HEADs desacoplados en cualquier instalación de Git localizada."
   platforms: ["Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases"
+  downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases/latest"
   downloadLabel: "Descargar para Windows"
 ---
 

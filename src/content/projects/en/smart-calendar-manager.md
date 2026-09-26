@@ -41,7 +41,7 @@ product:
       title: "Dependency-Free RFC 5545 Parser"
       text: "A calendar engine written from scratch: line folding, recurrence resolution (RRULE), and IANA/Windows timezone handling, plus meeting link detection for Meet, Zoom, Teams and Webex."
   platforms: ["Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/smart-calendar-manager/releases"
+  downloadUrl: "https://github.com/AnaCataVC/smart-calendar-manager/releases/latest"
   downloadLabel: "Download for Windows"
 ---
 

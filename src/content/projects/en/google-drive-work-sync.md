@@ -41,7 +41,7 @@ product:
       title: "No Silent Skips"
       text: "Locked files and unlistable folders are reported as errors, not counted as \"unchanged\" — so the Up to date status can always be trusted. Failed batches persist for one-click retry with exponential backoff."
   platforms: ["Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases"
+  downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases/latest"
   downloadLabel: "Download for Windows"
 ---
 

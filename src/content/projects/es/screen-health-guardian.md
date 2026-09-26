@@ -35,7 +35,7 @@ product:
       title: "Totalmente Configurable"
       text: "Personaliza los intervalos de descanso visual, postura e inactividad, además del sonido de notificación y el inicio automático con Windows."
   platforms: ["Windows 10", "Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/screen-health-guardian/releases"
+  downloadUrl: "https://github.com/AnaCataVC/screen-health-guardian/releases/latest"
   downloadLabel: "Descargar Instalador (.exe)"
 ---
 

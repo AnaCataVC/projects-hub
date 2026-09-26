@@ -43,7 +43,7 @@ product:
       title: "Git Porcelain Protocol Parsing"
       text: "Deterministic parsing of machine-readable git worktree list output handles bare repos, locked states, and detached HEADs across all localized Git installations."
   platforms: ["Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases"
+  downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases/latest"
   downloadLabel: "Download for Windows"
 ---
 

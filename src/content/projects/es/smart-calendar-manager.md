@@ -41,7 +41,7 @@ product:
       title: "Parser RFC 5545 Sin Dependencias"
       text: "Un motor de calendario escrito desde cero: plegado de líneas, resolución de recurrencia (RRULE), y manejo de zonas horarias IANA/Windows, más detección de enlaces de reunión para Meet, Zoom, Teams y Webex."
   platforms: ["Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/smart-calendar-manager/releases"
+  downloadUrl: "https://github.com/AnaCataVC/smart-calendar-manager/releases/latest"
   downloadLabel: "Descargar para Windows"
 ---
 

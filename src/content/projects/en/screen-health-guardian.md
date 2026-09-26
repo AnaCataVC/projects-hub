@@ -35,7 +35,7 @@ product:
       title: "Fully Customizable"
       text: "Customize eye rest, posture, and idle-reset intervals, plus the notification sound and starting automatically with Windows."
   platforms: ["Windows 10", "Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/screen-health-guardian/releases"
+  downloadUrl: "https://github.com/AnaCataVC/screen-health-guardian/releases/latest"
   downloadLabel: "Download Installer (.exe)"
 ---
 

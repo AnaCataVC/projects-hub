@@ -40,7 +40,7 @@ product:
       title: "Bilingüe y con tema claro/oscuro"
       text: "Interfaz completa en español e inglés, con paleta Material Design 3 configurable según el sistema o de forma manual."
   platforms: ["Android"]
-  downloadUrl: "https://github.com/AnaCataVC/shopping-list-helper/releases"
+  downloadUrl: "https://github.com/AnaCataVC/shopping-list-helper/releases/latest"
   downloadLabel: "Descargar APK"
 ---
 

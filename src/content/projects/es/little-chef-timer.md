@@ -44,7 +44,7 @@ product:
     - question: "¿Puedo respaldar mis recetas si cambio de teléfono?"
       answer: "Sí, puedes exportarlas e importarlas como un archivo JSON usando el selector de archivos del sistema."
   platforms: ["Android"]
-  downloadUrl: "https://github.com/AnaCataVC/little-chef-timer/releases"
+  downloadUrl: "https://github.com/AnaCataVC/little-chef-timer/releases/latest"
   downloadLabel: "Descargar APK"
 ---
 

@@ -44,7 +44,7 @@ product:
     - question: "Can I back up my recipes if I switch phones?"
       answer: "Yes, you can export and import them as a JSON file using the system's file picker."
   platforms: ["Android"]
-  downloadUrl: "https://github.com/AnaCataVC/little-chef-timer/releases"
+  downloadUrl: "https://github.com/AnaCataVC/little-chef-timer/releases/latest"
   downloadLabel: "Download APK"
 ---
 

@@ -41,7 +41,7 @@ product:
       title: "Sin Omisiones Silenciosas"
       text: "Los archivos bloqueados y las carpetas no listables se reportan como error, no se cuentan como \"sin cambios\" — así el estado Al día siempre es confiable. Los lotes fallidos quedan disponibles para reintentar en un clic con backoff exponencial."
   platforms: ["Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases"
+  downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases/latest"
   downloadLabel: "Descargar para Windows"
 ---
 

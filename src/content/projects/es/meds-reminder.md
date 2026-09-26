@@ -41,7 +41,7 @@ product:
       title: "Respaldo SAF en JSON"
       text: "Exporta e importa tu base de datos completa de forma atómica mediante el Storage Access Framework de Android. Sin dependencias propietarias ni bloqueos."
   platforms: ["Android"]
-  downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases"
+  downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases/latest"
   downloadLabel: "Descargar APK Release"
 ---
 

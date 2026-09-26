@@ -41,7 +41,7 @@ product:
       title: "Atomic JSON SAF Backup"
       text: "Export and import your entire database atomically via Android's Storage Access Framework. No proprietary dependencies, no lock-in."
   platforms: ["Android"]
-  downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases"
+  downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases/latest"
   downloadLabel: "Download APK Release"
 ---
 

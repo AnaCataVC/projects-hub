@@ -43,7 +43,7 @@ product:
       title: "Pipeline Seguro de PRs"
       text: "Al completar una tarea, el sistema hace commit y push con las credenciales de la cuenta activa y crea automáticamente un Pull Request en borrador."
   platforms: ["Windows 10", "Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/cute-agents-desk/releases"
+  downloadUrl: "https://github.com/AnaCataVC/cute-agents-desk/releases/latest"
   downloadLabel: "Descargar para Windows"
 ---
 
