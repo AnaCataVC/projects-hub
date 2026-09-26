@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 /**
- * Keeps vercel.json host rewrites, product landings and archived entries consistent:
+ * Keeps vercel.json host routes, product landings and archived entries consistent:
  * a subdomain must never rewrite to a page that isn't built, and archived projects
  * must not link to sites that no longer exist.
  */
@@ -23,8 +23,8 @@ const hasProduct = (fm: string) => /^product:\s*$/m.test(fm);
 
 const vercelConfig = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf-8"));
 const rewrittenSlugs = new Set<string>(
-  vercelConfig.rewrites
-    .map((r: { destination: string }) => r.destination.match(/^\/p\/([^/]+)\//)?.[1])
+  vercelConfig.routes
+    .map((r: { dest?: string }) => r.dest?.match(/^\/p\/([^/]+)\//)?.[1])
     .filter(Boolean),
 );
 

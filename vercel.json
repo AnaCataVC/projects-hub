@@ -1,245 +1,248 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "amiga-ia.ana-catalina.com"
         }
       ],
-      "destination": "/p/amiga-ia/"
+      "dest": "/p/amiga-ia/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "amiga-ia.ana-catalina.com"
         }
       ],
-      "destination": "/p/amiga-ia/en/"
+      "dest": "/p/amiga-ia/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "cute-agents-desk.ana-catalina.com"
         }
       ],
-      "destination": "/p/cute-agents-desk/"
+      "dest": "/p/cute-agents-desk/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "cute-agents-desk.ana-catalina.com"
         }
       ],
-      "destination": "/p/cute-agents-desk/en/"
+      "dest": "/p/cute-agents-desk/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "google-drive-work-sync.ana-catalina.com"
         }
       ],
-      "destination": "/p/google-drive-work-sync/"
+      "dest": "/p/google-drive-work-sync/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "google-drive-work-sync.ana-catalina.com"
         }
       ],
-      "destination": "/p/google-drive-work-sync/en/"
+      "dest": "/p/google-drive-work-sync/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "meds-reminder.ana-catalina.com"
         }
       ],
-      "destination": "/p/meds-reminder/"
+      "dest": "/p/meds-reminder/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "meds-reminder.ana-catalina.com"
         }
       ],
-      "destination": "/p/meds-reminder/en/"
+      "dest": "/p/meds-reminder/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "prima-focus.ana-catalina.com"
         }
       ],
-      "destination": "/p/prima-focus/"
+      "dest": "/p/prima-focus/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "prima-focus.ana-catalina.com"
         }
       ],
-      "destination": "/p/prima-focus/en/"
+      "dest": "/p/prima-focus/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "rest-your-eyes.ana-catalina.com"
         }
       ],
-      "destination": "/p/rest-your-eyes/"
+      "dest": "/p/rest-your-eyes/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "rest-your-eyes.ana-catalina.com"
         }
       ],
-      "destination": "/p/rest-your-eyes/en/"
+      "dest": "/p/rest-your-eyes/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "screen-health-guardian.ana-catalina.com"
         }
       ],
-      "destination": "/p/screen-health-guardian/"
+      "dest": "/p/screen-health-guardian/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "screen-health-guardian.ana-catalina.com"
         }
       ],
-      "destination": "/p/screen-health-guardian/en/"
+      "dest": "/p/screen-health-guardian/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "smart-calendar-manager.ana-catalina.com"
         }
       ],
-      "destination": "/p/smart-calendar-manager/"
+      "dest": "/p/smart-calendar-manager/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "smart-calendar-manager.ana-catalina.com"
         }
       ],
-      "destination": "/p/smart-calendar-manager/en/"
+      "dest": "/p/smart-calendar-manager/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "system-core-monitor.ana-catalina.com"
         }
       ],
-      "destination": "/p/system-core-monitor/"
+      "dest": "/p/system-core-monitor/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "system-core-monitor.ana-catalina.com"
         }
       ],
-      "destination": "/p/system-core-monitor/en/"
+      "dest": "/p/system-core-monitor/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "workspace-companion.ana-catalina.com"
         }
       ],
-      "destination": "/p/workspace-companion/"
+      "dest": "/p/workspace-companion/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "workspace-companion.ana-catalina.com"
         }
       ],
-      "destination": "/p/workspace-companion/en/"
+      "dest": "/p/workspace-companion/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "little-chef-timer.ana-catalina.com"
         }
       ],
-      "destination": "/p/little-chef-timer/"
+      "dest": "/p/little-chef-timer/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "little-chef-timer.ana-catalina.com"
         }
       ],
-      "destination": "/p/little-chef-timer/en/"
+      "dest": "/p/little-chef-timer/en/index.html"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "shopping-list-helper.ana-catalina.com"
         }
       ],
-      "destination": "/p/shopping-list-helper/"
+      "dest": "/p/shopping-list-helper/index.html"
     },
     {
-      "source": "/en",
+      "src": "^/en/?$",
       "has": [
         {
           "type": "host",
           "value": "shopping-list-helper.ana-catalina.com"
         }
       ],
-      "destination": "/p/shopping-list-helper/en/"
+      "dest": "/p/shopping-list-helper/en/index.html"
+    },
+    {
+      "handle": "filesystem"
     }
   ]
 }
