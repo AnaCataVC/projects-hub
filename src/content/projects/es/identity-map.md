@@ -4,8 +4,7 @@ description: "Un monorepo que contiene dos herramientas independientes: un front
 lastUpdated: 2026-09-06
 icon: "/project-icons/identitymap_icon.png"
 githubUrl: "https://github.com/AnaCataVC/identity-map"
-liveAppUrl: "https://identity-map.ana-catalina.com"
-isLiveApp: true
+isLiveApp: false
 technologies: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "Python", "NetworkX", "SQLModel", "Typer", "Graphviz", "SQLite"]
 categories: ["Web Application", "Herramienta CLI", "Teoría de Grafos"]
 type: "web"

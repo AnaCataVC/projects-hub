@@ -18,6 +18,31 @@ learnings:
   - "Lanzador Cron Visual con Máscaras de Bits: Selección de días de la semana mediante `DayOfWeekFlags` y evaluación por `System.Threading.Timer` con 0% de CPU en reposo."
 websiteUrl: "https://smart-calendar-manager.ana-catalina.com"
 websiteActionText: "Ver Página"
+product:
+  tagline: "Une tu agenda laboral y personal, sin OAuth"
+  intro: "Lee cualquier calendario mediante feeds iCal secretos (RFC 5545), bloquea tu disponibilidad personal en el calendario laboral con total privacidad vía un Apps Script generado, y automatiza la preparación para videollamadas."
+  features:
+    - icon: "CalendarCheck2"
+      title: "Varios Feeds iCal, Sin OAuth"
+      text: "Agrega un feed iCal secreto laboral (RFC 5545) y los personales que quieras. La agenda las combina por hora y etiqueta cada evento; si un feed falla, los demás se siguen mostrando."
+    - icon: "Lock"
+      title: "Bloqueo Privado de Disponibilidad (Apps Script)"
+      text: "Un asistente genera un Google Apps Script con tus feeds personales incluidos. Corre en la cuenta laboral y crea bloqueos privados \"Ocupada\" — funciona aunque el Workspace bloquee apps OAuth de terceros. Los eventos recurrentes no se expanden."
+    - icon: "Video"
+      title: "Automatización Pre-Reunión de Precisión"
+      text: "Alertas antes de reuniones elegibles — 5 minutos por defecto, configurable de 0 a 60 — que abren Granola, con alcance solo laboral o todos los feeds. Por defecto solo aplican reuniones con enlace de videollamada."
+    - icon: "AlarmClock"
+      title: "Lanzador Visual Tipo Cron"
+      text: "Selectores de día en píldoras, un selector de hora, y cualquier destino — ejecutables, esquemas URI personalizados (slack://, spotify://) o URLs. Cero consumo de CPU en reposo."
+    - icon: "MonitorCog"
+      title: "Fluent Design y Bandeja del Sistema"
+      text: "Fondo Mica nativo de Windows 11, tarjetas Fluent modernas, y minimización a la bandeja con acciones de menú contextual."
+    - icon: "Repeat"
+      title: "Parser RFC 5545 Sin Dependencias"
+      text: "Un motor de calendario escrito desde cero: plegado de líneas, resolución de recurrencia (RRULE), y manejo de zonas horarias IANA/Windows, más detección de enlaces de reunión para Meet, Zoom, Teams y Webex."
+  platforms: ["Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/smart-calendar-manager/releases"
+  downloadLabel: "Descargar para Windows"
 ---
 
 ### Unificación de Agendas sin OAuth

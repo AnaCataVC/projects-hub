@@ -18,6 +18,31 @@ learnings:
   - "Ensuring sub-second alarm accuracy on Android 14/15/16 using AlarmManager.setAlarmClock() and USE_EXACT_ALARM under healthcare exemption guidelines."
   - "Resolving Android 8.0+ notification channel sound immutability by dynamically generating deterministic channels keyed by custom ringtone URI hashes."
 websiteActionText: "View Page"
+product:
+  tagline: "The reminder that never misses a dose"
+  intro: "Engineered in Kotlin & Jetpack Compose for strict medical adherence. Manage family profiles, receive silent pre-alarms, trigger full-screen lockscreen alerts, and back up everything to local JSON."
+  features:
+    - icon: "ShieldCheck"
+      title: "100% Offline & Private"
+      text: "Zero telemetry, zero external servers, and zero cloud storage. Your medical data stays strictly within your phone's local SQLite (Room) database."
+    - icon: "AlarmClock"
+      title: "Full-Screen Lockscreen Alarms"
+      text: "Launches an interactive AlarmActivity directly over the lockscreen, powered by a high-priority setAlarmClock() trigger."
+    - icon: "Users"
+      title: "Multi-Profile Family Care"
+      text: "Manage treatments for parents, children, or partners from one single device with independent catalogs, exact dosages, and custom schedules."
+    - icon: "BellRing"
+      title: "Silent Pre-Alarms"
+      text: "Get a notification 15 or 30 minutes before a dose is due, with one-tap actions to mark it as taken or skip it for today, avoiding sound interruptions."
+    - icon: "PauseCircle"
+      title: "Smart Suspension"
+      text: "Pause a person's alarms for 6 hours or for the rest of the day with a single switch. They reactivate automatically once the scheduled time expires."
+    - icon: "FileJson"
+      title: "Atomic JSON SAF Backup"
+      text: "Export and import your entire database atomically via Android's Storage Access Framework. No proprietary dependencies, no lock-in."
+  platforms: ["Android"]
+  downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases"
+  downloadLabel: "Download APK Release"
 ---
 
 ### Offline-First Architecture & Alarm Reliability

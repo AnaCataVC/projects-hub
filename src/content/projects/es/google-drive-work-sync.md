@@ -18,6 +18,31 @@ learnings:
   - "Sin Omisiones Silenciosas: Archivos bloqueados o carpetas no listables se reportan como error en vez de contarse como 'sin cambios', para que el estado 'Al día' sea siempre confiable."
 websiteUrl: "https://google-drive-work-sync.ana-catalina.com"
 websiteActionText: "Ver Página"
+product:
+  tagline: "Sincroniza tu trabajo y contexto IA a Drive"
+  intro: "Una app de bandeja del sistema en WinUI 3 que calcula hashes antes de subir archivos, los agrupa en lotes para respetar las cuotas de Google Apps Script y redacta secretos en tres capas antes de que algo salga de tu equipo."
+  features:
+    - icon: "ScanLine"
+      title: "Fast-Path de Metadatos + SHA-256"
+      text: "Revisa primero la fecha de modificación y el tamaño, calculando un hash SHA-256 completo solo cuando los metadatos sugieren un cambio real — los archivos sin cambios nunca se vuelven a subir."
+    - icon: "FolderTree"
+      title: "Descubrimiento de Contexto de Agentes IA"
+      text: "Escaneos en anchura (niveles 1-6) que encuentran archivos CLAUDE.md, skills de agentes, prompts de subagentes, memorias y hooks en tus carpetas de trabajo, de forma automática."
+    - icon: "KeyRound"
+      title: "Redacción de Secretos en Tres Capas"
+      text: "Una lista negra de nombres de archivo (.env, id_rsa), un escaneo regex de 64 KB en busca de patrones de tokens y un sanitizador de configuraciones MCP que falla cerrado, todo antes de que un archivo se prepare para subir."
+    - icon: "GitBranch"
+      title: "Exclusión de Repos y Worktrees Anidados"
+      text: "Un recorrido BFS detecta raíces de git — tanto carpetas .git como worktrees vinculados — y los excluye, para que los archivos CLAUDE.md versionados nunca se reclasifiquen como notas sueltas sin trackear."
+    - icon: "Clock"
+      title: "Programador Flexible y Bandeja del Sistema"
+      text: "Configura la sincronización en segundo plano por día y hora, minimiza a la bandeja del sistema y arranca en silencio al iniciar sesión."
+    - icon: "ShieldCheck"
+      title: "Sin Omisiones Silenciosas"
+      text: "Los archivos bloqueados y las carpetas no listables se reportan como error, no se cuentan como \"sin cambios\" — así el estado Al día siempre es confiable. Los lotes fallidos quedan disponibles para reintentar en un clic con backoff exponencial."
+  platforms: ["Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases"
+  downloadLabel: "Descargar para Windows"
 ---
 
 ### Sincronización Incremental con Verificación Criptográfica

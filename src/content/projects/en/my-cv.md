@@ -4,7 +4,6 @@ description: "A modern, interactive, and dependency-free (Zero-JS output) templa
 lastUpdated: 2026-09-06
 icon: "/project-icons/cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/my-cv"
-websiteUrl: "https://my-cv-template.ana-catalina.com"
 isLiveApp: false
 technologies: ["Vite", "Handlebars", "Tailwind CSS"]
 categories: ["Template", "Portfolio", "SSG"]
@@ -16,7 +15,6 @@ learnings:
   - "The best way to distribute a highly customizable template is by minimizing coupled dependencies (Zero-JS in the final build)."
   - "Adapting a complex design into a modular system where users only edit a configuration file without touching HTML/CSS improves usability."
   - "Integrating dynamic theming using Tailwind and CSS variables facilitates scalability and personalization."
-websiteActionText: "View Demo"
 ---
 
 ### From Personal Resume to Reusable SSG Template

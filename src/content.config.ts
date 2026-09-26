@@ -21,6 +21,21 @@ const projectsCollection = defineCollection({
     learnings: z.array(z.string()).default([]),
     websiteActionText: z.string().optional(),
     lastUpdated: z.coerce.date().optional(),
+    // End-user product landing, served on the project's own subdomain; independent from the case-study fields above
+    product: z.object({
+      tagline: z.string(),
+      intro: z.string(),
+      features: z.array(z.object({
+        icon: z.string(), // lucide-static export name, e.g. "BellRing"
+        title: z.string(),
+        text: z.string(),
+      })).min(1),
+      screenshots: z.array(z.object({ src: z.string(), alt: z.string() })).default([]),
+      faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
+      platforms: z.array(z.string()).default([]),
+      downloadUrl: z.string().optional(),
+      downloadLabel: z.string().optional(),
+    }).optional(),
   }),
 });
 

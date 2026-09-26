@@ -18,6 +18,28 @@ learnings:
   - "Agentic vs. Passive Prompting: Transitioning to autonomous subagent profiles that reason about project goals and deploy worker threads in parallel proved dramatically more robust and scalable than monolithic prompt engineering."
   - "System Token Optimization (ADR-004): Verified 36.3% reduction (-1,211 tokens per conversation turn) by compacting the universal adapter and modularizing hook scripts."
 websiteActionText: "Visit Page"
+product:
+  tagline: "Autonomous agentic intelligence for your CLI"
+  intro: "An evolutionary suite of decentralized subagents, stateless guardrail hooks, and portable markdown skills, engineered for true parallel reviews and capability discovery. 100% native across Claude Code and Antigravity (Gemini)."
+  features:
+    - icon: "Bot"
+      title: "Autonomous Subagent Suite"
+      text: "Specialized subagents reason, discover skills, and orchestrate repository audits, PR code reviews, and releases in parallel — no step-by-step micro-prompting required."
+    - icon: "Zap"
+      title: "Stateless & Zero-Overhead"
+      text: "Engineered for strict token economy, featuring externalized hook deduplication and reactive lazy-loading to keep prompt history pristine and lightning fast."
+    - icon: "Layers"
+      title: "Multi-Skill Parallelism"
+      text: "Decentralized agents coordinate multi-skill workflows concurrently, executing technical debt scans, dependency audits, and documentation architectures simultaneously."
+    - icon: "Shield"
+      title: "Pre-Flight Guards"
+      text: "Performs baseline security, data consistency, and hook interceptions before pushing to remote."
+    - icon: "Stethoscope"
+      title: "Setup Wizard & Diagnostic Doctor"
+      text: "An interactive CLI wizard configures skills and agents and lets you pick your preferred shell engine, while a doctor command verifies system health."
+  platforms: ["Claude Code", "Antigravity (Gemini)"]
+  downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
+  downloadLabel: "Install via NPM"
 ---
 
 ### Technical Architecture & Orchestration

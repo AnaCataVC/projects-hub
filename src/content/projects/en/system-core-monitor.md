@@ -20,6 +20,43 @@ learnings:
   - "Win32 Power Switching via PowrProf.dll: Instantaneous power profile switching (PowerSetActiveScheme) coupled with working set memory trimming (EmptyWorkingSet)."
   - "Hardened Multizone Cleaner: Safe cleanup of obsolete temporary files protected by NTFS Junction isolation and dual timestamp validation."
 websiteActionText: "Visit Website"
+product:
+  tagline: "High-Performance System & AI Agent Monitor for Windows"
+  intro: "Real-time telemetry, Claude Code & Gemini observability, transcript storage maintenance, and resource optimization in a single standalone binary."
+  features:
+    - icon: "Cpu"
+      title: "Win32 P/Invoke Telemetry"
+      text: "Sub-millisecond high-precision delta math via GetSystemTimes and GlobalMemoryStatusEx passed by reference, with zero GC pressure."
+    - icon: "Bot"
+      title: "AI Agents & MCP Servers"
+      text: "Real-time observability of Claude Code CLI, Gemini, and compiled MCP subprocesses (Go, Rust, Node, Python) with dedicated CPU and RAM tracking."
+    - icon: "FileClock"
+      title: "AI Transcript Retention & Cleanup"
+      text: "Intelligent scanning and safe pruning of stale session .jsonl files (>7 days) with an inviolable 24-hour grace window and config file protection."
+    - icon: "PowerOff"
+      title: "Win32 Power Plan Switcher"
+      text: "Instant 0.01 ms switching between Balanced, High Performance, and Power Saver schemes with PowrProf.dll, without UAC elevation."
+    - icon: "Trash2"
+      title: "Safe Temp Cleaner & RAM Optimizer"
+      text: "Multi-zone cleaning of temporary files (>24h), idle memory page trimming with EmptyWorkingSet, and regenerable build cache cleanup."
+    - icon: "Gauge"
+      title: "1-Click Command Center"
+      text: "Turbo Mode, DNS cache flush, suspend/resume for runaway processes, and rescue for unresponsive apps, all via direct kernel calls."
+  screenshots:
+    - src: "/product-screenshots/system-core-monitor/dashboard.png"
+      alt: "System Core Monitor dashboard showing CPU and RAM telemetry, active Claude Code and Gemini sessions, and AI transcript maintenance"
+  faq:
+    - question: "Does it require Administrator (UAC) elevation?"
+      answer: "No. All CPU, RAM, disk, network telemetry, power plan switching, AI agent monitoring, and temp cleaning run under standard user permissions."
+    - question: "Why is the executable so small (617 KB)?"
+      answer: "Unlike modern Electron-based tools that bundle an entire Chromium browser and Node (>150 MB), System Core Monitor is compiled directly in native C# targeting .NET 9 with zero third-party dependencies."
+    - question: "How does it monitor AI agents and MCP servers?"
+      answer: "It leverages Win32 Toolhelp32 process snapshots to discover Claude Code CLI, Gemini, and MCP server child processes (Go, Rust, Node, Python), aggregating their resource consumption."
+    - question: "Is the AI transcript cleaner safe to run?"
+      answer: "Yes. It strictly enforces a 24-hour inviolable grace window for recent files, checks live process PIDs to avoid active sessions, and blacklists config and memory files (CLAUDE.md, GEMINI.md, settings.json)."
+  platforms: ["Windows 10 (1809+)", "Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/system-core-monitor/releases/latest/download/SystemCoreMonitor-Setup.exe"
+  downloadLabel: "Download Installer (.exe)"
 ---
 
 ### Native Win32 Architecture & AI Agent Sessions

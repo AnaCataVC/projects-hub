@@ -17,6 +17,25 @@ learnings:
   - "Uso de Foreground Services y Broadcast Receivers en Android para monitoreo en segundo plano."
   - "Implementación de notificaciones superpuestas (SYSTEM_ALERT_WINDOW) para interactuar proactivamente con el usuario."
 websiteActionText: "Ver Página"
+product:
+  tagline: "Descansos inteligentes para tu vista"
+  intro: "Reduce la fatiga visual aplicando la regla 20-20-20. Configura recordatorios personalizables que miden el tiempo que realmente estás usando el dispositivo para adaptarse a tu ritmo de trabajo."
+  features:
+    - icon: "Timer"
+      title: "Intervalos Personalizables"
+      text: "Ajusta el tiempo de aviso y la duración del descanso. Por defecto, cada 20 minutos descansa 20 segundos."
+    - icon: "Vibrate"
+      title: "Notificaciones y Vibración"
+      text: "Recibe alertas discretas e interactivas con soporte para vibración y auto-cierre, para que no pierdas tu enfoque."
+    - icon: "Smartphone"
+      title: "Superposición en Pantalla"
+      text: "Aparece sobre otras aplicaciones recordándote descansar, forzándote positivamente a cuidar tus ojos."
+  screenshots:
+    - src: "/product-screenshots/rest-your-eyes/mobile.jpeg"
+      alt: "Captura de pantalla de Rest Your Eyes en un dispositivo Android"
+  platforms: ["Android"]
+  downloadUrl: "https://github.com/AnaCataVC/rest-your-eyes/releases"
+  downloadLabel: "Descargar APK"
 ---
 
 ### Arquitectura y Monitoreo en Segundo Plano

@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import ProductLayout from '../../layouts/ProductLayout.astro';
+
+// Product landings: /p/<slug>/ (es) and /p/<slug>/en/ (en). Each project's subdomain rewrites
+// "/" and "/en/" onto these routes (see vercel.json). Archived projects get no product page.
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) =>
+    data.product !== undefined && data.status !== 'Archivado' && data.status !== 'Archived');
+  return projects.map((entry) => {
+    const [lang, slug] = entry.id.split('/') as ['es' | 'en', string];
+    return {
+      params: { path: lang === 'es' ? slug : `${slug}/en` },
+      props: { entry, lang, slug },
+    };
+  });
+}
+
+const { entry, lang, slug } = Astro.props;
+---
+
+<ProductLayout entry={entry} lang={lang} slug={slug} />

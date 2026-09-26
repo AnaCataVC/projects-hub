@@ -4,7 +4,6 @@ icon: "/project-icons/work-activity-panel-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 que optimiza la jornada laboral: auto-inicia herramientas, automatiza Granola previo a reuniones, reconcilia Google Calendar con soporte RRULE, emite alertas emergentes con unión directa, conmuta cuentas de GitHub CLI y respalda en Google Drive."
 lastUpdated: 2026-09-25
 githubUrl: "https://github.com/AnaCataVC/work-activity-panel"
-websiteUrl: "https://work-activity-panel.ana-catalina.com"
 isLiveApp: false
 technologies: ["WinUI 3", ".NET 9", "C#", "Fluent Design", "Windows App SDK", "Google Drive Sync", "iCalendar RFC 5545 RRULE", "Meeting Alert Popup", "GitHub CLI Integration", "GitHub Releases API"]
 categories: ["Productividad", "Windows", "Automatización"]
@@ -18,7 +17,6 @@ learnings:
   - "Ventana Emergente Reactiva de Alertas (Meeting Alert): Implementación de una ventana secundaria flotante desacoplada en WinUI 3 para notificar reuniones inminentes con validación de URL y unión en un solo clic."
   - "Sincronización Incremental con Google Drive: Puente ligero sobre Google Apps Script Web App con cálculo SHA-256 en streaming y filtrado por listas de exclusión sin dependencias pesadas de GCP."
   - "Auto-Actualizador In-App & Desacoplamiento MVVM: Descarga en segundo plano vía GitHub Releases API con progreso reactivo, ejecución Inno Setup in-place y arquitectura MVVM limpia en .NET 9."
-websiteActionText: "Visitar Sitio"
 ---
 
 ### Arquitectura WinUI 3 (.NET 9) y Automatización de Jornada

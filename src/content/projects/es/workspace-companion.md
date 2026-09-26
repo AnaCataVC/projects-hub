@@ -20,6 +20,31 @@ learnings:
   - "Gestión de Git Worktrees en Árbol: Parser de protocolo Porcelain en hilos secundarios con dock a 1 clic para alternar ramas y conmutación de cuentas GitHub CLI."
   - "Interfaces Reactivas Ultraligeras con Svelte 5 (Runes) y Tauri v2 con anclaje dinámico a la barra de tareas y memoria inferior a 35 MB."
 websiteActionText: "Ver Página"
+product:
+  tagline: "Git Worktrees al instante, multi-cuenta"
+  intro: "El panel de bandeja del sistema ultraligero y sin parpadeos diseñado para desarrolladores en Windows. Cambia de rama, limpia worktrees huérfanos y alterna identidades de GitHub en milisegundos."
+  features:
+    - icon: "Terminal"
+      title: "Cero Parpadeo de Consola"
+      text: "Las ejecuciones de Git y GitHub CLI en segundo plano corren con flags Win32 de bajo nivel que evitan ventanas emergentes, para que nunca más veas una consola parpadear."
+    - icon: "UserCog"
+      title: "Cambio de Identidad GitHub en 1 Clic"
+      text: "Alterna sin fricción entre perfiles personales y corporativos de GitHub CLI. La detección automática de contexto asocia la carpeta activa con la identidad correcta."
+    - icon: "Trash2"
+      title: "Limpiador Seguro de Worktrees Huérfanos"
+      text: "Detecta worktrees cuya rama remota fue eliminada o mergeada. Incluye verificaciones obligatorias de estado sucio antes de actuar, para evitar pérdida accidental de datos."
+    - icon: "Search"
+      title: "Ventana Flotante Spotlight"
+      text: "Vive silenciosamente en la bandeja del sistema de Windows consumiendo menos de 40 MB de RAM. Aparece junto a la barra de tareas al activarse y se oculta sola al perder el foco."
+    - icon: "Code2"
+      title: "Lanzamiento Multi-Editor en 1 Clic"
+      text: "Detecta automáticamente IDEs instalados como VS Code, Cursor, Windsurf, Neovim y Windows Terminal. Abre cualquier worktree en tu editor favorito con un clic."
+    - icon: "GitBranch"
+      title: "Parsing del Protocolo Git Porcelain"
+      text: "El parsing determinista de la salida legible por máquina de git worktree list maneja repos bare, estados bloqueados y HEADs desacoplados en cualquier instalación de Git localizada."
+  platforms: ["Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases"
+  downloadLabel: "Descargar para Windows"
 ---
 
 ### Arquitectura Rust & Tauri v2 con Svelte 5

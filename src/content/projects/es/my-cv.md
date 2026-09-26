@@ -4,7 +4,6 @@ description: "Plantilla moderna, interactiva y sin dependencias (salida Zero-JS)
 lastUpdated: 2026-09-06
 icon: "/project-icons/cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/my-cv"
-websiteUrl: "https://my-cv-template.ana-catalina.com"
 isLiveApp: false
 technologies: ["Vite", "Handlebars", "Tailwind CSS"]
 categories: ["Plantilla", "Portafolio", "SSG"]
@@ -16,7 +15,6 @@ learnings:
   - "La mejor forma de distribuir una plantilla altamente personalizable es minimizando las dependencias acopladas (Zero-JS en el build final)."
   - "Adaptar un diseño complejo a un sistema modular donde el usuario solo edita un archivo de configuración sin tocar HTML/CSS mejora la usabilidad."
   - "Integrar temas dinámicos usando Tailwind y variables CSS facilita la escalabilidad y personalización."
-websiteActionText: "Ver Demo"
 ---
 
 ### De Currículum Personal a Plantilla SSG Reutilizable

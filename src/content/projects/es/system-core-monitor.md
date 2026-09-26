@@ -20,6 +20,43 @@ learnings:
   - "Conmutación Energética con PowrProf.dll: Alternancia instantánea de perfiles de energía (PowerSetActiveScheme) combinada con recorte seguro de páginas de memoria inactivas (EmptyWorkingSet)."
   - "Limpiador Seguro Multizona: Purga higiénica de archivos temporales del sistema protegida contra enlaces simbólicos (NTFS Junctions) y validación de marcas temporales duales."
 websiteActionText: "Visitar Sitio"
+product:
+  tagline: "Monitor de Rendimiento y Agentes IA para Windows"
+  intro: "Telemetría en tiempo real, observabilidad de Claude Code y Gemini, mantenimiento de sesiones y optimización de recursos en un único ejecutable nativo."
+  features:
+    - icon: "Cpu"
+      title: "Telemetría Win32 P/Invoke"
+      text: "Cálculos delta de alta precisión con GetSystemTimes y GlobalMemoryStatusEx estructurado por referencia, sin presión sobre el Garbage Collector."
+    - icon: "Bot"
+      title: "Agentes IA & Servidores MCP"
+      text: "Observabilidad en tiempo real de Claude Code CLI, Gemini y servidores MCP compilados (Go, Rust, Node, Python) con telemetría de CPU y RAM dedicada."
+    - icon: "FileClock"
+      title: "Mantenimiento de Transcripts IA"
+      text: "Escaneo y depuración inteligente de historiales .jsonl (>7 días) con ventana de gracia inviolable de 24h y protección de archivos de configuración."
+    - icon: "PowerOff"
+      title: "Conmutador de Energía Win32"
+      text: "Cambio instantáneo de planes de energía (Equilibrado, Alto Rendimiento, Ahorro) en 0.01 ms con PowrProf.dll, sin requerir permisos de Administrador."
+    - icon: "Trash2"
+      title: "Limpiador Temp & RAM Optimizer"
+      text: "Limpieza multizona de archivos temporales antiguos (>24h), vaciado de páginas en desuso con EmptyWorkingSet y podado de cachés de compilación."
+    - icon: "Gauge"
+      title: "Centro de Mando en 1 Clic"
+      text: "Modo Turbo, vaciado de caché DNS, suspensión/reanudación de procesos desbocados y rescate de aplicaciones colgadas, todo con llamadas nativas al kernel."
+  screenshots:
+    - src: "/product-screenshots/system-core-monitor/dashboard.png"
+      alt: "Dashboard de System Core Monitor mostrando telemetría de CPU y RAM, sesiones activas de Claude Code y Gemini, y mantenimiento de transcripts IA"
+  faq:
+    - question: "¿Requiere privilegios de Administrador (UAC) para funcionar?"
+      answer: "No. Toda la telemetría de CPU, RAM, discos, red, conmutación de planes de energía, agentes IA y limpieza de archivos temporales opera con permisos normales de usuario estándar."
+    - question: "¿Por qué el ejecutable es tan ligero (617 KB)?"
+      answer: "A diferencia de monitores construidos con Electron que empaquetan Chromium y Node (>150 MB), System Core Monitor está compilado en C# nativo sobre .NET 9 con cero dependencias externas de terceros."
+    - question: "¿Cómo detecta los agentes IA y servidores MCP?"
+      answer: "Examina los árboles de procesos nativos de Toolhelp32 identificando ejecutables de Claude CLI, Gemini y servidores MCP (Go, Rust, Node, Python), calculando su consumo de recursos agregado."
+    - question: "¿Es seguro el limpiador de transcripts IA?"
+      answer: "Sí. Aplica una ventana de gracia inviolable de 24 horas para nunca tocar sesiones recientes, verifica que el PID no esté activo y protege listas negras de configuración (CLAUDE.md, GEMINI.md, settings.json)."
+  platforms: ["Windows 10 (1809+)", "Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/system-core-monitor/releases/latest/download/SystemCoreMonitor-Setup.exe"
+  downloadLabel: "Descargar Instalador (.exe)"
 ---
 
 ### Arquitectura Nativa Win32 y Sesiones de Agentes IA

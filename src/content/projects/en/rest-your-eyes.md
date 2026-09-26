@@ -17,6 +17,25 @@ learnings:
   - "Using Foreground Services and Broadcast Receivers in Android for background monitoring."
   - "Implementing system-level overlay notifications (SYSTEM_ALERT_WINDOW) to proactively interact with the user."
 websiteActionText: "Visit Page"
+product:
+  tagline: "Smart breaks for tired eyes"
+  intro: "Reduces eye strain by enforcing the 20-20-20 rule. Set customizable reminders that track your real device usage time to match your work rhythm."
+  features:
+    - icon: "Timer"
+      title: "Customizable Intervals"
+      text: "Adjust the warning time and rest duration. By default, rest 20 seconds every 20 minutes."
+    - icon: "Vibrate"
+      title: "Notifications & Vibration"
+      text: "Get discreet, interactive alerts with vibration support and auto-dismiss, so you don't lose focus."
+    - icon: "Smartphone"
+      title: "On-Screen Overlay"
+      text: "Appears over other apps to remind you to rest, positively nudging you to take care of your eyes."
+  screenshots:
+    - src: "/product-screenshots/rest-your-eyes/mobile.jpeg"
+      alt: "Screenshot of Rest Your Eyes on an Android device"
+  platforms: ["Android"]
+  downloadUrl: "https://github.com/AnaCataVC/rest-your-eyes/releases"
+  downloadLabel: "Download APK"
 ---
 
 ### Background Architecture & Screen Time Tracking

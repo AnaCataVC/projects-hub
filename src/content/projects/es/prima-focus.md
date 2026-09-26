@@ -17,6 +17,31 @@ learnings:
   - "Widgets Interactivos con Jetpack Glance: Widgets de inicio para visualizar y completar tareas prioritarias en 1 toque directo desde el launcher."
   - "Disciplina de Alcance: Se dio de baja el cliente de escritorio en Java/Swing y su protocolo de sincronización LAN (servidor HTTP embebido, emparejamiento HMAC-SHA256) para enfocar el código exclusivamente en Android nativo, eliminando más de 2.400 líneas sin uso."
 websiteActionText: "Descargar App"
+product:
+  tagline: "Enfócate en lo que realmente importa"
+  intro: "Una app móvil nativa local-first para Android que usa un algoritmo predictivo para elegir tu Tarea de Hoy, con sincronización punto a punto directa entre tu móvil y tablet, sin depender de servidores ni de la nube."
+  features:
+    - icon: "Lock"
+      title: "Local-First (Privacidad Total)"
+      text: "Toda tu información vive exclusivamente en tu dispositivo en Room Database v6 (SQLite). Sin servidores en la nube ni rastreo."
+    - icon: "Zap"
+      title: "Puntuación Predictiva Unificada"
+      text: "Motor de dominio modular que analiza urgencias, decaimiento y plazos de forma determinista y reproducible para elegir tu Tarea de Hoy."
+    - icon: "RadioTower"
+      title: "Sincronización Móvil a Tablet"
+      text: "Conecta directamente tu teléfono y tableta Android mediante Bluetooth y Wi-Fi Direct con Google Nearby Connections, sin internet ni router."
+    - icon: "ShieldCheck"
+      title: "Seguridad y Auto-Timeout P2P"
+      text: "Protección de batería con apagado automático a los 45 segundos, límite de seguridad de 5 MB por paquete y modo explícito Anfitrión / Cliente."
+    - icon: "ClockAlert"
+      title: "Inmunidad a Desfase de Reloj"
+      text: "Resolución Last-Write-Wins (LWW) protegida contra desfases de reloj mediante versiones lógicas incrementales y no-regresión de tareas."
+    - icon: "LayoutGrid"
+      title: "Widgets & Diseño Adaptativo"
+      text: "Widgets interactivos para Android (Jetpack Glance) y vista dividida con calendario interactivo optimizado para tabletas."
+  platforms: ["Android"]
+  downloadUrl: "https://github.com/AnaCataVC/prima-focus/releases/latest"
+  downloadLabel: "Descargar App (Android APK)"
 ---
 
 ### Arquitectura KMP y Persistencia Room v6

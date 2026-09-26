@@ -18,6 +18,31 @@ learnings:
   - "No Silent Skips: Locked files or unlistable folders are reported as errors instead of counted as 'unchanged', so the 'Up to date' status can always be trusted."
 websiteUrl: "https://google-drive-work-sync.ana-catalina.com"
 websiteActionText: "View Page"
+product:
+  tagline: "Sync work & AI context to Drive"
+  intro: "A WinUI 3 system tray app that hashes files before uploading, batches them for Google Apps Script's quotas, and redacts secrets in three layers before anything leaves your machine."
+  features:
+    - icon: "ScanLine"
+      title: "Metadata Fast-Path + SHA-256"
+      text: "Checks modification timestamp and byte size first, computing a full SHA-256 hash only when metadata suggests a real change — unchanged files are never re-uploaded."
+    - icon: "FolderTree"
+      title: "AI Agent Context Discovery"
+      text: "Breadth-first scans (levels 1-6) find CLAUDE.md files, agent skills, subagent prompts, memory files, and hooks across your workspaces automatically."
+    - icon: "KeyRound"
+      title: "Three-Tiered Secret Redaction"
+      text: "A filename blacklist (.env, id_rsa), a 64 KB regex scan for token patterns, and a fail-closed MCP configuration sanitizer, all run before a file is staged for upload."
+    - icon: "GitBranch"
+      title: "Nested Repo & Worktree Exclusion"
+      text: "A BFS traversal detects git roots — both .git directories and linked worktrees — and skips them, so tracked CLAUDE.md files are never misclassified as untracked scratch notes."
+    - icon: "Clock"
+      title: "Flexible Scheduler & Tray"
+      text: "Configure background sync by weekday and run time, minimize to the system tray, and launch silently at logon."
+    - icon: "ShieldCheck"
+      title: "No Silent Skips"
+      text: "Locked files and unlistable folders are reported as errors, not counted as \"unchanged\" — so the Up to date status can always be trusted. Failed batches persist for one-click retry with exponential backoff."
+  platforms: ["Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases"
+  downloadLabel: "Download for Windows"
 ---
 
 ### Incremental Sync with Cryptographic Verification

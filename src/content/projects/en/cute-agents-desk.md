@@ -20,6 +20,31 @@ learnings:
   - "DAG-Based Task Scheduler with Real Quota Telemetry: A custom scheduler enforces global and per-conversation concurrency limits, detects dependency cycles via DFS with fail-fast cascading aborts, and queries `claude -p /usage` and `agy -p /usage` directly for live subscription usage telemetry (weekly percentage, 5-hour windows, reset dates)."
   - "Radial Flow Visualization: A hub-and-spoke SVG graph (`ui/boss-graph.js`) placing the coordinator at the center with workers orbiting the ring, animated arcs for dependencies and context handoffs, and ghost entries for tasks queued or aborted before they start running."
 websiteActionText: "View Website"
+product:
+  tagline: "A local desktop for your CLI agents"
+  intro: "Concurrent dispatch for Claude Code and Antigravity CLI with atomic Git Worktree isolation, autonomous mailbox-based delegation, and real-time state telemetry — no ports or sockets exposed to the network."
+  features:
+    - icon: "Bot"
+      title: "Autonomous CLI Coordinator"
+      text: "A real CLI agent decides how many parallel sessions the work splits into and delegates by writing to disk-watched JSON queues. No server logic makes decisions on its behalf."
+    - icon: "GitBranch"
+      title: "Git Worktree Isolation"
+      text: "Every write-mode task runs in its own ephemeral git worktree with a dedicated branch, keeping your main checkout 100% clean."
+    - icon: "Cpu"
+      title: "Dual Native Engine"
+      text: "Built-in support for claude (Claude Code) and agy (Antigravity CLI), with lifecycle capture through process hooks instead of fragile text scanning."
+    - icon: "Users"
+      title: "Multi-Account GitHub Governance"
+      text: "Strict mapping of local repositories to profiles, preventing cross-authorship or leaks between personal and work projects on the same machine."
+    - icon: "Gauge"
+      title: "Quota & Parallelism Control"
+      text: "The scheduler enforces concurrency caps before any spawn, with preventive warnings at 80% and an automatic cutoff at 100% of quota."
+    - icon: "GitPullRequest"
+      title: "Safe PR Pipeline"
+      text: "On task completion, the system commits and pushes with the active account's exact credentials and automatically opens a draft Pull Request."
+  platforms: ["Windows 10", "Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/cute-agents-desk"
+  downloadLabel: "View Code on GitHub"
 ---
 
 ### Local Agent Dispatch & Multi-Engine Orchestration

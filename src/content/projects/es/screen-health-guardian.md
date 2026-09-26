@@ -18,6 +18,25 @@ learnings:
   - "Optimización de Recursos en Daemons Residentes: Reducción del uso continuo de RAM de ~50 MB a solo 12–16 MB y reducción del consumo de CPU por debajo del 0.1% mediante DispatcherTimer nativo sin contención de GIL."
   - "Integración Nativa con el Sistema Operativo: Sustitución de locks por sockets TCP por un System.Threading.Mutex nativo de Win32 y desacoplamiento del System Tray mediante H.NotifyIcon.Wpf."
 websiteActionText: "Visitar Sitio"
+product:
+  tagline: "Cuida tu salud al trabajar"
+  intro: "Una aplicación de escritorio nativa y ultraligera que te envía alertas periódicas de salud mientras trabajas, sin interrumpirte si no estás en el PC."
+  features:
+    - icon: "Eye"
+      title: "Descanso Visual"
+      text: "Sigue la regla 20-20-20. Cada 20 minutos de trabajo activo, te recordamos mirar a 6 metros (20 pies) de distancia durante 20 segundos para relajar tu vista."
+    - icon: "Armchair"
+      title: "Control de Postura"
+      text: "Evita los dolores de espalda. Recibe alertas no intrusivas cada 45 minutos para corregir tu postura, estirarte y asegurarte de mantener la espalda recta."
+    - icon: "Activity"
+      title: "Detección Inteligente"
+      text: "Solo se cuenta el tiempo de actividad real (teclado o mouse mediante Win32). Si te levantas de tu escritorio, los contadores se pausan de forma automática sin consumir CPU."
+    - icon: "SlidersHorizontal"
+      title: "Totalmente Configurable"
+      text: "Personaliza los intervalos de descanso visual, postura e inactividad, además del sonido de notificación y el inicio automático con Windows."
+  platforms: ["Windows 10", "Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/screen-health-guardian/releases"
+  downloadLabel: "Descargar Instalador (.exe)"
 ---
 
 ### Arquitectura Nativa de Escritorio (.NET 9 / WPF)

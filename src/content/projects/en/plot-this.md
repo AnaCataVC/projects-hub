@@ -4,8 +4,7 @@ description: "A local, privacy-focused interactive web application to analyze st
 lastUpdated: 2026-09-06
 icon: "/project-icons/plot-this-icon.png"
 githubUrl: "https://github.com/AnaCataVC/plot-this"
-liveAppUrl: "https://plot-this.ana-catalina.com"
-isLiveApp: true
+isLiveApp: false
 technologies: ["Python", "Streamlit", "Plotly Express", "Pandas", "NumPy"]
 categories: ["Web Application", "Data Visualization", "Analytics"]
 type: "data-science"

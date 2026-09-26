@@ -20,6 +20,31 @@ learnings:
   - "Git Worktree Tree Management: Background Porcelain stream parsing with 1-click dock switching and swift GitHub CLI identity profiles."
   - "Ultra-Fast Reactive UI with Svelte 5 (Runes) and Tauri v2 with automatic taskbar anchoring and minimal working set memory."
 websiteActionText: "View Page"
+product:
+  tagline: "Instant Git Worktrees & multi-account workflows"
+  intro: "The ultra-lightweight, zero-flicker system tray dashboard designed for Windows developers. Switch branches, clean orphaned worktrees, and toggle GitHub identities in milliseconds."
+  features:
+    - icon: "Terminal"
+      title: "Zero Console Flickering"
+      text: "Background Git and GitHub CLI executions run with low-level Win32 no-window flags, so you never see command prompt popups again."
+    - icon: "UserCog"
+      title: "1-Click GitHub Identity Switch"
+      text: "Seamlessly toggle between personal and corporate GitHub CLI profiles. Automatic context detection matches the active folder to the right identity."
+    - icon: "Trash2"
+      title: "Safe Orphaned Worktree Cleaner"
+      text: "Detect worktrees whose remote upstream branch has been deleted or merged. Equipped with mandatory pre-flight dirty checks to prevent accidental data loss."
+    - icon: "Search"
+      title: "Spotlight Floating Window"
+      text: "Resides silently in the Windows system tray consuming under 40 MB RAM. Smoothly pops up adjacent to your taskbar when triggered and auto-hides when losing focus."
+    - icon: "Code2"
+      title: "Multi-Editor One-Click Launch"
+      text: "Automatically detects installed IDEs including VS Code, Cursor, Windsurf, Neovim, and Windows Terminal. Open any worktree in your favorite editor in 1 click."
+    - icon: "GitBranch"
+      title: "Git Porcelain Protocol Parsing"
+      text: "Deterministic parsing of machine-readable git worktree list output handles bare repos, locked states, and detached HEADs across all localized Git installations."
+  platforms: ["Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases"
+  downloadLabel: "Download for Windows"
 ---
 
 ### Rust & Tauri v2 Architecture with Svelte 5

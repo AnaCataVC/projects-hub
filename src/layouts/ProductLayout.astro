@@ -1,0 +1,189 @@
+---
+import '../styles/global.css';
+import PoppyBackground from '../components/PoppyBackground.astro';
+import Analytics from '@vercel/analytics/astro';
+import * as lucide from 'lucide-static';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  lang: 'es' | 'en';
+  slug: string;
+}
+
+const { entry, lang, slug } = Astro.props;
+const { title, icon, githubUrl, websiteUrl } = entry.data;
+const product = entry.data.product!;
+
+// The page is served on the project's own subdomain through a host rewrite, so canonical and
+// language links point at that host; the ficha lives on projects-hub, hence absolute URLs.
+const productHome = (websiteUrl ?? `https://${slug}.ana-catalina.com`).replace(/\/?$/, '/');
+const productHost = new URL(productHome).hostname;
+const canonicalURL = lang === 'en' ? `${productHome}en/` : productHome;
+const fichaURL = `https://projects.ana-catalina.com/${lang === 'en' ? 'en/' : ''}${slug}`;
+const absoluteIcon = icon ? new URL(icon, 'https://projects.ana-catalina.com').href : undefined;
+
+const t = {
+  es: { features: 'Qué hace', screenshots: 'Así se ve', faq: 'Preguntas frecuentes', details: 'Detalles técnicos', source: 'Código fuente', download: 'Descargar', platforms: 'Disponible para', theme: 'Cambiar tema' },
+  en: { features: 'What it does', screenshots: 'How it looks', faq: 'FAQ', details: 'Technical details', source: 'Source code', download: 'Download', platforms: 'Available for', theme: 'Toggle theme' },
+}[lang];
+
+function iconSvg(name: string): string {
+  const svg = (lucide as Record<string, unknown>)[name];
+  if (typeof svg !== 'string') throw new Error(`Unknown lucide icon "${name}" in ${entry.id}`);
+  return svg;
+}
+
+const jsonLD = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: title,
+  description: product.intro,
+  url: canonicalURL,
+  operatingSystem: product.platforms.join(', ') || undefined,
+  applicationCategory: 'UtilitiesApplication',
+  author: { '@type': 'Person', name: 'Ana-Catalina', url: 'https://ana-catalina.com' },
+});
+
+const primaryBtn = 'inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r from-pastel-lilac to-purple-400 dark:from-purple-500 dark:to-indigo-500 hover:to-purple-300 dark:hover:from-pastel-lilac dark:hover:to-indigo-400 shadow-sm hover:shadow-[0_0_20px_rgba(192,132,252,0.30)] dark:hover:shadow-[0_0_20px_rgba(168,85,247,0.30)] transition-all transform hover:-translate-y-0.5 text-indigo-950 dark:text-white tracking-wide font-semibold text-sm sm:text-base';
+const secondaryBtn = 'inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-white dark:bg-[#2a243d] border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-purple-500 dark:hover:border-pastel-lilac transition-all duration-300 transform hover:-translate-y-0.5 text-slate-700 dark:text-slate-200 hover:text-purple-600 dark:hover:text-pastel-lilac tracking-wide font-medium text-sm sm:text-base';
+const card = 'rounded-2xl bg-white dark:bg-[#2a243d] border border-slate-100 dark:border-slate-700 p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{`${title} — ${product.tagline}`}</title>
+    <meta name="description" content={product.intro} />
+    <meta name="author" content="Ana-Catalina" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={productHome} />
+    <link rel="alternate" hreflang="en" href={`${productHome}en/`} />
+    <link rel="icon" href={icon ?? '/favicon.svg'} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} — ${product.tagline}`} />
+    <meta property="og:description" content={product.intro} />
+    {absoluteIcon && <meta property="og:image" content={absoluteIcon} />}
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={jsonLD}></script>
+    <script is:inline>
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body class="relative min-h-screen bg-[#fdfbff] dark:bg-[#1e1a2b] text-[#3a3550] dark:text-[#fdfbff] tracking-wide">
+    <Analytics />
+    <PoppyBackground />
+
+    <header class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="#top" class="flex items-center gap-2 font-semibold">
+        {icon && <img src={icon} alt="" class="w-8 h-8 rounded-lg object-contain" />}
+        <span>{title}</span>
+      </a>
+      <div class="flex items-center gap-2 text-xs font-medium">
+        <a data-lang-link="es" href="/" class:list={['px-2.5 py-1 rounded-full', lang === 'es' ? 'bg-pastel-lilac/60 text-indigo-950' : 'text-[#6a6480] dark:text-slate-400 hover:text-purple-600']}>ES</a>
+        <a data-lang-link="en" href="/en/" class:list={['px-2.5 py-1 rounded-full', lang === 'en' ? 'bg-pastel-lilac/60 text-indigo-950' : 'text-[#6a6480] dark:text-slate-400 hover:text-purple-600']}>EN</a>
+        <button id="theme-toggle" type="button" aria-label={t.theme} class="ml-2 w-9 h-9 rounded-full flex items-center justify-center border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-pastel-lilac hover:text-purple-600 transition-colors [&>svg]:w-4 [&>svg]:h-4" set:html={iconSvg('SunMoon')}></button>
+      </div>
+    </header>
+
+    <main id="top" class="max-w-5xl mx-auto px-4 sm:px-6 pb-24">
+      <section class="text-center pt-12 sm:pt-20 pb-16 animate-fade-in">
+        {icon && <img src={icon} alt={title} class="w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-8 rounded-3xl object-contain shadow-[0_4px_12px_rgba(143,111,255,0.10)]" />}
+        <h1 class="font-bold text-4xl sm:text-6xl leading-tight">{product.tagline}</h1>
+        <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-[#6a6480] dark:text-slate-300 font-[Inter]">{product.intro}</p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          {product.downloadUrl && (
+            <a href={product.downloadUrl} target="_blank" rel="noopener noreferrer" class={primaryBtn}>
+              <span class="[&>svg]:w-5 [&>svg]:h-5" set:html={iconSvg('Download')}></span>
+              {product.downloadLabel ?? t.download}
+            </a>
+          )}
+          <a href={fichaURL} class={secondaryBtn}>{t.details}</a>
+        </div>
+        {product.platforms.length > 0 && (
+          <p class="mt-6 text-xs text-[#6a6480] dark:text-slate-400 font-[Inter]">{t.platforms}: {product.platforms.join(' · ')}</p>
+        )}
+      </section>
+
+      <section class="py-12" aria-labelledby="features-title">
+        <h2 id="features-title" class="font-semibold text-3xl text-center mb-10">{t.features}</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {product.features.map((feature) => (
+            <article class={card}>
+              <span class="inline-flex w-12 h-12 items-center justify-center rounded-xl bg-pastel-lilac/40 dark:bg-purple-500/20 text-purple-700 dark:text-pastel-lilac [&>svg]:w-6 [&>svg]:h-6" set:html={iconSvg(feature.icon)}></span>
+              <h3 class="mt-5 font-medium text-xl">{feature.title}</h3>
+              <p class="mt-2 text-sm sm:text-base text-[#6a6480] dark:text-slate-300 font-[Inter]">{feature.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {product.screenshots.length > 0 && (
+        <section class="py-12" aria-labelledby="screens-title">
+          <h2 id="screens-title" class="font-semibold text-3xl text-center mb-10">{t.screenshots}</h2>
+          <div class="flex flex-wrap gap-6 justify-center">
+            {product.screenshots.map((shot) => (
+              <img src={shot.src} alt={shot.alt} loading="lazy" class="max-h-[560px] w-auto max-w-full rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm" />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {product.faq.length > 0 && (
+        <section class="py-12 max-w-3xl mx-auto" aria-labelledby="faq-title">
+          <h2 id="faq-title" class="font-semibold text-3xl text-center mb-10">{t.faq}</h2>
+          <div class="space-y-4">
+            {product.faq.map((item) => (
+              <details class="group rounded-2xl bg-white dark:bg-[#2a243d] border border-slate-100 dark:border-slate-700 px-6 py-4">
+                <summary class="cursor-pointer font-medium list-none flex justify-between gap-4">
+                  {item.question}
+                  <span class="text-purple-500 group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p class="mt-3 text-sm text-[#6a6480] dark:text-slate-300 font-[Inter]">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {product.downloadUrl && (
+        <section class="py-16 text-center">
+          <a href={product.downloadUrl} target="_blank" rel="noopener noreferrer" class={primaryBtn}>
+            {product.downloadLabel ?? t.download}
+          </a>
+        </section>
+      )}
+    </main>
+
+    <footer class="border-t border-[#dad7e8] dark:border-slate-700 py-8 text-center text-xs text-[#6a6480] dark:text-slate-400 font-[Inter]">
+      <div class="flex justify-center gap-6 mb-3">
+        <a href={fichaURL} class="hover:text-purple-600 dark:hover:text-pastel-lilac">{t.details}</a>
+        {githubUrl && <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 dark:hover:text-pastel-lilac">{t.source}</a>}
+        <a href="https://projects.ana-catalina.com" class="hover:text-purple-600 dark:hover:text-pastel-lilac">Projects Hub</a>
+      </div>
+      &copy; {new Date().getFullYear()} <a href="https://ana-catalina.com" class="hover:text-purple-600">Ana-Catalina</a>
+    </footer>
+
+    <script is:inline define:vars={{ slug, productHost }}>
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+      // Outside the product subdomain (Vercel previews, projects-hub itself) the host rewrite doesn't
+      // exist, so language links must point at the real /p/ routes.
+      if (location.hostname !== productHost) {
+        document.querySelector('[data-lang-link="es"]').href = `/p/${slug}/`;
+        document.querySelector('[data-lang-link="en"]').href = `/p/${slug}/en/`;
+      }
+    </script>
+  </body>
+</html>

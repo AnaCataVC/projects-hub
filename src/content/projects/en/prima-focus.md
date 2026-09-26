@@ -17,6 +17,31 @@ learnings:
   - "Interactive Android Widgets: Home screen widgets built with Jetpack Glance supporting dynamic sizing and 1-tap task completion from the launcher."
   - "Scope Discipline: Deprecated the Java/Swing desktop companion and its LAN sync protocol (embedded HTTP server, HMAC-SHA256 pairing) to refocus the codebase exclusively on native Android, removing over 2,400 lines of unused code."
 websiteActionText: "Download App"
+product:
+  tagline: "Focus on what actually matters"
+  intro: "A local-first native Android app that uses a predictive algorithm to pick your Today Task, with direct peer-to-peer sync between your phone and tablet — no servers, no cloud."
+  features:
+    - icon: "Lock"
+      title: "Local-First (Full Privacy)"
+      text: "All your data lives exclusively on your device in Room Database v6 (SQLite). No cloud servers, no tracking."
+    - icon: "Zap"
+      title: "Unified Predictive Scoring"
+      text: "A modular domain engine analyzes urgency, decay, and deadlines deterministically and reproducibly to pick your Today Task."
+    - icon: "RadioTower"
+      title: "Phone-to-Tablet Sync"
+      text: "Connects your Android phone and tablet directly over Bluetooth and Wi-Fi Direct via Google Nearby Connections — no internet, no router."
+    - icon: "ShieldCheck"
+      title: "P2P Security & Auto-Timeout"
+      text: "Battery protection with automatic shutdown after 45 seconds, a 5 MB per-packet safety limit, and an explicit Host / Client mode."
+    - icon: "ClockAlert"
+      title: "Clock-Drift Immunity"
+      text: "Last-Write-Wins (LWW) resolution protected against clock drift through incremental logical versions and task non-regression."
+    - icon: "LayoutGrid"
+      title: "Widgets & Adaptive Layout"
+      text: "Interactive Android widgets (Jetpack Glance) and a split view with an interactive calendar optimized for tablets."
+  platforms: ["Android"]
+  downloadUrl: "https://github.com/AnaCataVC/prima-focus/releases/latest"
+  downloadLabel: "Download App (Android APK)"
 ---
 
 ### Modular KMP Architecture & Room v6 Persistence

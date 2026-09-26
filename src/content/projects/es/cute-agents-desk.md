@@ -20,6 +20,31 @@ learnings:
   - "Programador de Tareas como DAG con Cuotas Reales: Un scheduler propio limita la concurrencia global y por conversación, detecta ciclos de dependencia (DFS) y aborta en cascada, mientras consulta directamente `claude -p /usage` y `agy -p /usage` para telemetría en vivo del consumo real de suscripción (porcentaje semanal, ventanas de 5h, fecha de reinicio)."
   - "Visualización Radial de Flujos: Grafo SVG hub-and-spoke (`ui/boss-graph.js`) que ubica al coordinador en el centro y a los workers orbitando en un anillo, con arcos animados representando dependencias y transferencias de contexto, y estados fantasma para tareas encoladas o abortadas antes de que empiecen a correr."
 websiteActionText: "Ver Página Web"
+product:
+  tagline: "Un escritorio local para tus agentes CLI"
+  intro: "Despacho concurrente de Claude Code y Antigravity CLI con aislamiento atómico por Git Worktrees, delegación autónoma por buzón de disco y telemetría de estados en tiempo real, sin exponer puertos ni sockets a la red."
+  features:
+    - icon: "Bot"
+      title: "Coordinador Autónomo CLI"
+      text: "Un agente CLI real decide en cuántas sesiones paralelas se divide el trabajo y delega escribiendo en colas JSON vigiladas en disco. No hay lógica de servidor tomando decisiones por él."
+    - icon: "GitBranch"
+      title: "Aislamiento por Git Worktrees"
+      text: "Cada tarea en modo escritura corre en su propio git worktree efímero con rama dedicada, manteniendo tu checkout principal 100% limpio."
+    - icon: "Cpu"
+      title: "Doble Motor Nativo"
+      text: "Soporte integrado para claude (Claude Code) y agy (Antigravity CLI), con captura de ciclo de vida mediante hooks de proceso sin depender de escaneos frágiles de texto."
+    - icon: "Users"
+      title: "Gobernanza Multicuenta GitHub"
+      text: "Mapeo estricto de repositorios locales vinculados a perfiles. Previene autoría cruzada o fugas entre proyectos personales y laborales en la misma máquina."
+    - icon: "Gauge"
+      title: "Control de Cuotas y Paralelismo"
+      text: "El scheduler impone topes de concurrencia antes de cualquier spawn, con advertencias preventivas al 80% y corte automático al 100% de la cuota."
+    - icon: "GitPullRequest"
+      title: "Pipeline Seguro de PRs"
+      text: "Al completar una tarea, el sistema hace commit y push con las credenciales de la cuenta activa y crea automáticamente un Pull Request en borrador."
+  platforms: ["Windows 10", "Windows 11"]
+  downloadUrl: "https://github.com/AnaCataVC/cute-agents-desk"
+  downloadLabel: "Ver Código en GitHub"
 ---
 
 ### Despacho Local de Agentes y Orquestación Multi-Motor

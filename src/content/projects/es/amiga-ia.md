@@ -18,6 +18,28 @@ learnings:
   - "IA Agéntica vs. Prompts Pasivos: Migrar hacia subagentes autónomos que razonan sobre objetivos globales y coordinan revisiones en paralelo es exponencialmente más resistente y escalable que la ingeniería de prompts tradicional."
   - "Optimización de Tokens de Sistema (ADR-004): Reducción verificada del 36.3% al compactar el adaptador universal y desacoplar lógica en scripts independientes."
 websiteActionText: "Ver Página"
+product:
+  tagline: "Inteligencia agéntica autónoma para tu CLI"
+  intro: "Una suite de subagentes descentralizados, hooks sin estado y skills portátiles en Markdown, diseñada para revisiones en paralelo y descubrimiento de herramientas. 100% compatible con Claude Code y Antigravity (Gemini)."
+  features:
+    - icon: "Bot"
+      title: "Suite de Subagentes Autónoma"
+      text: "Subagentes especializados razonan, descubren skills y coordinan auditorías de repositorio, revisiones de PR y lanzamientos en paralelo, sin instrucciones paso a paso."
+    - icon: "Zap"
+      title: "Sin Estado y Alta Eficiencia"
+      text: "Diseñado para máxima economía de tokens, con deduplicación de hooks externos y lectura bajo demanda para un historial ultrarresistente y veloz."
+    - icon: "Layers"
+      title: "Orquestación en Paralelo"
+      text: "Agentes descentralizados coordinan flujos multi-habilidad concurrentes, ejecutando auditorías de deuda técnica, dependencias y arquitectura en simultáneo."
+    - icon: "Shield"
+      title: "Controles Previos al Push"
+      text: "Realiza pruebas de seguridad, consistencia de datos e interceptación de hooks antes de cualquier push al remoto."
+    - icon: "Stethoscope"
+      title: "Asistente de Instalación y Diagnóstico"
+      text: "Un wizard interactivo configura skills y agentes, deja elegir tu motor de shell preferido, y un comando doctor verifica la salud del sistema."
+  platforms: ["Claude Code", "Antigravity (Gemini)"]
+  downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
+  downloadLabel: "Instalar vía NPM"
 ---
 
 ### Arquitectura Técnica y Orquestación

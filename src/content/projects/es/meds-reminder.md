@@ -18,6 +18,31 @@ learnings:
   - "Garantía de precisión milimétrica en Android 14/15/16 utilizando AlarmManager.setAlarmClock() y USE_EXACT_ALARM bajo directrices de salud."
   - "Superación de la inmutabilidad de sonido en canales de notificación de Android 8.0+ mediante la generación dinámica de canales por hash de URI de tono personalizado."
 websiteActionText: "Ver Página"
+product:
+  tagline: "El recordatorio que jamás falla una dosis"
+  intro: "Diseñada en Kotlin & Jetpack Compose para garantizar puntualidad médica estricta. Administra perfiles familiares, recibe avisos previos silenciosos, activa alarmas prioritarias sobre pantalla bloqueada y respalda todo en JSON local."
+  features:
+    - icon: "ShieldCheck"
+      title: "100% Offline & Privacidad"
+      text: "Cero telemetría, cero servidores y cero registros en la nube. Tus datos médicos permanecen estrictamente en la base de datos local SQLite (Room) de tu teléfono."
+    - icon: "AlarmClock"
+      title: "Alarmas de Pantalla Completa"
+      text: "Despliega la alarma directamente sobre la pantalla de bloqueo mediante una AlarmActivity interactiva y un disparador de alta prioridad (setAlarmClock())."
+    - icon: "Users"
+      title: "Gestión Multi-Perfil Familiar"
+      text: "Administra los medicamentos de tus padres, hijos o pareja desde un único dispositivo con catálogos independientes, dosis exactas y horarios personalizados."
+    - icon: "BellRing"
+      title: "Avisos Previos Silenciosos"
+      text: "Recibe una notificación 15 o 30 minutos antes de la toma con acciones de un toque para marcar como tomada o descartar hoy, evitando interrupciones sonoras."
+    - icon: "PauseCircle"
+      title: "Suspensión Inteligente"
+      text: "Pausa las alarmas de una persona por 6 horas o por el resto del día con un solo interruptor. Se reactivan automáticamente al expirar el tiempo programado."
+    - icon: "FileJson"
+      title: "Respaldo SAF en JSON"
+      text: "Exporta e importa tu base de datos completa de forma atómica mediante el Storage Access Framework de Android. Sin dependencias propietarias ni bloqueos."
+  platforms: ["Android"]
+  downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases"
+  downloadLabel: "Descargar APK Release"
 ---
 
 ### Arquitectura Offline-First y Resiliencia de Alarmas
