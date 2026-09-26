@@ -27,6 +27,7 @@ The hub features a **Dual Interface Architecture**: an interactive, keyboard-dri
 
 - 📟 **Interactive Unix-Style Console:** Virtual filesystem tree (`~/help`, `~/about`, `~/projects`) with full keyboard navigation (`[↑]`, `[↓]`, `[Enter]`, `[←]`, `[Backspace]`) and touch adaptation.
 - ⚡ **Instant Search (`❯ find`):** Real-time substring filter displaying matching scripts across all categories with breadcrumb lineage.
+- 🛍️ **Product Landing Pages:** End-user landing for each project, generated from the same content collection and served on its own subdomain (`<project>.ana-catalina.com`) through host routes in `vercel.json`.
 - 🎨 **Bento GUI Case Studies:** Seamless transition (`./launch <id> --gui`) to deep-dive case studies presenting the core problem, architectural solution, tech stack badges, and key engineering learnings.
 - 🌐 **Full Bilingual Parity (i18n):** Complete parity between English and Spanish with persistent `localStorage` synchronization and zero hydration flash.
 - 🚀 **Zero-JS SEO & Semantic Web:** Automated sitemaps via `@astrojs/sitemap`, Open Graph / Twitter cards, dynamic canonical URLs, and server-side Schema.org (`WebSite`, `Person`, `SoftwareApplication`) JSON-LD payloads.
@@ -79,10 +80,12 @@ projects-hub/
 │   │       └── es/
 │   ├── layouts/
 │   │   ├── Layout.astro         # Base HTML head, meta tags, and JSON-LD
-│   │   └── ProjectLayout.astro  # Bento GUI case study page layout
+│   │   ├── ProjectLayout.astro  # Bento GUI case study page layout
+│   │   └── ProductLayout.astro  # Product landing page layout (served on project subdomains)
 │   ├── pages/
 │   │   ├── index.astro          # Interactive Terminal Console & Tree UI
-│   │   └── [...project].astro   # Dynamic route generator for case studies
+│   │   ├── [...project].astro   # Dynamic route generator for case studies
+│   │   └── p/[...path].astro    # Product landing routes (/p/<slug>/, /p/<slug>/en/)
 │   ├── styles/
 │   │   └── global.css           # Tailwind v4 theme variables & animations
 │   ├── utils/                   # Pure terminal navigation & categorization helpers
@@ -179,6 +182,7 @@ El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal
 
 - 📟 **Consola Interactiva Estilo Unix:** Árbol de sistema de archivos virtual (`~/help`, `~/about`, `~/proyectos`) con navegación completa por teclado (`[↑]`, `[↓]`, `[Enter]`, `[←]`, `[Retroceso]`) y adaptación táctil.
 - ⚡ **Búsqueda Instantánea (`❯ find`):** Filtro de subcadenas en tiempo real que localiza scripts en todas las categorías mostrando la ruta jerárquica completa.
+- 🛍️ **Páginas de Producto:** Landing para el usuario final de cada proyecto, generada desde la misma colección de contenido y servida en su propio subdominio (`<proyecto>.ana-catalina.com`) mediante rutas por host en `vercel.json`.
 - 🎨 **Estudios de Caso GUI Bento:** Transición fluida (`./launch <id> --gui`) hacia fichas técnicas que exponen el problema central, la solución arquitectónica, tecnologías utilizadas y aprendizajes clave.
 - 🌐 **Paridad Bilingüe Total (i18n):** Equivalencia exacta entre español e inglés con sincronización persistente en `localStorage` y cero parpadeo de hidratación.
 - 🚀 **SEO Cero-JS y Web Semántica:** Generación automatizada de sitemaps vía `@astrojs/sitemap`, tarjetas Open Graph / Twitter, URLs canónicas dinámicas y esquemas JSON-LD de Schema.org (`WebSite`, `Person`, `SoftwareApplication`) generados en el servidor.
@@ -231,10 +235,12 @@ projects-hub/
 │   │       └── en/
 │   ├── layouts/
 │   │   ├── Layout.astro         # Encabezado HTML base, meta tags y JSON-LD
-│   │   └── ProjectLayout.astro  # Estructura visual para estudios de caso Bento
+│   │   ├── ProjectLayout.astro  # Estructura visual para estudios de caso Bento
+│   │   └── ProductLayout.astro  # Layout de páginas de producto (servidas en subdominios)
 │   ├── pages/
 │   │   ├── index.astro          # Consola Terminal Interactiva e interfaz de árbol
-│   │   └── [...project].astro   # Generador dinámico de rutas para estudios de caso
+│   │   ├── [...project].astro   # Generador dinámico de rutas para estudios de caso
+│   │   └── p/[...path].astro    # Rutas de páginas de producto (/p/<slug>/, /p/<slug>/en/)
 │   ├── styles/
 │   │   └── global.css           # Variables de tema y animaciones de Tailwind v4
 │   ├── utils/                   # Utilidades puras de navegación y categorización de terminal

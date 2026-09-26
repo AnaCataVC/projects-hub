@@ -64,9 +64,21 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
   solution: z.string().optional(),
   learnings: z.array(z.string()).default([]),
   websiteActionText: z.string().optional(),
-  lastUpdated: z.coerce.date().optional()  // YYYY-MM-DD, shown on the case-study page
+  lastUpdated: z.coerce.date().optional(), // YYYY-MM-DD, shown on the case-study page
+  product: z.object({ ... }).optional()     // end-user landing, see below
 }
 ```
+
+---
+
+## Product Landing Pages (`/p/<slug>/`)
+
+Besides the case-study page (`/<slug>`), a project can have an end-user product landing, generated from the optional `product` block of its `es` and `en` entries and rendered by `src/layouts/ProductLayout.astro` (Pastel-Tech style, independent from the console and case-study styles).
+
+- **Fields:** `tagline`, `intro`, `features[]` (`icon` is a `lucide-static` export name), `screenshots[]` (files under `public/product-screenshots/<slug>/`), `faq[]`, `platforms[]`, `downloadUrl`/`downloadLabel`, `links[]` (secondary CTAs; `#catalog` and `#quick-start` anchor into the page), `notice`, `catalog`, `codeSnippets[]`. Don't put version numbers in the copy — they go stale.
+- **Routes:** `src/pages/p/[...path].astro` builds `/p/<slug>/` (es) and `/p/<slug>/en/` (en) for every non-archived entry with a `product` block. They are excluded from the sitemap; their canonical URL is the project's subdomain (`websiteUrl`).
+- **Subdomains:** each `<slug>.ana-catalina.com` is attached to this Vercel project, and `vercel.json` maps `/` and `/en` on that host to the product routes. These are `routes` placed before `{ "handle": "filesystem" }` on purpose: plain `rewrites` run after static files, so `/` would serve the console.
+- **Adding a product page:** add the `product` block to both language entries, add the two host routes to `vercel.json`, attach the subdomain to the Vercel project and create its DNS record. `src/__tests__/product-pages.test.ts` fails if a routed subdomain has no bilingual product block, a product has no `downloadUrl`, or an archived entry still links to a live site.
 
 ---
 
