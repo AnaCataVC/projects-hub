@@ -43,8 +43,8 @@ product:
       title: "Safe PR Pipeline"
       text: "On task completion, the system commits and pushes with the active account's exact credentials and automatically opens a draft Pull Request."
   platforms: ["Windows 10", "Windows 11"]
-  downloadUrl: "https://github.com/AnaCataVC/cute-agents-desk"
-  downloadLabel: "View Code on GitHub"
+  downloadUrl: "https://github.com/AnaCataVC/cute-agents-desk/releases"
+  downloadLabel: "Download for Windows"
 ---
 
 ### Local Agent Dispatch & Multi-Engine Orchestration

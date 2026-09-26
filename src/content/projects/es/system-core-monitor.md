@@ -42,6 +42,39 @@ product:
     - icon: "Gauge"
       title: "Centro de Mando en 1 Clic"
       text: "Modo Turbo, vaciado de caché DNS, suspensión/reanudación de procesos desbocados y rescate de aplicaciones colgadas, todo con llamadas nativas al kernel."
+    - icon: "MonitorSmartphone"
+      title: "Aceleradores GPU & NPU"
+      text: "Detección de hardware gráfico DirectX DXGI y coprocesadores neuronales NPU de IA mediante llamadas nativas SetupAPI."
+    - icon: "ScanEye"
+      title: "Inspector 360° y Guarda PID"
+      text: "Cierre elegante en dos fases (WM_CLOSE), terminación de árboles en orden inverso y protección contra reciclaje de PID de Windows."
+    - icon: "LayoutGrid"
+      title: "Ergonomía Visual Bento"
+      text: "Tipografía ampliada a 14-16px, iconos vectoriales nítidos de 20x20, panel de navegación de 240px y 4 temas dinámicos en XAML."
+  notice:
+    title: "Garantía de Seguridad y Privacidad"
+    text: "System Core Monitor no recopila datos personales, no envía telemetría externa a servidores remotos y no instala servicios ocultos. Código 100% auditable y transparente."
+  catalog:
+    title: "Guía de Botones de Acción y Control Nativo"
+    items:
+      - title: "🚀 Modo Turbo"
+        description: "Conmuta el plan de energía a Alto Rendimiento (desestaciona núcleos de CPU) y purga agresivamente la memoria RAM física en procesos de usuario."
+        tags: ["PowrProf.dll", "EmptyWorkingSet"]
+      - title: "🌐 Vaciar DNS"
+        description: "Purga instantáneamente la caché de nombres DNS del sistema operativo en 0.01 ms para solucionar errores de red y webs no disponibles."
+        tags: ["dnsapi.dll", "DnsFlushResolverCache"]
+      - title: "🧹 Limpiar Temporales"
+        description: "Purga archivos residuales en %TEMP%, Windows\\Temp y WinSxS (>24h). Blindado contra escape de Junctions NTFS y guarda de doble timestamp."
+        tags: ["Multizone SafeTempCleaner"]
+      - title: "🗄️ Transcripts IA"
+        description: "Escanea y libera cientos de megabytes de historiales inactivos de Claude Code y Gemini conservando íntegras tus sesiones de trabajo activas."
+        tags: ["AiTranscriptCleaner", "Retention"]
+      - title: "⏸️ Suspender y Reanudar"
+        description: "Congela procesos desbocados bajando su consumo a 0% CPU sin cerrarlos ni perder información, con reactivación instantánea."
+        tags: ["ntdll.dll", "NtSuspendProcess"]
+      - title: "⚡ Rescate de Procesos"
+        description: "Detección de aplicaciones colgadas (IsResponding == false) con solicitud de cierre elegante y terminación segura de subprocesos huérfanos."
+        tags: ["Graceful Close", "Tree Terminate"]
   screenshots:
     - src: "/product-screenshots/system-core-monitor/dashboard.png"
       alt: "Dashboard de System Core Monitor mostrando telemetría de CPU y RAM, sesiones activas de Claude Code y Gemini, y mantenimiento de transcripts IA"

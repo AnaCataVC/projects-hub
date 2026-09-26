@@ -40,6 +40,53 @@ product:
   platforms: ["Claude Code", "Antigravity (Gemini)"]
   downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
   downloadLabel: "Install via NPM"
+  links:
+    - label: "Explore Tools"
+      url: "#catalog"
+    - label: "Quick Start"
+      url: "#quick-start"
+    - label: "GitHub Repository"
+      url: "https://github.com/AnaCataVC/amiga-ia"
+  catalog:
+    title: "Suite Capabilities (Utility Groups)"
+    items:
+      - title: "ami-data-scientist"
+        description: "Master orchestrator for exploratory data analysis, SQL optimizations, quality auditing, and executive dashboards."
+        tags: ["ami-build-dashboard", "ami-profile-data", "ami-optimize-sql", "ami-validate-data"]
+      - title: "ami-tech-lead"
+        description: "Master Tech Lead. Orchestrates project planning, greenfield architecture, and strategy design."
+        tags: ["ami-architect-project", "ami-plan-feature", "ami-stress-test-idea", "ami-guide-next-step", "ami-design-test-strategy", "ami-debug-issue"]
+      - title: "ami-pr-reviewer"
+        description: "Orchestrates structured PR code reviews using parallel subagents for teammates' Pull Requests."
+        tags: ["ami-review-peer-pr", "ami-analyze-pr-comments", "ami-review-self-pr"]
+      - title: "ami-pr-publisher"
+        description: "Automates the creation, conflict checking, and critical self-review of your own Pull Requests."
+        tags: ["ami-review-self-pr", "ami-plan-commits", "ami-detect-pr-conflicts", "ami-create-tests"]
+      - title: "ami-repo-auditor"
+        description: "Orchestrates modular repository health audits, dependency scanning, debugging, and test generation."
+        tags: ["ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
+      - title: "ami-doc-architect"
+        description: "Master documentation orchestrator for repository wikis, context research, and learning extraction."
+        tags: ["ami-manage-docs", "ami-research-context", "ami-extract-learnings"]
+      - title: "ami-release-manager"
+        description: "Orchestrates full release lifecycle, semantic version tag calculation, and changelog drafting."
+        tags: ["ami-draft-release", "ami-tag-release"]
+      - title: "ami-push-assistant"
+        description: "Performs baseline security, data consistency, and hook interceptions before pushing to remote."
+        tags: ["Git Pre-Flight Guards", "Real-time Debug Linter"]
+      - title: "ami-expert-council"
+        description: "Spawns a council of dynamic specialized subagents to debate, analyze, and refine architectural ideas."
+        tags: ["Dynamic Parallel Subagents"]
+  codeSnippets:
+    - title: "Universal CLI Setup & Engine Selection"
+      language: "bash"
+      code: |
+        npm install -g @anacatavc/amiga-ia
+        amiga-ia-setup
+    - title: "System Health & Legacy Advisories"
+      language: "bash"
+      code: |
+        amiga-ia-setup doctor
 ---
 
 ### Technical Architecture & Orchestration

@@ -108,6 +108,9 @@ const card = 'rounded-2xl bg-white dark:bg-[#2a243d] border border-slate-100 dar
             </a>
           )}
           <a href={fichaURL} class={secondaryBtn}>{t.details}</a>
+          {product.links.map((link) => (
+            <a href={link.url} target={link.url.startsWith('#') ? undefined : '_blank'} rel="noopener noreferrer" class={secondaryBtn}>{link.label}</a>
+          ))}
         </div>
         {product.platforms.length > 0 && (
           <p class="mt-6 text-xs text-[#6a6480] dark:text-slate-400 font-[Inter]">{t.platforms}: {product.platforms.join(' · ')}</p>
@@ -126,6 +129,43 @@ const card = 'rounded-2xl bg-white dark:bg-[#2a243d] border border-slate-100 dar
           ))}
         </div>
       </section>
+
+      {product.catalog && (
+        <section id="catalog" class="py-12" aria-labelledby="catalog-title">
+          <h2 id="catalog-title" class="font-semibold text-3xl text-center mb-10">{product.catalog.title}</h2>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {product.catalog.items.map((item) => (
+              <article class="rounded-2xl bg-white dark:bg-[#2a243d] border border-slate-100 dark:border-slate-700 p-5">
+                <h3 class="font-medium">{item.title}</h3>
+                <p class="mt-1.5 text-sm text-[#6a6480] dark:text-slate-300 font-[Inter]">{item.description}</p>
+                {item.tags.length > 0 && (
+                  <div class="mt-3 flex flex-wrap gap-1.5">
+                    {item.tags.map((tag) => <span class="px-2 py-0.5 rounded-full bg-pastel-blue/50 dark:bg-slate-700 text-[11px] font-medium font-[Inter]">{tag}</span>)}
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {product.codeSnippets.length > 0 && (
+        <section id="quick-start" class="py-12 max-w-3xl mx-auto space-y-6">
+          {product.codeSnippets.map((snippet) => (
+            <figure>
+              <figcaption class="font-medium mb-2">{snippet.title}</figcaption>
+              <pre class="rounded-2xl bg-[#2a243d] text-[#fdfbff] p-5 overflow-x-auto text-sm"><code class={`language-${snippet.language}`}>{snippet.code}</code></pre>
+            </figure>
+          ))}
+        </section>
+      )}
+
+      {product.notice && (
+        <aside class="my-12 rounded-2xl bg-pastel-pink/40 dark:bg-[#2a243d] border border-pastel-pink dark:border-slate-700 p-6 sm:p-8">
+          <h2 class="font-semibold text-lg">{product.notice.title}</h2>
+          <p class="mt-2 text-sm text-[#6a6480] dark:text-slate-300 font-[Inter]">{product.notice.text}</p>
+        </aside>
+      )}
 
       {product.screenshots.length > 0 && (
         <section class="py-12" aria-labelledby="screens-title">

@@ -42,6 +42,39 @@ product:
     - icon: "Gauge"
       title: "1-Click Command Center"
       text: "Turbo Mode, DNS cache flush, suspend/resume for runaway processes, and rescue for unresponsive apps, all via direct kernel calls."
+    - icon: "MonitorSmartphone"
+      title: "GPU & NPU Hardware Accelerators"
+      text: "DirectX DXGI graphics hardware discovery and neural processing unit (NPU) accelerator probing via native SetupAPI calls."
+    - icon: "ScanEye"
+      title: "360° Inspector & PID Reuse Guard"
+      text: "Two-phase graceful close (WM_CLOSE), reverse topological tree termination, and Windows PID recycling safeguards."
+    - icon: "LayoutGrid"
+      title: "Bento Visual Ergonomics"
+      text: "Enhanced 14-16px typography, sharp 20x20 vector icons, 240px navigation sidebar, and 4 dynamic XAML themes."
+  notice:
+    title: "Security & Privacy Guarantee"
+    text: "System Core Monitor collects zero telemetry, makes zero unexpected background requests, and installs no background services. 100% auditable and transparent."
+  catalog:
+    title: "Action Buttons & Native Control Matrix"
+    items:
+      - title: "🚀 Turbo Mode"
+        description: "Instantly switches to High Performance power plan (unparking CPU cores) and aggressively purges idle RAM working sets."
+        tags: ["PowrProf.dll", "EmptyWorkingSet"]
+      - title: "🌐 Flush DNS"
+        description: "Directly resets the Windows DNS resolver cache in 0.01 ms to resolve networking glitches and unreachable web pages."
+        tags: ["dnsapi.dll", "DnsFlushResolverCache"]
+      - title: "🧹 Clean Temp Storage"
+        description: "Safely clears cache files in %TEMP%, Windows\\Temp, and WinSxS (>24h). Isolated against NTFS Junctions with dual-timestamp safety gate."
+        tags: ["Multizone SafeTempCleaner"]
+      - title: "🗄️ AI Transcripts"
+        description: "Scans and safely reclaims hundreds of megabytes of stale Claude Code and Gemini session histories while protecting active sessions."
+        tags: ["AiTranscriptCleaner", "Retention"]
+      - title: "⏸️ Suspend & Resume"
+        description: "Freezes runaway background tasks dropping CPU to 0% without closing windows, with instant resume capability."
+        tags: ["ntdll.dll", "NtSuspendProcess"]
+      - title: "⚡ Process Rescue"
+        description: "Detects unresponsive applications (IsResponding == false) with graceful close requests and safe termination of orphan subprocesses."
+        tags: ["Graceful Close", "Tree Terminate"]
   screenshots:
     - src: "/product-screenshots/system-core-monitor/dashboard.png"
       alt: "System Core Monitor dashboard showing CPU and RAM telemetry, active Claude Code and Gemini sessions, and AI transcript maintenance"

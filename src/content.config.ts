@@ -35,6 +35,13 @@ const projectsCollection = defineCollection({
       platforms: z.array(z.string()).default([]),
       downloadUrl: z.string().optional(),
       downloadLabel: z.string().optional(),
+      links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
+      notice: z.object({ title: z.string(), text: z.string() }).optional(),
+      catalog: z.object({
+        title: z.string(),
+        items: z.array(z.object({ title: z.string(), description: z.string(), tags: z.array(z.string()).default([]) })),
+      }).optional(),
+      codeSnippets: z.array(z.object({ title: z.string(), language: z.string(), code: z.string() })).default([]),
     }).optional(),
   }),
 });
