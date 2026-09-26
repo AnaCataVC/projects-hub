@@ -31,8 +31,9 @@ node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs --json
   - Determine optimal category (`data-science`, `ai-and-agents`, or `software-engineering`).
   - Copy or generate the application icon in `public/project-icons/`.
   - Scaffold both Spanish (`es`) and English (`en`) project case studies in `src/content/projects/`.
+- Only entries with `status` `Activo`/`Active` or `En Desarrollo`/`In Development` are checked; a pending update means the source repo moved after the entry's last review (`lastUpdated` / last commit of the `es` file).
 - For each updated project:
-  - Check `git log` and releases for version bumps, new features, or architectural decisions.
+  - Start from the `diffUrl` the audit prints, then check `git log` and releases for version bumps, new features, or architectural decisions.
   - Update `technologies`, `problem`, `solution`, and `learnings` sections.
 
 ### 3. Verification & Quality Assurance

@@ -79,6 +79,7 @@ function getLocalRepos() {
         lastCommitDate,
         commitHash: commitHash || '',
         commitMsg: commitMsg || '',
+        repoPath,
         isLocal: true,
       });
     } catch {
@@ -120,6 +121,36 @@ function getGitHubRepos() {
   return repos;
 }
 
+function gitOutput(command, cwd) {
+  try {
+    return execSync(command, { cwd, encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+  } catch {
+    return '';
+  }
+}
+
+// Review date = the later of the frontmatter lastUpdated and the entry's last commit.
+// File mtime is not used: clone and checkout reset it.
+function getReviewDate(esFile, esContent) {
+  const lastUpdatedMatch = esContent.match(/^lastUpdated:\s*["']?(\d{4}-\d{2}-\d{2})/m);
+  const lastUpdated = lastUpdatedMatch ? new Date(`${lastUpdatedMatch[1]}T23:59:59`) : null;
+  const committedAt = gitOutput(`git log -1 --format=%cI -- "${path.relative(CWD, esFile)}"`, CWD);
+  const committed = committedAt ? new Date(committedAt) : null;
+  const dates = [lastUpdated, committed].filter(Boolean);
+  return dates.length ? new Date(Math.max(...dates)) : null;
+}
+
+// Link to what changed in the source repo since the entry was last reviewed
+function getDiffUrl(esContent, repoPath, reviewDate) {
+  const githubMatch = esContent.match(/^githubUrl:\s*["']?(https:\/\/github\.com\/[^"'\s]+?)(?:\.git)?["']?\s*$/m);
+  if (!githubMatch) return '';
+  const baseUrl = githubMatch[1].replace(/\/$/, '');
+  const shaAtReview = repoPath && reviewDate
+    ? gitOutput(`git rev-list -1 --before="${reviewDate.toISOString()}" HEAD`, repoPath)
+    : '';
+  return shaAtReview ? `${baseUrl}/compare/${shaAtReview}...HEAD` : `${baseUrl}/commits`;
+}
+
 function runAudit() {
   const existingProjects = getExistingProjects();
   const localRepos = getLocalRepos();
@@ -156,11 +187,8 @@ function runAudit() {
     newProjects: [],
     pendingUpdates: [],
     upToDate: [],
-    archived: [],
+    notMonitored: [],
   };
-
-  const fourteenDaysAgo = new Date();
-  fourteenDaysAgo.setDate(fourteenDaysAgo.getDate() - 14);
 
   for (const [repoName, info] of repoMap.entries()) {
     const targetProjectName = REPO_TO_PROJECT_MAP[repoName] || repoName;
@@ -176,39 +204,33 @@ function runAudit() {
       continue;
     }
 
-    // Check if repo has recent updates or missing bilingual parity
     const esFile = path.join(PROJECTS_ES_DIR, `${targetProjectName}.md`);
     const enFile = path.join(PROJECTS_EN_DIR, `${targetProjectName}.md`);
-    // Archived entries are frozen on purpose even if the repo keeps receiving commits
-    if (fs.existsSync(esFile) && /^status:\s*["']?(Archivado|Archived)/m.test(fs.readFileSync(esFile, 'utf-8'))) {
-      results.archived.push({ repo: repoName, projectFile: `${targetProjectName}.md` });
+    const esContent = fs.readFileSync(esFile, 'utf-8');
+    // Only active and in-development entries are monitored; archived ones are frozen on purpose
+    if (!/^status:\s*["']?(Activo|Active|En Desarrollo|In Development)["']?\s*$/m.test(esContent)) {
+      results.notMonitored.push({ repo: repoName, projectFile: `${targetProjectName}.md` });
       continue;
     }
 
     const hasEnglish = fs.existsSync(enFile);
     const latestActivity = info.lastCommitDate || info.ghPushedAt;
+    const reviewDate = getReviewDate(esFile, esContent);
 
-    let isNewerThanDoc = false;
-    if (fs.existsSync(esFile)) {
-      const stat = fs.statSync(esFile);
-      if (latestActivity && latestActivity > stat.mtime) {
-        isNewerThanDoc = true;
-      }
-    }
-
-    const isRecent = latestActivity && (
+    const isStale = latestActivity && (
       (sinceFilter && latestActivity >= sinceFilter) ||
-      (!sinceFilter && latestActivity >= fourteenDaysAgo) ||
-      isNewerThanDoc ||
+      (!reviewDate || latestActivity > reviewDate) ||
       !hasEnglish
     );
 
-    if (isRecent) {
+    if (isStale) {
       results.pendingUpdates.push({
         repo: repoName,
         projectFile: `${targetProjectName}.md`,
         lastCommit: latestActivity ? latestActivity.toISOString().split('T')[0] : 'N/A',
         commitMsg: info.commitMsg || (!hasEnglish ? 'Missing English documentation' : ''),
+        reviewedAt: reviewDate ? reviewDate.toISOString().split('T')[0] : 'never',
+        diffUrl: getDiffUrl(esContent, info.repoPath, reviewDate),
       });
     } else {
       results.upToDate.push({
@@ -242,9 +264,10 @@ function runAudit() {
   }
 
   if (results.pendingUpdates.length > 0) {
-    console.log('🔄 PENDING UPDATES (Recent activity detected):');
+    console.log('🔄 PENDING UPDATES (Source changed since last review):');
     for (const p of results.pendingUpdates) {
-      console.log(`  • ${p.repo.padEnd(25)} [${p.lastCommit}] -> ${p.projectFile} (${p.commitMsg})`);
+      console.log(`  • ${p.repo.padEnd(25)} [${p.lastCommit}, reviewed ${p.reviewedAt}] -> ${p.projectFile} (${p.commitMsg})`);
+      if (p.diffUrl) console.log(`      ${p.diffUrl}`);
     }
     console.log('');
   } else {
@@ -252,7 +275,7 @@ function runAudit() {
   }
 
   console.log(`✅ UP TO DATE PROJECTS: ${results.upToDate.length} projects synchronized.`);
-  console.log(`📦 ARCHIVED (skipped): ${results.archived.map(p => p.repo).join(', ') || 'none'}`);
+  console.log(`📦 NOT MONITORED (archived): ${results.notMonitored.map(p => p.repo).join(', ') || 'none'}`);
   console.log('======================================================\n');
 }
 

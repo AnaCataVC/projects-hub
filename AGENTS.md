@@ -101,7 +101,8 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
    - Always execute `npm run lint` alongside `npm run type-check` and `npm test` before committing or pushing changes to prevent CI build breaks due to unused variables (`@typescript-eslint/no-unused-vars`).
 12. **Automated Portfolio Sync & Third-Party Fork Filtering:**
    - To audit and synchronize personal repositories, use `npm run audit:projects` (powered by `.agents/skills/portfolio-sync-audit/`).
-   - To create or update a single entry, use `.agents/skills/project-entry-update/` (the audit calls it per flagged project). Any content change to an entry must set `lastUpdated` to the current date in both `es` and `en`, since the page shows it to readers.
+   - To create or update a single entry, use `.agents/skills/project-entry-update/` (the audit calls it per flagged project). Any content change or review of an entry must set `lastUpdated` to the current date in both `es` and `en`, since the page shows it to readers and the audit uses it as the review mark.
+   - An entry is stale when its source repo has a commit newer than its review date (the later of `lastUpdated` and the last commit of its `es` file). Only `Activo`/`Active` and `En Desarrollo`/`In Development` entries are monitored; archived ones are frozen, and more statuses can be added to the audit filter. If there are ever more than ~10 monitored entries, or you want alerts without running the audit by hand, the upgrade path is per-file pins plus a weekly workflow.
    - Repository discovery must remain 100% path-agnostic (resolving sibling repos at `..` or `$env:REPOS_DIR`).
    - Personal portfolio audits MUST automatically ignore forks (`isFork: true` on GitHub API) and non-software repositories, focusing exclusively on original projects authored by the user.
 

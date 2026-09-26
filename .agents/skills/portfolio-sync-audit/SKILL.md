@@ -37,15 +37,16 @@ node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs --json
 
 ### 2. Interpret Audit Results
 
-The script categorizes all discovered repositories into three status groups:
+The script categorizes all discovered repositories into these groups:
 
 - 🌟 **NEW PROJECT:** A local repository in `..` or a GitHub repository owned by the user that lacks a corresponding Markdown file in `src/content/projects/es/<project-id>.md`.
-- 🔄 **PENDING UPDATE:** An existing project whose latest commit or release date is newer than the portfolio markdown documentation or within a recent active timeframe.
-- ✅ **UP TO DATE:** A project whose portfolio entry is synchronized with recent activity.
+- 🔄 **PENDING UPDATE:** An active or in-development entry whose source repo has a commit newer than the entry's review date — the later of its `lastUpdated` and the last git commit of its `es` file — or that lacks its `en` file. Each one prints a diff link to what changed since that review.
+- ✅ **UP TO DATE:** A monitored entry reviewed after the source's last commit.
+- 📦 **NOT MONITORED:** Archived entries (`Archivado`/`Archived`), frozen on purpose.
 
 ### 3. Synchronize Flagged Projects
 
-For each **NEW PROJECT** and **PENDING UPDATE**, run the `project-entry-update` skill (`.agents/skills/project-entry-update/SKILL.md`) with that project's id. It owns the per-entry procedure, including bilingual parity and the `lastUpdated` date.
+For each **NEW PROJECT** and **PENDING UPDATE**, run the `project-entry-update` skill (`.agents/skills/project-entry-update/SKILL.md`) with that project's id and, for a PENDING UPDATE, its diff link. It owns the per-entry procedure, including bilingual parity and the `lastUpdated` date.
 
 ### 4. Quality Gate Verification
 
