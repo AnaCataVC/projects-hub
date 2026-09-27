@@ -100,6 +100,7 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
 6. **Mobile Performance & Touch Optimization:**
    - Touch Detection: Always use hardware pointer media queries (`@media (pointer: coarse)` for touch and `@media (pointer: fine)` for mouse/keyboard).
    - In detail pages, ensure clean scroll performance by clearing GPU boot animations (`animate-gui-boot`) client-side after mounting.
+   - Every flex ancestor of an inner scroll area (`overflow-y-auto`) needs `min-h-0` or a `max-h-full` bound. Without one it grows to fit its content, the inner scroll never kicks in, and with `body` set to `overflow: hidden` a long list gets cut off on mobile. Add `overscroll-contain` so touch scrolling doesn't drag the page.
 7. **Tailwind CSS v4 Integration:**
    - Tailwind is strictly loaded via `@tailwindcss/vite` in `astro.config.mjs`. Do NOT create legacy `postcss.config.mjs` or `tailwind.config.js` files.
 8. **Commits Language Requirement:**
