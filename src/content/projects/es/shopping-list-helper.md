@@ -1,7 +1,7 @@
 ---
-title: "Por Comprar — Shopping List Helper"
+title: "Ayudante de Compras — Shopping List Helper"
 description: "Aplicación móvil nativa para Android (100% offline-first) para gestionar compras recurrentes del hogar y armar la lista de compras por tienda."
-lastUpdated: 2026-09-26
+lastUpdated: 2026-09-27
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"
@@ -46,7 +46,7 @@ product:
 
 ### Arquitectura offline-first y sin dependencias innecesarias
 
-**Por Comprar** es una app Android de un solo módulo: Kotlin, Jetpack Compose con Material 3 y Room, sin backend, sin framework de inyección de dependencias y sin librería de navegación. Todo el estado se observa como `Flow` reactivo desde `MainActivity` y se propaga a pantallas composable puras, evitando la complejidad de librerías externas para una utilidad enfocada.
+**Ayudante de Compras** es una app Android de un solo módulo: Kotlin, Jetpack Compose con Material 3 y Room, sin backend, sin framework de inyección de dependencias y sin librería de navegación. Todo el estado se observa como `Flow` reactivo desde `MainActivity` y se propaga a pantallas composable puras, evitando la complejidad de librerías externas para una utilidad enfocada.
 
 *   **Sin procesos en segundo plano:** los ítems vencidos se calculan de forma determinista al renderizar la pantalla (`Item.isDue(now)`), evitando `WorkManager` y ahorrando batería.
 *   **Integridad referencial transaccional:** mover ítems y eliminar una categoría ocurre en una única transacción de Room, respaldada por una restricción de clave foránea (`RESTRICT`) que impide dejar datos huérfanos.

@@ -1,7 +1,7 @@
 ---
-title: "Por Comprar — Shopping List Helper"
+title: "Shopping List Helper"
 description: "100% offline-first native Android mobile application to manage recurring household purchases and plan shopping trips by store."
-lastUpdated: 2026-09-26
+lastUpdated: 2026-09-27
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"
@@ -46,7 +46,7 @@ product:
 
 ### Offline-First Architecture With No Unnecessary Dependencies
 
-**Por Comprar** is a single-module Android app: Kotlin, Jetpack Compose with Material 3, and Room — no backend, no dependency-injection framework, no navigation library. All state is observed as a reactive `Flow` from `MainActivity` and propagated down to pure composable screens, avoiding the complexity of external libraries for a focused utility.
+**Shopping List Helper** is a single-module Android app: Kotlin, Jetpack Compose with Material 3, and Room — no backend, no dependency-injection framework, no navigation library. All state is observed as a reactive `Flow` from `MainActivity` and propagated down to pure composable screens, avoiding the complexity of external libraries for a focused utility.
 
 *   **No background processes:** due items are calculated deterministically at render time (`Item.isDue(now)`), avoiding `WorkManager` and saving battery.
 *   **Transactional referential integrity:** relocating items and deleting a category happens inside a single Room transaction, backed by a foreign key restriction (`RESTRICT`) that prevents orphaned data.
