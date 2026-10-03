@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { entry, lang, slug } = Astro.props;
-const { title, icon, githubUrl, websiteUrl, type, categories = [] } = entry.data;
+const { title, icon, githubUrl, websiteUrl } = entry.data;
 const product = entry.data.product!;
 
 // The page is served on the project's own subdomain through a host rewrite, so canonical and
@@ -59,97 +59,21 @@ function iconSvg(name: string): string {
 }
 
 // -----------------------------------------------------------------------------
-// Dynamic Accent Aura per Software Archetype (Amiga IA Persona + Color Harmony)
+// Unified Signature Aura (Amiga IA Cosmic Violet, Fuchsia & Indigo Palette)
+// All product pages share this consistent, high-energy signature brand palette.
 // -----------------------------------------------------------------------------
-type Aura = {
-  glowOrb1: string;
-  glowOrb2: string;
-  textGradient: string;
-  badgeBg: string;
-  badgeDot: string;
-  primaryBtn: string;
-  cardBorderHover: string;
-  iconBox: string;
-  tagBg: string;
-  terminalAccent: string;
+const aura = {
+  glowOrb1: 'from-pink-500/25 via-fuchsia-500/20 to-purple-600/20',
+  glowOrb2: 'from-purple-600/20 via-indigo-600/25 to-blue-600/20',
+  textGradient: 'from-pink-500 via-fuchsia-500 to-indigo-500 dark:from-pink-400 dark:via-fuchsia-300 dark:to-indigo-300',
+  badgeBg: 'bg-pink-500/10 dark:bg-pink-500/15 border-pink-500/25 text-pink-600 dark:text-pink-300',
+  badgeDot: 'bg-pink-500',
+  primaryBtn: 'from-pink-500 via-purple-600 to-indigo-600 hover:from-pink-600 hover:via-purple-700 hover:to-indigo-700 shadow-pink-500/25 hover:shadow-pink-500/40 text-white',
+  cardBorderHover: 'hover:border-pink-500/40 hover:shadow-pink-500/10',
+  iconBox: 'bg-pink-500/15 text-pink-600 dark:text-pink-300',
+  tagBg: 'bg-pink-500/10 text-pink-700 dark:text-pink-300 border-pink-500/20',
+  terminalAccent: 'text-pink-400',
 };
-
-function getAura(projType: string, cats: string[], projSlug: string): Aura {
-  const isHealthOrTimer =
-    ['screen-health-guardian', 'meds-reminder', 'rest-your-eyes', 'prima-focus', 'little-chef-timer'].includes(projSlug) ||
-    cats.some((c) => /salud|eyes|ojos|timer|focus|health|bienestar/i.test(c));
-
-  const isAI =
-    projType === 'ai' ||
-    cats.some((c) => /ia|agentes|ai|agent/i.test(c)) ||
-    ['amiga-ia', 'anacatalina-mcp', 'cute-agents-desk'].includes(projSlug);
-
-  const isDesktop =
-    projType === 'desktop' ||
-    cats.some((c) => /desktop|sistema|windows|system/i.test(c)) ||
-    ['system-core-monitor', 'windows-icons-admin', 'workspace-companion'].includes(projSlug);
-
-  if (isAI) {
-    return {
-      glowOrb1: 'from-pink-500/25 via-fuchsia-500/20 to-purple-600/20',
-      glowOrb2: 'from-purple-600/20 via-indigo-600/25 to-blue-600/20',
-      textGradient: 'from-pink-500 via-fuchsia-500 to-indigo-500 dark:from-pink-400 dark:via-fuchsia-300 dark:to-indigo-300',
-      badgeBg: 'bg-pink-500/10 dark:bg-pink-500/15 border-pink-500/25 text-pink-600 dark:text-pink-300',
-      badgeDot: 'bg-pink-500',
-      primaryBtn: 'from-pink-500 via-purple-600 to-indigo-600 hover:from-pink-600 hover:via-purple-700 hover:to-indigo-700 shadow-pink-500/25 hover:shadow-pink-500/40 text-white',
-      cardBorderHover: 'hover:border-pink-500/40 hover:shadow-pink-500/10',
-      iconBox: 'bg-pink-500/15 text-pink-600 dark:text-pink-300',
-      tagBg: 'bg-pink-500/10 text-pink-700 dark:text-pink-300 border-pink-500/20',
-      terminalAccent: 'text-pink-400',
-    };
-  }
-
-  if (isHealthOrTimer) {
-    return {
-      glowOrb1: 'from-emerald-500/25 via-teal-500/20 to-cyan-600/20',
-      glowOrb2: 'from-cyan-600/20 via-teal-600/25 to-emerald-600/20',
-      textGradient: 'from-emerald-500 via-teal-500 to-cyan-600 dark:from-emerald-300 dark:via-teal-300 dark:to-cyan-400',
-      badgeBg: 'bg-emerald-500/10 dark:bg-emerald-500/15 border-emerald-500/25 text-emerald-600 dark:text-emerald-300',
-      badgeDot: 'bg-emerald-400',
-      primaryBtn: 'from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-600 hover:via-teal-700 hover:to-cyan-700 shadow-emerald-500/25 hover:shadow-emerald-500/40 text-white',
-      cardBorderHover: 'hover:border-emerald-500/40 hover:shadow-emerald-500/10',
-      iconBox: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300',
-      tagBg: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20',
-      terminalAccent: 'text-emerald-400',
-    };
-  }
-
-  if (isDesktop) {
-    return {
-      glowOrb1: 'from-cyan-500/25 via-blue-500/20 to-indigo-600/20',
-      glowOrb2: 'from-indigo-600/20 via-blue-600/25 to-cyan-600/20',
-      textGradient: 'from-cyan-500 via-blue-500 to-indigo-600 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-300',
-      badgeBg: 'bg-cyan-500/10 dark:bg-cyan-500/15 border-cyan-500/25 text-cyan-600 dark:text-cyan-300',
-      badgeDot: 'bg-cyan-400',
-      primaryBtn: 'from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-600 hover:via-blue-700 hover:to-indigo-700 shadow-cyan-500/25 hover:shadow-cyan-500/40 text-white',
-      cardBorderHover: 'hover:border-cyan-500/40 hover:shadow-cyan-500/10',
-      iconBox: 'bg-cyan-500/15 text-cyan-600 dark:text-cyan-300',
-      tagBg: 'bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border-cyan-500/20',
-      terminalAccent: 'text-cyan-400',
-    };
-  }
-
-  // Default: Web / Utilities / Productivity
-  return {
-    glowOrb1: 'from-purple-500/25 via-indigo-500/20 to-pink-500/20',
-    glowOrb2: 'from-pink-500/20 via-purple-600/25 to-indigo-600/20',
-    textGradient: 'from-purple-500 via-indigo-500 to-pink-500 dark:from-purple-300 dark:via-indigo-300 dark:to-pink-300',
-    badgeBg: 'bg-purple-500/10 dark:bg-purple-500/15 border-purple-500/25 text-purple-600 dark:text-purple-300',
-    badgeDot: 'bg-purple-400',
-    primaryBtn: 'from-purple-500 via-indigo-600 to-pink-600 hover:from-purple-600 hover:via-indigo-700 hover:to-pink-700 shadow-purple-500/25 hover:shadow-purple-500/40 text-white',
-    cardBorderHover: 'hover:border-purple-500/40 hover:shadow-purple-500/10',
-    iconBox: 'bg-purple-500/15 text-purple-600 dark:text-purple-300',
-    tagBg: 'bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/20',
-    terminalAccent: 'text-purple-400',
-  };
-}
-
-const aura = getAura(type, categories, slug);
 
 const jsonLD = JSON.stringify({
   '@context': 'https://schema.org',

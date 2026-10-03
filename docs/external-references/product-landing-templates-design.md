@@ -28,12 +28,12 @@ The goal is to restore the vibrancy, high-tech SaaS feel, and visual energy of t
 - **Dark Theme:** Deep slate-950 canvas with jewel-tone ambient gradients (purple, indigo, fuchsia, cyan) and dark translucent glass cards (`bg-slate-900/60 backdrop-blur-md border border-white/10 hover:border-purple-500/30`).
 - **Poppy Unification:** Preserve `PoppyBackground.astro` as the signature watermark at `opacity-[0.03]` in light and `opacity-[0.05]` in dark mode, anchoring brand continuity with the homepage and console.
 
-### B. Adaptive Accent Theming per Product Archetype
-All product pages must share a common visual grammar, typography, and layout structure (ensuring modularity and code reuse), while dynamically inheriting an **Accent Aura** based on `entry.data.type` or frontmatter:
-1. **AI / Agéntico (`type: "ai"`):** Electric Fuchsia & Cosmic Purple (`from-pink-500 via-purple-500 to-indigo-500`).
-2. **Desktop Systems & Monitors (`type: "desktop"`):** Hyper Cyan & Tech Indigo (`from-cyan-400 via-blue-500 to-indigo-600`).
-3. **Productivity & Utilities (`type: "web"` / `tools`):** Pastel Lilac & Sunset Orange (`from-purple-400 via-indigo-500 to-amber-400`).
-4. **Health, Focus & Timers:** Mint Fresh & Emerald Aura (`from-emerald-400 via-teal-500 to-cyan-500`).
+### B. Unified Signature Brand Palette (Global Portfolio Cohesion)
+All product pages share a consistent, high-energy signature color palette inspired by Amiga IA and the Ana-Catalina Design System (`docs/DESIGN_SYSTEM.md`), ensuring cohesive brand recognition across all distributed subdomains:
+- **Atmospheric Orbs:** Ambient fuchsia, pink, and cosmic purple gradients (`from-pink-500/25 via-fuchsia-500/20 to-purple-600/20` and `from-purple-600/20 via-indigo-600/25 to-blue-600/20`).
+- **Hero & Headlines:** Signature Outfit gradient text clipping (`from-pink-500 via-fuchsia-500 to-indigo-500` in light mode, and `from-pink-400 via-fuchsia-300 dark:to-indigo-300` in dark mode).
+- **Interactive Badges & CTAs:** Pulsing pink beacon badge and glowing primary action button (`from-pink-500 via-purple-600 to-indigo-600`).
+- **Cards, Catálogo & DevTools:** Translucent glass cards with subtle pink/fuchsia hover halos (`hover:border-pink-500/40`) and pink accent details.
 
 ### C. Zero-Dependency & Pure CSS Micro-Animations
 - GPU-accelerated CSS animations (`fadeIn`, `pulseGlow`, `shimmer`).
