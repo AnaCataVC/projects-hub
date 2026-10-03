@@ -77,8 +77,20 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
 
 - **Fields:** `tagline`, `intro`, `features[]` (`icon` is a `lucide-static` export name), `screenshots[]` (files under `public/product-screenshots/<slug>/`), `faq[]`, `platforms[]`, `downloadUrl`/`downloadLabel`, `links[]` (secondary CTAs; `#catalog` and `#quick-start` anchor into the page), `notice`, `catalog`, `codeSnippets[]`. Don't put version numbers in the copy — they go stale.
 - **Routes:** `src/pages/p/[...path].astro` builds `/p/<slug>/` (es) and `/p/<slug>/en/` (en) for every non-archived entry with a `product` block. They are excluded from the sitemap; their canonical URL is the project's subdomain (`websiteUrl`).
-- **Subdomains:** each `<slug>.ana-catalina.com` is attached to this Vercel project, and `vercel.json` maps `/` and `/en` on that host to the product routes. These are `routes` placed before `{ "handle": "filesystem" }` on purpose: plain `rewrites` run after static files, so `/` would serve the console.
-- **Adding a product page:** add the `product` block to both language entries, add the two host routes to `vercel.json`, attach the subdomain to the Vercel project and create its DNS record. `src/__tests__/product-pages.test.ts` fails if a routed subdomain has no bilingual product block, a product has no `downloadUrl`, or an archived entry still links to a live site.
+- **Subdomains & DNS Setup (Vercel & Namecheap):** each `<slug>.ana-catalina.com` is attached to this Vercel project, and `vercel.json` maps `/` and `/en` on that host to the product routes. These are `routes` placed before `{ "handle": "filesystem" }` on purpose: plain `rewrites` run after static files, so `/` would serve the console.
+  1. Add the `product` block to both language entries (`es` and `en`) and add the two host routes to `vercel.json`.
+  2. Attach the subdomain in Vercel: go to Vercel Dashboard -> project `projects-hub` -> **Settings** -> **Domains**, and add `<slug>.ana-catalina.com`.
+  3. Retrieve the dedicated CNAME target from Vercel: Vercel does **NOT** use generic `cname.vercel-dns.com` for subdomains on this domain; it assigns a unique per-subdomain hash target under `vercel-dns-017.com` (e.g., `xxxxxxxxxxxxxxxx.vercel-dns-017.com`). Copy the exact target string displayed in the Vercel domain card.
+  4. Create the DNS record in Namecheap:
+     - In Namecheap -> **Domain List** -> `ana-catalina.com` -> **Manage** -> **Advanced DNS**.
+     - Under **Host Records**, click **Add New Record**:
+       - **Type:** `CNAME Record`
+       - **Host:** `<slug>` (only the subdomain prefix, without `.ana-catalina.com`)
+       - **Target / Value:** the unique `<hash>.vercel-dns-017.com` provided by Vercel.
+       - **TTL:** `Automatic` (or `1 min` for faster propagation).
+     - Save changes with the green checkmark.
+  5. Return to Vercel and click **Refresh** on the domain card; within 1–2 minutes it turns green (`Valid Configuration`) and provisions the SSL certificate.
+  6. `src/__tests__/product-pages.test.ts` fails if a routed subdomain has no bilingual product block, a product has no `downloadUrl`, or an archived entry still links to a live site.
 
 ---
 
