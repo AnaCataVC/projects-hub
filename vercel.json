@@ -242,6 +242,26 @@
       "dest": "/p/shopping-list-helper/en/index.html"
     },
     {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
+          "value": "windows-icons-admin.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/windows-icons-admin/index.html"
+    },
+    {
+      "src": "^/en/?$",
+      "has": [
+        {
+          "type": "host",
+          "value": "windows-icons-admin.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/windows-icons-admin/en/index.html"
+    },
+    {
       "handle": "filesystem"
     }
   ]
