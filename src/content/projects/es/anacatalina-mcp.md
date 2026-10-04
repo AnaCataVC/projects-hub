@@ -1,7 +1,7 @@
 ---
 title: "AI-Native Interactive Resume (MCP Server)"
 description: "Servidor Model Context Protocol (MCP) que permite a Inteligencias Artificiales interactuar con mi experiencia profesional."
-lastUpdated: 2026-09-11
+lastUpdated: 2026-10-04
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
@@ -16,34 +16,12 @@ learnings:
   - "Integración exitosa del protocolo emergente MCP, adaptando la arquitectura para soportar comunicación bidireccional asíncrona mediante Streamable-HTTP compatible con Claude, Cursor y Gemini Connected Apps."
   - "Motor de Emparejamiento Dinámico en Memoria: Implementación de un algoritmo determinista en cv_service.py para evaluar compatibilidad con vacantes y stack técnico en memoria con latencia inferior a 2ms."
   - "Despliegue serverless optimizado en Google Cloud Run utilizando contenedores Docker ligeros, aprovechando la funcionalidad 'Scale to Zero' para reducir costos operativos a cero durante la inactividad."
-websiteActionText: "MCP Server"
-product:
-  tagline: "Tu currículum, nativo para IA"
-  intro: "Un servidor MCP oficial que deja a cualquier asistente de IA consultar mi experiencia, stack y proyectos como datos estructurados, sin scraping."
-  features:
-    - icon: "PlugZap"
-      title: "Conexión directa desde tu cliente MCP"
-      text: "Agrega el endpoint Streamable HTTP en Claude.ai, Google Gemini (Connected Apps) o en el mcp.json de Cursor y Windsurf, y el asistente queda conectado al instante."
-    - icon: "Boxes"
-      title: "9 herramientas MCP oficiales"
-      text: "Consulta experiencia, stack tecnológico, proyectos destacados, educación, contacto y perfil, además de búsqueda transversal por palabra clave, todo mediante tools tipadas."
-    - icon: "Target"
-      title: "Evaluación de fit con vacantes"
-      text: "La tool evaluar_fit_puesto analiza una descripción de cargo y calcula el porcentaje de compatibilidad técnica y las fortalezas coincidentes."
-    - icon: "Cpu"
-      title: "Motor en memoria de baja latencia"
-      text: "Los datos se cargan en memoria al iniciar el contenedor, con validación estricta vía Pydantic v2 y respuestas en menos de 2 milisegundos."
-    - icon: "Cloud"
-      title: "Serverless en Google Cloud Run"
-      text: "Arquitectura Scale to Zero: el servicio no genera costo mientras no recibe tráfico y escala en milisegundos cuando un asistente lo invoca."
-  platforms: ["Claude.ai (Conector Web)", "Google Gemini (Connected Apps)", "Cursor", "Windsurf", "Clientes MCP compatibles con Streamable HTTP"]
-  downloadUrl: "https://mcp.ana-catalina.com/mcp"
-  downloadLabel: "Conectar vía MCP"
+websiteActionText: "Servidor MCP & Demo"
 ---
 
-El proyecto de **AI-Native Interactive Resume** es un rediseño completo del concepto de currículum o portafolio. En lugar de ofrecer únicamente una interfaz visual (GUI) para reclutadores humanos, expone un servidor oficial bajo el **Model Context Protocol (MCP)**, estandarizado por Anthropic y compatible con los principales ecosistemas de IA.
+El proyecto de **AI-Native Interactive Resume** es un rediseño completo del concepto de currículum o portafolio. En lugar de ofrecer únicamente una interfaz visual (GUI) para reclutadores humanos, expone un servidor oficial bajo el **Model Context Protocol (MCP)**, estandarizado por Anthropic y compatible con los principales ecosistemas de IA, junto a una demo web interactiva y configurador de clientes MCP accesible públicamente en [https://mcp.ana-catalina.com/](https://mcp.ana-catalina.com/).
 
-Esto permite que cualquier cliente LLM que soporte MCP (como **Claude.ai**, **Google Gemini** en Connected Apps o editores IDE como **Cursor** y **Windsurf**) pueda conectarse al servidor y ejecutar herramientas (tools) predefinidas para consultar mi stack tecnológico, proyectos destacados y experiencia profesional, procesando los datos de forma estructurada e interactiva en lugar de leer texto plano o realizar web scraping.
+Esto permite que cualquier cliente LLM que soporte MCP (como **Claude.ai**, **Google Gemini** en Connected Apps o editores IDE como **Cursor** y **Windsurf**) pueda conectarse al servidor y ejecutar herramientas (tools) predefinidas para consultar mi stack tecnológico, proyectos destacados y experiencia profesional, procesando los datos de forma estructurada e interactiva en lugar de leer texto plano o realizar web scraping. Además, los usuarios humanos y reclutadores pueden explorar el catálogo de 9 tools y probar escenarios de evaluación de afinidad técnica en vivo directamente en la demo web en [mcp.ana-catalina.com](https://mcp.ana-catalina.com/).
 
 ### ⚡ Conexión Rápida (Claude, Gemini & Cursor)
 

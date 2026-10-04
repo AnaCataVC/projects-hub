@@ -1,7 +1,7 @@
 ---
 title: "AI-Native Interactive Resume (MCP Server)"
 description: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
-lastUpdated: 2026-09-11
+lastUpdated: 2026-10-04
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
@@ -16,34 +16,12 @@ learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Streamable-HTTP compatible with Claude, Cursor, and Gemini Connected Apps."
   - "In-Memory Dynamic Matching Engine: Deterministic algorithm in cv_service.py evaluating job profile compatibility and technical stack alignment entirely in memory with sub-2ms latency."
   - "Optimized serverless deployment on Google Cloud Run using lightweight Docker containers, leveraging 'Scale to Zero' functionality to reduce operational costs to zero during idle times."
-websiteActionText: "MCP Server"
-product:
-  tagline: "My resume, native for AI"
-  intro: "An official MCP server that lets any AI assistant query my experience, stack, and projects as structured data, without scraping."
-  features:
-    - icon: "PlugZap"
-      title: "Connect directly from your MCP client"
-      text: "Add the Streamable HTTP endpoint in Claude.ai, Google Gemini (Connected Apps), or in Cursor's and Windsurf's mcp.json, and the assistant is connected instantly."
-    - icon: "Boxes"
-      title: "9 official MCP tools"
-      text: "Query experience, tech stack, featured projects, education, contact info, and profile, plus cross-resume keyword search, all through typed tools."
-    - icon: "Target"
-      title: "Job-fit evaluation"
-      text: "The evaluar_fit_puesto tool analyzes a job description and calculates the technical compatibility percentage along with matching strengths."
-    - icon: "Cpu"
-      title: "Low-latency in-memory engine"
-      text: "Data is loaded into memory on container startup, with strict validation via Pydantic v2 and sub-2-millisecond response times."
-    - icon: "Cloud"
-      title: "Serverless on Google Cloud Run"
-      text: "Scale-to-Zero architecture: the service costs nothing while idle and scales in milliseconds when an assistant invokes it."
-  platforms: ["Claude.ai (Web Connector)", "Google Gemini (Connected Apps)", "Cursor", "Windsurf", "Any MCP client supporting Streamable HTTP"]
-  downloadUrl: "https://mcp.ana-catalina.com/mcp"
-  downloadLabel: "Connect via MCP"
+websiteActionText: "MCP Server & Demo"
 ---
 
-The **AI-Native Interactive Resume** project is a complete redesign of the resume or portfolio concept. Instead of merely offering a visual interface (GUI) for human recruiters, it exposes an official server under the **Model Context Protocol (MCP)**, standardized by Anthropic and compatible with leading AI ecosystems.
+The **AI-Native Interactive Resume** project is a complete redesign of the resume or portfolio concept. Instead of merely offering a visual interface (GUI) for human recruiters, it exposes an official server under the **Model Context Protocol (MCP)**, standardized by Anthropic and compatible with leading AI ecosystems, paired with an interactive web showcase and client configurator publicly hosted at [https://mcp.ana-catalina.com/](https://mcp.ana-catalina.com/).
 
-This allows any LLM client supporting MCP (such as **Claude.ai**, **Google Gemini** in Connected Apps, or IDEs like **Cursor** and **Windsurf**) to connect to the server and execute predefined tools to query my tech stack, featured projects, and professional experience, processing the data in a structured and interactive way rather than reading plain text or performing web scraping.
+This allows any LLM client supporting MCP (such as **Claude.ai**, **Google Gemini** in Connected Apps, or IDEs like **Cursor** and **Windsurf**) to connect to the server and execute predefined tools to query my tech stack, featured projects, and professional experience, processing the data in a structured and interactive way rather than reading plain text or performing web scraping. Furthermore, human reviewers and technical recruiters can explore the 9 tools catalog and inspect live benchmark evaluation scenarios directly via the web showcase at [mcp.ana-catalina.com](https://mcp.ana-catalina.com/).
 
 ### ⚡ Quick Connect (Claude, Gemini & Cursor)
 
