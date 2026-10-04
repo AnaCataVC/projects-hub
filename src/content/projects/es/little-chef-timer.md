@@ -1,7 +1,7 @@
 ---
 title: "Little Chef Timer"
 description: "Temporizador de cocina para Android, 100% offline, con alarmas exactas que suenan aunque el teléfono esté bloqueado, en modo Doze o con la app cerrada por el sistema."
-lastUpdated: 2026-09-26
+lastUpdated: 2026-10-04
 icon: "/project-icons/little-chef-timer-icon.png"
 githubUrl: "https://github.com/AnaCataVC/little-chef-timer"
 websiteUrl: "https://little-chef-timer.ana-catalina.com"

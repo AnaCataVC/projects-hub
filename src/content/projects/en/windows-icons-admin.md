@@ -2,7 +2,7 @@
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
 description: "High-performance folder and system icon personalization utility for Windows 10 and 11, featuring an automated rule engine, native multi-resolution PNG-to-ICO encoder, and instant shell refresh."
-lastUpdated: 2026-10-03
+lastUpdated: 2026-10-04
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
@@ -13,6 +13,7 @@ status: "Active"
 problem: "Customizing folder icons in Windows has historically relied on the slow, folder-by-folder system properties sheet or outdated legacy utilities that corrupt existing desktop.ini files, lack reversible undo history, and force full Windows Explorer restarts that destroy taskbar state."
 solution: "A modern Windows desktop application in C# 13 and .NET 9 featuring a Fluent WinUI 3 interface engineered under Cleanroom TDD standards. It integrates an automated rule engine with ReDoS protection, a pure-stream 7-layer PNG-to-ICO encoder, robust desktop.ini injection handling Win32 directory attributes (ReadOnly/System), atomic transactional undo history, and zero-disruption live shell refresh via SHChangeNotify."
 learnings:
+  - "System Folder Guard & Shell Rollback (ADR-0002): Implementation of SystemFolderGuard to protect critical Windows system paths from accidental desktop.ini modification, coupled with atomic transactions and safe shell rollback."
   - "Win32 Folder Attribute Shell Gate: Windows Explorer completely ignores desktop.ini unless the directory is flagged with FILE_ATTRIBUTE_READONLY or FILE_ATTRIBUTE_SYSTEM. On folders, this attribute does not lock write permissions and acts solely as an internal shell signal to parse folder customizations."
   - "Non-Destructive Shell Refresh: Terminating explorer.exe disrupts taskbar state and running tray apps. Instant live updates are achieved via dual Win32 notifications: SHCNE_UPDATEITEM for path-specific updates paired with SHCNE_ASSOCCHANGED to invalidate the in-memory shell icon cache."
   - "GDI+ Silent PNG Truncation Guard: Standard .NET image decoders silently process corrupted PNG streams lacking valid IEND footer chunks. A chunk-level PNG integrity parser was built to prevent generating malformed .ico binaries."

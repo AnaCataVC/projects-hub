@@ -2,7 +2,7 @@
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
 description: "Utilidad de alto rendimiento para Windows 10 y 11 que automatiza la personalización masiva de iconos de carpetas y del sistema, con motor de reglas, codificador PNG a ICO nativo y refresco instantáneo del shell."
-lastUpdated: 2026-10-03
+lastUpdated: 2026-10-04
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
@@ -13,6 +13,7 @@ status: "Activo"
 problem: "La personalización de iconos de carpetas en Windows ha dependido históricamente del diálogo manual carpeta por carpeta o de utilidades heredadas que corrompen archivos desktop.ini, carecen de historial reversible y obligan a reiniciar el Explorador de Windows perdiendo el estado de las ventanas abiertas."
 solution: "Una aplicación moderna de escritorio en C# 13 y .NET 9 con interfaz Fluent (WinUI 3) desarrollada bajo estándares Cleanroom TDD. Integra motor de reglas con protección contra ReDoS, conversor PNG a ICO de 7 capas en memoria, inyección segura de desktop.ini con gestión de atributos Win32 (ReadOnly/System), historial transaccional de deshacer y refresco en vivo con SHChangeNotify."
 learnings:
+  - "Protección de Carpetas del Sistema y Shell Rollback (ADR-0002): Implementación de SystemFolderGuard para salvaguardar rutas críticas de Windows contra manipulación accidental de desktop.ini, complementado con transaccionalidad atómica y rollback seguro del shell."
   - "Atributo de Carpeta Win32 como Disparador del Shell: Windows Explorer ignora desktop.ini a menos que la carpeta tenga el atributo FILE_ATTRIBUTE_READONLY o FILE_ATTRIBUTE_SYSTEM. En directorios, este atributo no bloquea la escritura de archivos y actúa exclusivamente como señal interna para que el shell procese la personalización."
   - "Refresco No Destructivo del Shell: Reiniciar explorer.exe destruye el estado de ventanas y la bandeja del sistema. Se logra un refresco instantáneo y limpio orquestando notificaciones Win32 duales: SHCNE_UPDATEITEM a nivel de ruta y SHCNE_ASSOCCHANGED para purgar la caché de iconos en memoria."
   - "Validación de Integridad PNG contra Truncamiento: Los decodificadores estándar de imágenes procesan silenciosamente flujos PNG truncados sin bloque final IEND. Se implementó un parser de integridad por chunks para garantizar la validez binaria antes de codificar el archivo .ico."

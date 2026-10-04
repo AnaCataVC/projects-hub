@@ -1,7 +1,7 @@
 ---
 title: "Shopping List Helper"
 description: "100% offline-first native Android mobile application to manage recurring household purchases and plan shopping trips by store."
-lastUpdated: 2026-09-27
+lastUpdated: 2026-10-04
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"

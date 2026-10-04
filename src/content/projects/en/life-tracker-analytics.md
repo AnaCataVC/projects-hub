@@ -1,7 +1,7 @@
 ---
 title: "Life Tracker Analytics"
 description: "Privacy-focused Progressive Web App (PWA) to track and analyze life metrics and daily habits through local-first data visualizations."
-lastUpdated: 2026-09-06
+lastUpdated: 2026-10-04
 icon: "/project-icons/lta_icon.png"
 githubUrl: "https://github.com/AnaCataVC/life-tracker-analytics"
 liveAppUrl: "https://life-tracker-analytics.ana-catalina.com"

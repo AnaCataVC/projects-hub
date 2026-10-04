@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Micro-herramienta flotante nativa para Windows (System Tray y Spotlight) para gestionar Git Worktrees, lanzadores desacoplados de IDEs y terminales, y alternancia de cuentas de GitHub CLI en 1 clic."
-lastUpdated: 2026-09-24
+lastUpdated: 2026-10-04
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -11,7 +11,7 @@ categories: ["Developer Tools", "Productividad", "Windows"]
 type: "desktop"
 status: "Activo"
 problem: "Fricción constante al trabajar con múltiples ramas en paralelo con Git Worktrees, limpiar carpetas huérfanas sin perder cambios y cambiar de identidad en GitHub CLI entre cuentas personales y corporativas."
-solution: "Una micro-aplicación de escritorio residente en el System Tray (<40 MB RAM) con ventana Spotlight que ofrece descubrimiento recursivo de Git worktrees, lanzadores independientes para IDEs y terminales, conmutación de cuentas GitHub CLI en 1 clic, limpieza masiva de ramas con guardas de seguridad, y resolución en 1 clic de worktrees sucios o bloqueados con notificaciones Toast."
+solution: "Una micro-aplicación de escritorio residente en el System Tray (<40 MB RAM) con ventana Spotlight que ofrece descubrimiento recursivo de Git worktrees, presets de limpieza atómica rápida, lanzadores independientes para IDEs y terminales, conmutación de cuentas GitHub CLI en 1 clic, y resolución en 1 clic de worktrees sucios o bloqueados con notificaciones Toast."
 learnings:
   - "Lanzadores Duales Independientes (ADR-0004): Resolución directa de ejecutables GUI (VS Code, Antigravity, Cursor, Windsurf) y consolas (Windows Terminal, Git Bash, AGY CLI) sin ventanas parpadeantes."
   - "Limpiador Seguro de Worktrees Huérfanos: Algoritmo de poda con pre-flight dirty checks, prevención de falsos positivos en el worktree raíz y notificaciones Toast nativas de Windows."

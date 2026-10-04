@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "Aplicación móvil nativa para Android (100% offline-first) para la adherencia médica y recordatorios de dosis multi-perfil con alarmas de alta precisión."
-lastUpdated: 2026-09-06
+lastUpdated: 2026-10-04
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"

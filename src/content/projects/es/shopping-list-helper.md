@@ -1,7 +1,7 @@
 ---
 title: "Ayudante de Compras — Shopping List Helper"
 description: "Aplicación móvil nativa para Android (100% offline-first) para gestionar compras recurrentes del hogar y armar la lista de compras por tienda."
-lastUpdated: 2026-09-27
+lastUpdated: 2026-10-04
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"

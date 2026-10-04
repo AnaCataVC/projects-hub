@@ -1,7 +1,7 @@
 ---
 title: "Little Chef Timer"
 description: "100% offline Android kitchen timer with exact alarms that fire even when the phone is locked, in Doze mode, or after the app has been killed by the system."
-lastUpdated: 2026-09-26
+lastUpdated: 2026-10-04
 icon: "/project-icons/little-chef-timer-icon.png"
 githubUrl: "https://github.com/AnaCataVC/little-chef-timer"
 websiteUrl: "https://little-chef-timer.ana-catalina.com"

@@ -2,7 +2,7 @@
 title: "Smart Calendar Manager"
 icon: "/project-icons/smart-calendar-manager-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that bridges personal and work schedules through secret iCal feeds, blocks availability without OAuth, and automates video meeting preparation."
-lastUpdated: 2026-09-24
+lastUpdated: 2026-10-04
 githubUrl: "https://github.com/AnaCataVC/smart-calendar-manager"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "RFC 5545 iCalendar", "Google Apps Script", "xUnit"]
@@ -12,6 +12,7 @@ status: "Active"
 problem: "Merging a personal and a work calendar when the corporate Workspace blocks third-party OAuth apps, without exposing personal event details on the work calendar and without manually prepping for every video call."
 solution: "A system tray app that reads secret work and personal iCal feeds (RFC 5545) with no OAuth required, generates a Google Apps Script that runs in the work account to block personal availability with full privacy ('🔒 Busy'), detects meetings with a video link to alert and open note-taking tools minutes before, and lets the user schedule app or URI launches by weekday and time with no cron syntax."
 learnings:
+  - "Windows 11 Auto-Launch Integration: Native `StartupHelper` registration on user log-in paired with system tray lifecycle management."
   - "First-Party Apps Script Availability Blocking: Generating a script that runs in the work account with the personal feeds embedded, working around Workspace OAuth restrictions without exposing event details."
   - "Dependency-Free RFC 5545 iCalendar Parser: Recurrence resolution (RRULE), line folding, and timezone handling (IANA vs Windows TimeZoneInfo) written from scratch."
   - "Per-Feed Fault Tolerance: The agenda merges multiple iCal feeds, and one failing feed never hides the others."
