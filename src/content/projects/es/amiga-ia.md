@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
 description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 24 skills declarativas portátiles. 100% compatible con Antigravity (Gemini) y Claude Code."
-lastUpdated: 2026-09-27
+lastUpdated: 2026-10-04
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -45,8 +45,6 @@ product:
       url: "#catalog"
     - label: "Inicio Rápido"
       url: "#quick-start"
-    - label: "Repositorio en GitHub"
-      url: "https://github.com/AnaCataVC/amiga-ia"
   catalog:
     title: "Capacidades (Por Utilidad)"
     items:

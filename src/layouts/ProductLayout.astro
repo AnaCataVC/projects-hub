@@ -58,6 +58,32 @@ function iconSvg(name: string): string {
   return svg;
 }
 
+const githubSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>`;
+
+function getLinkIcon(url: string, label: string): string {
+  const lowerUrl = url.toLowerCase();
+  const lowerLabel = label.toLowerCase();
+  if (lowerUrl.includes('catalog') || lowerLabel.includes('catalog') || lowerLabel.includes('herramienta') || lowerLabel.includes('tool')) {
+    return 'Boxes';
+  }
+  if (lowerUrl.includes('quick-start') || lowerUrl.includes('start') || lowerLabel.includes('inicio') || lowerLabel.includes('start') || lowerLabel.includes('consola') || lowerLabel.includes('terminal')) {
+    return 'Terminal';
+  }
+  if (lowerUrl.startsWith('#') || lowerUrl.startsWith('/')) {
+    return 'ArrowRight';
+  }
+  return 'ExternalLink';
+}
+
+function renderLinkIcon(url: string, label: string): string {
+  if (url.toLowerCase().includes('github.com') || label.toLowerCase().includes('github')) {
+    return githubSvg;
+  }
+  return iconSvg(getLinkIcon(url, label));
+}
+
+const customLinks = product.links.filter((link) => !link.url.includes('github.com') && link.url !== githubUrl);
+
 // -----------------------------------------------------------------------------
 // Unified Signature Aura (Amiga IA Cosmic Violet, Fuchsia & Indigo Palette)
 // All product pages share this consistent, high-energy signature brand palette.
@@ -86,8 +112,8 @@ const jsonLD = JSON.stringify({
   author: { '@type': 'Person', name: 'Ana-Catalina', url: 'https://ana-catalina.com' },
 });
 
-const primaryBtnClass = `inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-gradient-to-r ${aura.primaryBtn} shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 tracking-wide font-semibold text-sm sm:text-base cursor-pointer`;
-const secondaryBtnClass = 'inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 backdrop-blur-md shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-white/25 transition-all duration-300 transform hover:-translate-y-0.5 text-slate-700 dark:text-slate-200 tracking-wide font-medium text-sm sm:text-base cursor-pointer';
+const primaryBtnClass = `inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:px-7 sm:py-3 rounded-xl bg-gradient-to-r ${aura.primaryBtn} shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 font-semibold text-sm sm:text-base tracking-wide text-white cursor-pointer select-none`;
+const secondaryBtnClass = 'inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow transition-all duration-200 active:scale-95 font-medium text-sm sm:text-base tracking-wide cursor-pointer select-none';
 const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200/70 dark:border-white/10 p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${aura.cardBorderHover}`;
 ---
 
@@ -218,22 +244,29 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
         </p>
 
         <!-- Hero CTAs -->
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none">
+        <div class="mt-8 flex flex-wrap gap-3 sm:gap-3.5 justify-center items-center max-w-2xl mx-auto">
           {product.downloadUrl && (
             <a href={product.downloadUrl} target="_blank" rel="noopener noreferrer" class={primaryBtnClass}>
-              <span class="[&>svg]:w-5 [&>svg]:h-5" set:html={iconSvg('Download')}></span>
+              <span class="[&>svg]:w-4.5 [&>svg]:h-4.5 shrink-0" set:html={iconSvg('Download')}></span>
               <span>{product.downloadLabel ?? t.download}</span>
             </a>
           )}
-          {product.links.map((link) => (
+          {customLinks.map((link) => (
             <a href={link.url} target={link.url.startsWith('#') ? undefined : '_blank'} rel="noopener noreferrer" class={secondaryBtnClass}>
-              {link.label}
+              <span class="[&>svg]:w-4.5 [&>svg]:h-4.5 shrink-0 opacity-80" set:html={renderLinkIcon(link.url, link.label)}></span>
+              <span>{link.label}</span>
             </a>
           ))}
           <a href={fichaURL} class={secondaryBtnClass}>
-            <span class="[&>svg]:w-4 [&>svg]:h-4 opacity-75" set:html={iconSvg('FileText')}></span>
+            <span class="[&>svg]:w-4.5 [&>svg]:h-4.5 shrink-0 opacity-80" set:html={iconSvg('FileText')}></span>
             <span>{t.details}</span>
           </a>
+          {githubUrl && (
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" class={secondaryBtnClass}>
+              <span class="[&>svg]:w-4.5 [&>svg]:h-4.5 shrink-0 opacity-80" set:html={githubSvg}></span>
+              <span>{t.source}</span>
+            </a>
+          )}
         </div>
       </section>
 
@@ -411,7 +444,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
       {product.downloadUrl && (
         <section class="py-16 text-center">
           <a href={product.downloadUrl} target="_blank" rel="noopener noreferrer" class={primaryBtnClass}>
-            <span class="[&>svg]:w-5 [&>svg]:h-5" set:html={iconSvg('Download')}></span>
+            <span class="[&>svg]:w-4.5 [&>svg]:h-4.5 shrink-0" set:html={iconSvg('Download')}></span>
             <span>{product.downloadLabel ?? t.download}</span>
           </a>
         </section>
