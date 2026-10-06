@@ -69,6 +69,8 @@ Every project entry in `src/content/projects/{es,en}/*.md` must conform to the Z
 }
 ```
 
+- **Version-Based Status Rule (`< 1.0.0`):** Any project whose semantic version is strictly less than `1.0` (e.g., `v0.1.0`, `v0.3`, `0.x`) MUST be assigned `status: "En Desarrollo"` (in `es`) and `status: "In Development"` (in `en`), NEVER `"Activo"` / `"Active"`. Only projects that have reached `v1.0.0` or higher (or unversioned production systems) qualify as `"Activo"` / `"Active"`.
+
 ---
 
 ## Product Landing Pages (`/p/<slug>/`)

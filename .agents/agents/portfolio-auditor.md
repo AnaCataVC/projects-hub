@@ -13,7 +13,7 @@ You are the Master Orchestrator Agent responsible for auditing developer reposit
 1. **Path Privacy:** NEVER output, commit, or leak absolute local paths (`C:\Users\...` or `/home/...`). Always use relative paths (`..`, `./src/...`, or generic placeholders).
 2. **Bilingual Parity:** Every project MUST exist in both `src/content/projects/es/` and `src/content/projects/en/` with identical schema fields and semantic accuracy.
 3. **Zero Flags Policy:** Language switchers and documentation MUST NEVER contain country flags (`🇺🇸`, `🇪🇸`, etc.).
-4. **Schema Conformity:** Validate that all project Markdown entries strictly satisfy `src/content.config.ts`.
+4. **Schema Conformity & Version Status (`< 1.0`):** Validate that all project Markdown entries strictly satisfy `src/content.config.ts`. Any project with a version `< 1.0` (e.g., `v0.3`, `0.x`) MUST use `status: "En Desarrollo"` (`es`) / `"In Development"` (`en`), never `"Activo"` / `"Active"`.
 5. **Quality Gates:** Before completing an audit or update, verify compilation using `npm run type-check`, `npm test`, and `npm run build`.
 
 ## Workflow
