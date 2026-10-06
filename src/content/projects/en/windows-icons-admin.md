@@ -2,22 +2,22 @@
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
 description: "High-performance folder and system icon personalization utility for Windows 10 and 11, featuring an automated rule engine, native multi-resolution PNG-to-ICO encoder, and instant shell refresh."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-06
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "Win32 P/Invoke", "xUnit", "Inno Setup"]
 categories: ["Windows", "Tools", "Customization", "WinUI 3"]
 type: "desktop"
-status: "Active"
+status: "In Development"
 problem: "Customizing folder icons in Windows has historically relied on the slow, folder-by-folder system properties sheet or outdated legacy utilities that corrupt existing desktop.ini files, lack reversible undo history, and force full Windows Explorer restarts that destroy taskbar state."
-solution: "A modern Windows desktop application in C# 13 and .NET 9 featuring a Fluent WinUI 3 interface engineered under Cleanroom TDD standards. It integrates an automated rule engine with ReDoS protection, a pure-stream 7-layer PNG-to-ICO encoder, robust desktop.ini injection handling Win32 directory attributes (ReadOnly/System), atomic transactional undo history, and zero-disruption live shell refresh via SHChangeNotify."
+solution: "A modern Windows desktop application in C# 13 and .NET 9 featuring a Fluent WinUI 3 interface engineered under Cleanroom TDD standards. It integrates an automated rule engine with ReDoS protection, a pure-stream 7-layer PNG-to-ICO encoder, robust desktop.ini injection handling Win32 directory attributes (ReadOnly/System), UAC-free Windows 11 Navigation Pane node customization, atomic transactional undo history, and zero-disruption live shell refresh via SHChangeNotify."
 learnings:
   - "System Folder Guard & Shell Rollback (ADR-0002): Implementation of SystemFolderGuard to protect critical Windows system paths from accidental desktop.ini modification, coupled with atomic transactions and safe shell rollback."
   - "Win32 Folder Attribute Shell Gate: Windows Explorer completely ignores desktop.ini unless the directory is flagged with FILE_ATTRIBUTE_READONLY or FILE_ATTRIBUTE_SYSTEM. On folders, this attribute does not lock write permissions and acts solely as an internal shell signal to parse folder customizations."
   - "Non-Destructive Shell Refresh: Terminating explorer.exe disrupts taskbar state and running tray apps. Instant live updates are achieved via dual Win32 notifications: SHCNE_UPDATEITEM for path-specific updates paired with SHCNE_ASSOCCHANGED to invalidate the in-memory shell icon cache."
   - "GDI+ Silent PNG Truncation Guard: Standard .NET image decoders silently process corrupted PNG streams lacking valid IEND footer chunks. A chunk-level PNG integrity parser was built to prevent generating malformed .ico binaries."
-  - "Cleanroom TDD Architectural Decoupling: WindowsIconsAdmin.Core was engineered with zero dependencies on UI or platform APIs, enforcing frozen interface contracts and 160 air-gapped unit tests covering ReDoS timeouts, thread-safe undo transactions, and multi-resolution binary encoding."
+  - "Cleanroom TDD Architectural Decoupling: WindowsIconsAdmin.Core was engineered with zero dependencies on UI or platform APIs, enforcing frozen interface contracts and air-gapped unit tests covering ReDoS timeouts, thread-safe undo transactions, multi-resolution binary encoding, and registry shell associations."
   - "Dual Storage Modality: Architecture supporting both Centralized icon storage in %LOCALAPPDATA% (clean folders without loose assets) and Portable mode directly inside the customized directory (preserving icons across network shares and removable drives)."
 websiteActionText: "Visit Website"
 product:
@@ -46,8 +46,8 @@ product:
       title: "Hardened desktop.ini Injection"
       text: "Preserves custom user sections and automatically applies required Win32 ReadOnly and System attributes without file locks."
     - icon: "MonitorCog"
-      title: "Special System Icons"
-      text: "Customize key Windows shell targets including the Recycle Bin (empty and full states) and top-level system folders."
+      title: "System & Navigation Pane Icons"
+      text: "Customize the Recycle Bin (empty and full states), system folders, and Windows 11 Navigation Pane nodes (Home, Gallery, Linux/WSL, and OneDrive) without UAC elevation."
   notice:
     title: "Local Security & Native Performance"
     text: "Windows Icons Admin runs completely locally, collects zero user telemetry, and operates with standard user permissions to customize your folders."
@@ -66,9 +66,9 @@ product:
       - title: "Portable Storage Mode"
         description: "Embeds icons as hidden files inside target folders to preserve customization across USB drives and shared network drives."
         tags: ["Portable", "USB Drives"]
-      - title: "System Shell Icons"
-        description: "Override top-level Windows icons including the Recycle Bin (empty and full states) and This PC shortcuts."
-        tags: ["Shell Icons", "Recycle Bin"]
+      - title: "System & Navigation Pane Icons"
+        description: "Override Recycle Bin states, This PC folders, and Windows 11 Navigation Pane nodes (Home, Gallery, Linux/WSL, OneDrive)."
+        tags: ["Shell Icons", "Navigation Pane"]
   faq:
     - question: "Why did Windows fail to display my custom folder icons with other tools?"
       answer: "Windows Explorer strictly requires folders to have either the ReadOnly or System attribute set in order to parse desktop.ini. Windows Icons Admin automatically applies the correct Win32 attributes without altering file write permissions."
@@ -93,6 +93,6 @@ product:
 
 ### Cleanroom TDD Engineering & Transactional Durability
 
-*   **Isolated Domain with Frozen Contracts:** The core domain library `WindowsIconsAdmin.Core` has zero dependencies on UI frameworks or platform APIs. Its interface contracts were formalized up front and verified with 160 air-gapped unit tests executing in sub-seconds.
+*   **Isolated Domain with Frozen Contracts:** The core domain library `WindowsIconsAdmin.Core` has zero dependencies on UI frameworks or platform APIs. Its interface contracts were formalized up front and verified with air-gapped unit tests executing in sub-seconds.
 *   **Atomic Undo Store:** Persistent transaction log on disk with automated corruption recovery, allowing instant rollback of bulk icon customization operations.
 *   **Zero-Disruption Shell Invalidation:** Dual Win32 shell notifications (`SHCNE_UPDATEITEM` and `SHCNE_ASSOCCHANGED`) refresh Explorer icons on the fly without terminating system processes or interrupting active taskbar sessions.

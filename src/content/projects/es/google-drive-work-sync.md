@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 (WinUI 3 / .NET 9) que sincroniza carpetas de trabajo y contexto de agentes IA hacia Google Drive mediante Google Apps Script, con hashing incremental y redacción de secretos."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-06
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "Google Apps Script", "xUnit"]
@@ -27,7 +27,7 @@ product:
       text: "Revisa primero la fecha de modificación y el tamaño, calculando un hash SHA-256 completo solo cuando los metadatos sugieren un cambio real — los archivos sin cambios nunca se vuelven a subir."
     - icon: "FolderTree"
       title: "Descubrimiento de Contexto de Agentes IA"
-      text: "Escaneos en anchura (niveles 1-6) que encuentran archivos CLAUDE.md, skills de agentes, prompts de subagentes, memorias y hooks en tus carpetas de trabajo, de forma automática."
+      text: "Escaneos en anchura (niveles 1-6) que encuentran archivos CLAUDE.md, skills de agentes, prompts de subagentes, memorias, hooks y mods (~/.claude/mods/) en tus carpetas de trabajo, de forma automática."
     - icon: "KeyRound"
       title: "Redacción de Secretos en Tres Capas"
       text: "Una lista negra de nombres de archivo (.env, id_rsa), un escaneo regex de 64 KB en busca de patrones de tokens y un sanitizador de configuraciones MCP que falla cerrado, todo antes de que un archivo se prepare para subir."
