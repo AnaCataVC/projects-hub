@@ -26,26 +26,6 @@
       "has": [
         {
           "type": "host",
-          "value": "cute-agents-desk.ana-catalina.com"
-        }
-      ],
-      "dest": "/p/cute-agents-desk/index.html"
-    },
-    {
-      "src": "^/en/?$",
-      "has": [
-        {
-          "type": "host",
-          "value": "cute-agents-desk.ana-catalina.com"
-        }
-      ],
-      "dest": "/p/cute-agents-desk/en/index.html"
-    },
-    {
-      "src": "^/$",
-      "has": [
-        {
-          "type": "host",
           "value": "google-drive-work-sync.ana-catalina.com"
         }
       ],
