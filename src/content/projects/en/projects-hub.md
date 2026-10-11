@@ -1,7 +1,7 @@
 ---
 title: "Projects Hub — Interactive Terminal"
 description: "The portfolio you're looking at right now: a Unix terminal simulated entirely client-side, navigated by keyboard or fuzzy search, with no backend."
-lastUpdated: 2026-09-06
+lastUpdated: 2026-10-11
 icon: "/project-icons/projects-hub-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/projects-hub"
 liveAppUrl: "https://projects.ana-catalina.com"
@@ -10,8 +10,8 @@ technologies: ["Astro 7", "TypeScript", "Tailwind CSS v4", "Zod", "Vitest", "Ver
 categories: ["Portfolio", "Frontend", "UX/UI", "Testing"]
 type: "web"
 status: "Active"
-problem: "A static card grid doesn't communicate that its builder can design experiences beyond the generic, nor does it leave room for each project's technical detail without cluttering the main view."
-solution: "A dual interface: a Unix terminal simulated entirely client-side to browse the catalog by keyboard or incremental search, which animates a transition when a project is 'launched' and lands on a full technical write-up generated from Astro Content Collections."
+problem: "A static card grid doesn't communicate interaction design craft, nor does it provide a dedicated space to detail systems architecture, technical learnings, and the real motivations behind each project without cluttering the view."
+solution: "A dual-interface architecture born to satisfy my curiosity: a client-side Unix terminal to browse the catalog by keyboard or search, paired with Bento case studies that deep-dive into systems architecture and design decisions."
 learnings:
   - "Simulating a Unix filesystem 100% client-side — no backend — with keyboard navigation, breadcrumbs and 'find'-style incremental search."
   - "Extracting the terminal's pure logic (parsing, matching, tree-flattening) into a separate module so it can be unit-tested with Vitest without simulating the DOM."

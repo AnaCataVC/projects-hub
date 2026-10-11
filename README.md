@@ -16,11 +16,11 @@
 ---
 
 ### 1. Project Overview & Philosophy
-**Projects Hub** (`projects.ana-catalina.com`) is the centralized applications directory and software engineering portfolio for **Ana-Catalina**. It serves as an interactive gateway to showcase 15 multiplatform projects across desktop systems, native mobile applications, AI agent frameworks, and web tools.
+**Projects Hub** (`projects.ana-catalina.com`) is the centralized applications directory and software engineering portfolio for **Ana-Catalina**. It serves as an interactive gateway to showcase 20+ multiplatform projects across desktop systems, native mobile applications, AI agent frameworks, and web tools.
 
 The hub features a **Dual Interface Architecture**: an interactive, keyboard-driven Unix-style terminal console paired with rich, responsive Bento-style GUI case study viewports.
 
-**Development Philosophy:** All showcased projects and this hub itself are built using **AI-Assisted workflows**. This paradigm accelerates implementation and refactoring, allowing deeper focus on systems architecture, UX/UI refinement, state management, and real-world problem solving.
+**Development Philosophy:** All showcased projects and this hub itself are built to **satisfy intellectual curiosity, solve real-world daily needs, and master AI-assisted workflows**. This paradigm accelerates implementation and refactoring, allowing deeper focus on systems architecture, UX/UI refinement, state management, and continuous learning.
 
 ---
 
@@ -36,7 +36,7 @@ The hub features a **Dual Interface Architecture**: an interactive, keyboard-dri
 
 ---
 
-### 3. Showcase Catalog (15 Projects)
+### 3. Featured Showcase Catalog
 
 | Category | Projects | Core Technologies |
 | :--- | :--- | :--- |

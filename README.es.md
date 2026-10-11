@@ -17,11 +17,11 @@
 
 
 ### 1. Descripción del Proyecto y Filosofía
-**Projects Hub** (`projects.ana-catalina.com`) es el directorio centralizado de aplicaciones y portafolio de ingeniería de software de **Ana-Catalina**. Funciona como un portal interactivo para explorar 15 proyectos multiplataforma en áreas de sistemas de escritorio, aplicaciones móviles nativas, frameworks de agentes de IA y herramientas web.
+**Projects Hub** (`projects.ana-catalina.com`) es el directorio centralizado de aplicaciones y portafolio de ingeniería de software de **Ana-Catalina**. Funciona como un portal interactivo para explorar más de 20 proyectos multiplataforma en áreas de sistemas de escritorio, aplicaciones móviles nativas, frameworks de agentes de IA y herramientas web.
 
 El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal interactiva estilo Unix operada por teclado, combinada con vistas de estudio de caso estilo Bento detalladas y responsivas.
 
-**Filosofía de Desarrollo:** Todos los proyectos presentados y este mismo hub han sido construidos mediante **flujos de trabajo asistidos por IA**. Este paradigma acelera la implementación y refactorización, permitiendo un enfoque primordial en la arquitectura del sistema, el refinamiento de la experiencia de usuario (UX/UI), la gestión de estado y la resolución de problemas reales.
+**Filosofía de Desarrollo:** Todos los proyectos presentados y este mismo hub han sido construidos para **satisfacer la curiosidad intelectual, resolver necesidades reales del día a día y experimentar con flujos de trabajo asistidos por IA**. Este paradigma acelera la implementación y refactorización, permitiendo un enfoque primordial en la arquitectura del sistema, el refinamiento de la experiencia de usuario (UX/UI), la gestión de estado y el aprendizaje continuo.
 
 ---
 
@@ -37,7 +37,7 @@ El hub cuenta con una **Arquitectura de Interfaz Dual**: una consola de terminal
 
 ---
 
-### 3. Catálogo de Proyectos (15 Proyectos)
+### 3. Catálogo de Proyectos Destacados
 
 | Categoría | Proyectos | Tecnologías Principales |
 | :--- | :--- | :--- |

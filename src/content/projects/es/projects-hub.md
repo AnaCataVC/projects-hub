@@ -1,7 +1,7 @@
 ---
 title: "Projects Hub — Terminal Interactiva"
 description: "El portafolio que estás viendo: una terminal Unix simulada 100% en el cliente para navegar mis proyectos por teclado o búsqueda, sin backend."
-lastUpdated: 2026-09-06
+lastUpdated: 2026-10-11
 icon: "/project-icons/projects-hub-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/projects-hub"
 liveAppUrl: "https://projects.ana-catalina.com"
@@ -10,8 +10,8 @@ technologies: ["Astro 7", "TypeScript", "Tailwind CSS v4", "Zod", "Vitest", "Ver
 categories: ["Portafolio", "Frontend", "UX/UI", "Testing"]
 type: "web"
 status: "Activo"
-problem: "Un portafolio de tarjetas estático no comunica que quien lo construyó sabe diseñar experiencias distintas a lo genérico, ni deja espacio para el detalle técnico de cada proyecto sin saturar la vista principal."
-solution: "Una interfaz dual: una terminal Unix simulada íntegramente en el cliente para navegar el catálogo por teclado o búsqueda incremental, que al 'ejecutar' un proyecto anima una transición y lleva a una ficha técnica completa generada desde Content Collections de Astro."
+problem: "Los portafolios estáticos de tarjetas no comunican el dominio en diseño de interacción ni ofrecen un espacio adecuado para detallar la arquitectura, los aprendizajes técnicos y las motivaciones reales detrás de cada proyecto sin saturar la vista."
+solution: "Una arquitectura de interfaz dual nacida para satisfacer mi curiosidad: una terminal Unix client-side para explorar el catálogo por teclado o búsqueda, conectada a fichas técnicas Bento que profundizan en arquitectura y decisiones de diseño."
 learnings:
   - "Simular un sistema de archivos Unix 100% client-side —sin backend— con navegación por teclado, breadcrumbs y búsqueda incremental tipo 'find'."
   - "Extraer la lógica pura de la terminal (parsing, matching, aplanado del árbol) a un módulo separado para poder testearla con Vitest sin simular el DOM."
