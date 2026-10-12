@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
-description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 24 skills declarativas portátiles. 100% compatible con Antigravity (Gemini) y Claude Code."
-lastUpdated: 2026-10-04
+description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 25 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
+lastUpdated: 2026-10-11
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -19,8 +19,8 @@ learnings:
   - "Optimización de Tokens de Sistema (ADR-004): Reducción verificada del 36.3% al compactar el adaptador universal y desacoplar lógica en scripts independientes."
 websiteActionText: "Ver Página"
 product:
-  tagline: "Inteligencia agéntica autónoma para tu CLI"
-  intro: "Una suite de subagentes descentralizados, hooks sin estado y skills portátiles en Markdown, diseñada para revisiones en paralelo y descubrimiento de herramientas. 100% compatible con Claude Code y Antigravity (Gemini)."
+  tagline: "Inteligencia agéntica de alta precisión para ingeniería de software"
+  intro: "Una suite de subagentes descentralizados, hooks sin estado y skills portátiles en Markdown, diseñada para revisiones en paralelo y descubrimiento de herramientas. 100% compatible con Claude Code, Antigravity (Gemini) y OpenAI Codex."
   features:
     - icon: "Bot"
       title: "Suite de Subagentes Autónoma"
@@ -36,8 +36,8 @@ product:
       text: "Realiza pruebas de seguridad, consistencia de datos e interceptación de hooks antes de cualquier push al remoto."
     - icon: "Stethoscope"
       title: "Asistente de Instalación y Diagnóstico"
-      text: "Un wizard interactivo configura skills y agentes, deja elegir tu motor de shell preferido, y un comando doctor verifica la salud del sistema."
-  platforms: ["Claude Code", "Antigravity (Gemini)"]
+      text: "Un wizard interactivo configura skills y subagentes para Antigravity, Claude Code y OpenAI Codex, deja elegir tu motor de shell preferido, y un comando doctor verifica la salud del sistema."
+  platforms: ["Claude Code", "Antigravity (Gemini)", "OpenAI Codex"]
   downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
   downloadLabel: "Instalar vía NPM"
   links:
@@ -91,7 +91,7 @@ product:
 
 **Amiga IA** transforma la asistencia de programación con Inteligencia Artificial, superando las limitaciones de los prompts imperativos mediante una **malla de subagentes especializados y autónomos** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, entre otros). Cada subagente asume un rol delimitado con herramientas específicas y compuertas de seguridad.
 
-*   **Adaptador Universal & Hooks:** Inyección de guardarraíles sin estado que interceptan acciones de alto riesgo y hacen cumplir verificaciones automáticas de linting y testing.
+*   **Adaptador Universal & Multi-Motor:** Inyección de guardarraíles sin estado y compilación portátil de habilidades con compatibilidad nativa entre Antigravity (Gemini), Claude Code y OpenAI Codex.
 *   **Protocolo de Bloques Delimitados:** Motor de sincronización idempotente que actualiza reglas globales en múltiples repositorios sin sobreescribir configuraciones locales.
 
 ### Optimización y Compuertas de Calidad
