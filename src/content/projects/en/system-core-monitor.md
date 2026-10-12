@@ -2,7 +2,7 @@
 title: "System Core Monitor"
 icon: "/project-icons/system-core-monitor-icon.png"
 description: "Visual, lightweight HUD system telemetry dashboard and performance control suite for Windows built in native C# (.NET WPF/XAML) in a standalone 585 KB executable with zero external dependencies."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
 websiteUrl: "https://system-core-monitor.ana-catalina.com"
 isLiveApp: false
@@ -21,8 +21,8 @@ learnings:
   - "Hardened Multizone Cleaner: Safe cleanup of obsolete temporary files protected by NTFS Junction isolation and dual timestamp validation."
 websiteActionText: "Visit Website"
 product:
-  tagline: "High-Performance System & AI Agent Monitor for Windows"
-  intro: "Real-time telemetry, Claude Code & Gemini observability, transcript storage maintenance, and resource optimization in a single standalone binary."
+  tagline: "A clear, lightweight pulse on your PC and AI sessions"
+  intro: "Track CPU and memory usage, keep tabs on background Claude and Gemini sessions, and clean up temporary files or stuck tasks from one fast, lightweight app."
   features:
     - icon: "Cpu"
       title: "Win32 P/Invoke Telemetry"

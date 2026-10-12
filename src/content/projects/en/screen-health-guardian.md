@@ -2,7 +2,7 @@
 title: "Screen Health Guardian"
 icon: "/project-icons/screen-health-guardian-icon.png"
 description: "High-performance, ultra-lightweight native Windows desktop application designed to promote ocular and postural wellness with multi-monitor reminder support."
-lastUpdated: 2026-10-06
+lastUpdated: 2026-10-11
 githubUrl: "https://github.com/AnaCataVC/screen-health-guardian"
 websiteUrl: "https://screen-health-guardian.ana-catalina.com"
 isLiveApp: false
@@ -19,8 +19,8 @@ learnings:
   - "Native OS Integration & Concurrency: Replaced fragile TCP socket single-instance locking with a robust Win32 System.Threading.Mutex and decoupled background system tray lifecycle via H.NotifyIcon.Wpf."
 websiteActionText: "Visit Website"
 product:
-  tagline: "Care for your health while working"
-  intro: "An ultra-lightweight, high-performance desktop application that sends you periodic health alerts while you work, without interrupting you while away."
+  tagline: "Gentle reminders to rest your eyes and stretch"
+  intro: "Sends quiet reminders to rest your eyes or correct your posture, but only counts when you're actually typing or moving the mouse — pausing automatically when you step away."
   features:
     - icon: "Eye"
       title: "Visual Rest"

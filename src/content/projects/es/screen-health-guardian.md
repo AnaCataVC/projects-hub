@@ -2,7 +2,7 @@
 title: "Screen Health Guardian"
 icon: "/project-icons/screen-health-guardian-icon.png"
 description: "Aplicación de escritorio nativa y ultraligera para Windows que promueve la salud visual y postural monitoreando la actividad real del usuario con soporte multimonitor."
-lastUpdated: 2026-10-06
+lastUpdated: 2026-10-11
 githubUrl: "https://github.com/AnaCataVC/screen-health-guardian"
 websiteUrl: "https://screen-health-guardian.ana-catalina.com"
 isLiveApp: false
@@ -19,8 +19,8 @@ learnings:
   - "Integración Nativa con el Sistema Operativo: Sustitución de locks por sockets TCP por un System.Threading.Mutex nativo de Win32 y desacoplamiento del System Tray mediante H.NotifyIcon.Wpf."
 websiteActionText: "Visitar Sitio"
 product:
-  tagline: "Cuida tu salud al trabajar"
-  intro: "Una aplicación de escritorio nativa y ultraligera que te envía alertas periódicas de salud mientras trabajas, sin interrumpirte si no estás en el PC."
+  tagline: "Recordatorios amables para cuidar tu postura y tu vista"
+  intro: "Te avisa cuándo descansar la vista o estirarte en el escritorio, pero solo cuenta cuando estás usando el teclado o el mouse: si te alejas del PC, se pausa solo."
   features:
     - icon: "Eye"
       title: "Descanso Visual"

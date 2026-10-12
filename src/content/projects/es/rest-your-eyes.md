@@ -1,7 +1,7 @@
 ---
 title: "Rest Your Eyes"
 description: "Aplicación nativa para Android diseñada para prevenir la fatiga visual generada por el uso prolongado de dispositivos móviles."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"
@@ -18,8 +18,8 @@ learnings:
   - "Implementación de notificaciones superpuestas (SYSTEM_ALERT_WINDOW) para interactuar proactivamente con el usuario."
 websiteActionText: "Ver Página"
 product:
-  tagline: "Descansos inteligentes para tu vista"
-  intro: "Reduce la fatiga visual aplicando la regla 20-20-20. Configura recordatorios personalizables que miden el tiempo que realmente estás usando el dispositivo para adaptarse a tu ritmo de trabajo."
+  tagline: "Dale un respiro a tus ojos mientras trabajas"
+  intro: "Aplica la regla 20-20-20 con recordatorios que solo cuentan el tiempo que de verdad usas la pantalla, adaptándose a tu ritmo de trabajo sin interrumpirte de más."
   features:
     - icon: "Timer"
       title: "Intervalos Personalizables"

@@ -19,8 +19,8 @@ learnings:
   - "Optimización de Tokens de Sistema (ADR-004): Reducción verificada del 36.3% al compactar el adaptador universal y desacoplar lógica en scripts independientes."
 websiteActionText: "Ver Página"
 product:
-  tagline: "Inteligencia agéntica de alta precisión para ingeniería de software"
-  intro: "Una suite de subagentes descentralizados, hooks sin estado y skills portátiles en Markdown, diseñada para revisiones en paralelo y descubrimiento de herramientas. 100% compatible con Claude Code, Antigravity (Gemini) y OpenAI Codex."
+  tagline: "Un equipo de agentes de IA para ayudarte a programar mejor"
+  intro: "Subagentes especializados, reglas claras y herramientas en Markdown para planificar código, revisar cambios y lanzar versiones con orden en Claude Code, Antigravity y OpenAI Codex."
   features:
     - icon: "Bot"
       title: "Suite de Subagentes Autónoma"

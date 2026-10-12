@@ -1,7 +1,7 @@
 ---
 title: "Rest Your Eyes"
 description: "Native Android application designed to prevent eye strain caused by prolonged mobile device usage."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"
@@ -18,8 +18,8 @@ learnings:
   - "Implementing system-level overlay notifications (SYSTEM_ALERT_WINDOW) to proactively interact with the user."
 websiteActionText: "Visit Page"
 product:
-  tagline: "Smart breaks for tired eyes"
-  intro: "Reduces eye strain by enforcing the 20-20-20 rule. Set customizable reminders that track your real device usage time to match your work rhythm."
+  tagline: "Give your eyes a breather while you work"
+  intro: "Practice the 20-20-20 rule with reminders that only count when you're actually using your device, adapting smoothly to your daily rhythm."
   features:
     - icon: "Timer"
       title: "Customizable Intervals"

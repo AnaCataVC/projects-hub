@@ -19,8 +19,8 @@ learnings:
   - "System Token Optimization (ADR-004): Verified 36.3% reduction (-1,211 tokens per conversation turn) by compacting the universal adapter and modularizing hook scripts."
 websiteActionText: "Visit Page"
 product:
-  tagline: "High-precision agentic intelligence for software engineering"
-  intro: "An evolutionary suite of decentralized subagents, stateless guardrail hooks, and portable markdown skills, engineered for true parallel reviews and capability discovery. 100% native across Claude Code, Antigravity (Gemini), and OpenAI Codex."
+  tagline: "A thoughtful team of AI agents for everyday coding"
+  intro: "Specialized subagents, clear guardrails, and portable Markdown tools to plan features, review code, and ship releases with confidence across Claude Code, Antigravity, and OpenAI Codex."
   features:
     - icon: "Bot"
       title: "Autonomous Subagent Suite"

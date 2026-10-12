@@ -2,7 +2,7 @@
 title: "Smart Calendar Manager"
 icon: "/project-icons/smart-calendar-manager-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 (WinUI 3 / .NET 9) que une agendas laboral y personal vía feeds iCal secretos, bloquea disponibilidad sin OAuth y automatiza la preparación de videollamadas."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 githubUrl: "https://github.com/AnaCataVC/smart-calendar-manager"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "RFC 5545 iCalendar", "Google Apps Script", "xUnit"]
@@ -20,8 +20,8 @@ learnings:
 websiteUrl: "https://smart-calendar-manager.ana-catalina.com"
 websiteActionText: "Ver Página"
 product:
-  tagline: "Une tu agenda laboral y personal, sin OAuth"
-  intro: "Lee cualquier calendario mediante feeds iCal secretos (RFC 5545), bloquea tu disponibilidad personal en el calendario laboral con total privacidad vía un Apps Script generado, y automatiza la preparación para videollamadas."
+  tagline: "Coordina tu agenda laboral y personal con total privacidad"
+  intro: "Bloquea tus horas personales en el calendario del trabajo para que no te agenden encima, revisa todas tus reuniones en un solo lugar y ten tus llamadas listas sin compartir accesos privados."
   features:
     - icon: "CalendarCheck2"
       title: "Varios Feeds iCal, Sin OAuth"

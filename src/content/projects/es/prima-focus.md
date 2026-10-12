@@ -1,7 +1,7 @@
 ---
 title: "Prima Focus"
 description: "Aplicación nativa de Android local-first construida con Kotlin Multiplatform, enfocada en la productividad mediante un sistema predictivo de prioridades, widgets con Jetpack Glance y sincronización P2P mediante Google Nearby Connections."
-lastUpdated: 2026-10-06
+lastUpdated: 2026-10-11
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus"
 websiteUrl: "https://prima-focus.ana-catalina.com"
@@ -18,8 +18,8 @@ learnings:
   - "Disciplina de Alcance: Se dio de baja el cliente de escritorio en Java/Swing y su protocolo de sincronización LAN (servidor HTTP embebido, emparejamiento HMAC-SHA256) para enfocar el código exclusivamente en Android nativo, eliminando más de 2.400 líneas sin uso."
 websiteActionText: "Descargar App"
 product:
-  tagline: "Enfócate en lo que realmente importa"
-  intro: "Una app móvil nativa local-first para Android que usa un algoritmo predictivo para elegir tu Tarea de Hoy, con sincronización punto a punto directa entre tu móvil y tablet, sin depender de servidores ni de la nube."
+  tagline: "Enfócate en lo importante, una tarea a la vez"
+  intro: "Te ayuda a elegir tu prioridad del día y sincroniza tu teléfono con tu tablet de forma directa, sin cuentas, nube ni distracciones."
   features:
     - icon: "Lock"
       title: "Local-First (Privacidad Total)"

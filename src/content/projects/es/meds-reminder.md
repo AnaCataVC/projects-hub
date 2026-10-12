@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "Aplicación móvil nativa para Android (100% offline-first) para la adherencia médica y recordatorios de dosis multi-perfil con alarmas de alta precisión."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -19,8 +19,8 @@ learnings:
   - "Superación de la inmutabilidad de sonido en canales de notificación de Android 8.0+ mediante la generación dinámica de canales por hash de URI de tono personalizado."
 websiteActionText: "Ver Página"
 product:
-  tagline: "El recordatorio que jamás falla una dosis"
-  intro: "Diseñada en Kotlin & Jetpack Compose para garantizar puntualidad médica estricta. Administra perfiles familiares, recibe avisos previos silenciosos, activa alarmas prioritarias sobre pantalla bloqueada y respalda todo en JSON local."
+  tagline: "Tus medicamentos a tiempo y sin olvidos"
+  intro: "Organiza tus tomas y las de tu familia con recordatorios discretos, alarmas que suenan aunque la pantalla esté bloqueada y la tranquilidad de que todos tus datos se quedan en tu teléfono."
   features:
     - icon: "ShieldCheck"
       title: "100% Offline & Privacidad"

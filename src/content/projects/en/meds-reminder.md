@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "100% offline-first native Android mobile application for medication adherence and multi-profile dosage reminders with high-precision alarms."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -19,8 +19,8 @@ learnings:
   - "Resolving Android 8.0+ notification channel sound immutability by dynamically generating deterministic channels keyed by custom ringtone URI hashes."
 websiteActionText: "View Page"
 product:
-  tagline: "The reminder that never misses a dose"
-  intro: "Engineered in Kotlin & Jetpack Compose for strict medical adherence. Manage family profiles, receive silent pre-alarms, trigger full-screen lockscreen alerts, and back up everything to local JSON."
+  tagline: "Keep your medications on track, without the stress"
+  intro: "Manage doses for yourself and your family with gentle pre-alerts, lockscreen alarms you won't miss, and the peace of mind that your health data stays private on your phone."
   features:
     - icon: "ShieldCheck"
       title: "100% Offline & Private"

@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Ultra-lightweight native Windows system tray and Spotlight utility to manage Git Worktrees, decoupled IDE/terminal launchers, and 1-click GitHub CLI switching."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -21,8 +21,8 @@ learnings:
   - "Ultra-Fast Reactive UI with Svelte 5 (Runes) and Tauri v2 with automatic taskbar anchoring and minimal working set memory."
 websiteActionText: "View Page"
 product:
-  tagline: "Instant Git Worktrees & multi-account workflows"
-  intro: "The ultra-lightweight, zero-flicker system tray dashboard designed for Windows developers. Switch branches, clean orphaned worktrees, and toggle GitHub identities in milliseconds."
+  tagline: "Switch between Git branches and GitHub accounts without losing your stride"
+  intro: "A handy system tray panel to jump between branches using Git worktrees, clean up project folders, and switch GitHub accounts without terminal friction."
   features:
     - icon: "Terminal"
       title: "Zero Console Flickering"

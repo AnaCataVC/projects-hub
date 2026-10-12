@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Micro-herramienta flotante nativa para Windows (System Tray y Spotlight) para gestionar Git Worktrees, lanzadores desacoplados de IDEs y terminales, y alternancia de cuentas de GitHub CLI en 1 clic."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-11
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -21,8 +21,8 @@ learnings:
   - "Interfaces Reactivas Ultraligeras con Svelte 5 (Runes) y Tauri v2 con anclaje dinámico a la barra de tareas y memoria inferior a 35 MB."
 websiteActionText: "Ver Página"
 product:
-  tagline: "Git Worktrees al instante, multi-cuenta"
-  intro: "El panel de bandeja del sistema ultraligero y sin parpadeos diseñado para desarrolladores en Windows. Cambia de rama, limpia worktrees huérfanos y alterna identidades de GitHub en milisegundos."
+  tagline: "Salta entre ramas de Git y cuentas de GitHub sin perder el ritmo"
+  intro: "Un panel discreto en tu barra de tareas para moverte entre ramas con Git worktrees, limpiar carpetas de proyectos y cambiar de cuenta de GitHub sin enredos en la terminal."
   features:
     - icon: "Terminal"
       title: "Cero Parpadeo de Consola"

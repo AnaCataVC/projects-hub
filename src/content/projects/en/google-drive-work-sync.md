@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that syncs work directories and AI agent context to Google Drive via a Google Apps Script Web App, with incremental hashing and secret redaction."
-lastUpdated: 2026-10-06
+lastUpdated: 2026-10-11
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "Google Apps Script", "xUnit"]
@@ -19,8 +19,8 @@ learnings:
 websiteUrl: "https://google-drive-work-sync.ana-catalina.com"
 websiteActionText: "View Page"
 product:
-  tagline: "Sync work & AI context to Drive"
-  intro: "A WinUI 3 system tray app that hashes files before uploading, batches them for Google Apps Script's quotas, and redacts secrets in three layers before anything leaves your machine."
+  tagline: "Keep your projects and AI sessions safely backed up to Google Drive"
+  intro: "A quiet tray app that syncs your changes to Drive, respects upload quotas, and strips private keys before anything leaves your computer."
   features:
     - icon: "ScanLine"
       title: "Metadata Fast-Path + SHA-256"
