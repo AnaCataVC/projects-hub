@@ -4,6 +4,7 @@
 
 @theme {
   --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+  --color-brand-purple: #8c72db;
   --color-pastel-lilac: #c7b8ea;
   --color-pastel-pink: #f7c6d9;
   --color-pastel-blue: #bcdffb;

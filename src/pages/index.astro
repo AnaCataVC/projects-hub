@@ -56,7 +56,7 @@ const serializedProjects = allProjects.map(p => ({
                     
                     <!-- Simulated Command Line Prompt -->
                     <div class="shrink-0 px-3 py-2 mt-1 font-mono text-sm sm:text-base flex items-center text-slate-700 dark:text-slate-300 relative cursor-text overflow-hidden" onclick="document.getElementById('mobile-input').focus()">
-                        <span class="text-indigo-600 dark:text-pastel-blue font-bold mr-2" id="prompt-symbol">❯</span>
+                        <span class="text-brand-purple dark:text-pastel-blue font-bold mr-2" id="prompt-symbol">❯</span>
                         <span id="search-query-text" class="whitespace-pre"></span>
                         <span class="inline-block w-2 h-4 sm:h-5 bg-slate-400 dark:bg-slate-500 animate-pulse-fast ml-0.5"></span>
                         
@@ -214,7 +214,7 @@ const serializedProjects = allProjects.map(p => ({
             const mapAction = (p: ProjectEntry, overrideIcon?: string): MenuNode => ({
                 title: `${overrideIcon || '⚡'} ./${p.baseId}.sh`,
                 type: 'action',
-                color: 'text-indigo-600 dark:text-pastel-blue font-bold',
+                color: 'text-brand-purple dark:text-pastel-blue font-bold',
                 action: () => window.launchProject(p.baseId || '', p.id)
             });
 
@@ -327,7 +327,7 @@ const serializedProjects = allProjects.map(p => ({
             if (textEl && promptSymbol) {
                 textEl.innerText = '';
                 promptSymbol.innerText = '❯';
-                promptSymbol.classList.replace('text-emerald-600', 'text-indigo-600');
+                promptSymbol.classList.replace('text-emerald-600', 'text-brand-purple');
                 promptSymbol.classList.replace('dark:text-pastel-mint', 'dark:text-pastel-blue');
             }
             
@@ -370,11 +370,11 @@ const serializedProjects = allProjects.map(p => ({
             
             // Change prompt symbol color when searching to make it obvious
             if (searchQuery.length > 0) {
-                promptSymbol.classList.replace('text-indigo-600', 'text-emerald-600');
+                promptSymbol.classList.replace('text-brand-purple', 'text-emerald-600');
                 promptSymbol.classList.replace('dark:text-pastel-blue', 'dark:text-pastel-mint');
                 promptSymbol.innerText = 'find ❯';
             } else {
-                promptSymbol.classList.replace('text-emerald-600', 'text-indigo-600');
+                promptSymbol.classList.replace('text-emerald-600', 'text-brand-purple');
                 promptSymbol.classList.replace('dark:text-pastel-mint', 'dark:text-pastel-blue');
                 promptSymbol.innerText = '❯';
             }
@@ -738,7 +738,7 @@ const serializedProjects = allProjects.map(p => ({
                 if (promptSymbol) {
                     promptSymbol.innerText = '❯';
                     promptSymbol.classList.remove('text-emerald-600', 'dark:text-pastel-mint');
-                    promptSymbol.classList.add('text-indigo-600', 'dark:text-pastel-blue');
+                    promptSymbol.classList.add('text-brand-purple', 'dark:text-pastel-blue');
                 }
                 
                 selectedIndex = 0;
