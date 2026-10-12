@@ -33,6 +33,9 @@ The interactive terminal (`src/pages/index.astro`) simulates a Unix-style tree f
     ├── ▶ data-science/      # Data science, statistics, and analytics
     ├── ▶ ai-and-agents/     # AI systems, LLM agents, and MCP servers
     ├── ▶ software-engineering/ # Desktop, mobile, and web applications
+    │   ├── ▶ desktop/       # Windows native desktop applications (WinUI 3/C#)
+    │   ├── ▶ mobile/        # Native mobile applications (Android/Kotlin)
+    │   └── ▶ web/           # Web applications and tools (Astro/TypeScript)
     └── ▶ archived/          # Historical projects (Proyectos anteriores)
 ```
 

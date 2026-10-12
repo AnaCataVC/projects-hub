@@ -68,12 +68,15 @@ export function isArchived(project: RawProject): boolean {
 
 /**
  * Groups projects into category buckets:
- * data-science | ai | software-engineering | archived
+ * data-science | ai | software-engineering (desktop, mobile, web) | archived
  */
 export function categorizeProjects(projects: MappedProject[]): {
   dataScienceProjects: MappedProject[];
   aiProjects: MappedProject[];
   seProjects: MappedProject[];
+  desktopProjects: MappedProject[];
+  mobileProjects: MappedProject[];
+  webProjects: MappedProject[];
   archivedProjects: MappedProject[];
 } {
   const activeProjects = projects.filter((p) => !isArchived(p));
@@ -81,11 +84,22 @@ export function categorizeProjects(projects: MappedProject[]): {
 
   const dataScienceProjects = activeProjects.filter((p) => p.type === "data-science");
   const aiProjects = activeProjects.filter((p) => p.type === "ai");
+  const desktopProjects = activeProjects.filter((p) => p.type === "desktop");
+  const mobileProjects = activeProjects.filter((p) => p.type === "mobile");
+  const webProjects = activeProjects.filter((p) => p.type === "web");
   const seProjects = activeProjects.filter((p) =>
     ["desktop", "mobile", "web"].includes(p.type)
   );
 
-  return { dataScienceProjects, aiProjects, seProjects, archivedProjects };
+  return {
+    dataScienceProjects,
+    aiProjects,
+    seProjects,
+    desktopProjects,
+    mobileProjects,
+    webProjects,
+    archivedProjects,
+  };
 }
 
 /**

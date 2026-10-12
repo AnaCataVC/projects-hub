@@ -118,8 +118,12 @@ describe("categorizeProjects", () => {
       makeProject("mobile"),
       makeProject("web"),
     ];
-    const { seProjects } = categorizeProjects(projects);
+    const { seProjects, desktopProjects, mobileProjects, webProjects } =
+      categorizeProjects(projects);
     expect(seProjects).toHaveLength(3);
+    expect(desktopProjects).toHaveLength(1);
+    expect(mobileProjects).toHaveLength(1);
+    expect(webProjects).toHaveLength(1);
   });
 
   it("separates archived projects from active ones", () => {
@@ -128,18 +132,27 @@ describe("categorizeProjects", () => {
       makeProject("desktop", "Archivado"),
       makeProject("mobile", "Archived"),
     ];
-    const { archivedProjects, seProjects } = categorizeProjects(projects);
+    const { archivedProjects, seProjects, webProjects } = categorizeProjects(projects);
     expect(archivedProjects).toHaveLength(2);
     expect(seProjects).toHaveLength(1);
+    expect(webProjects).toHaveLength(1);
   });
 
   it("returns empty buckets when all projects are archived", () => {
-    const { dataScienceProjects, aiProjects, seProjects } = categorizeProjects([
-      makeProject("web", "Archivado"),
-    ]);
+    const {
+      dataScienceProjects,
+      aiProjects,
+      seProjects,
+      desktopProjects,
+      mobileProjects,
+      webProjects,
+    } = categorizeProjects([makeProject("web", "Archivado")]);
     expect(dataScienceProjects).toHaveLength(0);
     expect(aiProjects).toHaveLength(0);
     expect(seProjects).toHaveLength(0);
+    expect(desktopProjects).toHaveLength(0);
+    expect(mobileProjects).toHaveLength(0);
+    expect(webProjects).toHaveLength(0);
   });
 });
 

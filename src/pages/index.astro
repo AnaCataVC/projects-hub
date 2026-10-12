@@ -207,7 +207,9 @@ const serializedProjects = allProjects.map(p => ({
 
             const dataScienceProjects = activeProjects.filter(p => p.type === 'data-science');
             const aiProjects = activeProjects.filter(p => p.type === 'ai');
-            const seProjects = activeProjects.filter(p => ['desktop', 'mobile', 'web'].includes(p.type));
+            const desktopProjects = activeProjects.filter(p => p.type === 'desktop');
+            const mobileProjects = activeProjects.filter(p => p.type === 'mobile');
+            const webProjects = activeProjects.filter(p => p.type === 'web');
 
             const mapAction = (p: ProjectEntry, overrideIcon?: string): MenuNode => ({
                 title: `${overrideIcon || '⚡'} ./${p.baseId}.sh`,
@@ -242,21 +244,53 @@ const serializedProjects = allProjects.map(p => ({
                 });
             }
 
-            if (seProjects.length > 0) {
-                categories.push({
-                    id: 'software-engineering',
-                    title: 'software-engineering',
-                    desc: lang === 'es' ? '# Sistemas de escritorio, web y móvil' : '# Desktop, web, and mobile systems',
+            const seChildren: MenuNode[] = [];
+
+            if (desktopProjects.length > 0) {
+                seChildren.push({
+                    id: 'desktop',
+                    title: 'desktop',
+                    desc: lang === 'es' ? '# Aplicaciones de escritorio (Windows/WinUI 3/C#)' : '# Desktop applications (Windows/WinUI 3/C#)',
                     color: 'text-emerald-600 dark:text-emerald-400',
                     type: 'folder',
                     expanded: false,
-                    children: seProjects.map(p => {
-                        let icon = '⚡';
-                        if (p.type === 'desktop') icon = '💻';
-                        else if (p.type === 'mobile') icon = '📱';
-                        else if (p.type === 'web') icon = '🌐';
-                        return mapAction(p, icon);
-                    })
+                    children: desktopProjects.map(p => mapAction(p, '💻'))
+                });
+            }
+
+            if (mobileProjects.length > 0) {
+                seChildren.push({
+                    id: 'mobile',
+                    title: 'mobile',
+                    desc: lang === 'es' ? '# Aplicaciones móviles (Android/Kotlin)' : '# Mobile applications (Android/Kotlin)',
+                    color: 'text-teal-600 dark:text-pastel-mint',
+                    type: 'folder',
+                    expanded: false,
+                    children: mobileProjects.map(p => mapAction(p, '📱'))
+                });
+            }
+
+            if (webProjects.length > 0) {
+                seChildren.push({
+                    id: 'web',
+                    title: 'web',
+                    desc: lang === 'es' ? '# Aplicaciones y herramientas web (Astro/TypeScript)' : '# Web applications and tools (Astro/TypeScript)',
+                    color: 'text-sky-600 dark:text-sky-400',
+                    type: 'folder',
+                    expanded: false,
+                    children: webProjects.map(p => mapAction(p, '🌐'))
+                });
+            }
+
+            if (seChildren.length > 0) {
+                categories.push({
+                    id: 'software-engineering',
+                    title: 'software-engineering',
+                    desc: lang === 'es' ? '# Sistemas de escritorio, móvil y web' : '# Desktop, mobile, and web systems',
+                    color: 'text-emerald-600 dark:text-emerald-400',
+                    type: 'folder',
+                    expanded: false,
+                    children: seChildren
                 });
             }
 
@@ -460,7 +494,7 @@ const serializedProjects = allProjects.map(p => ({
                         icon = `<span class="animate-pulse-fast">${icon.trim()}</span> `;
                     } else {
                         // For actions that have their icon baked into the title
-                        displayTitle = displayTitle.replace(/(↳|\[☀\]|\[☾\]|⚡|📦)/, '<span class="animate-pulse-fast">$1</span>');
+                        displayTitle = displayTitle.replace(/(↳|\[☀\]|\[☾\]|⚡|📦|💻|📱|🌐|📊|🤖)/, '<span class="animate-pulse-fast">$1</span>');
                     }
                 }
 
