@@ -1,12 +1,12 @@
 ---
 title: "AI-Native Interactive Resume (MCP Server)"
 description: "Servidor Model Context Protocol (MCP) que permite a Inteligencias Artificiales interactuar con mi experiencia profesional."
-lastUpdated: 2026-10-10
+lastUpdated: 2026-10-13
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
 isLiveApp: false
-technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "Docker", "Google Cloud Run", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
+technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "FastAPI / Starlette", "Pydantic v2", "Docker", "Google Cloud Run", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
 categories: ["IA", "MCP", "Backend", "Cloud"]
 type: "ai"
 status: "Activo"
@@ -16,6 +16,7 @@ learnings:
   - "Integración exitosa del protocolo emergente MCP, adaptando la arquitectura para soportar comunicación bidireccional asíncrona mediante Streamable-HTTP compatible con Antigravity, Claude, Cursor y Gemini Connected Apps."
   - "Motor de Emparejamiento Dinámico en Memoria: Implementación de un algoritmo determinista en cv_service.py para evaluar compatibilidad con vacantes y stack técnico en memoria con latencia inferior a 2ms."
   - "Despliegue serverless optimizado en Google Cloud Run utilizando contenedores Docker ligeros, aprovechando la funcionalidad 'Scale to Zero' para reducir costos operativos a cero durante la inactividad."
+  - "Negociación Transparente de Contenido HTTP & Contratos Tipados: Negociación dinámica en GET / que entrega directamente el showcase HTML con status 200 a navegadores web y descubrimiento JSON a clientes MCP, junto a un contrato fuertemente tipado SearchResult en Pydantic v2."
 websiteActionText: "Servidor MCP & Demo"
 ---
 
@@ -59,10 +60,11 @@ https://mcp.ana-catalina.com/mcp
 * `obtener_experiencia`: Consulta de trayectoria profesional, roles y logros detallados.
 * `evaluar_fit_puesto`: Evaluación algorítmica dinámica de compatibilidad técnica con descripciones de vacantes.
 * `obtener_stack_tecnologico`: Búsqueda granular y nivel de dominio en tecnologías específicas.
+* `buscar_en_curriculum`: Búsqueda transversal por palabra clave en historial laboral, habilidades y proyectos con contrato fuertemente tipado `SearchResult`.
 
 ### Arquitectura Técnica & Motor en Memoria
 
-El servidor está desarrollado en **Python 3.12** utilizando **FastMCP** y el transporte unificado **Streamable-HTTP** (`/mcp`), permitiendo streaming bidireccional y respuestas JSON instantáneas. Toda la validación de tipos e inputs de las tools está estrictamente garantizada por **Pydantic v2**, cargando los conjuntos de datos en memoria durante el arranque del contenedor para garantizar tiempos de respuesta menores a 2 milisegundos.
+El servidor está desarrollado en **Python 3.12** utilizando **FastMCP** y el transporte unificado **Streamable-HTTP** (`/mcp`), permitiendo streaming bidireccional y respuestas JSON instantáneas. Toda la validación de tipos e inputs de las tools está estrictamente garantizada por **Pydantic v2**, cargando los conjuntos de datos en memoria durante el arranque del contenedor para garantizar tiempos de respuesta menores a 2 milisegundos. El rendimiento y la confiabilidad se refuerzan mediante un despachador declarativo de assets estáticos, caché de templates con `@functools.lru_cache` y una suite integral de 54 pruebas automatizadas.
 
 ### Despliegue en Cloud Run
 

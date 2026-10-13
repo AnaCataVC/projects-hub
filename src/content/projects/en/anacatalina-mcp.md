@@ -1,12 +1,12 @@
 ---
 title: "AI-Native Interactive Resume (MCP Server)"
 description: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
-lastUpdated: 2026-10-10
+lastUpdated: 2026-10-13
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
 isLiveApp: false
-technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "Docker", "Google Cloud Run", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
+technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "FastAPI / Starlette", "Pydantic v2", "Docker", "Google Cloud Run", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
 categories: ["AI", "MCP", "Backend", "Cloud"]
 type: "ai"
 status: "Active"
@@ -16,6 +16,7 @@ learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Streamable-HTTP compatible with Antigravity, Claude, Cursor, and Gemini Connected Apps."
   - "In-Memory Dynamic Matching Engine: Deterministic algorithm in cv_service.py evaluating job profile compatibility and technical stack alignment entirely in memory with sub-2ms latency."
   - "Optimized serverless deployment on Google Cloud Run using lightweight Docker containers, leveraging 'Scale to Zero' functionality to reduce operational costs to zero during idle times."
+  - "Zero-Downtime Content Negotiation & Typed Contracts: Dynamic HTTP content negotiation on GET / delivering the interactive HTML showcase directly with 200 OK to web browsers while serving JSON discovery to MCP clients, paired with a strongly-typed SearchResult Pydantic v2 contract."
 websiteActionText: "MCP Server & Demo"
 ---
 
@@ -59,10 +60,11 @@ https://mcp.ana-catalina.com/mcp
 * `obtener_experiencia`: Query career trajectory, detailed roles, and achievements.
 * `evaluar_fit_puesto`: Algorithmic evaluation of technical compatibility with job descriptions.
 * `obtener_stack_tecnologico`: Granular search and proficiency levels across specific technologies.
+* `buscar_en_curriculum`: Cross-cutting keyword search across career trajectory, tech stack, and projects returning a strongly-typed `SearchResult`.
 
 ### Technical Architecture & In-Memory Engine
 
-The server is developed in **Python 3.12** using **FastMCP** and unified **Streamable-HTTP** (`/mcp`), enabling bidirectional streaming and instant JSON responses. All type and input validation for the tools is strictly guaranteed by **Pydantic v2**, loading dataset models directly into memory upon container boot to achieve sub-2-millisecond response latencies.
+The server is developed in **Python 3.12** using **FastMCP** and unified **Streamable-HTTP** (`/mcp`), enabling bidirectional streaming and instant JSON responses. All type and input validation for the tools is strictly guaranteed by **Pydantic v2**, loading dataset models directly into memory upon container boot to achieve sub-2-millisecond response latencies. High-concurrency performance and reliability are reinforced with declarative static asset routing, `@functools.lru_cache` template rendering, and a comprehensive suite of 54 automated test cases.
 
 ### Deployment on Cloud Run
 
