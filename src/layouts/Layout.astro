@@ -59,6 +59,10 @@ const schemaOrgJSONLD = JSON.stringify({
 
 		<!-- Favicon and Fonts -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -111,7 +115,7 @@ const schemaOrgJSONLD = JSON.stringify({
 		</script>
 	</head>
 	<body class:list={[
-		"relative min-h-screen selection:bg-indigo-200 selection:text-indigo-900 dark:selection:bg-indigo-900 dark:selection:text-indigo-100",
+		"relative min-h-screen selection:bg-purple-200 selection:text-purple-900 dark:selection:bg-purple-950 dark:selection:text-purple-200",
 		isProjectPage ? "block" : "flex flex-col"
 	]}>
 		<Analytics />
@@ -129,7 +133,7 @@ const schemaOrgJSONLD = JSON.stringify({
 					<!-- Discreet Logo in corner -->
 					<header id="global-logo" class="z-10">
 						<a href="https://ana-catalina.com">
-							<img src="/favicon.svg" alt="ACVC Logo" class="w-8 h-8 rounded-lg object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
+							<img src="/favicon.svg" alt="Ana-Catalina AV Logo" class="w-8 h-8 rounded-lg object-contain opacity-70 hover:opacity-100 transition-opacity duration-300" />
 						</a>
 					</header>
 
@@ -153,10 +157,10 @@ const schemaOrgJSONLD = JSON.stringify({
 				<div class="flex flex-col sm:flex-row justify-center sm:justify-end items-center sm:items-start gap-8">
 					<div class="flex flex-col items-center sm:items-end gap-3">
 						<div class="flex gap-6">
-							<a href="https://linkedin.com/in/ana-catalina/" aria-label="Perfil de LinkedIn de Ana-Catalina" target="_blank" rel="noopener noreferrer" class="text-slate-400 dark:text-slate-500 hover:text-indigo-500 dark:hover:text-indigo-400 transition-all duration-300 transform hover:scale-105">
+							<a href="https://linkedin.com/in/ana-catalina/" aria-label="Perfil de LinkedIn de Ana-Catalina" target="_blank" rel="noopener noreferrer" class="text-slate-400 dark:text-slate-500 hover:text-brand-purple dark:hover:text-brand-purple-light transition-all duration-300 transform hover:scale-105">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
 							</a>
-							<a href="https://github.com/AnaCataVC/" aria-label="Perfil de GitHub de Ana-Catalina" target="_blank" rel="noopener noreferrer" class="text-slate-400 dark:text-slate-500 hover:text-indigo-500 dark:hover:text-indigo-400 transition-all duration-300 transform hover:scale-105">
+							<a href="https://github.com/AnaCataVC/" aria-label="Perfil de GitHub de Ana-Catalina" target="_blank" rel="noopener noreferrer" class="text-slate-400 dark:text-slate-500 hover:text-brand-purple dark:hover:text-brand-purple-light transition-all duration-300 transform hover:scale-105">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
 							</a>
 						</div>

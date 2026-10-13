@@ -85,20 +85,20 @@ function renderLinkIcon(url: string, label: string): string {
 const customLinks = product.links.filter((link) => !link.url.includes('github.com') && link.url !== githubUrl);
 
 // -----------------------------------------------------------------------------
-// Unified Signature Aura (Amiga IA Cosmic Violet, Fuchsia & Indigo Palette)
-// All product pages share this consistent, high-energy signature brand palette.
+// Unified Signature Aura (Pastel-Tech Harmony: Lavender, Petal Rose & Crystal Aqua)
+// All product pages share this consistent brand palette.
 // -----------------------------------------------------------------------------
 const aura = {
-  glowOrb1: 'from-pink-500/25 via-fuchsia-500/20 to-purple-600/20',
-  glowOrb2: 'from-purple-600/20 via-indigo-600/25 to-blue-600/20',
-  textGradient: 'from-pink-500 via-fuchsia-500 to-indigo-500 dark:from-pink-400 dark:via-fuchsia-300 dark:to-indigo-300',
-  badgeBg: 'bg-pink-500/10 dark:bg-pink-500/15 border-pink-500/25 text-pink-600 dark:text-pink-300',
-  badgeDot: 'bg-pink-500',
-  primaryBtn: 'from-pink-500 via-purple-600 to-indigo-600 hover:from-pink-600 hover:via-purple-700 hover:to-indigo-700 shadow-pink-500/25 hover:shadow-pink-500/40 text-white',
-  cardBorderHover: 'hover:border-pink-500/40 hover:shadow-pink-500/10',
-  iconBox: 'bg-pink-500/15 text-pink-600 dark:text-pink-300',
-  tagBg: 'bg-pink-500/10 text-pink-700 dark:text-pink-300 border-pink-500/20',
-  terminalAccent: 'text-pink-400',
+  glowOrb1: 'from-brand-purple/25 via-brand-magenta/20 to-brand-cyan/20',
+  glowOrb2: 'from-brand-purple/20 via-brand-cyan/25 to-pastel-blue/20',
+  textGradient: 'from-brand-purple via-brand-magenta to-brand-cyan dark:from-brand-purple-light dark:via-brand-magenta dark:to-brand-cyan',
+  badgeBg: 'bg-brand-purple/10 dark:bg-brand-purple/15 border-brand-purple/25 text-brand-purple dark:text-brand-purple-light',
+  badgeDot: 'bg-brand-magenta',
+  primaryBtn: 'from-brand-purple via-brand-magenta to-brand-purple hover:from-brand-magenta hover:via-brand-purple hover:to-brand-magenta shadow-brand-purple/25 hover:shadow-[0_0_20px_rgba(154,130,232,0.4)] text-white',
+  cardBorderHover: 'hover:border-brand-purple/40 hover:shadow-brand-purple/10',
+  iconBox: 'bg-brand-purple/15 text-brand-purple dark:text-brand-purple-light',
+  tagBg: 'bg-brand-purple/10 text-brand-purple dark:text-brand-purple-light border-brand-purple/20',
+  terminalAccent: 'text-brand-cyan',
 };
 
 const jsonLD = JSON.stringify({
@@ -113,7 +113,7 @@ const jsonLD = JSON.stringify({
 });
 
 const primaryBtnClass = `inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:px-7 sm:py-3 rounded-xl bg-gradient-to-r ${aura.primaryBtn} shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 font-semibold text-sm sm:text-base tracking-wide text-white cursor-pointer select-none`;
-const secondaryBtnClass = 'inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow transition-all duration-200 active:scale-95 font-medium text-sm sm:text-base tracking-wide cursor-pointer select-none';
+const secondaryBtnClass = 'inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 hover:text-brand-purple dark:hover:text-brand-cyan hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-brand-purple/40 dark:hover:border-brand-cyan/40 shadow-sm hover:shadow transition-all duration-200 active:scale-95 font-medium text-sm sm:text-base tracking-wide cursor-pointer select-none';
 const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200/70 dark:border-white/10 p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${aura.cardBorderHover}`;
 ---
 
@@ -128,7 +128,11 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="es" href={productHome} />
     <link rel="alternate" hreflang="en" href={`${productHome}en`} />
-    <link rel="icon" href={icon ?? '/favicon.svg'} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/svg+xml" href={icon ?? '/favicon.svg'} />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -146,7 +150,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
       }
     </script>
   </head>
-  <body class="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans overflow-x-hidden selection:bg-purple-500/20 selection:text-purple-600 dark:selection:text-purple-300">
+  <body class="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans overflow-x-hidden selection:bg-brand-purple/20 selection:text-brand-purple dark:selection:text-brand-purple-light">
     <Analytics />
 
     <!-- Ambient Glowing Light Orbs (Amiga IA Depth & Energy) -->
@@ -176,7 +180,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
         <div class="flex items-center bg-white/80 dark:bg-slate-900/70 rounded-full p-1 border border-slate-200/80 dark:border-white/10 shadow-sm backdrop-blur-md relative">
           <div
             id="lang-indicator"
-            class="absolute top-1 bottom-1 left-1 bg-purple-500/15 dark:bg-white/15 rounded-full transition-transform duration-300 ease-out w-[calc(50%-4px)] pointer-events-none"
+            class="absolute top-1 bottom-1 left-1 bg-brand-purple/15 dark:bg-white/15 rounded-full transition-transform duration-300 ease-out w-[calc(50%-4px)] pointer-events-none"
             style={lang === 'en' ? 'transform: translateX(100%)' : 'transform: translateX(0)'}
           ></div>
           <a
@@ -184,7 +188,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
             href="/"
             class:list={[
               'relative z-10 w-11 h-7 rounded-full text-xs font-semibold transition-colors flex items-center justify-center',
-              lang === 'es' ? 'text-purple-700 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
+              lang === 'es' ? 'text-brand-purple dark:text-brand-purple-light' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
             ]}
           >
             ES
@@ -194,7 +198,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
             href="/en"
             class:list={[
               'relative z-10 w-11 h-7 rounded-full text-xs font-semibold transition-colors flex items-center justify-center',
-              lang === 'en' ? 'text-purple-700 dark:text-white' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
+              lang === 'en' ? 'text-brand-purple dark:text-brand-purple-light' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
             ]}
           >
             EN
@@ -205,7 +209,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
           id="theme-toggle"
           type="button"
           aria-label={t.theme}
-          class="w-9 h-9 rounded-full flex items-center justify-center bg-white/80 dark:bg-slate-900/70 border border-slate-200/80 dark:border-white/10 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-white hover:border-purple-300 dark:hover:border-white/30 shadow-sm transition-all [&>svg]:w-4 [&>svg]:h-4 cursor-pointer"
+          class="w-9 h-9 rounded-full flex items-center justify-center bg-white/80 dark:bg-slate-900/70 border border-slate-200/80 dark:border-white/10 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-brand-purple dark:hover:text-white hover:border-brand-purple/40 dark:hover:border-white/30 shadow-sm transition-all [&>svg]:w-4 [&>svg]:h-4 cursor-pointer"
           set:html={iconSvg('SunMoon')}
         ></button>
       </div>
@@ -411,7 +415,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
                 src={shot.src}
                 alt={shot.alt}
                 loading="lazy"
-                class="max-h-[560px] w-auto max-w-full rounded-2xl border border-slate-200/80 dark:border-white/15 shadow-xl dark:shadow-2xl dark:shadow-purple-950/20 hover:scale-[1.01] transition-transform duration-300"
+                class="max-h-[560px] w-auto max-w-full rounded-2xl border border-slate-200/80 dark:border-white/15 shadow-xl dark:shadow-2xl dark:shadow-brand-purple/20 hover:scale-[1.01] transition-transform duration-300"
               />
             ))}
           </div>
@@ -454,15 +458,15 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
     <!-- Footer -->
     <footer class="border-t border-slate-200/80 dark:border-white/10 py-10 text-center text-xs text-slate-500 dark:text-slate-400 font-[Inter] backdrop-blur-sm">
       <div class="flex justify-center flex-wrap gap-6 mb-4 font-medium">
-        <a href={fichaURL} class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">{t.details}</a>
+        <a href={fichaURL} class="hover:text-brand-purple dark:hover:text-brand-purple-light transition-colors">{t.details}</a>
         {githubUrl && (
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="hover:text-brand-purple dark:hover:text-brand-purple-light transition-colors">
             {t.source}
           </a>
         )}
-        <a href="https://projects.ana-catalina.com" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors">Projects Hub</a>
+        <a href="https://projects.ana-catalina.com" class="hover:text-brand-purple dark:hover:text-brand-purple-light transition-colors">Projects Hub</a>
       </div>
-      <p>&copy; {new Date().getFullYear()} <a href="https://ana-catalina.com" class="hover:text-purple-600 dark:hover:text-purple-300 transition-colors font-medium">Ana-Catalina</a></p>
+      <p>&copy; {new Date().getFullYear()} <a href="https://ana-catalina.com" class="hover:text-brand-purple dark:hover:text-brand-purple-light transition-colors font-medium">Ana-Catalina</a></p>
     </footer>
 
     <!-- Interactive Client Scripts (Theme, Lang Rewrite, Tabs, Copy) -->

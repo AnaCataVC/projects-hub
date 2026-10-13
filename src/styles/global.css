@@ -4,9 +4,13 @@
 
 @theme {
   --font-sans: "Outfit", "Inter", system-ui, sans-serif;
-  --color-brand-purple: #8c72db;
-  --color-pastel-lilac: #c7b8ea;
-  --color-pastel-pink: #f7c6d9;
+  --color-brand-purple: #9a82e8;
+  --color-brand-purple-light: #a78bfa;
+  --color-brand-magenta: #e573a7;
+  --color-brand-cyan: #4dd0e1;
+  --color-pastel-lilac: #cdb4f6;
+  --color-pastel-pink: #fbcfe8;
+  --color-pastel-cyan: #b2eff7;
   --color-pastel-blue: #bcdffb;
   --color-pastel-mint: #c8f3e0;
 }
