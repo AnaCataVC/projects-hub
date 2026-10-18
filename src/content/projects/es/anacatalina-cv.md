@@ -1,7 +1,7 @@
 ---
 title: "Anacatalina CV — Sitio Personal Bilingüe"
 description: "Mi CV como sitio web bilingüe con modo oscuro, más un PDF descargable generado imprimiendo plantillas HTML con el motor headless del navegador."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-18
 icon: "/project-icons/anacatalina-cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-cv"
 liveAppUrl: "https://cv.ana-catalina.com"
@@ -14,8 +14,8 @@ problem: "Muchos procesos de reclutamiento todavía dependen de un PDF descargab
 solution: "Un sitio Astro bilingüe (ES/EN) con modo oscuro y animaciones al scroll, más un script que renderiza plantillas HTML de impresión dedicadas usando el motor headless de Chrome o Edge ya instalado en la máquina (`--print-to-pdf`)."
 learnings:
   - "Generar PDFs de impresión a partir de HTML/CSS con reglas `@page`, invocando el navegador headless instalado localmente en vez de sumar Puppeteer u otra librería de PDF."
-  - "Mantener plantillas de impresión separadas del markup web permite optimizar cada formato (una hoja de CV compacta vs. una página con scroll y animaciones) sin comprometer ninguno de los dos."
-  - "Reutilizar un sistema de diseño compartido (paleta pastel, tipografía) entre varios sitios propios acelera montar uno nuevo sin rediseñar desde cero."
+  - "Lentes de habilidades interactivos: Navegación dinámica por facetas de competencias técnicas sobre el perfil profesional, combinada con plantillas de impresión optimizadas."
+  - "Reutilizar un sistema de diseño compartido (paleta pastel-tech, tipografía y logo AV) entre varios sitios propios acelera montar uno nuevo sin rediseñar desde cero."
   - "Fuente única de verdad en TypeScript (`src/data/cv.ts`): centralizar todo el contenido bilingüe en un solo archivo tipado que alimenta tanto la web interactiva como las plantillas de impresión, con un paso de build que verifica automáticamente el límite estricto de 2 páginas y la compatibilidad con parsers ATS antes de publicar los PDFs."
 websiteActionText: "Ver CV en Vivo"
 ---

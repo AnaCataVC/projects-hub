@@ -2,7 +2,7 @@
 title: "Smart Calendar Manager"
 icon: "/project-icons/smart-calendar-manager-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that bridges personal and work schedules through secret iCal feeds, blocks availability without OAuth, and automates video meeting preparation."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-18
 githubUrl: "https://github.com/AnaCataVC/smart-calendar-manager"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "RFC 5545 iCalendar", "Google Apps Script", "xUnit"]
@@ -31,7 +31,7 @@ product:
       text: "A setup wizard generates a Google Apps Script with your personal feeds embedded. It runs in the work account and creates private \"Busy\" blocks — works even where Workspace blocks third-party OAuth apps. Recurring events are not expanded."
     - icon: "Video"
       title: "Precision Pre-Meeting Automation"
-      text: "Alerts before qualifying meetings — 5 minutes by default, configurable from 0 to 60 — and opens Granola, scoped to work feeds only or all feeds. By default only meetings with a video link qualify."
+      text: "Alerts before qualifying meetings — 5 minutes by default, configurable from 0 to 60 — and opens Granola, scoped to work feeds only or all feeds. Automatically suppresses cancelled, rescheduled, or declined events."
     - icon: "AlarmClock"
       title: "Visual Cron-Style Launcher"
       text: "Weekday pill selectors, a time picker, and any destination target — executables, custom URI schemes (slack://, spotify://) or web URLs. Zero CPU overhead when idle."

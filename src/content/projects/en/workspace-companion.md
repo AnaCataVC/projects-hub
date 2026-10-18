@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Ultra-lightweight native Windows system tray and Spotlight utility to manage Git Worktrees, decoupled IDE/terminal launchers, and 1-click GitHub CLI switching."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-18
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -13,6 +13,7 @@ status: "Active"
 problem: "Workflow friction when managing parallel feature branches with Git Worktrees, safely cleaning up merged or orphaned worktree directories, and switching GitHub CLI account identities."
 solution: "An ultra-lightweight Windows system tray micro-app (<40 MB RAM) with a Spotlight-style HUD featuring recursive Git worktree discovery, atomic bulk cleanup presets, independent IDE and terminal launchers, 1-click GitHub CLI account switching, and 1-click resolution for dirty or locked worktrees with Toast alerts."
 learnings:
+  - "Keyboard-First Navigation & View Parity: Complete keyboard-driven navigation without leaving the keys, synchronizing quick actions and functional parity across floating views."
   - "Decoupled IDE & Terminal Launchers (ADR-0004): Direct binary resolution for GUI editors (VS Code, Antigravity, Cursor, Windsurf) and consoles (Windows Terminal, Git Bash, AGY CLI) without flashing console prompts."
   - "Hardened Orphan Worktree Cleaner: Pruning algorithm with pre-flight dirty checks, root directory false-positive guards, and native Windows Toast notifications."
   - "Batch Git Branch Cleaner (ADR-0006): Multi-select local branch cleanup that distinguishes skipped safety guards from real git failures, surfacing merge and remote status directly in the worktree view."

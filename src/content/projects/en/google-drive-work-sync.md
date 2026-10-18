@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that syncs work directories and AI agent context to Google Drive via a Google Apps Script Web App, with incremental hashing and secret redaction."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-18
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "Google Apps Script", "xUnit"]
@@ -12,6 +12,7 @@ status: "Active"
 problem: "Keeping work directories and AI agent context (CLAUDE.md, skills, memory files) synced to Google Drive without a heavyweight sync client, without re-uploading unchanged files, and without accidentally leaking secrets."
 solution: "A WinUI 3 system tray app that uploads only new or modified files to a self-hosted Google Apps Script Web App, using a metadata fast-path (timestamp and size) before computing full SHA-256 hashes, retrying transient failures with exponential backoff, discovering AI agent context recursively while excluding nested repositories and worktrees, and running a three-tiered secret filter before backing anything up."
 learnings:
+  - "Batch Uploads & Orphan Reconciliation: Batch packaging for Claude context sync with live progress reporting, paired with actionable duplicate cleanup and Drive orphan reconciliation."
   - "Crash-Safe Hash Index: The sync index is written to a temp file and swapped in atomically, so an interrupted run can never leave it empty."
   - "Three-Tiered Secret Filter: A filename blacklist, a regex scan of the first 64 KB for known token patterns (PAT, AWS, SSH), and a fail-closed sanitizer for MCP configuration files."
   - "Nested Repository & Worktree Detection: A BFS traversal that identifies git roots (both `.git` directories and linked worktree files) so tracked `CLAUDE.md` files are never misclassified as untracked scratch notes."

@@ -1,7 +1,7 @@
 ---
 title: "Little Chef Timer"
 description: "100% offline Android kitchen timer with exact alarms that fire even when the phone is locked, in Doze mode, or after the app has been killed by the system."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-18
 icon: "/project-icons/little-chef-timer-icon.png"
 githubUrl: "https://github.com/AnaCataVC/little-chef-timer"
 websiteUrl: "https://little-chef-timer.ana-catalina.com"
@@ -14,7 +14,7 @@ problem: "Generic kitchen timers don't distinguish between preparations, lose th
 solution: "An offline app that stores custom recipes with an emoji, notes and an exact duration, and schedules the alarm with AlarmManager.setAlarmClock so it fires on time even with the screen locked or in Doze mode. The remaining time is derived from a persisted end timestamp, so it survives process death without drift, with no foreground service running in the background."
 learnings:
   - "Drift-free countdown: remaining time is derived mathematically from a persisted end timestamp (endAtMillis) in SharedPreferences, instead of a counter that could be lost if the process dies."
-  - "Exact alarms without invasive permissions: AlarmManager.setAlarmClock fires precisely even in Doze mode, without requesting SCHEDULE_EXACT_ALARM."
+  - "Exact alarms with dedicated permissions and fallback resilience: Declaring USE_EXACT_ALARM and SCHEDULE_EXACT_ALARM paired with runtime checks and SecurityException fallback handling to fire punctually even in Doze mode."
   - "Reactive UI without polling: a SharedPreferences.OnSharedPreferenceChangeListener wired to a Compose DisposableEffect updates the UI only when state changes, with no periodic disk reads."
   - "Per-sound notification channels: since a channel's sound is immutable once created, each chosen ringtone gets its own channel (alarm_<hash>), with older ones deleted."
 product:

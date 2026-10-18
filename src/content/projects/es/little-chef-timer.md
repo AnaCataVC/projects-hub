@@ -1,7 +1,7 @@
 ---
 title: "Little Chef Timer"
 description: "Temporizador de cocina para Android, 100% offline, con alarmas exactas que suenan aunque el teléfono esté bloqueado, en modo Doze o con la app cerrada por el sistema."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-18
 icon: "/project-icons/little-chef-timer-icon.png"
 githubUrl: "https://github.com/AnaCataVC/little-chef-timer"
 websiteUrl: "https://little-chef-timer.ana-catalina.com"
@@ -14,7 +14,7 @@ problem: "Los temporizadores de cocina genéricos no distinguen entre preparacio
 solution: "Una app offline que guarda recetas propias con emoji, notas y tiempo exacto, y programa la alarma con AlarmManager.setAlarmClock para que suene puntual incluso con la pantalla bloqueada o en Doze. El tiempo restante se calcula contra una marca de fin persistida, así que sobrevive al cierre del proceso sin desfase, y no necesita ningún servicio en primer plano corriendo en segundo plano."
 learnings:
   - "Cuenta regresiva sin drift: el tiempo restante se deriva matemáticamente de una marca de tiempo de fin (endAtMillis) guardada en SharedPreferences, en vez de un contador que se pueda perder si el proceso muere."
-  - "Alarmas exactas sin permisos invasivos: AlarmManager.setAlarmClock dispara con precisión incluso en Doze, sin pedir SCHEDULE_EXACT_ALARM."
+  - "Alarmas exactas con permisos dedicados y resiliencia: Declaración de USE_EXACT_ALARM y SCHEDULE_EXACT_ALARM junto con verificación en tiempo de ejecución y fallback ante SecurityException para disparar puntualmente incluso en Doze."
   - "UI reactiva sin polling: un SharedPreferences.OnSharedPreferenceChangeListener conectado a un DisposableEffect de Compose actualiza la interfaz solo cuando cambia el estado, sin lecturas periódicas a disco."
   - "Canales de notificación por sonido: como el sonido de un canal es inmutable una vez creado, cada tono elegido genera su propio canal (alarm_<hash>), eliminando los anteriores."
 product:

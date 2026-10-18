@@ -1,7 +1,7 @@
 ---
 title: "AI-Native Interactive Resume (MCP Server)"
 description: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-18
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
@@ -14,6 +14,7 @@ problem: "Traditional web resumes are designed for humans to read, but today AI 
 solution: "A native service for Artificial Intelligences, built using the official Model Context Protocol, exposing 9 specialized tools to query experience, mathematically evaluate profile fit for job openings, and search the tech stack, designed specifically for LLM reasoning using strict Pydantic schemas and Streamable-HTTP transport."
 learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Streamable-HTTP compatible with Antigravity, Claude, Cursor, and Gemini Connected Apps."
+  - "ASGI Security Middleware & Bounded Rate Limiting: Implementation of strict ASGI security headers, in-memory rate limiting, and continuous vulnerability auditing in CI pipelines."
   - "In-Memory Dynamic Matching Engine: Deterministic algorithm in cv_service.py evaluating job profile compatibility and technical stack alignment entirely in memory with sub-2ms latency."
   - "Optimized serverless deployment on Google Cloud Run using lightweight Docker containers, leveraging 'Scale to Zero' functionality to reduce operational costs to zero during idle times."
   - "Zero-Downtime Content Negotiation & Typed Contracts: Dynamic HTTP content negotiation on GET / delivering the interactive HTML showcase directly with 200 OK to web browsers while serving JSON discovery to MCP clients, paired with a strongly-typed SearchResult Pydantic v2 contract."
