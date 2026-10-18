@@ -230,9 +230,9 @@ Every repository in the portfolio must strictly adhere to the following universa
    - Flags represent sovereign states, not languages; terminal emulators, Windows shells, and XAML render them as broken letters (`[U][S]`) or tofu glyphs (`□□`). Always use ISO codes (`ES`, `EN`) or text labels (`Español`, `English`).
 
 5. **Design Palette & Aesthetics (Pastel-Tech System):**
-   - **Brand Core Triad**: Tech Lavender (`#9A82E8` / `#A78BFA` in dark text), Petal Rose (`#E573A7`), Crystal Aqua (`#4DD0E1`).
+   - **Brand Core Triad**: Tech Lavender (`#B98DFD` / `#BA8EFF` in dark text), Coral Rose (`#FF7889`), Crystal Aqua (`#2EE6E5`).
    - **Pastel Support Tokens**: Pastel Lilac (`#CDB4F6`), Pastel Pink (`#FBCFE8`), Pastel Cyan (`#B2EFF7`), Pastel Blue (`#BCDFFB`), Pastel Mint (`#C8F3E0`), and Dark Canvas (`#1E1A2B` / `#0F172A`).
-   - **Visual Brand Anchor**: Geometric AV triangular emblem with continuous harmonic gradient.
+   - **Visual Brand Anchor**: Geometric ACVC continuous ribbon emblem with harmonic pastel-tech gradient.
    - **Typography**: `Outfit` for geometric headings, `Inter` for crisp body copy, `JetBrains Mono` for code/specs.
    - **Zero Broken Mockups**: Every button, toggle, link, and interactive widget must be 100% operational in production.
 

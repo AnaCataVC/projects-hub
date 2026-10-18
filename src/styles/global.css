@@ -4,10 +4,10 @@
 
 @theme {
   --font-sans: "Outfit", "Inter", system-ui, sans-serif;
-  --color-brand-purple: #9a82e8;
-  --color-brand-purple-light: #a78bfa;
-  --color-brand-magenta: #e573a7;
-  --color-brand-cyan: #4dd0e1;
+  --color-brand-purple: #b98dfd;
+  --color-brand-purple-light: #ba8eff;
+  --color-brand-magenta: #ff7889;
+  --color-brand-cyan: #2ee6e5;
   --color-pastel-lilac: #cdb4f6;
   --color-pastel-pink: #fbcfe8;
   --color-pastel-cyan: #b2eff7;
