@@ -18,6 +18,7 @@ const CWD = process.cwd();
 const REPOS_DIR = process.env.REPOS_DIR ? path.resolve(process.env.REPOS_DIR) : path.resolve(CWD, '..');
 const PROJECTS_ES_DIR = path.join(CWD, 'src', 'content', 'projects', 'es');
 const PROJECTS_EN_DIR = path.join(CWD, 'src', 'content', 'projects', 'en');
+const GITHUB_OWNER = process.env.GITHUB_OWNER || 'AnaCataVC';
 
 // Repositories that should not be indexed as standalone showcase projects
 const IGNORED_REPOS = new Set([
@@ -99,7 +100,7 @@ function getGitHubRepos() {
   const repos = [];
   try {
     const rawOutput = execSync(
-      'gh repo list --limit 100 --json name,description,updatedAt,pushedAt,isPrivate,isFork',
+      `gh repo list ${GITHUB_OWNER} --limit 100 --json name,description,updatedAt,pushedAt,isPrivate,isFork`,
       { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'] }
     );
     const parsed = JSON.parse(rawOutput || '[]');
