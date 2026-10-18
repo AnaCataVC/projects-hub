@@ -48,12 +48,15 @@ product:
   catalog:
     title: "Capacidades (Por Utilidad)"
     items:
+      - title: "ami-cleanroom-arbiter"
+        description: "Árbitro maestro de Cleanroom TDD. Congela contratos de interfaz y coordina builder y tester aislados a doble ciego."
+        tags: ["ami-orchestrate-cleanroom", "Contract-First Design", "Adversarial QA"]
       - title: "ami-data-scientist"
         description: "Orquestador maestro para análisis exploratorio, optimización SQL, auditorías y dashboards ejecutivos."
-        tags: ["ami-build-dashboard", "ami-profile-data", "ami-optimize-sql", "ami-validate-data"]
+        tags: ["ami-build-dashboard", "ami-optimize-sql"]
       - title: "ami-tech-lead"
         description: "Tech Lead Maestro. Orquesta planificación de proyectos, arquitectura inicial y diseño de estrategias."
-        tags: ["ami-architect-project", "ami-plan-feature", "ami-stress-test-idea", "ami-guide-next-step", "ami-design-test-strategy", "ami-debug-issue"]
+        tags: ["ami-architect-project", "ami-plan-feature", "ami-stress-test-idea", "ami-design-test-strategy", "ami-debug-issue"]
       - title: "ami-pr-reviewer"
         description: "Orquesta revisiones estructuradas de PRs de compañeros usando subagentes en paralelo."
         tags: ["ami-review-peer-pr", "ami-analyze-pr-comments", "ami-review-self-pr"]
@@ -65,10 +68,10 @@ product:
         tags: ["ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
       - title: "ami-doc-architect"
         description: "Orquestador maestro para documentación, investigación de contexto y extracción de lecciones."
-        tags: ["ami-manage-docs", "ami-research-context", "ami-extract-learnings"]
+        tags: ["ami-manage-docs", "ami-research-context"]
       - title: "ami-release-manager"
         description: "Orquesta el ciclo de lanzamiento, cálculo semántico de etiquetas de versión y notas de lanzamiento."
-        tags: ["ami-draft-release", "ami-tag-release"]
+        tags: ["ami-prepare-release"]
       - title: "ami-push-assistant"
         description: "Realiza pruebas de seguridad, consistencia de datos e interceptación de hooks antes del push."
         tags: ["Git Pre-Flight Guards", "Real-time Debug Linter"]

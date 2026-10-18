@@ -48,12 +48,15 @@ product:
   catalog:
     title: "Suite Capabilities (Utility Groups)"
     items:
+      - title: "ami-cleanroom-arbiter"
+        description: "Master Double-Blind Cleanroom TDD Arbiter. Freezes formal interface contracts and coordinates isolated builder and tester subagents."
+        tags: ["ami-orchestrate-cleanroom", "Contract-First Design", "Adversarial QA"]
       - title: "ami-data-scientist"
         description: "Master orchestrator for exploratory data analysis, SQL optimizations, quality auditing, and executive dashboards."
-        tags: ["ami-build-dashboard", "ami-profile-data", "ami-optimize-sql", "ami-validate-data"]
+        tags: ["ami-build-dashboard", "ami-optimize-sql"]
       - title: "ami-tech-lead"
         description: "Master Tech Lead. Orchestrates project planning, greenfield architecture, and strategy design."
-        tags: ["ami-architect-project", "ami-plan-feature", "ami-stress-test-idea", "ami-guide-next-step", "ami-design-test-strategy", "ami-debug-issue"]
+        tags: ["ami-architect-project", "ami-plan-feature", "ami-stress-test-idea", "ami-design-test-strategy", "ami-debug-issue"]
       - title: "ami-pr-reviewer"
         description: "Orchestrates structured PR code reviews using parallel subagents for teammates' Pull Requests."
         tags: ["ami-review-peer-pr", "ami-analyze-pr-comments", "ami-review-self-pr"]
@@ -65,10 +68,10 @@ product:
         tags: ["ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
       - title: "ami-doc-architect"
         description: "Master documentation orchestrator for repository wikis, context research, and learning extraction."
-        tags: ["ami-manage-docs", "ami-research-context", "ami-extract-learnings"]
+        tags: ["ami-manage-docs", "ami-research-context"]
       - title: "ami-release-manager"
         description: "Orchestrates full release lifecycle, semantic version tag calculation, and changelog drafting."
-        tags: ["ami-draft-release", "ami-tag-release"]
+        tags: ["ami-prepare-release"]
       - title: "ami-push-assistant"
         description: "Performs baseline security, data consistency, and hook interceptions before pushing to remote."
         tags: ["Git Pre-Flight Guards", "Real-time Debug Linter"]
