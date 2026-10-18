@@ -3,7 +3,8 @@ name: portfolio-sync-audit
 description: >-
   Audits local sibling repositories and remote GitHub repositories to identify new projects
   or recent code updates, and synchronize them with the Projects Hub portfolio.
-allowed-tools: Bash, Read, Grep, run_command, view_file, replace_file_content, write_to_file
+tools: run_command, manage_task, view_file, write_to_file, replace_file_content, search_web, read_url_content
+allowed-tools: Bash, Read, Grep, Glob, Write, Edit, run_command, view_file, replace_file_content, write_to_file
 ---
 
 # Skill: Portfolio Synchronization & Repository Auditor
@@ -16,6 +17,7 @@ This skill provides a standardized, path-agnostic procedure for scanning develop
 2. **Automated Fork Filtering:** Exclude third-party forks (`isFork: true` in GitHub API) to focus strictly on personal projects.
 3. **Bilingual Parity:** Every project in the portfolio must have matching entries in both `src/content/projects/es/` and `src/content/projects/en/`.
 4. **Zero Flags Policy:** Language navigation and documentation MUST NEVER contain country flag emojis.
+5. **Autonomous Lifecycle:** Perform the entire pipeline autonomously: audit discovery, asset copying, bilingual case study updates, test suite validation, commit, push, and remote CI verification.
 
 ---
 
@@ -44,17 +46,31 @@ The script categorizes all discovered repositories into these groups:
 - ✅ **UP TO DATE:** A monitored entry reviewed after the source's last commit.
 - 📦 **NOT MONITORED:** Archived entries (`Archivado`/`Archived`), frozen on purpose.
 
-### 3. Synchronize Flagged Projects
+### 3. Synchronize Flagged Projects & Assets
 
-For each **NEW PROJECT** and **PENDING UPDATE**, run the `project-entry-update` skill (`.agents/skills/project-entry-update/SKILL.md`) with that project's id and, for a PENDING UPDATE, its diff link. It owns the per-entry procedure, including bilingual parity and the `lastUpdated` date.
+For each **NEW PROJECT** and **PENDING UPDATE**:
+- Copy or synchronize the application icon into `public/project-icons/<project-id>-icon.{png|svg}` using PowerShell `Copy-Item`.
+- Run the `project-entry-update` skill (`.agents/skills/project-entry-update/SKILL.md`) with that project's id and, for a PENDING UPDATE, its diff link. It owns the per-entry procedure, including bilingual parity and the `lastUpdated` date.
 
 ### 4. Quality Gate Verification
 
-Before finalizing any changes:
+Before committing any changes:
 ```powershell
 npm run audit:projects
+npm run lint
 npm run type-check
 npm test
 npm run build
 ```
 Ensure all schema constraints, Vitest unit tests, and production static site generation succeed cleanly.
+
+### 5. Git Commit, Push & CI Verification
+
+```powershell
+gh auth switch -u AnaCataVC --hostname github.com 2>$null
+git add .
+git commit -m "feat(portfolio): sync <project-id> case study and assets"
+git push origin main
+gh run list --limit 3
+```
+Confirm the GitHub Actions deployment workflow finishes with `conclusion: success`.
