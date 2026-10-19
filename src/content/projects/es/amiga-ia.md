@@ -1,6 +1,6 @@
 ---
 title: "Amiga IA"
-description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 20 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
+description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 22 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
 lastUpdated: 2026-10-18
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
@@ -54,6 +54,9 @@ product:
       - title: "ami-data-scientist"
         description: "Orquestador maestro para análisis exploratorio, optimización SQL, auditorías y dashboards ejecutivos."
         tags: ["ami-build-dashboard", "ami-optimize-sql"]
+      - title: "ami-ui-builder"
+        description: "Especialista maestro en UI y prototipado. Construye mockups interactivos, prototipos de interfaz y documentación visual sin saturar el contexto principal."
+        tags: ["ami-prototype-ui", "ami-audit-ui-consistency", "Interactive Prototypes"]
       - title: "ami-tech-lead"
         description: "Tech Lead Maestro. Orquesta planificación de proyectos, arquitectura inicial y diseño de estrategias."
         tags: ["ami-architect-project", "ami-plan-feature", "ami-stress-test-idea", "ami-design-test-strategy", "ami-debug-issue"]
