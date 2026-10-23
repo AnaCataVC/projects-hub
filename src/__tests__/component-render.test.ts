@@ -81,8 +81,9 @@ describe("ProductLayout.astro", () => {
     });
 
     expect(result).toContain("Windows Icons Admin");
-    expect(result).toContain("Ponle orden y estilo a tus");
-    expect(result).toContain("carpetas en Windows");
+    expect(result).toContain("Ponle orden y estilo a tus carpetas en Windows");
+    expect(result).toContain("text-purple-950");
+    expect(result).toContain("dark:text-brand-purple-light");
     expect(result).toContain("Personalización Masiva");
     expect(result).toContain("terminal — Windows Icons Admin");
   });
