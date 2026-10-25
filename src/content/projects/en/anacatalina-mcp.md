@@ -1,7 +1,7 @@
 ---
 title: "AI-Native Interactive Resume (MCP Server)"
 description: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
-lastUpdated: 2026-10-18
+lastUpdated: 2026-10-24
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
@@ -11,7 +11,7 @@ categories: ["AI", "MCP", "Backend", "Cloud"]
 type: "ai"
 status: "Active"
 problem: "Traditional web resumes are designed for humans to read, but today AI assistants are often the ones initially processing this information, limited by the need for scraping and unstructured data."
-solution: "A native service for Artificial Intelligences, built using the official Model Context Protocol, exposing 9 specialized tools to query experience, mathematically evaluate profile fit for job openings, and search the tech stack, designed specifically for LLM reasoning using strict Pydantic schemas and Streamable-HTTP transport."
+solution: "A native service for Artificial Intelligences, built using the official Model Context Protocol, exposing 10 specialized tools to query experience, mathematically evaluate profile fit for job openings, explore academic publications, and search the tech stack, designed specifically for LLM reasoning using strict Pydantic schemas and Streamable-HTTP transport."
 learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Streamable-HTTP compatible with Antigravity, Claude, Cursor, and Gemini Connected Apps."
   - "ASGI Security Middleware & Bounded Rate Limiting: Implementation of strict ASGI security headers, in-memory rate limiting, and continuous vulnerability auditing in CI pipelines."
@@ -23,7 +23,7 @@ websiteActionText: "MCP Server & Demo"
 
 The **AI-Native Interactive Resume** project is a complete redesign of the resume or portfolio concept. Instead of merely offering a visual interface (GUI) for human recruiters, it exposes an official server under the **Model Context Protocol (MCP)**, standardized by Anthropic and compatible with leading AI ecosystems, paired with an interactive web showcase and client configurator publicly hosted at [https://mcp.ana-catalina.com/](https://mcp.ana-catalina.com/).
 
-This allows any LLM client supporting MCP (such as **Google Antigravity**, **Claude.ai**, **Google Gemini** in Connected Apps, or IDEs like **Cursor** and **Windsurf**) to connect to the server and execute predefined tools to query my tech stack, featured projects, and professional experience, processing the data in a structured and interactive way rather than reading plain text or performing web scraping. Furthermore, human reviewers and technical recruiters can explore the 9 tools catalog and inspect live benchmark evaluation scenarios directly via the web showcase at [mcp.ana-catalina.com](https://mcp.ana-catalina.com/).
+This allows any LLM client supporting MCP (such as **Google Antigravity**, **Claude.ai**, **Google Gemini** in Connected Apps, or IDEs like **Cursor** and **Windsurf**) to connect to the server and execute predefined tools to query my tech stack, featured projects, and professional experience, processing the data in a structured and interactive way rather than reading plain text or performing web scraping. Furthermore, human reviewers and technical recruiters can explore the 10 tools catalog and inspect live benchmark evaluation scenarios directly via the web showcase at [mcp.ana-catalina.com](https://mcp.ana-catalina.com/).
 
 ### ⚡ Quick Connect (Antigravity, Claude, Gemini & Cursor)
 
@@ -60,12 +60,13 @@ https://mcp.ana-catalina.com/mcp
 **Key tools exposed for LLM reasoning:**
 * `obtener_experiencia`: Query career trajectory, detailed roles, and achievements.
 * `evaluar_fit_puesto`: Algorithmic evaluation of technical compatibility with job descriptions.
+* `obtener_publicaciones`: Query formal academic publications, technical articles, and research patents.
 * `obtener_stack_tecnologico`: Granular search and proficiency levels across specific technologies.
 * `buscar_en_curriculum`: Cross-cutting keyword search across career trajectory, tech stack, and projects returning a strongly-typed `SearchResult`.
 
 ### Technical Architecture & In-Memory Engine
 
-The server is developed in **Python 3.12** using **FastMCP** and unified **Streamable-HTTP** (`/mcp`), enabling bidirectional streaming and instant JSON responses. All type and input validation for the tools is strictly guaranteed by **Pydantic v2**, loading dataset models directly into memory upon container boot to achieve sub-2-millisecond response latencies. High-concurrency performance and reliability are reinforced with declarative static asset routing, `@functools.lru_cache` template rendering, and a comprehensive suite of 54 automated test cases.
+The server is developed in **Python 3.12** using **FastMCP** and unified **Streamable-HTTP** (`/mcp`), enabling bidirectional streaming and instant JSON responses. All type and input validation for the tools is strictly guaranteed by **Pydantic v2**, loading dataset models directly into memory upon container boot to achieve sub-2-millisecond response latencies. High-concurrency performance and reliability are reinforced with declarative static asset routing, `@functools.lru_cache` template rendering, and a comprehensive suite of automated tests with 100% success rate.
 
 ### Deployment on Cloud Run
 

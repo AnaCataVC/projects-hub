@@ -1,7 +1,7 @@
 ---
 title: "Prima Focus"
 description: "Local-first native Android productivity application built with Kotlin Multiplatform, focused on productivity through a predictive priority system, Jetpack Glance widgets, and peer-to-peer sync via Google Nearby Connections."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-24
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus"
 websiteUrl: "https://prima-focus.ana-catalina.com"
@@ -14,7 +14,8 @@ solution: "A local-first native Android productivity suite featuring predictive 
 learnings:
   - "Room Database v6 Persistence & Clock Drift: Migration to Room v6 with automated 30-day tombstone garbage collection and clock-drift resilient LWW conflict resolution."
   - "Modular Kotlin Multiplatform Architecture: Shared domain core (:shared) with predictive priority scoring and deterministic conflict resolution, decoupled from the Android UI layer."
-  - "Interactive Android Widgets: Home screen widgets built with Jetpack Glance supporting dynamic sizing and 1-tap task completion from the launcher."
+  - "Interactive Android Widgets: Home screen widgets built with Jetpack Glance supporting dynamic sizing, 1-tap task completion from the launcher, recurrence filters, and a dedicated oldest deferred task widget."
+  - "Celebration Modal & Lightweight Canvas: Confetti celebration engine with configurable task-aging thresholds to gamify and encourage completing long-deferred tasks."
   - "Scope Discipline: Deprecated the Java/Swing desktop companion and its LAN sync protocol (embedded HTTP server, HMAC-SHA256 pairing) to refocus the codebase exclusively on native Android, removing over 2,400 lines of unused code."
 websiteActionText: "Download App"
 product:

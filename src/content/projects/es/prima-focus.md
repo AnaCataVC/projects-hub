@@ -1,7 +1,7 @@
 ---
 title: "Prima Focus"
 description: "Aplicación nativa de Android local-first construida con Kotlin Multiplatform, enfocada en la productividad mediante un sistema predictivo de prioridades, widgets con Jetpack Glance y sincronización P2P mediante Google Nearby Connections."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-24
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus"
 websiteUrl: "https://prima-focus.ana-catalina.com"
@@ -14,7 +14,8 @@ solution: "Una suite de productividad local-first para Android nativo con motor 
 learnings:
   - "Persistencia en Room Database v6 y Clock Drift: Migración a Room v6 con purga automática de lápidas (tombstones) y resolución LWW basada en versiones lógicas monótonas."
   - "Arquitectura Modular Kotlin Multiplatform: Dominio compartido (:shared) con motor predictivo de prioridades y resolución de conflictos determinista, desacoplado de la capa de UI de Android."
-  - "Widgets Interactivos con Jetpack Glance: Widgets de inicio para visualizar y completar tareas prioritarias en 1 toque directo desde el launcher."
+  - "Widgets Interactivos con Jetpack Glance: Widgets de inicio para visualizar y completar tareas prioritarias en 1 toque directo desde el launcher, con filtros de recurrencia y widget dedicado a tareas postergadas antiguas."
+  - "Celebración de Tareas Antiguas y Motor Canvas: Modal de celebración con motor de confetti ligero y umbrales configurables de envejecimiento para incentivar el cierre de tareas postergadas."
   - "Disciplina de Alcance: Se dio de baja el cliente de escritorio en Java/Swing y su protocolo de sincronización LAN (servidor HTTP embebido, emparejamiento HMAC-SHA256) para enfocar el código exclusivamente en Android nativo, eliminando más de 2.400 líneas sin uso."
 websiteActionText: "Descargar App"
 product:

@@ -1,7 +1,7 @@
 ---
 title: "Anacatalina CV — Sitio Personal Bilingüe"
 description: "Mi CV como sitio web bilingüe con modo oscuro, más un PDF descargable generado imprimiendo plantillas HTML con el motor headless del navegador."
-lastUpdated: 2026-10-23
+lastUpdated: 2026-10-24
 icon: "/project-icons/anacatalina-cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-cv"
 liveAppUrl: "https://cv.ana-catalina.com"
@@ -15,7 +15,7 @@ solution: "Un sitio Astro bilingüe (ES/EN) con modo oscuro y animaciones al scr
 learnings:
   - "Generar PDFs de impresión a partir de HTML/CSS con reglas `@page`, invocando el navegador headless instalado localmente en vez de sumar Puppeteer u otra librería de PDF."
   - "Lentes de habilidades interactivos: Navegación dinámica por facetas de competencias técnicas sobre el perfil profesional, combinada con plantillas de impresión optimizadas."
-  - "Reutilizar un sistema de diseño compartido (paleta pastel-tech, tipografía y logo AV) entre varios sitios propios acelera montar uno nuevo sin rediseñar desde cero."
+  - "Reutilizar un sistema de diseño compartido (paleta pastel-tech con violeta eléctrico y aqua cristal, tipografía y monograma 3D AC) entre varios sitios propios acelera montar uno nuevo sin rediseñar desde cero."
   - "Fuente única de verdad en TypeScript (`src/data/cv.ts`): centralizar todo el contenido bilingüe en un solo archivo tipado que alimenta tanto la web interactiva como las plantillas de impresión, con un paso de build que verifica automáticamente el límite estricto de 2 páginas y la compatibilidad con parsers ATS antes de publicar los PDFs."
 websiteActionText: "Ver CV en Vivo"
 ---
@@ -26,4 +26,4 @@ El sitio está construido en **Astro** con contenido bilingüe (`i18n.js`) y tog
 
 *   **Sin dependencias de PDF:** el botón de descarga no usa Puppeteer ni ninguna librería — un script de build abre el navegador headless (Chrome o Edge) ya instalado en la máquina e imprime plantillas HTML dedicadas a `public/ACVC_es.pdf` / `public/ACVC_en.pdf`.
 *   **Plantillas de impresión propias:** esas plantillas HTML+CSS (`@page`, tipografía de impresión) son independientes del markup de la web, para que cada formato —pantalla vs. papel— se optimice por separado.
-*   **Sistema de diseño compartido:** comparte paleta pastel y tipografía con mi homepage y con este mismo portafolio, documentado en un `DESIGN_SYSTEM.md` común.
+*   **Sistema de diseño compartido:** comparte paleta pastel-tech (violeta eléctrico y aqua cristal) y tipografía con mi homepage y con este mismo portafolio, documentado en un `DESIGN_SYSTEM.md` común.

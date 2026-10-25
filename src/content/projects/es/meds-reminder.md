@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "Aplicación móvil nativa para Android (100% offline-first) para la adherencia médica y recordatorios de dosis multi-perfil con alarmas de alta precisión."
-lastUpdated: 2026-10-18
+lastUpdated: 2026-10-24
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -16,6 +16,7 @@ learnings:
   - "Gestión del Ciclo de Vida de Tomas Anticipadas: Sincronización del estado en memoria y Room DB para cancelar automáticamente repeticiones (snooze) y pre-alarmas al registrar una toma antes de tiempo."
   - "Suspensión Temporal de Alarmas por Perfil: Implementación de mecanismos de pausa selectiva de notificaciones y alarmas sin alterar los horarios programados del tratamiento."
   - "Garantía de precisión milimétrica en Android 14/15/16 utilizando AlarmManager.setAlarmClock() y USE_EXACT_ALARM bajo directrices de salud."
+  - "Arquitectura de Widgets Desacoplada: Aislamiento estricto de las actividades de configuración de widgets de inicio y serialización síncrona en Room DB para garantizar previews rasterizados sin bloqueos de RemoteViews."
   - "Superación de la inmutabilidad de sonido en canales de notificación de Android 8.0+ mediante la generación dinámica de canales por hash de URI de tono personalizado."
 websiteActionText: "Ver Página"
 product:
