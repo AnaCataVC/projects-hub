@@ -1,7 +1,7 @@
 ---
 title: "Life Tracker Analytics"
 description: "Privacy-focused Progressive Web App (PWA) to track and analyze life metrics and daily habits through local-first data visualizations."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-10-26
 icon: "/project-icons/lta_icon.png"
 githubUrl: "https://github.com/AnaCataVC/life-tracker-analytics"
 liveAppUrl: "https://life-tracker-analytics.ana-catalina.com"
@@ -11,8 +11,9 @@ categories: ["Data Visualization", "Analytics", "Personal Tool"]
 type: "data-science"
 status: "Active"
 problem: "Understanding mathematically how daily habits impact quality of life, without handing over sensitive personal data to proprietary BaaS."
-solution: "A custom analytical, local-first PWA dashboard that cross-references metrics locally using Pearson correlation with minimum-sample-size guards (N≥5) and Cohen's-d effect-size scoring to surface statistically meaningful, strictly associative (never causal) insights, combining Dexie.js persistence with BYOD (Bring-Your-Own-Data) cloud sync."
+solution: "A custom analytical, local-first PWA dashboard that cross-references metrics locally using Pearson correlation with minimum-sample-size guards (N≥5) and Cohen's-d effect-size scoring, enhanced with longitudinal time-series analysis (moving averages, EWMA, and trend detection) and lag-1 cross-correlations to uncover multi-day habit impacts without telemetry or centralized backends."
 learnings:
+  - "Longitudinal Analysis & Lag-1 Effects: Engineered time-series tracking with exponential weighted moving averages (EWMA) and lag-1 cross-correlations to reveal how previous-day habits measurably impact next-day wellness."
   - "Granular Entity Synchronization: Implemented conflict-safe entity merge algorithms to maintain multi-device consistency without proprietary backend servers."
   - "Type-Safe Local Persistence with Dexie.js: Unified relational IndexedDB storage with TypeScript for reactive and instantaneous browser queries."
   - "BYOD Cloud Architecture: Integrated remoteStorage.js to ensure complete user sovereignty and ownership of health and habits data."
@@ -28,5 +29,5 @@ learnings:
 
 ### Analytics Pipeline & Data Visualization
 
-*   **Client-Side Correlation Analysis:** In-memory analytics pipeline processing time-series data to compute statistical correlation matrices between disparate quantitative metrics (sleep quality, focus hours, mood).
+*   **Time-Series & Lag-1 Correlation Analysis:** In-memory analytics pipeline processing longitudinal time series, exponential moving averages (EWMA), and both contemporary and delayed (lag-1) correlation matrices between disparate quantitative metrics (sleep quality, focus hours, mood).
 *   **Reactive Rendering with Recharts:** High-performance charting layer optimized for React 19 and Tailwind CSS v4, delivering fluid 60 fps interactions across thousands of historical data points.
