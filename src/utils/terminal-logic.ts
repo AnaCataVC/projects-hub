@@ -17,7 +17,7 @@ export interface MenuNode {
   id?: string;
   title: string;
   desc?: string;
-  type: "folder" | "action" | "text";
+  type: string;
   color?: string;
   expanded?: boolean;
   children?: MenuNode[];
@@ -25,6 +25,7 @@ export interface MenuNode {
   isBack?: boolean;
   searchTitle?: string;
   lineage?: MenuNode[];
+  icon?: string;
 }
 
 export interface SearchResult extends MenuNode {
@@ -216,3 +217,43 @@ export function clampIndex(flatList: MenuNode[], index: number): number {
   if (index < 0) return 0;
   return index;
 }
+
+// ---------------------------------------------------------------------------
+// Path serialization & resolution helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolves a hierarchy of MenuNode objects from an array of node identifiers (e.g. ['proyectos', 'software-engineering', 'desktop']).
+ * Handles bilingual root synonyms ('projects' <-> 'proyectos').
+ */
+export function resolvePathFromIds(ids: string[], rootNodes: MenuNode[]): MenuNode[] {
+  const resolvedPath: MenuNode[] = [];
+  let currentLevel = rootNodes;
+
+  for (const targetId of ids) {
+    const found = currentLevel.find(
+      (n) =>
+        n.id === targetId ||
+        (targetId === "projects" && n.id === "proyectos") ||
+        (targetId === "proyectos" && n.id === "projects") ||
+        (n.title && n.title.replace("~/", "") === targetId)
+    );
+
+    if (found) {
+      resolvedPath.push(found);
+      currentLevel = found.children || [];
+    } else {
+      break;
+    }
+  }
+
+  return resolvedPath;
+}
+
+/**
+ * Serializes a MenuNode path into an array of string identifiers suitable for storage.
+ */
+export function serializePathIds(path: MenuNode[]): string[] {
+  return path.map((node) => node.id || node.title.replace("~/", ""));
+}
+

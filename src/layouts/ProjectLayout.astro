@@ -260,14 +260,39 @@ const projectJSONLD = JSON.stringify({
     document.querySelectorAll('.exit-gui-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
-        const href = btn.getAttribute('href');
+        const href = btn.getAttribute('href') || '/';
         const win = document.getElementById('console-window');
         if (win) {
           win.classList.remove('animate-gui-boot');
           win.classList.add('gui-shutting-down');
         }
+
         setTimeout(() => {
-          window.location.href = href || '/';
+          let hasInternalHistory = false;
+          try {
+            if (window.history.length > 1) {
+              if (sessionStorage.getItem('fromConsole') === 'true') {
+                hasInternalHistory = true;
+              } else if (document.referrer) {
+                const refUrl = new URL(document.referrer, window.location.origin);
+                if (refUrl.origin === window.location.origin || refUrl.hostname.endsWith('ana-catalina.com')) {
+                  hasInternalHistory = true;
+                }
+              }
+            }
+          } catch {
+            // Ignore cross-origin URL parse errors
+          }
+
+          if (hasInternalHistory) {
+            window.history.back();
+            // Fallback timeout in case history.back() does not navigate
+            setTimeout(() => {
+              window.location.href = href;
+            }, 500);
+          } else {
+            window.location.href = href;
+          }
         }, 350);
       });
     });

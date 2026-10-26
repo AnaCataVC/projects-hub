@@ -89,6 +89,8 @@ const serializedProjects = allProjects.map(p => ({
         </div>
     </div>
     <script>
+        import { resolvePathFromIds } from '../utils/terminal-logic';
+
         interface ProjectEntry {
             id: string;
             status: string;
@@ -314,7 +316,66 @@ const serializedProjects = allProjects.map(p => ({
             return categories;
         }
 
+        function saveConsoleState(lastProjectDisplayId?: string): void {
+            if (typeof sessionStorage === 'undefined') return;
+            try {
+                if (currentPath.length > 0) {
+                    const ids = currentPath.map(n => n.id || n.title.replace('~/', ''));
+                    sessionStorage.setItem('consolePath', JSON.stringify(ids));
+                } else {
+                    sessionStorage.removeItem('consolePath');
+                }
+                if (lastProjectDisplayId) {
+                    sessionStorage.setItem('consoleLastProject', lastProjectDisplayId);
+                }
+            } catch {
+                // Ignore storage errors (quota, strict mode, etc.)
+            }
+        }
+
+        function restoreConsoleState(): void {
+            if (typeof sessionStorage === 'undefined') return;
+            try {
+                const savedPathJson = sessionStorage.getItem('consolePath');
+                if (savedPathJson) {
+                    const savedIds = JSON.parse(savedPathJson);
+                    if (Array.isArray(savedIds) && savedIds.length > 0) {
+                        currentPath = resolvePathFromIds(savedIds, menuData);
+                    }
+                }
+            } catch {
+                // Ignore storage parsing errors
+            }
+        }
+
+        function restoreSelectedProject(): void {
+            if (typeof sessionStorage === 'undefined') return;
+            try {
+                const lastProject = sessionStorage.getItem('consoleLastProject');
+                if (lastProject && currentPath.length > 0) {
+                    const currentFolder = currentPath[currentPath.length - 1];
+                    const children = currentFolder.children || [];
+                    const projectIdx = children.findIndex(c => c.title && c.title.includes(lastProject));
+                    if (projectIdx !== -1) {
+                        selectedIndex = projectIdx + 1; // +1 to account for ".." option at index 0
+                    }
+                    sessionStorage.removeItem('consoleLastProject');
+                }
+            } catch {
+                // Ignore storage errors
+            }
+        }
+
         window.launchProject = function(displayId: string, fullId: string): void {
+            if (typeof sessionStorage !== 'undefined') {
+                try {
+                    sessionStorage.setItem('fromConsole', 'true');
+                    saveConsoleState(displayId);
+                } catch {
+                    // Ignore storage errors
+                }
+            }
+
             const input = document.getElementById('mobile-input');
             if(input) input.blur();
 
@@ -561,11 +622,16 @@ const serializedProjects = allProjects.map(p => ({
                 } else {
                     currentPath.push(item);
                 }
+                saveConsoleState();
                 searchQuery = '';
                 updateSearchIndicator();
                 selectedIndex = 0;
                 renderMenu();
             } else if (item.action) {
+                if (item.lineage && item.lineage.length > 1) {
+                    currentPath = item.lineage.slice(0, -1);
+                    saveConsoleState();
+                }
                 item.action();
                 searchQuery = '';
                 updateSearchIndicator();
@@ -576,6 +642,7 @@ const serializedProjects = allProjects.map(p => ({
         function handleCollapse() {
             if (currentPath.length > 0) {
                 currentPath.pop();
+                saveConsoleState();
                 searchQuery = '';
                 updateSearchIndicator();
                 selectedIndex = 0;
@@ -603,16 +670,9 @@ const serializedProjects = allProjects.map(p => ({
             menuData[2].children = getProjectItems(lang);
 
             if (currentPath.length > 0) {
-                const newPath: MenuNode[] = [];
-                let currentLevel = menuData;
-                for (const node of currentPath) {
-                    const found = currentLevel.find(n => n.id === node.id || (node.id === 'projects' && n.id === 'proyectos') || (node.id === 'proyectos' && n.id === 'projects'));
-                    if (found) {
-                        newPath.push(found);
-                        currentLevel = found.children || [];
-                    }
-                }
-                currentPath = newPath;
+                const ids = currentPath.map(n => n.id || n.title.replace('~/', ''));
+                currentPath = resolvePathFromIds(ids, menuData);
+                saveConsoleState();
             }
 
             renderMenu();
@@ -688,6 +748,15 @@ const serializedProjects = allProjects.map(p => ({
                     updateSearchIndicator();
                     renderMenu();
                 } else {
+                    if (typeof sessionStorage !== 'undefined') {
+                        try {
+                            sessionStorage.removeItem('consolePath');
+                            sessionStorage.removeItem('consoleLastProject');
+                            sessionStorage.removeItem('fromConsole');
+                        } catch {
+                            // Ignore storage errors
+                        }
+                    }
                     location.reload();
                 }
             } else if (e.key === 'ArrowLeft') {
@@ -741,10 +810,14 @@ const serializedProjects = allProjects.map(p => ({
                     promptSymbol.classList.add('text-brand-purple', 'dark:text-brand-purple-light');
                 }
                 
-                selectedIndex = 0;
+                restoreSelectedProject();
                 renderMenu(true);
             }
         });
+
+        // Restore console path and selection if returning from a project case study
+        restoreConsoleState();
+        restoreSelectedProject();
 
         // Initial render
         renderMenu();

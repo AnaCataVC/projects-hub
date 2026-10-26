@@ -9,6 +9,8 @@ import {
   nextSelectableIndex,
   prevSelectableIndex,
   clampIndex,
+  resolvePathFromIds,
+  serializePathIds,
 } from "../utils/terminal-logic";
 import type { MenuNode, RawProject, MappedProject } from "../utils/terminal-logic";
 
@@ -321,3 +323,80 @@ describe("clampIndex", () => {
     expect(clampIndex(list, 1)).toBe(1);
   });
 });
+
+// ---------------------------------------------------------------------------
+// resolvePathFromIds & serializePathIds
+// ---------------------------------------------------------------------------
+describe("resolvePathFromIds & serializePathIds", () => {
+  const tree: MenuNode[] = [
+    { id: "help", title: "~/help", type: "folder", children: [] },
+    { id: "about", title: "~/about", type: "folder", children: [] },
+    {
+      id: "proyectos",
+      title: "~/proyectos",
+      type: "folder",
+      children: [
+        {
+          id: "software-engineering",
+          title: "software-engineering",
+          type: "folder",
+          children: [
+            { id: "desktop", title: "desktop", type: "folder", children: [] },
+            { id: "mobile", title: "mobile", type: "folder", children: [] },
+          ],
+        },
+        { id: "data-science", title: "data-science", type: "folder", children: [] },
+      ],
+    },
+  ];
+
+  it("resolves nested folder hierarchy accurately", () => {
+    const path = resolvePathFromIds(["proyectos", "software-engineering", "desktop"], tree);
+    expect(path).toHaveLength(3);
+    expect(path[0].id).toBe("proyectos");
+    expect(path[1].id).toBe("software-engineering");
+    expect(path[2].id).toBe("desktop");
+  });
+
+  it("handles bilingual root synonyms ('projects' matching 'proyectos')", () => {
+    const path = resolvePathFromIds(["projects", "software-engineering"], tree);
+    expect(path).toHaveLength(2);
+    expect(path[0].id).toBe("proyectos");
+    expect(path[1].id).toBe("software-engineering");
+  });
+
+  it("handles bilingual root synonyms in reverse ('proyectos' matching 'projects')", () => {
+    const enTree: MenuNode[] = [
+      { id: "projects", title: "~/projects", type: "folder", children: [] },
+    ];
+    const path = resolvePathFromIds(["proyectos"], enTree);
+    expect(path).toHaveLength(1);
+    expect(path[0].id).toBe("projects");
+  });
+
+  it("stops resolving when a non-existent child id is encountered", () => {
+    const path = resolvePathFromIds(["proyectos", "non-existent"], tree);
+    expect(path).toHaveLength(1);
+    expect(path[0].id).toBe("proyectos");
+  });
+
+  it("returns empty array for empty ids", () => {
+    const path = resolvePathFromIds([], tree);
+    expect(path).toHaveLength(0);
+  });
+
+  it("serializes a resolved MenuNode path into an array of string identifiers", () => {
+    const path = resolvePathFromIds(["proyectos", "software-engineering", "desktop"], tree);
+    const serialized = serializePathIds(path);
+    expect(serialized).toEqual(["proyectos", "software-engineering", "desktop"]);
+  });
+
+  it("serializes nodes using clean title if id is absent", () => {
+    const customNodes: MenuNode[] = [
+      { title: "~/custom-folder", type: "folder" },
+    ];
+    const serialized = serializePathIds(customNodes);
+    expect(serialized).toEqual(["custom-folder"]);
+  });
+});
+
