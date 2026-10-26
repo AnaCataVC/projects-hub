@@ -22,6 +22,13 @@ const productHost = new URL(productHome).hostname;
 const canonicalURL = lang === 'en' ? `${productHome}en` : productHome;
 const fichaURL = `https://projects.ana-catalina.com/${lang === 'en' ? 'en/' : ''}${slug}`;
 const absoluteIcon = icon ? new URL(icon, 'https://projects.ana-catalina.com').href : undefined;
+const iconType = icon?.endsWith('.svg')
+  ? 'image/svg+xml'
+  : icon?.endsWith('.png')
+    ? 'image/png'
+    : icon?.endsWith('.ico')
+      ? 'image/x-icon'
+      : 'image/png';
 
 const t = {
   es: {
@@ -36,6 +43,15 @@ const t = {
     copy: 'Copiar',
     copied: '¡Copiado!',
     terminalTitle: 'Consola de Inicio',
+    architectureTitle: '¿Te interesa cómo está construido?',
+    architectureText: 'Explora las decisiones de arquitectura, stack tecnológico y aprendizajes clave en la ficha técnica completa de Projects Hub.',
+    trustPrivate: 'Local-First y Privado',
+    trustPrivateDesc: 'Cero telemetría externa. Tus datos se quedan en tu dispositivo.',
+    trustPerf: 'Arquitectura Nativa',
+    trustPerfDesc: 'Construcción optimizada, sin sobrecarga ni bloqueos.',
+    trustOpen: 'Auditable y Abierto',
+    trustOpenDesc: 'Código fuente abierto y transparente en GitHub.',
+    close: 'Cerrar',
   },
   en: {
     features: 'What it does',
@@ -49,6 +65,15 @@ const t = {
     copy: 'Copy',
     copied: 'Copied!',
     terminalTitle: 'Quick Start Console',
+    architectureTitle: 'Curious about how it was built?',
+    architectureText: 'Explore architectural trade-offs, technology stack, and key engineering learnings in the full Projects Hub case study.',
+    trustPrivate: 'Local-First & Private',
+    trustPrivateDesc: 'Zero telemetry. Your data stays on your device.',
+    trustPerf: 'Native Architecture',
+    trustPerfDesc: 'Optimized build, zero bloatware or lag.',
+    trustOpen: 'Auditable & Open Source',
+    trustOpenDesc: 'Transparent open source code on GitHub.',
+    close: 'Close',
   },
 }[lang];
 
@@ -85,19 +110,19 @@ function renderLinkIcon(url: string, label: string): string {
 const customLinks = product.links.filter((link) => !link.url.includes('github.com') && link.url !== githubUrl);
 
 // -----------------------------------------------------------------------------
-// Unified Signature Aura (Pastel-Tech: Tech Lavender & Coral Rose)
-// High contrast, harmonious brand palette, zero cyan in copy.
+// Unified Signature Aura (Pastel-Tech: Electric Violet & Crystal Aqua)
+// Solid buttons, solid text, zero gradients on text or buttons.
 // -----------------------------------------------------------------------------
 const aura = {
-  glowOrb1: 'from-brand-purple/20 via-pastel-lilac/15 to-pastel-blue/15',
-  glowOrb2: 'from-pastel-blue/20 via-brand-purple/15 to-pastel-lilac/15',
+  glowOrb1: 'from-brand-violet/20 via-brand-aqua/15 to-pastel-lilac/15',
+  glowOrb2: 'from-brand-aqua/20 via-brand-violet/15 to-pastel-blue/15',
   badgeBg: 'bg-brand-purple/10 dark:bg-brand-purple/15 border-brand-purple/25 text-brand-purple dark:text-brand-purple-light',
-  badgeDot: 'bg-brand-magenta',
-  primaryBtn: 'from-brand-purple to-brand-magenta hover:from-brand-purple-light hover:to-brand-magenta shadow-lg shadow-brand-purple/25 hover:shadow-brand-purple/40 hover:-translate-y-0.5 text-white',
+  badgeDot: 'bg-brand-aqua',
+  primaryBtn: 'bg-brand-purple hover:bg-brand-violet-deep text-white shadow-md shadow-brand-purple/20 hover:shadow-lg hover:shadow-brand-purple/35 hover:-translate-y-0.5',
   cardBorderHover: 'hover:border-brand-purple/40 hover:shadow-brand-purple/10',
-  iconBox: 'bg-brand-purple/15 text-brand-purple dark:text-brand-purple-light border border-brand-purple/20',
+  iconBox: 'bg-brand-purple/10 text-brand-purple dark:text-brand-purple-light border border-brand-purple/20',
   tagBg: 'bg-brand-purple/10 text-brand-purple dark:text-brand-purple-light border-brand-purple/20',
-  terminalAccent: 'text-brand-purple-light',
+  terminalAccent: 'text-brand-aqua dark:text-brand-aqua-light',
 };
 
 const jsonLD = JSON.stringify({
@@ -111,8 +136,9 @@ const jsonLD = JSON.stringify({
   author: { '@type': 'Person', name: 'Ana-Catalina', url: 'https://ana-catalina.com' },
 });
 
-const primaryBtnClass = `inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:px-7 sm:py-3 rounded-xl bg-gradient-to-r ${aura.primaryBtn} shadow-md hover:shadow-xl transition-all duration-200 active:scale-95 font-semibold text-sm sm:text-base tracking-wide text-white cursor-pointer select-none`;
-const secondaryBtnClass = 'inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-brand-purple dark:hover:text-brand-purple-light hover:bg-white dark:hover:bg-slate-800 hover:border-brand-purple/40 dark:hover:border-brand-purple/40 shadow-sm hover:shadow transition-all duration-200 active:scale-95 font-medium text-sm sm:text-base tracking-wide cursor-pointer select-none backdrop-blur-md';
+// Solid buttons (Strictly NO gradients)
+const primaryBtnClass = `inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:px-7 sm:py-3 rounded-xl ${aura.primaryBtn} transition-all duration-200 active:scale-95 font-semibold text-sm sm:text-base tracking-wide text-white cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950`;
+const secondaryBtnClass = 'inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-brand-purple dark:hover:text-brand-purple-light hover:bg-white dark:hover:bg-slate-800 hover:border-brand-purple/40 dark:hover:border-brand-purple/40 shadow-sm hover:shadow transition-all duration-200 active:scale-95 font-medium text-sm sm:text-base tracking-wide cursor-pointer select-none backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950';
 const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200/70 dark:border-white/10 p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${aura.cardBorderHover}`;
 ---
 
@@ -127,11 +153,22 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="es" href={productHome} />
     <link rel="alternate" hreflang="en" href={`${productHome}en`} />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="icon" type="image/svg+xml" href={icon ?? '/favicon.svg'} />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Favicons: Project-specific icon takes full precedence over brand icon -->
+    {icon ? (
+      <>
+        <link rel="icon" type={iconType} href={icon} />
+        <link rel="shortcut icon" href={icon} />
+        <link rel="apple-touch-icon" href={icon} />
+      </>
+    ) : (
+      <>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      </>
+    )}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -152,7 +189,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
   <body class="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans overflow-x-hidden selection:bg-brand-purple/20 selection:text-brand-purple dark:selection:text-brand-purple-light">
     <Analytics />
 
-    <!-- Ambient Glowing Light Orbs (Amiga IA Depth & Energy) -->
+    <!-- Ambient Glowing Light Orbs (Pastel-Tech Depth & Energy) -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
       <div class:list={['absolute top-[-15%] left-[-10%] w-[55vw] h-[55vw] max-w-[650px] max-h-[650px] rounded-full blur-[130px] opacity-45 dark:opacity-25 bg-gradient-to-br mix-blend-multiply dark:mix-blend-screen transition-opacity duration-500', aura.glowOrb1]}></div>
       <div class:list={['absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full blur-[140px] opacity-45 dark:opacity-25 bg-gradient-to-br mix-blend-multiply dark:mix-blend-screen transition-opacity duration-500', aura.glowOrb2]}></div>
@@ -161,21 +198,29 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
     <!-- Ana-Catalina Signature Poppy Watermark (Subtle Brand Identity) -->
     <PoppyBackground />
 
-    <!-- Top Navigation Header -->
-    <header class="w-full max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between z-20">
-      <a href="#top" class="flex items-center gap-3 font-semibold group transition-transform active:scale-95">
-        {icon ? (
-          <img src={icon} alt="" class="w-9 h-9 rounded-xl object-contain drop-shadow-sm group-hover:scale-105 transition-transform" />
-        ) : (
-          <div class:list={['w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm', aura.iconBox]}>
-            {title.slice(0, 2).toUpperCase()}
-          </div>
-        )}
-        <span class="tracking-tight text-lg text-slate-900 dark:text-white font-[Outfit]">{title}</span>
-      </a>
+    <!-- Top Navigation Header (Ecosystem standard: h-16, max-w-6xl mx-auto px-4 sm:px-6 lg:px-8) -->
+    <header class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between z-20">
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Monogram AC (Ecosystem Brand Anchor) -->
+        <a href="https://ana-catalina.com" class="group flex items-center shrink-0" aria-label="Ana-Catalina Home">
+          <img src="/logo-ac.png" alt="Ana-Catalina AC Logo" class="w-8 h-8 rounded-lg object-contain opacity-90 group-hover:opacity-100 transition-all duration-300 drop-shadow-[0_2px_8px_rgba(46,230,229,0.3)] group-hover:scale-105" />
+        </a>
+        <span class="text-slate-300 dark:text-slate-700 font-light select-none text-sm">/</span>
+        <!-- Project Title Anchor -->
+        <a href="#top" class="flex items-center gap-2 sm:gap-2.5 font-semibold group transition-transform active:scale-95 min-w-0">
+          {icon ? (
+            <img src={icon} alt="" class="w-7 h-7 rounded-lg object-contain drop-shadow-sm group-hover:scale-105 transition-transform shrink-0" />
+          ) : (
+            <div class:list={['w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0', aura.iconBox]}>
+              {title.slice(0, 2).toUpperCase()}
+            </div>
+          )}
+          <span class="tracking-tight text-base sm:text-lg text-slate-900 dark:text-white font-[Outfit] truncate">{title}</span>
+        </a>
+      </div>
 
       <!-- Controls: Language Toggle Pill & Dark Mode Toggle -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2.5 sm:gap-3">
         <div class="flex items-center bg-white/80 dark:bg-slate-900/70 rounded-full p-1 border border-slate-200/80 dark:border-white/10 shadow-sm backdrop-blur-md relative">
           <div
             id="lang-indicator"
@@ -186,7 +231,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
             data-lang-link="es"
             href="/"
             class:list={[
-              'relative z-10 w-11 h-7 rounded-full text-xs font-semibold transition-colors flex items-center justify-center',
+              'relative z-10 w-10 sm:w-11 h-7 rounded-full text-xs font-semibold transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple',
               lang === 'es' ? 'text-brand-purple dark:text-brand-purple-light' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
             ]}
           >
@@ -196,7 +241,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
             data-lang-link="en"
             href="/en"
             class:list={[
-              'relative z-10 w-11 h-7 rounded-full text-xs font-semibold transition-colors flex items-center justify-center',
+              'relative z-10 w-10 sm:w-11 h-7 rounded-full text-xs font-semibold transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple',
               lang === 'en' ? 'text-brand-purple dark:text-brand-purple-light' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white',
             ]}
           >
@@ -208,23 +253,23 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
           id="theme-toggle"
           type="button"
           aria-label={t.theme}
-          class="w-9 h-9 rounded-full flex items-center justify-center bg-white/80 dark:bg-slate-900/70 border border-slate-200/80 dark:border-white/10 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-brand-purple dark:hover:text-white hover:border-brand-purple/40 dark:hover:border-white/30 shadow-sm transition-all [&>svg]:w-4 [&>svg]:h-4 cursor-pointer"
+          class="w-9 h-9 rounded-full flex items-center justify-center bg-white/80 dark:bg-slate-900/70 border border-slate-200/80 dark:border-white/10 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-brand-purple dark:hover:text-white hover:border-brand-purple/40 dark:hover:border-white/30 shadow-sm transition-all [&>svg]:w-4 [&>svg]:h-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
           set:html={iconSvg('SunMoon')}
         ></button>
       </div>
     </header>
 
-    <main id="top" class="max-w-6xl mx-auto px-4 sm:px-6 pb-24">
+    <main id="top" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
       <!-- Hero Section -->
-      <section class="text-center pt-8 sm:pt-14 pb-16 animate-fade-in flex flex-col items-center">
+      <section class="text-center pt-8 sm:pt-12 pb-12 animate-fade-in flex flex-col items-center">
         <!-- Project Hero Logo with Subtle Glass Pedestal -->
         {icon && (
           <div class="mb-6 flex justify-center group">
-            <div class="p-1.5 rounded-[28px] bg-gradient-to-b from-white/90 via-white/40 to-white/10 dark:from-white/15 dark:via-white/5 dark:to-transparent border border-white/60 dark:border-white/10 shadow-xl backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+            <div class="p-1.5 rounded-[28px] bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 shadow-xl backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
               <img
                 src={icon}
                 alt={title}
-                class="w-24 h-24 sm:w-28 sm:h-28 object-contain rounded-[22px] drop-shadow-[0_8px_20px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_0_30px_rgba(185,141,253,0.3)]"
+                class="w-20 h-20 sm:w-24 sm:h-24 object-contain rounded-[22px] drop-shadow-[0_8px_20px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_0_30px_rgba(185,141,253,0.3)]"
               />
             </div>
           </div>
@@ -233,12 +278,12 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
         <!-- Kicker / Eyebrow Badge with Product Name and Platforms -->
         <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border mb-6 text-xs font-medium backdrop-blur-md shadow-sm bg-white/70 dark:bg-slate-900/60 border-slate-200/80 dark:border-white/10 text-slate-700 dark:text-slate-200">
           <span class="font-bold text-slate-900 dark:text-white font-[Outfit] tracking-wide">{title}</span>
-          <span class="text-slate-300 dark:text-slate-700">|</span>
+          <span class="text-slate-300 dark:text-slate-700 select-none">|</span>
           <span class:list={['w-2 h-2 rounded-full animate-pulse', aura.badgeDot]}></span>
           <span class="text-slate-600 dark:text-slate-300">{product.platforms.length > 0 ? product.platforms.join(' · ') : (lang === 'es' ? 'Disponible Ahora' : 'Available Now')}</span>
         </div>
 
-        <!-- Headline: Unified Pastel-Tech Brand Color -->
+        <!-- Headline: Solid Typography (Zero Gradients) -->
         <h1 class="font-extrabold text-4xl sm:text-6xl md:text-7xl leading-[1.12] sm:leading-[1.14] tracking-tight max-w-4xl font-[Outfit] text-purple-950 dark:text-brand-purple-light">
           {product.tagline}
         </h1>
@@ -248,7 +293,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
           {product.intro}
         </p>
 
-        <!-- Hero CTAs -->
+        <!-- Hero CTAs (Solid Buttons, Zero Gradients) -->
         <div class="mt-8 flex flex-wrap gap-3 sm:gap-3.5 justify-center items-center max-w-2xl mx-auto">
           {product.downloadUrl && (
             <a href={product.downloadUrl} target="_blank" rel="noopener noreferrer" class={primaryBtnClass}>
@@ -272,6 +317,70 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
               <span>{t.source}</span>
             </a>
           )}
+        </div>
+
+        <!-- Hero Window Mockup Showcase (If primary screenshot exists) -->
+        {product.screenshots.length > 0 && (
+          <div class="mt-12 sm:mt-16 w-full max-w-4xl mx-auto group">
+            <div class="relative rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-white/10 shadow-2xl shadow-brand-purple/10 dark:shadow-black/70 overflow-hidden backdrop-blur-xl transition-all duration-300 hover:border-brand-purple/40">
+              <!-- Window Title Bar -->
+              <div class="flex items-center justify-between px-4 py-3 bg-slate-100/90 dark:bg-slate-950/70 border-b border-slate-200/80 dark:border-white/10 select-none">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-400/80 border border-rose-500/30"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-400/80 border border-amber-500/30"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-400/80 border border-emerald-500/30"></span>
+                </div>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400 truncate max-w-[200px] sm:max-w-none">{title}</span>
+                <div class="flex items-center gap-1 text-xs text-slate-400 font-mono">
+                  <span class="[&>svg]:w-3.5 [&>svg]:h-3.5" aria-hidden="true" set:html={iconSvg('ZoomIn')}></span>
+                </div>
+              </div>
+              <!-- Primary Screenshot Preview -->
+              <div
+                class="p-2 sm:p-4 bg-slate-950/5 dark:bg-black/40 cursor-pointer group/preview relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple rounded-xl"
+                role="button"
+                tabindex="0"
+                data-lightbox-trigger={product.screenshots[0].src}
+                data-lightbox-alt={product.screenshots[0].alt}
+                aria-label={lang === 'es' ? `Ampliar captura de ${title}` : `Zoom screenshot of ${title}`}
+                title={lang === 'es' ? 'Haz clic o presiona Enter para ampliar captura' : 'Click or press Enter to zoom screenshot'}
+              >
+                <img
+                  src={product.screenshots[0].src}
+                  alt={product.screenshots[0].alt}
+                  class="w-full h-auto max-h-[500px] object-contain rounded-xl mx-auto shadow-sm transition-transform duration-300 group-hover/preview:scale-[1.005]"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
+      <!-- Engineering Trust Badges / Pillars -->
+      <section class="py-6 sm:py-8 border-y border-slate-200/70 dark:border-white/10 my-8">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
+          <div class="flex items-center gap-3.5 justify-center sm:justify-start">
+            <span class="w-10 h-10 rounded-xl bg-brand-aqua/10 text-brand-aqua-deep dark:text-brand-aqua flex items-center justify-center shrink-0 border border-brand-aqua/20" set:html={iconSvg('ShieldCheck')}></span>
+            <div>
+              <h4 class="font-[Outfit] font-semibold text-slate-900 dark:text-white text-sm">{t.trustPrivate}</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-[Inter] leading-relaxed">{t.trustPrivateDesc}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3.5 justify-center sm:justify-start">
+            <span class="w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple dark:text-brand-purple-light flex items-center justify-center shrink-0 border border-brand-purple/20" set:html={iconSvg('Zap')}></span>
+            <div>
+              <h4 class="font-[Outfit] font-semibold text-slate-900 dark:text-white text-sm">{t.trustPerf}</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-[Inter] leading-relaxed">{t.trustPerfDesc}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3.5 justify-center sm:justify-start">
+            <span class="w-10 h-10 rounded-xl bg-pastel-lilac/20 text-brand-violet-deep dark:text-pastel-lilac flex items-center justify-center shrink-0 border border-pastel-lilac/30" set:html={iconSvg('Code2')}></span>
+            <div>
+              <h4 class="font-[Outfit] font-semibold text-slate-900 dark:text-white text-sm">{t.trustOpen}</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400 font-[Inter] leading-relaxed">{t.trustOpenDesc}</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -400,7 +509,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
         </aside>
       )}
 
-      <!-- Screenshots Gallery -->
+      <!-- Screenshots Gallery with Lightbox support -->
       {product.screenshots.length > 0 && (
         <section class="py-14" aria-labelledby="screens-title">
           <div class="text-center mb-12">
@@ -410,7 +519,15 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
           </div>
           <div class="flex flex-wrap gap-8 justify-center">
             {product.screenshots.map((shot) => (
-              <div class="group relative rounded-2xl p-1.5 sm:p-2 bg-gradient-to-b from-white/80 via-slate-200/50 to-white/30 dark:from-white/10 dark:via-white/5 dark:to-transparent border border-slate-200/80 dark:border-white/10 shadow-xl dark:shadow-2xl dark:shadow-black/60 transition-all duration-300 hover:scale-[1.015] hover:border-brand-purple/40">
+              <div
+                class="group relative rounded-2xl p-1.5 sm:p-2 bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 shadow-xl dark:shadow-2xl dark:shadow-black/60 transition-all duration-300 hover:scale-[1.015] hover:border-brand-purple/40 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+                role="button"
+                tabindex="0"
+                data-lightbox-trigger={shot.src}
+                data-lightbox-alt={shot.alt}
+                aria-label={lang === 'es' ? `Ampliar captura: ${shot.alt}` : `Zoom screenshot: ${shot.alt}`}
+                title={lang === 'es' ? 'Haz clic o presiona Enter para ampliar captura' : 'Click or press Enter to zoom screenshot'}
+              >
                 <img
                   src={shot.src}
                   alt={shot.alt}
@@ -445,9 +562,32 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
         </section>
       )}
 
+      <!-- Behind the Architecture Bento Bridge -->
+      <section class="py-10 border-t border-slate-200/70 dark:border-white/10 my-8">
+        <div class="rounded-2xl p-6 sm:p-8 bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200/80 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-brand-purple/40 transition-all shadow-sm">
+          <div class="space-y-2 text-center sm:text-left">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-medium bg-brand-aqua/10 text-brand-aqua-deep dark:text-brand-aqua border border-brand-aqua/20">
+              <span class="[&>svg]:w-3.5 [&>svg]:h-3.5" set:html={iconSvg('Terminal')}></span>
+              <span>{lang === 'es' ? 'Diseñado por Ana-Catalina' : 'Engineered by Ana-Catalina'}</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold font-[Outfit] text-slate-900 dark:text-white">
+              {t.architectureTitle}
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 font-[Inter] max-w-xl leading-relaxed">
+              {t.architectureText}
+            </p>
+          </div>
+          <a href={fichaURL} class={secondaryBtnClass}>
+            <span class="[&>svg]:w-4 [&>svg]:h-4" set:html={iconSvg('FileText')}></span>
+            <span>{t.details}</span>
+            <span class="[&>svg]:w-4 [&>svg]:h-4" set:html={iconSvg('ArrowRight')}></span>
+          </a>
+        </div>
+      </section>
+
       <!-- Bottom Download CTA -->
       {product.downloadUrl && (
-        <section class="py-16 text-center">
+        <section class="py-12 text-center">
           <a href={product.downloadUrl} target="_blank" rel="noopener noreferrer" class={primaryBtnClass}>
             <span class="[&>svg]:w-4.5 [&>svg]:h-4.5 shrink-0" set:html={iconSvg('Download')}></span>
             <span>{product.downloadLabel ?? t.download}</span>
@@ -466,11 +606,24 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
           </a>
         )}
         <a href="https://projects.ana-catalina.com" class="hover:text-brand-purple dark:hover:text-brand-purple-light transition-colors">Projects Hub</a>
+        <a href="https://linkedin.com/in/ana-catalina/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-purple dark:hover:text-brand-purple-light transition-colors">LinkedIn</a>
       </div>
       <p>&copy; {new Date().getFullYear()} <a href="https://ana-catalina.com" class="hover:text-brand-purple dark:hover:text-brand-purple-light transition-colors font-medium">Ana-Catalina</a></p>
     </footer>
 
-    <!-- Interactive Client Scripts (Theme, Lang Rewrite, Tabs, Copy) -->
+    <!-- Image Lightbox Modal (Zero external dependencies) -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-label="Screenshot zoom">
+      <div class="relative max-w-5xl max-h-[92vh] flex flex-col items-center">
+        <button id="lightbox-close" type="button" aria-label={t.close} class="absolute -top-12 right-0 p-2 text-white/80 hover:text-white transition-colors cursor-pointer text-xs font-mono flex items-center gap-1.5 bg-white/10 hover:bg-white/20 rounded-lg px-3 py-1.5 border border-white/10">
+          <span>ESC</span>
+          <span class="[&>svg]:w-4 [&>svg]:h-4" set:html={iconSvg('X')}></span>
+        </button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[82vh] rounded-xl object-contain shadow-2xl border border-white/10" />
+        <p id="lightbox-caption" class="text-white/80 text-xs sm:text-sm font-[Inter] mt-3 text-center"></p>
+      </div>
+    </div>
+
+    <!-- Interactive Client Scripts (Theme, Lang Rewrite, Tabs, Copy, Lightbox) -->
     <script is:inline define:vars={{ slug, productHost, copiedText: t.copied }}>
       // 1. Theme toggle
       const themeToggle = document.getElementById('theme-toggle');
@@ -481,10 +634,20 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
         });
       }
 
-      // 2. Language link rewrite for previews / non-subdomain visits
+      // 2. Language link rewrite and persistence
+      const esLink = document.querySelector('[data-lang-link="es"]');
+      const enLink = document.querySelector('[data-lang-link="en"]');
+      if (esLink) {
+        esLink.addEventListener('click', () => {
+          localStorage.setItem('lang', 'es');
+        });
+      }
+      if (enLink) {
+        enLink.addEventListener('click', () => {
+          localStorage.setItem('lang', 'en');
+        });
+      }
       if (location.hostname !== productHost) {
-        const esLink = document.querySelector('[data-lang-link="es"]');
-        const enLink = document.querySelector('[data-lang-link="en"]');
         if (esLink) esLink.href = `/p/${slug}/`;
         if (enLink) enLink.href = `/p/${slug}/en/`;
       }
@@ -532,6 +695,56 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
             console.error('Failed to copy', err);
           }
         });
+      });
+
+      // 5. Lightbox Modal Logic
+      const modal = document.getElementById('lightbox-modal');
+      const modalImg = document.getElementById('lightbox-img');
+      const modalCaption = document.getElementById('lightbox-caption');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      function openLightbox(src, alt) {
+        if (!modal || !modalImg) return;
+        modalImg.src = src;
+        modalImg.alt = alt || '';
+        if (modalCaption) modalCaption.textContent = alt || '';
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-lightbox-trigger]').forEach((trigger) => {
+        const handleOpen = () => {
+          const src = trigger.getAttribute('data-lightbox-trigger');
+          const alt = trigger.getAttribute('data-lightbox-alt') || '';
+          if (src) openLightbox(src, alt);
+        };
+        trigger.addEventListener('click', handleOpen);
+        trigger.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleOpen();
+          }
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeLightbox();
+        });
+      }
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+          closeLightbox();
+        }
       });
     </script>
   </body>
