@@ -6,18 +6,19 @@ icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
 isLiveApp: false
-technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "FastAPI / Starlette", "Pydantic v2", "Docker", "Google Cloud Run", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
+technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "FastAPI / Starlette", "Pydantic v2", "Docker", "Google Cloud Run", "Task Runner", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
 categories: ["AI", "MCP", "Backend", "Cloud"]
 type: "ai"
 status: "Active"
 problem: "Traditional web resumes are designed for humans to read, but today AI assistants are often the ones initially processing this information, limited by the need for scraping and unstructured data."
-solution: "A native service for Artificial Intelligences, built using the official Model Context Protocol, exposing 10 specialized tools to query experience, mathematically evaluate profile fit for job openings, explore academic publications, and search the tech stack, designed specifically for LLM reasoning using strict Pydantic schemas and Streamable-HTTP transport."
+solution: "An AI-native service built with the official Model Context Protocol exposing 10 specialized tools to query experience, evaluate vacancy alignment, search tech taxonomy, and explore publications. Engineered for LLM reasoning with strict Pydantic schemas and Streamable-HTTP transport, backed by a unified Python task runner (`tasks.py`), ecosystem invariant verification (`verify_ecosystem_invariants.py`), automated upstream sync (`sync_mcp_data.py`), and self-healing CI/CD drift detection workflows."
 learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Streamable-HTTP compatible with Antigravity, Claude, Cursor, and Gemini Connected Apps."
   - "ASGI Security Middleware & Bounded Rate Limiting: Implementation of strict ASGI security headers, in-memory rate limiting, and continuous vulnerability auditing in CI pipelines."
   - "In-Memory Dynamic Matching Engine: Deterministic algorithm in cv_service.py evaluating job profile compatibility and technical stack alignment entirely in memory with sub-2ms latency."
   - "Optimized serverless deployment on Google Cloud Run using lightweight Docker containers, leveraging 'Scale to Zero' functionality to reduce operational costs to zero during idle times."
   - "Zero-Downtime Content Negotiation & Typed Contracts: Dynamic HTTP content negotiation on GET / delivering the interactive HTML showcase directly with 200 OK to web browsers while serving JSON discovery to MCP clients, paired with a strongly-typed SearchResult Pydantic v2 contract."
+  - "Invariant Automation & Self-Healing CI/CD (v1.10.0): Built a native task runner (`scripts/tasks.py`) and ecosystem invariant auditor (`verify_ecosystem_invariants.py`) validating Pastel-Tech tokens, Zero-Flags policy, and cross-repo data congruence, alongside daily automated upstream drift detection in GitHub Actions."
 websiteActionText: "MCP Server & Demo"
 ---
 

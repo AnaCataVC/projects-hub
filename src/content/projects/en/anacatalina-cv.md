@@ -6,17 +6,18 @@ icon: "/project-icons/anacatalina-cv-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-cv"
 liveAppUrl: "https://cv.ana-catalina.com"
 isLiveApp: true
-technologies: ["Astro 6", "TypeScript", "Tailwind CSS v4", "Vercel"]
+technologies: ["Astro 6", "TypeScript", "Tailwind CSS v4", "GitHub Actions", "Vercel"]
 categories: ["Personal Site", "i18n", "Design"]
 type: "web"
 status: "Active"
 problem: "Many hiring processes still rely on a faithful downloadable PDF alongside a readable website — but pulling in a heavy PDF-generation library (Puppeteer and the like) is a build-time and dependency cost that isn't always worth paying."
-solution: "A bilingual (ES/EN) Astro site with dark mode and scroll animations, plus a script that renders dedicated print-ready HTML templates using the headless Chrome or Edge engine already installed on the machine (`--print-to-pdf`)."
+solution: "A bilingual (ES/EN) Astro site with dark mode and scroll animations, plus a script that renders dedicated print-ready HTML templates using the headless Chrome or Edge engine already installed on the machine (`--print-to-pdf`). It acts as the ecosystem's Single Source of Truth (SSOT) for professional background and technical taxonomy, protected by an automated GitHub Actions CI/CD pipeline, repository activity audits (`audit:activity`), and CV data integrity checks (`audit:integrity`)."
 learnings:
   - "Generating print-ready PDFs from HTML/CSS with `@page` rules, driving the locally installed headless browser instead of pulling in Puppeteer or another PDF library."
   - "Interactive skill lenses: Dynamic faceted filtering across technical skill domains on the professional profile, paired with streamlined print templates."
   - "Reusing a shared design system (pastel-tech palette with electric violet and crystal aqua, typography, and 3D glass AC monogram) across personal sites speeds up spinning up a new one without redesigning from scratch."
   - "Single source of truth in TypeScript (`src/data/cv.ts`): centralizing all bilingual content in one typed file that powers both the interactive site and the print templates, with a build step that automatically verifies the strict 2-page budget and ATS-parser compatibility before publishing the PDFs."
+  - "Data Governance & CI/CD Quality Pipeline: Centralizing career history and technical skills in TypeScript as an upstream formal contract powering the MCP server, with CI gates enforcing dependency lock reproducibility (`npm ci`), strict 2-page print layout, and ATS compliance."
 websiteActionText: "View Live CV"
 ---
 

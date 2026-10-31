@@ -6,18 +6,19 @@ icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
 isLiveApp: false
-technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "FastAPI / Starlette", "Pydantic v2", "Docker", "Google Cloud Run", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
+technologies: ["Python 3.12", "FastMCP", "Streamable-HTTP", "FastAPI / Starlette", "Pydantic v2", "Docker", "Google Cloud Run", "Task Runner", "Model Context Protocol", "Google Antigravity", "Gemini Connected Apps"]
 categories: ["IA", "MCP", "Backend", "Cloud"]
 type: "ai"
 status: "Activo"
 problem: "Los currículums web tradicionales están diseñados para ser leídos por humanos, pero hoy en día los asistentes de IA son quienes procesan esta información inicialmente, limitados por la necesidad de scraping y la falta de estructuración de los datos."
-solution: "Un servicio nativo para Inteligencias Artificiales, construido con el Model Context Protocol oficial, que expone 10 tools especializadas para consultar experiencia, evaluar perfiles matemáticos con vacantes, explorar publicaciones y buscar en el stack tecnológico, diseñada específicamente para el razonamiento de LLMs mediante schemas estrictos en Pydantic y transporte Streamable-HTTP."
+solution: "Un servicio nativo para Inteligencias Artificiales, construido con el Model Context Protocol oficial, que expone 10 tools especializadas para consultar experiencia, evaluar perfiles matemáticos con vacantes, explorar publicaciones y buscar en el stack tecnológico, diseñada específicamente para el razonamiento de LLMs mediante schemas estrictos en Pydantic y transporte Streamable-HTTP. Integra un task runner en Python (`tasks.py`), verificación de invariantes del ecosistema (`verify_ecosystem_invariants.py`), sincronización automatizada de datos con los repositorios hermanos (`sync_mcp_data.py`) y workflows auto-reparables de detección de drift en CI/CD."
 learnings:
   - "Integración exitosa del protocolo emergente MCP, adaptando la arquitectura para soportar comunicación bidireccional asíncrona mediante Streamable-HTTP compatible con Antigravity, Claude, Cursor y Gemini Connected Apps."
   - "Seguridad ASGI y Rate Limiting Acotado: Implementación de middleware de seguridad ASGI con cabeceras estrictas, limitación de tasa en memoria y auditoría continua de vulnerabilidades en CI."
   - "Motor de Emparejamiento Dinámico en Memoria: Implementación de un algoritmo determinista en cv_service.py para evaluar compatibilidad con vacantes y stack técnico en memoria con latencia inferior a 2ms."
   - "Despliegue serverless optimizado en Google Cloud Run utilizando contenedores Docker ligeros, aprovechando la funcionalidad 'Scale to Zero' para reducir costos operativos a cero durante la inactividad."
   - "Negociación Transparente de Contenido HTTP & Contratos Tipados: Negociación dinámica en GET / que entrega directamente el showcase HTML con status 200 a navegadores web y descubrimiento JSON a clientes MCP, junto a un contrato fuertemente tipado SearchResult en Pydantic v2."
+  - "Automatización de Invariantes y CI/CD Auto-Reparable (v1.10.0): Implementación de un task runner nativo (`scripts/tasks.py`) y script de verificación de invariantes (`verify_ecosystem_invariants.py`) que audita la paridad de tokens pastel-tech, Zero-Flags y congruencia de datos curriculares entre repositorios, complementado con workflows de sincronización y detección de drift diario en GitHub Actions."
 websiteActionText: "Servidor MCP & Demo"
 ---
 
