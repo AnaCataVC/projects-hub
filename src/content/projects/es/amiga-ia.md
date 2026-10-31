@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
-description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 22 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
-lastUpdated: 2026-10-26
+description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 23 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
+lastUpdated: 2026-10-31
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -68,7 +68,7 @@ product:
         tags: ["ami-review-self-pr", "ami-plan-commits", "ami-detect-pr-conflicts", "ami-create-tests"]
       - title: "ami-repo-auditor"
         description: "Orquesta auditorías de salud, dependencias, depuración y generación de pruebas faltantes."
-        tags: ["ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
+        tags: ["ami-discover-automations", "ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
       - title: "ami-doc-architect"
         description: "Orquestador maestro para documentación, investigación de contexto y extracción de lecciones."
         tags: ["ami-manage-docs", "ami-research-context"]

@@ -2,14 +2,14 @@
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
 description: "High-performance folder and system icon personalization utility for Windows 10 and 11, featuring an automated rule engine, native multi-resolution PNG-to-ICO encoder, and instant shell refresh."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-31
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "Win32 P/Invoke", "xUnit", "Inno Setup"]
 categories: ["Windows", "Tools", "Customization", "WinUI 3"]
 type: "desktop"
-status: "In Development"
+status: "Active"
 problem: "Customizing folder icons in Windows has historically relied on the slow, folder-by-folder system properties sheet or outdated legacy utilities that corrupt existing desktop.ini files, lack reversible undo history, and force full Windows Explorer restarts that destroy taskbar state."
 solution: "A modern Windows desktop application in C# 13 and .NET 9 featuring a Fluent WinUI 3 interface engineered under Cleanroom TDD standards. It integrates an automated rule engine with ReDoS protection, a pure-stream 7-layer PNG-to-ICO encoder, robust desktop.ini injection handling Win32 directory attributes (ReadOnly/System), UAC-free Windows 11 Navigation Pane node customization, atomic transactional undo history, and zero-disruption live shell refresh via SHChangeNotify."
 learnings:

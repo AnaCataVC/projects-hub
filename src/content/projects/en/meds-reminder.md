@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "100% offline-first native Android mobile application for medication adherence and multi-profile dosage reminders with high-precision alarms."
-lastUpdated: 2026-10-26
+lastUpdated: 2026-10-31
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -13,7 +13,7 @@ status: "Active"
 problem: "Medication forgetfulness across multi-member family profiles and inconsistent alarm reliability on Android due to aggressive battery-saving modes (Doze mode)."
 solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, lockscreen popups (AlarmActivity), pre-alarm quick-actions, per-person alarm suspension, early intake resolution, and a fully deterministic Room-as-single-source-of-truth alarm engine with zero artificial delays."
 learnings:
-  - "Early Intake Lifecycle Management: Synchronizing in-memory state and Room DB to automatically cancel active snoozes and upcoming pre-alarms when doses are logged ahead of time."
+  - "Intake Lifecycle & Cumulative Snooze Management: Calculating snoozes relative to scheduled alarm time with configurable cumulative intervals, reactive cancellation of active snoozes, and Room DB sync when doses are logged early."
   - "Per-Person Alarm Suspension: Implementing temporary notification and alarm suppression per profile without corrupting underlying treatment schedules."
   - "Ensuring sub-second alarm accuracy on Android 14/15/16 using AlarmManager.setAlarmClock() and USE_EXACT_ALARM under healthcare exemption guidelines."
   - "Decoupled Widget Architecture: Strict isolation of home launcher widget configuration activities and synchronous Room DB state commit to ensure crash-free rasterized RemoteViews previews."

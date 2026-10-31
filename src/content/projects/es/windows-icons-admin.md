@@ -2,14 +2,14 @@
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
 description: "Utilidad de alto rendimiento para Windows 10 y 11 que automatiza la personalización masiva de iconos de carpetas y del sistema, con motor de reglas, codificador PNG a ICO nativo y refresco instantáneo del shell."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-31
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "Win32 P/Invoke", "xUnit", "Inno Setup"]
 categories: ["Windows", "Herramientas", "Personalización", "WinUI 3"]
 type: "desktop"
-status: "En Desarrollo"
+status: "Activo"
 problem: "La personalización de iconos de carpetas en Windows ha dependido históricamente del diálogo manual carpeta por carpeta o de utilidades heredadas que corrompen archivos desktop.ini, carecen de historial reversible y obligan a reiniciar el Explorador de Windows perdiendo el estado de las ventanas abiertas."
 solution: "Una aplicación moderna de escritorio en C# 13 y .NET 9 con interfaz Fluent (WinUI 3) desarrollada bajo estándares Cleanroom TDD. Integra motor de reglas con protección contra ReDoS, conversor PNG a ICO de 7 capas en memoria, inyección segura de desktop.ini con gestión de atributos Win32 (ReadOnly/System), personalización de nodos del Panel de Navegación de Windows 11 sin requerir elevación UAC, historial transaccional de deshacer y refresco en vivo con SHChangeNotify."
 learnings:

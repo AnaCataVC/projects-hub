@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "Aplicación móvil nativa para Android (100% offline-first) para la adherencia médica y recordatorios de dosis multi-perfil con alarmas de alta precisión."
-lastUpdated: 2026-10-26
+lastUpdated: 2026-10-31
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -13,7 +13,7 @@ status: "Activo"
 problem: "El olvido recurrente de tomas de medicamentos en grupos familiares o multi-perfil, sumado a la falta de fiabilidad de las alarmas en Android debido a modos agresivos de ahorro de batería (Doze mode)."
 solution: "Una aplicación local-first sin nube con soporte multi-perfil y catálogo maestro de fármacos, dotada de alarmas exactas que rompen el modo Doze, popup sobre pantalla bloqueada (AlarmActivity), pre-alarmas con toma rápida, suspensión temporal de alarmas por persona, resolución inteligente ante tomas anticipadas, y un motor de alarmas completamente determinista con Room como fuente única de verdad, sin delays artificiales."
 learnings:
-  - "Gestión del Ciclo de Vida de Tomas Anticipadas: Sincronización del estado en memoria y Room DB para cancelar automáticamente repeticiones (snooze) y pre-alarmas al registrar una toma antes de tiempo."
+  - "Gestión del Ciclo de Vida de Tomas y Posposición Acumulativa: Cálculo de repeticiones (snooze) sobre la hora real de la alarma con intervalo acumulativo configurable, cancelación reactiva de snooze activo y sincronización en Room DB al registrar tomas anticipadas."
   - "Suspensión Temporal de Alarmas por Perfil: Implementación de mecanismos de pausa selectiva de notificaciones y alarmas sin alterar los horarios programados del tratamiento."
   - "Garantía de precisión milimétrica en Android 14/15/16 utilizando AlarmManager.setAlarmClock() y USE_EXACT_ALARM bajo directrices de salud."
   - "Arquitectura de Widgets Desacoplada: Aislamiento estricto de las actividades de configuración de widgets de inicio y serialización síncrona en Room DB para garantizar previews rasterizados sin bloqueos de RemoteViews."

@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 (WinUI 3 / .NET 9) que sincroniza carpetas de trabajo y contexto de agentes IA hacia Google Drive mediante Google Apps Script, con hashing incremental y redacción de secretos."
-lastUpdated: 2026-10-24
+lastUpdated: 2026-10-31
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "Google Apps Script", "xUnit"]
@@ -12,7 +12,7 @@ status: "Activo"
 problem: "Mantener sincronizadas carpetas de trabajo y el contexto de agentes IA (CLAUDE.md, skills, memorias) hacia Google Drive sin depender de clientes de sincronización pesados ni de subir archivos sin cambios reales, evitando además fugas accidentales de secretos."
 solution: "Una app de bandeja del sistema en WinUI 3 que sube solo archivos nuevos o modificados a un Google Apps Script Web App propio, usando un fast-path de metadatos (fecha y tamaño) antes de calcular hashes SHA-256, con reintentos con backoff exponencial ante errores transitorios, descubrimiento recursivo de contexto de agentes IA con exclusión de repositorios y worktrees anidados, y un filtro de secretos en tres capas antes de respaldar cualquier archivo."
 learnings:
-  - "Subida en Lotes y Reconciliación de Huérfanos: Empaquetado en lotes para sincronización de contexto de Claude con progreso en vivo, además de detección y limpieza proactiva de archivos duplicados y huérfanos en Google Drive."
+  - "Subida en Lotes y Reconciliación de Huérfanos: Empaquetado en lotes para sincronización de contexto de Claude con progreso en vivo, indicadores de escaneo y confirmación de acciones destructivas al limpiar duplicados o huérfanos en Google Drive."
   - "Índice de Hashes a Prueba de Caídas: Escritura del índice de sincronización en un archivo temporal con swap atómico, para que una ejecución interrumpida nunca lo deje vacío."
   - "Filtro de Secretos en Tres Capas: Lista negra de nombres de archivo, escaneo por regex de los primeros 64 KB en busca de tokens (PAT, AWS, SSH) y un sanitizador que falla cerrado al parsear configuraciones MCP."
   - "Detección de Repositorios y Worktrees Anidados: Recorrido BFS que identifica raíces de git (`.git` como carpeta o como archivo de worktree) para no reclasificar `CLAUDE.md` versionados como notas sueltas."
