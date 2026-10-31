@@ -1,0 +1,72 @@
+name: Weekly Portfolio Drift Audit
+
+on:
+  schedule:
+    - cron: "0 12 * * 1" # Every Monday at 12:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Run portfolio synchronization audit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: AnaCataVC
+        run: |
+          node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs --json > audit-report.json
+          node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs
+
+      - name: Publish Markdown Audit Summary
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const report = JSON.parse(fs.readFileSync("audit-report.json", "utf8"));
+            const lines = [
+              "## 📊 Projects Hub — Weekly Drift Audit Summary",
+              "",
+              `- **Up-to-date projects:** ${report.upToDate.length}`,
+              `- **Pending updates:** ${report.pendingUpdates.length}`,
+              `- **New unindexed projects:** ${report.newProjects.length}`,
+              `- **Archived (frozen):** ${report.notMonitored.length}`,
+              ""
+            ];
+            if (report.newProjects.length > 0) {
+              lines.push("### 🌟 New Unindexed Repositories");
+              lines.push("| Repository | Last Commit | Description |");
+              lines.push("| :--- | :--- | :--- |");
+              for (const p of report.newProjects) {
+                lines.push(`| \`${p.repo}\` | ${p.lastCommit} | ${p.message || "—"} |`);
+              }
+              lines.push("");
+            }
+            if (report.pendingUpdates.length > 0) {
+              lines.push("### 🔄 Pending Portfolio Updates");
+              lines.push("| Repository | Entry File | Last Commit | Reviewed At | Diff |");
+              lines.push("| :--- | :--- | :--- | :--- | :--- |");
+              for (const p of report.pendingUpdates) {
+                const diff = p.diffUrl ? `[Compare](${p.diffUrl})` : "—";
+                lines.push(`| \`${p.repo}\` | \`${p.projectFile}\` | ${p.lastCommit} | ${p.reviewedAt} | ${diff} |`);
+              }
+              lines.push("");
+            }
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n");
+          '

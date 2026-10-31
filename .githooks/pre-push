@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+# Pre-push quality gate for Projects Hub
+# Ensures ESLint, Astro TypeScript checks, and Vitest suites pass before pushing to remote.
+
+set -e
+
+echo "🔍 Running pre-push quality gates (lint, type-check, test)..."
+npm run lint
+npm run type-check
+npm test
+echo "✅ All pre-push quality gates passed!"

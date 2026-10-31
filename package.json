@@ -12,6 +12,8 @@
     "test:watch": "vitest",
     "type-check": "astro check",
     "lint": "eslint .",
+    "verify": "npm run lint && npm run type-check && npm test && npm run build",
+    "prepare-hooks": "git config core.hooksPath .githooks",
     "audit:projects": "node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs"
   },
   "repository": {

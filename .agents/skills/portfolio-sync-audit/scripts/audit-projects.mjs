@@ -96,12 +96,34 @@ function getLocalRepos() {
   return repos;
 }
 
+function resolveGitHubEnv() {
+  if (process.env.GH_TOKEN) {
+    return process.env;
+  }
+  try {
+    const token = execSync(
+      `gh auth token -u ${GITHUB_OWNER} --hostname github.com`,
+      { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'] }
+    ).trim();
+    if (token) {
+      return { ...process.env, GH_TOKEN: token };
+    }
+  } catch {
+    // Fallback to ambient environment if specific account token resolution fails
+  }
+  return process.env;
+}
+
 function getGitHubRepos() {
   const repos = [];
   try {
     const rawOutput = execSync(
       `gh repo list ${GITHUB_OWNER} --limit 100 --json name,description,updatedAt,pushedAt,isPrivate,isFork`,
-      { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'] }
+      {
+        encoding: 'utf-8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+        env: resolveGitHubEnv(),
+      }
     );
     const parsed = JSON.parse(rawOutput || '[]');
     for (const r of parsed) {
