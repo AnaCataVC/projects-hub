@@ -27,7 +27,7 @@ learnings:
 
 *   **Clasificador NLP Inicial:** Procesa texto libre mediante un pipeline de TF-IDF y Regresión Logística para identificar el cuadrante afectivo general (`alta_positiva`, `alta_negativa`, `baja_positiva`, `baja_negativa`).
 *   **Emparejador Semántico de Emociones:** Ordena las 16 emociones del cuadrante detectado por similitud coseno contra el texto del usuario, resolviendo la mayoría de los casos al instante sin preguntas adicionales.
-*   **Árbol Somático Binario (64 Estados, Respaldo):** Solo cuando el emparejador no tiene suficiente confianza, el sistema recurre a un árbol determinista de profundidad 4 ($2^4 = 16$ hojas por cuadrante), guiando al usuario con 4 preguntas fisiológicas de Sí/No hacia su emoción exacta.
+*   **Árbol Somático Binario (64 Estados, Respaldo):** Solo cuando el emparejador no tiene suficiente confianza, el sistema recurre a un árbol determinista de profundidad 4 (2⁴ = 16 hojas por cuadrante), guiando al usuario con 4 preguntas fisiológicas de Sí/No hacia su emoción exacta.
 
 ### Mapeo Afectivo Funcional e Idiomático
 

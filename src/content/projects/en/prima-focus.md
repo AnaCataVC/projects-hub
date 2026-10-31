@@ -5,6 +5,7 @@ lastUpdated: 2026-10-26
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus"
 websiteUrl: "https://prima-focus.ana-catalina.com"
+isLiveApp: false
 technologies: ["Kotlin Multiplatform", "Jetpack Compose", "Jetpack Glance", "Room Database v6", "P2P Nearby Connections"]
 categories: ["Productivity", "Mobile", "Android"]
 type: "mobile"
