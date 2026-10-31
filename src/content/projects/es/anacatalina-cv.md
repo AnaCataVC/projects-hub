@@ -1,5 +1,5 @@
 ---
-title: "Anacatalina CV — Sitio Personal Bilingüe"
+title: "anacatalina-cv (Sitio Personal Bilingüe)"
 description: "Mi CV como sitio web bilingüe con modo oscuro, más un PDF descargable generado imprimiendo plantillas HTML con el motor headless del navegador."
 lastUpdated: 2026-10-31
 icon: "/project-icons/anacatalina-cv-icon.svg"
