@@ -40,7 +40,7 @@ product:
       text: "Configura la sincronización en segundo plano por día y hora, minimiza a la bandeja del sistema y arranca en silencio al iniciar sesión."
     - icon: "ShieldCheck"
       title: "Sin Omisiones Silenciosas"
-      text: "Los archivos bloqueados y las carpetas no listables se reportan como error, no se cuentan como \"sin cambios\" — así el estado Al día siempre es confiable. Los lotes fallidos quedan disponibles para reintentar en un clic con backoff exponencial."
+      text: "Los archivos bloqueados y carpetas no listables se reportan como error, con indicadores de escaneo y sincronización en tiempo real, confirmación en acciones destructivas y reintento en un clic con backoff exponencial."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases/latest"
   downloadLabel: "Descargar para Windows"

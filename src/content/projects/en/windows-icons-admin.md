@@ -22,11 +22,11 @@ learnings:
 websiteActionText: "Visit Website"
 product:
   tagline: "Bring order and style to your Windows folders"
-  intro: "Customize and organize folder icons with ease, turn images into clean icons instantly, and see changes right away without restarting Windows Explorer."
+  intro: "Customize and organize folder icons effortlessly with a native Fluent UI, keyboard shortcuts, and instant image-to-ICO conversion without restarting Windows Explorer."
   features:
     - icon: "FolderTree"
       title: "Bulk Folder Customization"
-      text: "Assign icons individually or in bulk across multiple folders and recursive directory trees with live interactive preview."
+      text: "Assign icons individually or in bulk with live interactive previews, keyboard accelerators (Ctrl+O, Ctrl+Z, Delete), and flyout confirmations on destructive rules."
     - icon: "Layers"
       title: "7-Layer Native ICO Encoder"
       text: "Generates compliant ICO binaries with resolutions from 16x16 up to 256x256 (uncompressed BGRA DIB layers and PNG-compressed 256px)."

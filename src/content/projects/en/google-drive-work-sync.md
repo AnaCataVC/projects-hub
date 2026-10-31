@@ -40,7 +40,7 @@ product:
       text: "Configure background sync by weekday and run time, minimize to the system tray, and launch silently at logon."
     - icon: "ShieldCheck"
       title: "No Silent Skips"
-      text: "Locked files and unlistable folders are reported as errors, not counted as \"unchanged\" — so the Up to date status can always be trusted. Failed batches persist for one-click retry with exponential backoff."
+      text: "Locked files and unlistable folders are reported as errors, with real-time scan and sync busy indicators, destructive action confirmations, and one-click retry with exponential backoff."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases/latest"
   downloadLabel: "Download for Windows"
