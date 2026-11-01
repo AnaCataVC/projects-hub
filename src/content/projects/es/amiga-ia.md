@@ -1,22 +1,23 @@
 ---
 title: "Amiga IA"
-description: "Ecosistema integral de subagentes autónomos, hooks de seguridad sin estado y 23 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
-lastUpdated: 2026-10-31
+description: "Ecosistema integral de 14 subagentes autónomos, hooks de seguridad sin estado y 25 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
+lastUpdated: 2026-11-01
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
-technologies: ["Subagent Orchestration", "Agent Skills", "Delimited Block Protocol", "Release Automation", "PowerShell", "Node.js"]
+technologies: ["Subagent Orchestration", "Agent Skills", "Delimited Block Protocol", "Cleanroom TDD", "Empirical Benchmarks", "Release Automation", "PowerShell", "Node.js"]
 categories: ["IA", "Agentes", "Productividad", "Developer Tools"]
 type: "ai"
 status: "Activo"
 problem: "La degradación en bases de código grandes al depender de instrucciones imperativas paso a paso, junto al consumo elevado de tokens al acumular contexto repetitivo en asistentes de IA genéricos."
-solution: "Un ecosistema agéntico unificado de subagentes autónomos y skills declarativas, dotado de un protocolo de bloques delimitados para distribución limpia de directivas y compuertas estrictas de verificación en compilación de releases."
+solution: "Un ecosistema agéntico unificado de 14 subagentes autónomos y 25 skills declarativas, dotado de un compilador nativo para el tri-ecosistema (Antigravity, Claude Code y OpenAI Codex), protocolo de bloques delimitados, TDD Cleanroom Doble Ciego y suite de benchmarks empíricos deterministas."
 learnings:
+  - "Evaluación Empírica de Benchmarks Agénticos (ADR-004, ADR-012): Validación offline determinista que evidencia -44.75% (-2.973 tokens) en sobrecarga de contexto por turno, 0% de sesgo de confirmación en TDD Cleanroom y 100% de precisión y exhaustividad en auditorías de repositorio."
   - "Distribución Idempotente de Reglas de IA: Diseño del protocolo de bloques delimitados para inyectar y sincronizar directivas de agentes en proyectos sin sobreescribir configuraciones locales ni generar residuos."
   - "Compuertas de Verificación en Automatización de Releases: Implementación de validaciones en vivo para compilar y comprobar la existencia de binarios y assets antes de publicar releases oficiales."
   - "IA Agéntica vs. Prompts Pasivos: Migrar hacia subagentes autónomos que razonan sobre objetivos globales y coordinan revisiones en paralelo es exponencialmente más resistente y escalable que la ingeniería de prompts tradicional."
-  - "Optimización de Tokens de Sistema (ADR-004): Reducción verificada del 36.3% al compactar el adaptador universal y desacoplar lógica en scripts independientes."
+  - "Compilador Semántico Tri-Ecosistema: Traducción automatizada desde Markdown canónico hacia formatos nativos de Anthropic Claude Code (~/.claude/), Google Antigravity (~/.gemini/config/) y OpenAI Codex (~/.agents/ y ~/.codex/)."
 websiteActionText: "Ver Página"
 product:
   tagline: "Un equipo de agentes de IA para ayudarte a programar mejor"
@@ -67,8 +68,8 @@ product:
         description: "Automatiza la creación, revisión de conflictos y auto-revisión crítica de tus propios Pull Requests."
         tags: ["ami-review-self-pr", "ami-plan-commits", "ami-detect-pr-conflicts", "ami-create-tests"]
       - title: "ami-repo-auditor"
-        description: "Orquesta auditorías de salud, dependencias, depuración y generación de pruebas faltantes."
-        tags: ["ami-discover-automations", "ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
+        description: "Orquesta auditorías de salud, dependencias, detección de agentes y automatizaciones, y generación de pruebas faltantes."
+        tags: ["ami-discover-ai-agents", "ami-discover-automations", "ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
       - title: "ami-doc-architect"
         description: "Orquestador maestro para documentación, investigación de contexto y extracción de lecciones."
         tags: ["ami-manage-docs", "ami-research-context"]
@@ -95,12 +96,13 @@ product:
 
 ### Arquitectura Técnica y Orquestación
 
-**Amiga IA** transforma la asistencia de programación con Inteligencia Artificial, superando las limitaciones de los prompts imperativos mediante una **malla de subagentes especializados y autónomos** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, entre otros). Cada subagente asume un rol delimitado con herramientas específicas y compuertas de seguridad.
+**Amiga IA** transforma la asistencia de programación con Inteligencia Artificial, superando las limitaciones de los prompts imperativos mediante una **malla de 14 subagentes especializados y autónomos** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, entre otros) respaldada por **25 skills declarativas bajo demanda**. Cada subagente asume un rol delimitado con herramientas específicas y compuertas de seguridad.
 
 *   **Adaptador Universal & Multi-Motor:** Inyección de guardarraíles sin estado y compilación portátil de habilidades con compatibilidad nativa entre Antigravity (Gemini), Claude Code y OpenAI Codex.
-*   **Protocolo de Bloques Delimitados:** Motor de sincronización idempotente que actualiza reglas globales en múltiples repositorios sin sobreescribir configuraciones locales.
+*   **Protocolo de Bloques Delimitados:** Motor de sincronización idempotente que actualiza reglas globales en múltiples repositorios sin sobreescribir configuraciones locales ni dejar residuos.
+*   **Aislamiento Cleanroom Doble Ciego:** Flujo de TDD desacoplado (`ami-cleanroom-arbiter`) donde el implementador y el autor de pruebas operan sobre contratos de interfaz sellados, erradicando el sesgo de confirmación.
 
-### Optimización y Compuertas de Calidad
+### Optimización, Benchmarks y Compuertas de Calidad
 
-*   **Reducción de Consumo de Tokens:** El desacoplamiento de directivas en *skills declarativas bajo demanda* redujo la carga de contexto inicial en un **36.3%**.
+*   **Validación con Benchmarks Empíricos:** Evaluación offline determinista que valida una reducción del **44.75% (-2.973 tokens/turno)** en sobrecarga de contexto, 0% de defectos escapados en Cleanroom TDD y precisión y exhaustividad perfectas ($F_1 = 1.00$) en detección de fallos de repositorio.
 *   **Protocolo Anti-Alucinación:** Automatización de flujos de release con compuertas en vivo que compilan, testean y verifican hashes de binarios antes de permitir la publicación en GitHub.
