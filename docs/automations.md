@@ -9,7 +9,7 @@ This document describes the complete automation ecosystem, quality gates, and sy
 Projects Hub relies on a layered automation model spanning three domains:
 1. **CI/CD & GitOps (`.github/`, `.githooks/`):** Continuous integration pipelines, concurrency-managed builds, scheduled repository drift detection, automated dependency updates, and local pre-push git hooks.
 2. **Development & Quality Scripts (`package.json`, `src/__tests__/`):** Unified verification commands and automated invariant test suites enforcing bilingual parity, asset integrity, subdomain routing, and the Zero-Flags rule.
-3. **Autonomous Portfolio Synchronization (`.agents/`):** Path-agnostic repository auditing and subagent orchestration (`portfolio-auditor`) to synchronize sibling and remote GitHub repositories with the showcase catalog.
+3. **Autonomous Portfolio Synchronization (`.agents/`):** Path-agnostic repository auditing and subagent orchestration (`hub-portfolio-auditor`) to synchronize sibling and remote GitHub repositories with the showcase catalog.
 
 ---
 
@@ -30,7 +30,7 @@ Triggered on every `push` to `main` and on all `pull_request` events:
 ### 2.2 Weekly Portfolio Drift Audit (`.github/workflows/portfolio-drift.yml`)
 Triggered automatically every Monday at `12:00 UTC` (`cron: "0 12 * * 1"`) or manually via `workflow_dispatch`:
 - Checks out the full git history (`fetch-depth: 0`) so review timestamps can be accurately resolved from commit history.
-- Executes `.agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs` against the public GitHub repositories of `AnaCataVC`.
+- Executes `.agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs` against the public GitHub repositories of `AnaCataVC`.
 - Generates a structured Markdown summary directly in `$GITHUB_STEP_SUMMARY`, listing:
   - **New Unindexed Repositories:** Projects created on GitHub that do not yet have an entry in `src/content/projects/`.
   - **Pending Portfolio Updates:** Active or in-development projects with upstream commits newer than their portfolio review mark (`lastUpdated` or last commit timestamp), complete with direct GitHub comparison links (`/compare/<sha>...HEAD`).
@@ -59,7 +59,8 @@ npm run prepare-hooks
 | :--- | :--- | :--- |
 | `npm run dev` | `astro dev` | Starts the local development server on `http://localhost:4321`. |
 | `npm run verify` | `npm run lint && npm run type-check && npm test && npm run build` | **Single-command full quality gate.** Runs linter, TypeScript/Astro checker, Vitest suites, and production build sequentially. |
-| `npm run audit:projects` | `node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs` | Audits sibling local folders (`..`) and remote GitHub repositories (`AnaCataVC`) for unindexed projects or stale case studies. |
+| `npm run audit:projects` | `node .agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs` | Audits sibling local folders (`..`) and remote GitHub repositories (`AnaCataVC`) for unindexed projects or stale case studies. |
+| `npm run validate:parity` | `node .agents/skills/hub-validate-parity/scripts/validate-parity.mjs` | Audits bilingual parity, Lucide icons, schema conformity, and Zero-Flags rule across content entries. |
 | `npm run prepare-hooks` | `git config core.hooksPath .githooks` | Binds the local repository's Git hooks path to the versioned `.githooks/` directory. |
 | `npm run lint` | `eslint .` | Lints all project source files and `.agents/` scripts. |
 | `npm run type-check` | `astro check` | Validates Astro templates, Content Collections schemas, and TypeScript types. |
@@ -91,16 +92,25 @@ The Vitest test runner enforces four architectural contracts on every test run:
 ## 5. Autonomous Portfolio Synchronization Pipeline
 
 ### 5.1 Multi-Account Safe Audit (`audit-projects.mjs`)
-The script `.agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs` operates with zero hardcoded paths:
+The script `.agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs` operates with zero hardcoded paths:
 - Resolves local sibling repositories from `..` (or `$env:REPOS_DIR`).
 - Automatically resolves and scopes the `GH_TOKEN` for `AnaCataVC` via `gh auth token -u AnaCataVC --hostname github.com` before invoking `gh repo list`, preventing silent authentication mismatches when the workstation's global GitHub CLI is switched to a secondary work account.
 - Filters out third-party forks (`isFork: true`) and infrastructure repositories (`projects-hub`, `anacatalina-homepage`, `antigravity-config`).
 - Computes each entry's review date as `max(frontmatter.lastUpdated, git log -1 commit timestamp)` and generates a GitHub `/compare/<sha>...HEAD` URL when upstream commits are newer.
 
-### 5.2 Agentic Orchestration (`portfolio-auditor`)
-When `npm run audit:projects` reports new or updated repositories, the `portfolio-auditor` agent (`.agents/agents/portfolio-auditor.md`) coordinates with `.agents/skills/portfolio-sync-audit/` and `.agents/skills/project-entry-update/` to:
+### 5.2 Agentic Orchestration (`hub-portfolio-auditor`)
+When `npm run audit:projects` reports new or updated repositories, the `hub-portfolio-auditor` agent (`.agents/agents/hub-portfolio-auditor.md`) coordinates with `.agents/skills/hub-portfolio-sync-audit/` and `.agents/skills/hub-project-entry-update/` to:
 1. Copy updated vector/raster application icons into `public/project-icons/`.
 2. Author or refresh symmetric Spanish (`es`) and English (`en`) case studies and product blocks.
 3. Update `lastUpdated` to the current review date (`YYYY-MM-DD`).
 4. Run `npm run verify` to confirm zero regressions across lint, types, tests, and build.
 5. Commit in English using Conventional Commits, push to `origin main`, and verify remote GitHub Actions completion.
+
+### 5.3 Dedicated AI Capabilities & Skills Suite (`hub-*`)
+Projects Hub includes a specialized suite of autonomous capabilities located in `.agents/`:
+- **`hub-portfolio-auditor`** (`.agents/agents/hub-portfolio-auditor.md`): Master orchestrator agent for repository discovery, asset synchronization, bilingual case studies, product pages, and domain provisioning.
+- **`hub-dns-auditor`** (`.agents/agents/hub-dns-auditor.md`): DNS, SSL, and subdomain consistency auditor validating `vercel.json` host routes, Vercel registered domains, and Namecheap CNAME records.
+- **`hub-portfolio-sync-audit`** (`.agents/skills/hub-portfolio-sync-audit/`): Skill executing `npm run audit:projects` to categorize repositories into new projects and pending updates.
+- **`hub-project-entry-update`** (`.agents/skills/hub-project-entry-update/`): Skill updating a single entry's case study, product page, and domain setup.
+- **`hub-provision-subdomain`** (`.agents/skills/hub-provision-subdomain/`): Procedural recipe for Vercel subdomain attachment, `vercel.json` host route mapping, and Namecheap CNAME retrieval.
+- **`hub-validate-parity`** (`.agents/skills/hub-validate-parity/`): Automated bilingual parity, Zod schema, Lucide icon export, and Zero-Flags validator (`npm run validate:parity`).

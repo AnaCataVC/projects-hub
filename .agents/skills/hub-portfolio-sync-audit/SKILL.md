@@ -1,5 +1,5 @@
 ---
-name: portfolio-sync-audit
+name: hub-portfolio-sync-audit
 description: >-
   Audits local sibling repositories and remote GitHub repositories to identify new projects
   or recent code updates, and synchronize them with the Projects Hub portfolio, including
@@ -36,7 +36,7 @@ npm run audit:projects
 Or run with JSON output for automated agent parsing:
 
 ```powershell
-node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs --json
+node .agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs --json
 ```
 
 ### 2. Interpret Audit Results
@@ -52,7 +52,7 @@ The script categorizes all discovered repositories into these groups:
 
 For each **NEW PROJECT** and **PENDING UPDATE**:
 - Copy or synchronize the application icon into `public/project-icons/<project-id>-icon.{png|svg}` using PowerShell `Copy-Item`.
-- Run the `project-entry-update` skill (`.agents/skills/project-entry-update/SKILL.md`) with that project's id and, for a PENDING UPDATE, its diff link.
+- Run the `hub-project-entry-update` skill (`.agents/skills/hub-project-entry-update/SKILL.md`) with that project's id and, for a PENDING UPDATE, its diff link.
 - **Product Landing Page & Subdomain Provisioning:**
   - Verify if the entry has a `product` block. If not and the project is an active tool, application, or agent suite, scaffold the bilingual `product` block with full features, catalog, and download CTA.
   - Check `vercel.json` for the host route `<slug>.ana-catalina.com`. If missing, add the routes for `/` and `/en`.

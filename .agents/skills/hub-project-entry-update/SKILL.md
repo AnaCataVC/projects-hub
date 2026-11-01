@@ -1,9 +1,9 @@
 ---
-name: project-entry-update
+name: hub-project-entry-update
 description: >-
   Creates or updates a single Projects Hub entry (both es and en files) from its source
   repository, including its case study, product landing page, and Vercel subdomain setup.
-  Use when asked to update, refresh or add one specific project entry, or when portfolio-sync-audit
+  Use when asked to update, refresh or add one specific project entry, or when hub-portfolio-sync-audit
   flags a NEW PROJECT or PENDING UPDATE.
 tools: run_command, manage_task, view_file, write_to_file, replace_file_content, search_web, read_url_content
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit, run_command, view_file, replace_file_content, write_to_file

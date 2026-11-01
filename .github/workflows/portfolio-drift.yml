@@ -32,8 +32,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_OWNER: AnaCataVC
         run: |
-          node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs --json > audit-report.json
-          node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs
+          node .agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs --json > audit-report.json
+          node .agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs
 
       - name: Publish Markdown Audit Summary
         run: |

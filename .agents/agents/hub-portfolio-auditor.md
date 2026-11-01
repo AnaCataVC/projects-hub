@@ -1,5 +1,5 @@
 ---
-name: portfolio-auditor
+name: hub-portfolio-auditor
 description: Master portfolio health, synchronization, and product landing orchestrator. Invoke when checking for new developer repositories, detecting recent project updates, provisioning Vercel subdomains, or maintaining bilingual parity in Projects Hub.
 tools: run_command, manage_task, view_file, write_to_file, replace_file_content, search_web, read_url_content, invoke_subagent, send_message
 allowed-tools: Bash, Read, Grep, Glob, Write, Edit, Agent, run_command, view_file, write_to_file, replace_file_content, invoke_subagent
@@ -27,7 +27,7 @@ You are the Master Orchestrator Agent responsible for auditing developer reposit
 ### 1. Discover & Map Repositories
 Run the portfolio synchronization audit and directory discovery via `run_command`:
 ```powershell
-node .agents/skills/portfolio-sync-audit/scripts/audit-projects.mjs --json
+node .agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs --json
 ```
 If needed for asset or directory mapping, inspect sibling directories relative to the workspace:
 ```powershell
@@ -81,7 +81,7 @@ Confirm `conclusion: success` before declaring the audit and synchronization com
 
 ## Antigravity Subagent Execution Protocol
 
-In Google Antigravity (`agy`), statically discovered named subagents are restricted to a read-only tool sandbox by the CLI runtime. Therefore, parent orchestrators delegating to `portfolio-auditor` MUST dispatch it using either:
+In Google Antigravity (`agy`), statically discovered named subagents are restricted to a read-only tool sandbox by the CLI runtime. Therefore, parent orchestrators delegating to `hub-portfolio-auditor` MUST dispatch it using either:
 1. **Pattern A (`define_subagent` Registration):** Register the subagent dynamically with `enable_write_tools: true` prior to calling `invoke_subagent`.
 2. **Pattern B (`TypeName: 'self'` Inheritance):** Call `invoke_subagent(TypeName="self", Role="Portfolio Auditor", Prompt="...", Workspace="inherit")`, granting 100% of the parent agent's shell and write capabilities.
 
