@@ -9,7 +9,7 @@ isLiveApp: false
 technologies: ["Claude Code CLI", "TypeScript 5.4+", "React / Ink JSX", "Reactive State Atoms", "EngineInterface ($)", "Cleanroom TDD", "claude-code/testing", "Amiga IA"]
 categories: ["IA", "Agentes", "Developer Tools", "Productividad"]
 type: "ai"
-status: "Activo"
+status: "En Desarrollo"
 problem: "A medida que los agentes de codificación autónomos ejecutan flujos de trabajo extensos en la terminal con Claude Code, surgen fricciones críticas: saturación de la ventana de contexto por búsquedas mecánicas repetitivas, contenedores Docker y procesos huérfanos al salir, commits accidentales con cuentas de Git cruzadas, mutaciones riesgosas en clústeres de Kubernetes de producción y falta de visibilidad sobre los hooks cargados en el motor."
 solution: "Una suite de seis extensiones modulares (mods) y function hooks integrados sinérgicamente con el ecosistema Amiga IA, construidos sobre el runtime aislado de Claude Code y testeados con 'claude-code/testing'. Proporciona inspección interactiva de hooks y ajustes (`hooks-viewer`), interruptor de seguridad contra lecturas mecánicas masivas (`undelegated-reads`), checklist de cierre de recursos y Git previo a la salida (`close-checklist`), buzón reactivo de mensajería inter-agente (`child-sessions`), guarda de aislamiento Cleanroom Doble Ciego para TDD sin sesgos (`cleanroom-guard`) y un centinela configurable de perfiles Git y contextos de Kubernetes (`context-guard`)."
 learnings:
