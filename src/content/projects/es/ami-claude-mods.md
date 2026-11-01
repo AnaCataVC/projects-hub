@@ -4,6 +4,7 @@ icon: "/project-icons/ami-claude-mods-icon.png"
 description: "Suite de mods modulares, paneles reactivos en terminal y function hooks para la CLI de Claude Code integrados con el ecosistema Amiga IA que optimizan el contexto, auditan salidas seguras, protegen identidades Git y clústeres, e integran Cleanroom TDD."
 lastUpdated: 2026-11-01
 githubUrl: "https://github.com/AnaCataVC/ami-claude-mods"
+websiteUrl: "https://ami-claude-mods.ana-catalina.com"
 isLiveApp: false
 technologies: ["Claude Code CLI", "TypeScript 5.4+", "React / Ink JSX", "Reactive State Atoms", "EngineInterface ($)", "Cleanroom TDD", "claude-code/testing", "Amiga IA"]
 categories: ["IA", "Agentes", "Developer Tools", "Productividad"]
@@ -17,6 +18,77 @@ learnings:
   - "Resolución Asíncrona de Entorno Multiplataforma: Corrección de fallos silenciosos al consultar variables de entorno dependientes del sistema operativo (USERPROFILE vs HOME) mediante resolución paralela con Promise.all."
   - "Sinergia Cleanroom Doble Ciego con Amiga IA: Desacoplamiento estricto entre subagentes constructores y creadores de pruebas unitarias, eliminando el sesgo de confirmación e integrándose nativamente con la skill ami-orchestrate-cleanroom."
   - "Registro Declarativo Obligatorio de Estado en Contratos TypeScript: Toda clave atómica compartida (atom) debe declararse explícitamente en la interfaz PluginState de types/index.d.ts para prevenir colisiones en tiempo de compilación y validación del motor."
+websiteActionText: "Ver Página"
+product:
+  tagline: "Mods de producción y paneles reactivos para Claude Code"
+  intro: "Optimiza tu ventana de contexto, audita cambios pendientes antes de salir, protege identidades Git/Kubernetes y habilita TDD Cleanroom sin sesgos en la CLI de Claude Code."
+  features:
+    - icon: "Sliders"
+      title: "Inspección de Hooks y Ajustes"
+      text: "Visualiza hooks activos, extensiones cargadas y capas de configuración en tiempo real desde un panel lateral reactivo o mediante el comando /hooks-panel."
+    - icon: "Cpu"
+      title: "Ahorro de Contexto y Delegación"
+      text: "Detecta ráfagas de lecturas mecánicas consecutivas en el hilo principal y fuerza la delegación en subagentes exploradores para proteger la ventana de razonamiento."
+    - icon: "CheckSquare"
+      title: "Checklist Previo a la Salida"
+      text: "Audita cambios pendientes en Git, contenedores Docker activos y procesos en segundo plano antes de cerrar la sesión mediante /checklist o al invocar exit."
+    - icon: "MessagesSquare"
+      title: "Bandeja de Mensajería Inter-Agente"
+      text: "Banda interactiva sobre el prompt que prioriza preguntas bloqueantes y alertas de subagentes en ejecución concurrente con botones de acción rápida."
+    - icon: "ShieldAlert"
+      title: "Aislamiento Cleanroom Doble Ciego"
+      text: "Guarda estricta para TDD que bloquea el acceso de subagentes generadores de tests al código fuente de implementación para erradicar el sesgo de confirmación."
+    - icon: "FolderLock"
+      title: "Guardas Multi-Perfil Git y K8s"
+      text: "Alinea la cuenta activa de GitHub CLI con el directorio de trabajo y previene mutaciones bare con kubectl en clústeres de producción sin contexto explícito."
+  platforms: ["Claude Code CLI", "Windows", "macOS", "Linux"]
+  downloadUrl: "https://github.com/AnaCataVC/ami-claude-mods"
+  downloadLabel: "Ver Repositorio en GitHub"
+  links:
+    - label: "Catálogo de Mods"
+      url: "#catalog"
+    - label: "Inicio Rápido"
+      url: "#quick-start"
+  catalog:
+    title: "Catálogo de Extensiones"
+    items:
+      - title: "hooks-viewer"
+        description: "Panel lateral interactivo y comando /hooks-panel que lista todos los hooks y plugins configurados."
+        tags: ["session.start", "command.run", "Side Pane"]
+      - title: "undelegated-reads"
+        description: "Interruptor de seguridad y medidor en barra de estado que contabiliza lecturas mecánicas consecutivas."
+        tags: ["tool.call", "Status Bar", "AbovePrompt"]
+      - title: "close-checklist"
+        description: "Inspector de cierre que rastrea estado Git, contenedores Docker y procesos huérfanos antes de salir."
+        tags: ["session.end", "/checklist", "Side Pane"]
+      - title: "child-sessions"
+        description: "Buzón de mensajería entre agentes con acciones de un clic para responder, ver o descartar."
+        tags: ["session.receive", "AbovePrompt", "Subagents"]
+      - title: "cleanroom-guard"
+        description: "Aislamiento estricto Cleanroom Doble Ciego para flujos TDD con agentes autónomos."
+        tags: ["tool.call", "Cleanroom TDD", "Amiga IA"]
+      - title: "context-guard"
+        description: "Guarda multientorno para cuentas GitHub CLI y comandos de Kubernetes en producción."
+        tags: ["git auth", "kubectl", "Guardrails"]
+  codeSnippets:
+    - title: "Carga Rápida por Línea de Comandos"
+      language: "bash"
+      code: "claude --plugin-dir mods/hooks-viewer --plugin-dir mods/undelegated-reads"
+    - title: "Carga Mediante Variable de Entorno"
+      language: "powershell"
+      code: |
+        $env:CLAUDE_CODE_PLUGIN_DIRS = "C:/path/to/ami-claude-mods/mods/hooks-viewer;C:/path/to/ami-claude-mods/mods/close-checklist"
+        claude
+    - title: "Validación de Contratos de Mod"
+      language: "bash"
+      code: |
+        claude plugin validate mods/hooks-viewer
+        claude plugin test mods/hooks-viewer
+  faq:
+    - question: "¿Requiere modificar el binario de Claude Code?"
+      answer: "No. Todos los mods se ejecutan en el sandbox aislado ECMAScript oficial de Claude Code consumiendo exclusivamente la interfaz EngineInterface ($)."
+    - question: "¿Es compatible con Windows, macOS y Linux?"
+      answer: "Sí. Toda la resolución de variables de entorno y comandos de sistema está diseñada con soporte multiplataforma garantizado y verificado mediante pruebas unitarias."
 ---
 
 ### Extensiones de Producción y Guardas de Seguridad para Claude Code

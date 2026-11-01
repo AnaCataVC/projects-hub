@@ -4,6 +4,7 @@ icon: "/project-icons/ami-claude-mods-icon.png"
 description: "Suite of production-grade modular extensions, reactive terminal UI panels, and function hooks for Claude Code CLI integrated with the Amiga IA ecosystem, optimizing context consumption, safe exits, multi-profile guards, and Cleanroom TDD isolation."
 lastUpdated: 2026-11-01
 githubUrl: "https://github.com/AnaCataVC/ami-claude-mods"
+websiteUrl: "https://ami-claude-mods.ana-catalina.com"
 isLiveApp: false
 technologies: ["Claude Code CLI", "TypeScript 5.4+", "React / Ink JSX", "Reactive State Atoms", "EngineInterface ($)", "Cleanroom TDD", "claude-code/testing", "Amiga IA"]
 categories: ["AI", "Agents", "Developer Tools", "Productivity"]
@@ -17,6 +18,77 @@ learnings:
   - "Cross-Platform Asynchronous Environment Resolution: Avoiding silent runtime fallbacks when querying OS-specific environment variables (USERPROFILE vs HOME) by resolving them concurrently with Promise.all."
   - "Double-Blind Cleanroom Synergy with Amiga IA: Decoupling test authors from code implementers to eliminate confirmation bias during agentic TDD workflows and ensuring clean integration with the ami-orchestrate-cleanroom skill."
   - "Mandatory Declarative State Registration in TypeScript Contracts: Any reactive atom state key must be formally registered in the PluginState interface of types/index.d.ts to prevent untyped collisions during engine compilation and validation."
+websiteActionText: "Visit Page"
+product:
+  tagline: "Production-grade mods and reactive terminal panels for Claude Code"
+  intro: "Optimize your reasoning context, audit uncommitted changes before exit, protect Git/Kubernetes environments, and run bias-free Cleanroom TDD in Claude Code CLI."
+  features:
+    - icon: "Sliders"
+      title: "Hooks & Settings Inspector"
+      text: "Visualize active hooks, registered mods, and configuration layers in real time from a reactive side pane or via /hooks-panel."
+    - icon: "Cpu"
+      title: "Context Economy & Circuit Breaker"
+      text: "Detects consecutive mechanical searches on the primary thread and prompts delegation to exploration subagents, preserving the main reasoning window."
+    - icon: "CheckSquare"
+      title: "Pre-Exit Resource Checklist"
+      text: "Audits uncommitted Git changes, running Docker containers, and lingering background processes before closing the session via /checklist or upon exit."
+    - icon: "MessagesSquare"
+      title: "Inter-Agent Messaging Inbox"
+      text: "Interactive banner above the prompt that surfaces blocking questions and notifications from concurrent background subagents with one-click actions."
+    - icon: "ShieldAlert"
+      title: "Double-Blind Cleanroom Isolation"
+      text: "Strict TDD guardrail preventing test-generating subagents from reading implementation source code, eradicating confirmation bias."
+    - icon: "FolderLock"
+      title: "Multi-Profile Git & K8s Guards"
+      text: "Enforces active GitHub CLI accounts per workspace directory and forbids bare kubectl mutations on production Kubernetes clusters without explicit context."
+  platforms: ["Claude Code CLI", "Windows", "macOS", "Linux"]
+  downloadUrl: "https://github.com/AnaCataVC/ami-claude-mods"
+  downloadLabel: "View Repository on GitHub"
+  links:
+    - label: "Mods Catalog"
+      url: "#catalog"
+    - label: "Quick Start"
+      url: "#quick-start"
+  catalog:
+    title: "Mods Catalog"
+    items:
+      - title: "hooks-viewer"
+        description: "Interactive side pane and /hooks-panel command listing all configured hooks and active plugins."
+        tags: ["session.start", "command.run", "Side Pane"]
+      - title: "undelegated-reads"
+        description: "Real-time gauge and circuit breaker counting consecutive mechanical searches to enforce subagent delegation."
+        tags: ["tool.call", "Status Bar", "AbovePrompt"]
+      - title: "close-checklist"
+        description: "Pre-exit safety inspector tracking uncommitted Git status, active Docker containers, and dangling tasks."
+        tags: ["session.end", "/checklist", "Side Pane"]
+      - title: "child-sessions"
+        description: "Inter-agent messaging inbox prioritizing blocking questions with quick action buttons."
+        tags: ["session.receive", "AbovePrompt", "Subagents"]
+      - title: "cleanroom-guard"
+        description: "Strict Double-Blind Cleanroom isolation for TDD subagents, preventing test data leakage."
+        tags: ["tool.call", "Cleanroom TDD", "Amiga IA"]
+      - title: "context-guard"
+        description: "Multi-profile guard aligning GitHub CLI accounts with workspaces and blocking un-scoped kubectl commands."
+        tags: ["git auth", "kubectl", "Guardrails"]
+  codeSnippets:
+    - title: "Fast Command-Line Loading"
+      language: "bash"
+      code: "claude --plugin-dir mods/hooks-viewer --plugin-dir mods/undelegated-reads"
+    - title: "Load via Environment Variable"
+      language: "powershell"
+      code: |
+        $env:CLAUDE_CODE_PLUGIN_DIRS = "C:/path/to/ami-claude-mods/mods/hooks-viewer;C:/path/to/ami-claude-mods/mods/close-checklist"
+        claude
+    - title: "Validate Mod Contract"
+      language: "bash"
+      code: |
+        claude plugin validate mods/hooks-viewer
+        claude plugin test mods/hooks-viewer
+  faq:
+    - question: "Does it modify Claude Code core binaries?"
+      answer: "No. All mods run inside Claude Code's official sandboxed ECMAScript runtime consuming exclusively the EngineInterface ($)."
+    - question: "Is it cross-compatible across Windows, macOS, and Linux?"
+      answer: "Yes. All environment resolution and system helpers are built for uniform cross-platform behavior and tested against automated suites."
 ---
 
 ### Production-Grade Extensions and Safety Guards for Claude Code

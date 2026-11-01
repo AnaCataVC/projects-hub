@@ -6,6 +6,26 @@
       "has": [
         {
           "type": "host",
+          "value": "ami-claude-mods.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/ami-claude-mods/index.html"
+    },
+    {
+      "src": "^/en/?$",
+      "has": [
+        {
+          "type": "host",
+          "value": "ami-claude-mods.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/ami-claude-mods/en/index.html"
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
           "value": "amiga-ia.ana-catalina.com"
         }
       ],

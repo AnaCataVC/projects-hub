@@ -84,8 +84,8 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
 - **Routes:** `src/pages/p/[...path].astro` builds `/p/<slug>/` (es) and `/p/<slug>/en/` (en) for every non-archived entry with a `product` block. They are excluded from the sitemap; their canonical URL is the project's subdomain (`websiteUrl`).
 - **Subdomains & DNS Setup (Vercel & Namecheap):** each `<slug>.ana-catalina.com` is attached to this Vercel project, and `vercel.json` maps `/` and `/en` on that host to the product routes. These are `routes` placed before `{ "handle": "filesystem" }` on purpose: plain `rewrites` run after static files, so `/` would serve the console.
   1. Add the `product` block to both language entries (`es` and `en`) and add the two host routes to `vercel.json`.
-  2. Attach the subdomain in Vercel: go to Vercel Dashboard -> project `projects-hub` -> **Settings** -> **Domains**, and add `<slug>.ana-catalina.com`.
-  3. Retrieve the dedicated CNAME target from Vercel: Vercel does **NOT** use generic `cname.vercel-dns.com` for subdomains on this domain; it assigns a unique per-subdomain hash target under `vercel-dns-017.com` (e.g., `xxxxxxxxxxxxxxxx.vercel-dns-017.com`). Copy the exact target string displayed in the Vercel domain card.
+  2. Attach the subdomain in Vercel: run `vercel domains add <slug>.ana-catalina.com projects-hub` via Vercel CLI (or go to Vercel Dashboard -> project `projects-hub` -> **Settings** -> **Domains**).
+  3. Retrieve the dedicated CNAME target from Vercel: run `vercel domains verify <slug>.ana-catalina.com`. Vercel does **NOT** use generic `cname.vercel-dns.com` for subdomains on this domain; it assigns a unique per-subdomain hash target under `vercel-dns-017.com` (e.g., `xxxxxxxxxxxxxxxx.vercel-dns-017.com`).
   4. Create the DNS record in Namecheap:
      - In Namecheap -> **Domain List** -> `ana-catalina.com` -> **Manage** -> **Advanced DNS**.
      - Under **Host Records**, click **Add New Record**:
@@ -94,7 +94,7 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
        - **Target / Value:** the unique `<hash>.vercel-dns-017.com` provided by Vercel.
        - **TTL:** `Automatic` (or `1 min` for faster propagation).
      - Save changes with the green checkmark.
-  5. Return to Vercel and click **Refresh** on the domain card; within 1–2 minutes it turns green (`Valid Configuration`) and provisions the SSL certificate.
+  5. Verification: run `vercel domains verify <slug>.ana-catalina.com` (or click **Refresh** on the Vercel domain card); within 1–2 minutes it turns green (`Valid Configuration`) and provisions the SSL certificate.
   6. `src/__tests__/product-pages.test.ts` fails if a routed subdomain has no bilingual product block, a product has no `downloadUrl`, or an archived entry still links to a live site.
 
 ---
@@ -137,6 +137,7 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
    - **Autonomous End-to-End Execution:** The `portfolio-auditor` agent operates as a fully autonomous executor. It possesses direct capabilities to scan sibling directories (`Get-ChildItem`), copy project icons (`Copy-Item`), scaffold and edit bilingual entries in `src/content/projects/{es,en}/*.md`, execute local quality gates (`npm run lint; npm run type-check; npm test; npm run build`), stage and commit changes in English, push to remote (`origin main`), and verify live CI deployment (`gh run list`). It must never request manual user intervention for terminal operations.
    - To create or update a single entry, use `.agents/skills/project-entry-update/` (the audit calls it per flagged project). Any content change or review of an entry must set `lastUpdated` to the current date in both `es` and `en`, since the page shows it to readers and the audit uses it as the review mark.
    - An entry is stale when its source repo has a commit newer than its review date (the later of `lastUpdated` and the last commit of its `es` file). Only `Activo`/`Active` and `En Desarrollo`/`In Development` entries are monitored; archived ones are frozen, and more statuses can be added to the audit filter. If there are ever more than ~10 monitored entries, or you want alerts without running the audit by hand, the upgrade path is per-file pins plus a weekly workflow.
+   - **Product Landing Pages & Subdomain Setup:** When auditing or adding projects, agents must evaluate whether each active project has or should have a Pastel-Tech product landing page (`product` block). If present or newly added, agents must ensure host routes exist in `vercel.json`, automatically provision the subdomain via `vercel domains add <slug>.ana-catalina.com projects-hub`, extract the assigned CNAME hash with `vercel domains verify <slug>.ana-catalina.com`, and report the Namecheap DNS record to the user.
    - Repository discovery must remain 100% path-agnostic (resolving sibling repos at `..` or `$env:REPOS_DIR`).
    - Personal portfolio audits MUST automatically ignore forks (`isFork: true` on GitHub API) and non-software repositories, focusing exclusively on original projects authored by the user.
 13. **Content Scope & Length Guidelines (Product Pages vs. Case Studies):**
