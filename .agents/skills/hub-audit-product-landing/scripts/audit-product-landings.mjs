@@ -173,9 +173,12 @@ export function auditLandings() {
   const warnings = [];
   const passing = [];
 
-  console.log('======================================================');
-  console.log('    Projects Hub — Product Landing & SEO Auditor      ');
-  console.log('======================================================\n');
+  const outputJson = process.argv.includes('--json');
+  if (!outputJson) {
+    console.log('======================================================');
+    console.log('    Projects Hub — Product Landing & SEO Auditor      ');
+    console.log('======================================================\n');
+  }
 
   for (const file of esFiles) {
     const slug = file.replace(/\.md$/, '');
@@ -363,6 +366,11 @@ export function auditLandings() {
     }
 
     passing.push(slug);
+  }
+
+  if (outputJson) {
+    console.log(JSON.stringify({ issues, warnings, passing }, null, 2));
+    return issues.length === 0 ? 0 : 1;
   }
 
   // Reporting
