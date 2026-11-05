@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
-description: "Ecosistema integral de 14 subagentes autónomos, hooks de seguridad sin estado y 25 skills declarativas portátiles. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
-lastUpdated: 2026-11-01
+description: "Ecosistema integral de 14 subagentes autónomos, hooks de seguridad sin estado y 25 skills declarativas portátiles con instalación selectiva por packs de dominio e invariantes de ingeniería reforzadas. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
+lastUpdated: 2026-11-05
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -11,7 +11,7 @@ categories: ["IA", "Agentes", "Productividad", "Developer Tools"]
 type: "ai"
 status: "Activo"
 problem: "La degradación en bases de código grandes al depender de instrucciones imperativas paso a paso, junto al consumo elevado de tokens al acumular contexto repetitivo en asistentes de IA genéricos."
-solution: "Un ecosistema agéntico unificado de 14 subagentes autónomos y 25 skills declarativas, dotado de un compilador nativo para el tri-ecosistema (Antigravity, Claude Code y OpenAI Codex), protocolo de bloques delimitados, TDD Cleanroom Doble Ciego y suite de benchmarks empíricos deterministas."
+solution: "Un ecosistema agéntico unificado de 14 subagentes autónomos y 25 skills declarativas con instalación selectiva por dominio e invariantes reforzadas, dotado de un compilador nativo para el tri-ecosistema (Antigravity, Claude Code y OpenAI Codex), protocolo de bloques delimitados, TDD Cleanroom Doble Ciego y suite de benchmarks empíricos deterministas."
 learnings:
   - "Evaluación Empírica de Benchmarks Agénticos (ADR-004, ADR-012): Validación offline determinista que evidencia -44.75% (-2.973 tokens) en sobrecarga de contexto por turno, 0% de sesgo de confirmación en TDD Cleanroom y 100% de precisión y exhaustividad en auditorías de repositorio."
   - "Distribución Idempotente de Reglas de IA: Diseño del protocolo de bloques delimitados para inyectar y sincronizar directivas de agentes en proyectos sin sobreescribir configuraciones locales ni generar residuos."
@@ -37,7 +37,7 @@ product:
       text: "Realiza pruebas de seguridad, consistencia de datos e interceptación de hooks antes de cualquier push al remoto."
     - icon: "Stethoscope"
       title: "Asistente de Instalación y Diagnóstico"
-      text: "Un wizard interactivo configura skills y subagentes para Antigravity, Claude Code y OpenAI Codex, deja elegir tu motor de shell preferido, y un comando doctor verifica la salud del sistema."
+      text: "El wizard CLI interactivo (`amiga-ia-setup`) permite instalar la suite completa o packs de dominio selectivos para Antigravity, Claude Code y OpenAI Codex, con invariantes de ingeniería reforzadas y un comando doctor para verificar la salud del sistema."
   platforms: ["Claude Code", "Antigravity (Gemini)", "OpenAI Codex"]
   downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
   downloadLabel: "Instalar vía NPM"
@@ -98,7 +98,7 @@ product:
 
 **Amiga IA** transforma la asistencia de programación con Inteligencia Artificial, superando las limitaciones de los prompts imperativos mediante una **malla de 14 subagentes especializados y autónomos** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, entre otros) respaldada por **25 skills declarativas bajo demanda**. Cada subagente asume un rol delimitado con herramientas específicas y compuertas de seguridad.
 
-*   **Adaptador Universal & Multi-Motor:** Inyección de guardarraíles sin estado y compilación portátil de habilidades con compatibilidad nativa entre Antigravity (Gemini), Claude Code y OpenAI Codex.
+*   **Adaptador Universal & Multi-Motor:** Inyección de guardarraíles sin estado y compilación portátil de habilidades con compatibilidad nativa entre Antigravity (Gemini), Claude Code y OpenAI Codex. Incluye un wizard CLI (`amiga-ia-setup`) con instalación modular por packs de dominio e invariantes de ingeniería reforzadas.
 *   **Protocolo de Bloques Delimitados:** Motor de sincronización idempotente que actualiza reglas globales en múltiples repositorios sin sobreescribir configuraciones locales ni dejar residuos.
 *   **Aislamiento Cleanroom Doble Ciego:** Flujo de TDD desacoplado (`ami-cleanroom-arbiter`) donde el implementador y el autor de pruebas operan sobre contratos de interfaz sellados, erradicando el sesgo de confirmación.
 

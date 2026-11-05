@@ -1,23 +1,24 @@
 ---
 title: "Emotion Finder"
 description: "Interactive emotion detector and affective NLP classifier based on Russell's Circumplex Model of Affect and a 64-state somatic binary decision tree."
-lastUpdated: 2026-10-26
+lastUpdated: 2026-11-05
 icon: "/project-icons/emotion-finder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/emotion-finder"
 liveAppUrl: "https://emotion-finder.ana-catalina.com"
 isLiveApp: true
-technologies: ["Python 3.11", "FastHTML", "HTMX", "scikit-learn", "Pico CSS", "TF-IDF", "Turso LibSQL", "Vercel Serverless"]
+technologies: ["Python 3.11", "FastHTML", "HTMX", "scikit-learn", "Active Learning", "Antigravity Agents", "Turso LibSQL", "Vercel Serverless"]
 categories: ["Data Science", "NLP", "Machine Learning", "Affective Psychology"]
 type: "data-science"
 status: "In Development"
 problem: "Converting vague somatic sensations and diffuse thoughts into accurate emotional labels often frustrates or overwhelms users when presented with long, decontextualized lists of abstract psychological terms."
-solution: "A hybrid architecture with an early-exit shortcut: freeform input is first classified into Russell's 4 affective quadrants via TF-IDF and Logistic Regression (0 KB client JS, <5ms inference), then matched by cosine similarity against the quadrant's 16 emotions — falling back to a 4-step binary somatic decision tree only when no match is confident enough — and continuously refined by a human-in-the-loop feedback loop with automated weekly retraining gated on cross-validation and dialectal regression tests."
+solution: "A hybrid architecture with an early-exit shortcut: freeform input is first classified into Russell's 4 affective quadrants via TF-IDF and Logistic Regression (0 KB client JS, <5ms inference), then matched by cosine similarity against the quadrant's 16 emotions — falling back to a 4-step binary somatic decision tree only when no match is confident enough — and continuously refined by cumulative, idempotent active learning retraining orchestrated via native Antigravity skills and subagents, protected by automated pre-push and CI quality gates."
 learnings:
   - "NLP Meta-Word Feature Bias Elimination: Diagnosing and neutralizing shortcut correlations where generic domain terms ('emotion', 'feeling') skewed quadrant predictions, solved via custom domain stopwords and balanced synthetic augmentation."
   - "Affective Stopword Whitelisting: Overriding standard NLP stopword removers to retain critical negation particles ('not', 'without') and intensifiers ('very', 'extremely') essential for valence and arousal fidelity."
   - "Zero-JS Hypermedia with FastHTML and HTMX: Eliminating client build tooling and multi-megabyte SPA bundles using pure server-rendered Python components with declarative partial DOM swaps."
   - "Lightweight Serverless ML on Vercel: Compressing inference pipelines to ~27 KB via L2-regularized linear classifiers, achieving sub-1.5s cold starts and avoiding heavy Transformer overhead."
   - "Honest Accuracy Ceiling: Accuracy on figurative language never seen during training tops out at ~29% (ES) / ~40% (EN) — the app is explicitly early-stage, with an in-product confirmation step and disclaimer that turn every correction into training data."
+  - "Cumulative and Idempotent Active Learning: Transitioning from naive snapshot overwrites to a cumulative, idempotent active learning pipeline. Prevents regressions by merging curated user feedback with historical baseline datasets, audited by Antigravity subagents and validated against F1 and dialectal regression gates."
   - "Silent Framework Injection Pitfalls: Adding session-scoped rate limiting to the feedback endpoint surfaced a subtler bug — an explicit `Any` type annotation on a route's `session` parameter silently defeated FastHTML's special-name parameter injection, collapsing per-user session identity into a single IP+user-agent value shared by everyone behind the same NAT. Fixed by dropping the annotation; a reminder that an anonymized rate-limiting key is only as strong as the session plumbing feeding it."
 ---
 
@@ -33,4 +34,4 @@ learnings:
 
 *   **Cultural Affective Collocations:** Native support for dialectal idioms (Chilean Spanish and British English), using functional affective mapping rather than misleading word-for-word translation.
 *   **Stateless Serverless Hypermedia:** Packaged for serverless ASGI deployment on Vercel, delivering smooth, responsive UI state transitions rendered in server-side Python with 0 KB of client JavaScript.
-*   **Human-in-the-Loop Retraining:** User feedback feeds a weekly automated retraining pipeline gated on 5-fold cross-validation (F1≥0.95) and dialectal regression probes, with anti-poisoning caps on new samples, persisted in Turso LibSQL.
+*   **Cumulative Active Learning & Antigravity Subagents:** User feedback powers a cumulative, idempotent retraining pipeline on Turso LibSQL, audited and orchestrated through native Antigravity skills and subagents (`emotion-finder-evaluator`, `emotion-finder-feedback-auditor`, `emotion-finder-curate-feedback`, `emotion-finder-sync-emotions`) guarded by 5-fold cross-validation (F1≥0.95) and automated pre-push and CI quality gates.

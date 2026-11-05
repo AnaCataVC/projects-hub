@@ -1,7 +1,7 @@
 ---
 title: "anacatalina-mcp (AI-Native Interactive Resume)"
 description: "Servidor Model Context Protocol (MCP) que permite a Inteligencias Artificiales interactuar con mi experiencia profesional."
-lastUpdated: 2026-10-31
+lastUpdated: 2026-11-05
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
@@ -16,7 +16,7 @@ learnings:
   - "Integración exitosa del protocolo emergente MCP, adaptando la arquitectura para soportar comunicación bidireccional asíncrona mediante Streamable-HTTP compatible con Antigravity, Claude, Cursor y Gemini Connected Apps."
   - "Seguridad ASGI y Rate Limiting Acotado: Implementación de middleware de seguridad ASGI con cabeceras estrictas, limitación de tasa en memoria y auditoría continua de vulnerabilidades en CI."
   - "Motor de Emparejamiento Dinámico en Memoria: Implementación de un algoritmo determinista en cv_service.py para evaluar compatibilidad con vacantes y stack técnico en memoria con latencia inferior a 2ms."
-  - "Despliegue serverless optimizado en Google Cloud Run utilizando contenedores Docker ligeros, aprovechando la funcionalidad 'Scale to Zero' para reducir costos operativos a cero durante la inactividad."
+  - "Arquitectura Serverless y Guardarraíles de Costo en Cloud Run: Despliegue en contenedores Docker ligeros con Scale to Zero para costo cero en reposo, complementado con límites de concurrencia estrictos y timeouts de solicitud que previenen bucles descontrolados de tools de IA mientras mantienen los costos ociosos en cero."
   - "Negociación Transparente de Contenido HTTP & Contratos Tipados: Negociación dinámica en GET / que entrega directamente el showcase HTML con status 200 a navegadores web y descubrimiento JSON a clientes MCP, junto a un contrato fuertemente tipado SearchResult en Pydantic v2."
   - "Automatización de Invariantes y CI/CD Auto-Reparable (v1.10.0): Implementación de un task runner nativo (`scripts/tasks.py`) y script de verificación de invariantes (`verify_ecosystem_invariants.py`) que audita la paridad de tokens pastel-tech, Zero-Flags y congruencia de datos curriculares entre repositorios, complementado con workflows de sincronización y detección de drift diario en GitHub Actions."
 websiteActionText: "Servidor MCP & Demo"
@@ -71,4 +71,4 @@ El servidor está desarrollado en **Python 3.12** utilizando **FastMCP** y el tr
 
 ### Despliegue en Cloud Run
 
-La aplicación se empaqueta en una imagen **Docker** altamente optimizada y se despliega en **Google Cloud Run (GCP)**. La naturaleza del tráfico (peticiones a demanda desde asistentes) hace que la arquitectura *Serverless* sea ideal, ya que gracias al modelo *Scale to Zero*, el costo de infraestructura se mantiene nulo mientras el servidor no recibe peticiones, reiniciándose y escalando en milisegundos cuando es invocado.
+La aplicación se empaqueta en una imagen **Docker** altamente optimizada y se despliega en **Google Cloud Run (GCP)**. La naturaleza del tráfico (peticiones a demanda desde asistentes) hace que la arquitectura *Serverless* sea ideal, ya que gracias al modelo *Scale to Zero*, el costo de infraestructura se mantiene nulo mientras el servidor no recibe peticiones, reiniciándose y escalando en milisegundos cuando es invocado. Además, se configuraron guardarraíles de costos, límites de concurrencia y timeouts de solicitud que mitigan riesgos de bucles infinitos de ejecución de tools por agentes de IA.

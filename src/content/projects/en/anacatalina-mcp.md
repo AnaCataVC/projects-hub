@@ -1,7 +1,7 @@
 ---
 title: "anacatalina-mcp (AI-Native Interactive Resume)"
 description: "Model Context Protocol (MCP) server that enables AI assistants to interact with my professional experience."
-lastUpdated: 2026-10-31
+lastUpdated: 2026-11-05
 icon: "/project-icons/anacatalina-mcp-icon.png"
 githubUrl: "https://github.com/AnaCataVC/anacatalina-mcp"
 websiteUrl: "https://mcp.ana-catalina.com/"
@@ -16,7 +16,7 @@ learnings:
   - "Successful integration of the emerging MCP protocol, adapting the architecture to support asynchronous bidirectional communication via Streamable-HTTP compatible with Antigravity, Claude, Cursor, and Gemini Connected Apps."
   - "ASGI Security Middleware & Bounded Rate Limiting: Implementation of strict ASGI security headers, in-memory rate limiting, and continuous vulnerability auditing in CI pipelines."
   - "In-Memory Dynamic Matching Engine: Deterministic algorithm in cv_service.py evaluating job profile compatibility and technical stack alignment entirely in memory with sub-2ms latency."
-  - "Optimized serverless deployment on Google Cloud Run using lightweight Docker containers, leveraging 'Scale to Zero' functionality to reduce operational costs to zero during idle times."
+  - "Serverless Architecture & Cost Guardrails on Cloud Run: Lightweight Docker deployment with Scale-to-Zero keeping idle costs at zero, paired with strict request timeouts and concurrency limits to prevent runaway AI tool loops while enforcing budget protection."
   - "Zero-Downtime Content Negotiation & Typed Contracts: Dynamic HTTP content negotiation on GET / delivering the interactive HTML showcase directly with 200 OK to web browsers while serving JSON discovery to MCP clients, paired with a strongly-typed SearchResult Pydantic v2 contract."
   - "Invariant Automation & Self-Healing CI/CD (v1.10.0): Built a native task runner (`scripts/tasks.py`) and ecosystem invariant auditor (`verify_ecosystem_invariants.py`) validating Pastel-Tech tokens, Zero-Flags policy, and cross-repo data congruence, alongside daily automated upstream drift detection in GitHub Actions."
 websiteActionText: "MCP Server & Demo"
@@ -71,4 +71,4 @@ The server is developed in **Python 3.12** using **FastMCP** and unified **Strea
 
 ### Deployment on Cloud Run
 
-The application is packaged into a highly optimized **Docker** image and deployed on **Google Cloud Run (GCP)**. The nature of the traffic (on-demand requests from assistants) makes the *Serverless* architecture ideal, since thanks to the *Scale to Zero* model, infrastructure costs remain nil while the server receives no requests, restarting and scaling in milliseconds when invoked.
+The application is packaged into a highly optimized **Docker** image and deployed on **Google Cloud Run (GCP)**. The nature of the traffic (on-demand requests from assistants) makes the *Serverless* architecture ideal, since thanks to the *Scale to Zero* model, infrastructure costs remain nil while the server receives no requests, restarting and scaling in milliseconds when invoked. Additionally, strict cost guardrails, concurrency caps, and request timeouts were implemented to safeguard against runaway tool invocation loops from AI agents.

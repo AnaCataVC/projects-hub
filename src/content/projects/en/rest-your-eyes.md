@@ -1,19 +1,20 @@
 ---
 title: "Rest Your Eyes"
 description: "Native Android application designed to prevent eye strain caused by prolonged mobile device usage."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-11-05
 icon: "/project-icons/rest-your-eyes-icon.png"
 githubUrl: "https://github.com/AnaCataVC/rest-your-eyes"
 websiteUrl: "https://rest-your-eyes.ana-catalina.com"
 isLiveApp: false
-technologies: ["Kotlin", "Jetpack Compose", "Foreground Services", "Broadcast Receivers", "Jetpack DataStore", "MVVM"]
+technologies: ["Kotlin", "Jetpack Compose", "Foreground Services", "Broadcast Receivers", "Jetpack DataStore", "Habit Analytics", "MVVM"]
 categories: ["Mobile", "Health", "Android"]
 type: "mobile"
 status: "Active"
 problem: "Eye strain from prolonged, continuous mobile screen use, with no built-in way to track real screen-on time or receive proactive rest reminders — and Android 14+'s stricter background service restrictions make naive polling solutions unreliable."
-solution: "A native Android app that enforces the 20-20-20 rule by tracking real screen-on time via a Foreground Service and BroadcastReceivers (ACTION_SCREEN_ON/OFF), pausing automatically when the device is locked to avoid battery drain. It overlays a gentle SYSTEM_ALERT_WINDOW reminder with customizable sound alerts and auto-dismiss, and declares the Android 14+ `health` foreground service type so the OS never kills the monitor mid-session."
+solution: "A native Android app that enforces the 20-20-20 rule by tracking real screen-on time via a Foreground Service and BroadcastReceivers (ACTION_SCREEN_ON/OFF), pausing automatically when the device is locked to avoid battery drain. It overlays a gentle SYSTEM_ALERT_WINDOW reminder with customizable alerts, declares the Android 14+ `health` foreground service type, and incorporates visual break adherence analytics with a 7-day rolling window and 180-day historical retention."
 learnings:
   - "Building an app capable of tracking real device usage (screen on/off time)."
+  - "Visual Break Adherence Architecture & 180-Day Retention: Engineered StatsRepository backed by Jetpack DataStore featuring a dynamic 7-day rolling window to prevent artificial Monday morning resets and an atomic barrier against duplicate event logging."
   - "Using Foreground Services and Broadcast Receivers in Android for background monitoring."
   - "Implementing system-level overlay notifications (SYSTEM_ALERT_WINDOW) to proactively interact with the user."
 websiteActionText: "Visit Page"
@@ -24,6 +25,9 @@ product:
     - icon: "Timer"
       title: "Customizable Intervals"
       text: "Adjust the warning time and rest duration. By default, rest 20 seconds every 20 minutes."
+    - icon: "TrendingUp"
+      title: "Visual Break Adherence Analytics"
+      text: "Track completed vs. skipped breaks across a 7-day rolling window and 180-day trend with empathetic non-punitive microcopy."
     - icon: "Vibrate"
       title: "Notifications & Vibration"
       text: "Get discreet, interactive alerts with vibration support and auto-dismiss, so you don't lose focus."
@@ -44,6 +48,7 @@ product:
 
 *   **Foreground Service & BroadcastReceivers:** Real-time state tracking listening to `ACTION_SCREEN_ON` and `ACTION_SCREEN_OFF` events to aggregate only genuine active screen-on time.
 *   **Proactive Overlays (`SYSTEM_ALERT_WINDOW`):** Renders a gentle, translucent Jetpack Compose overlay prompting eye relaxation without forcibly crashing active tasks.
+*   **Visual Adherence Analytics & Habit Tracking:** Real-time tracking powered by `StatsRepository` over Jetpack DataStore calculating completed vs. skipped breaks across a rolling 7-day window and 180-day historical trend with empathetic microcopy.
 
 ### Battery & Resource Optimization
 

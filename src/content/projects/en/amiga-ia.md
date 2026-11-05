@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
-description: "Comprehensive ecosystem of 14 autonomous subagents, stateless guardrail hooks, and 25 portable declarative skills. 100% cross-compatible with Antigravity (Gemini), Claude Code, and OpenAI Codex."
-lastUpdated: 2026-11-01
+description: "Comprehensive ecosystem of 14 autonomous subagents, stateless guardrail hooks, and 25 portable declarative skills with selective domain pack installation and strengthened engineering invariants. 100% cross-compatible with Antigravity (Gemini), Claude Code, and OpenAI Codex."
+lastUpdated: 2026-11-05
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -11,7 +11,7 @@ categories: ["AI", "Agents", "Productivity", "Developer Tools"]
 type: "ai"
 status: "Active"
 problem: "Traditional step-by-step imperative instructions break down as codebases scale, alongside heavy recurring token taxes caused by bloated system prompts and repetitive multi-engine context."
-solution: "A unified agentic ecosystem featuring 14 autonomous orchestrating subagents and 25 declarative skills, powered by a tri-ecosystem compiler (Antigravity, Claude Code, and OpenAI Codex), delimited block distribution, Double-Blind Cleanroom TDD, and deterministic empirical benchmarks."
+solution: "A unified agentic ecosystem featuring 14 autonomous orchestrating subagents and 25 declarative skills with selective domain pack setup and strengthened engineering invariants, powered by a tri-ecosystem compiler (Antigravity, Claude Code, and OpenAI Codex), delimited block distribution, Double-Blind Cleanroom TDD, and deterministic empirical benchmarks."
 learnings:
   - "Empirical Benchmark Validation (ADR-004, ADR-012): Offline deterministic benchmark suite demonstrating a 44.75% (-2,973 tokens) reduction in context overhead per turn, 0% confirmation bias in Cleanroom TDD, and 100% precision and recall (F1 = 1.00) in repository defect audits."
   - "Idempotent AI Rules Distribution: Designed a delimited block protocol to inject and sync agent directives across codebases without overwriting local configurations or leaving artifacts."
@@ -37,7 +37,7 @@ product:
       text: "Performs baseline security, data consistency, and hook interceptions before pushing to remote."
     - icon: "Stethoscope"
       title: "Setup Wizard & Diagnostic Doctor"
-      text: "An interactive CLI wizard configures skills and subagents across Antigravity, Claude Code, and OpenAI Codex, while a doctor command verifies system health."
+      text: "The interactive CLI wizard (`amiga-ia-setup`) configures full suites or selective domain packs across Antigravity, Claude Code, and OpenAI Codex, with strengthened engineering invariants and a doctor command to verify system health."
   platforms: ["Claude Code", "Antigravity (Gemini)", "OpenAI Codex"]
   downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
   downloadLabel: "Install via NPM"
@@ -98,7 +98,7 @@ product:
 
 **Amiga IA** elevates AI-assisted software engineering from linear chat prompts to an **autonomous subagent mesh of 14 specialized agents** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, etc.) supported by **25 on-demand declarative skills**. Each agent operates with bounded tools, declarative skills, and explicit verification gates.
 
-*   **Universal Adapter & Multi-Engine Portability:** Stateless guardrail injection and portable skill compilation with native cross-compatibility across Antigravity (Gemini), Claude Code, and OpenAI Codex.
+*   **Universal Adapter & Multi-Engine Portability:** Stateless guardrail injection and portable skill compilation with native cross-compatibility across Antigravity (Gemini), Claude Code, and OpenAI Codex. Features an interactive CLI wizard (`amiga-ia-setup`) with modular domain pack installation and strengthened engineering invariants.
 *   **Delimited Block Protocol:** Idempotent synchronization engine that updates global rules across codebases without overwriting local configurations or leaving residual clutter.
 *   **Double-Blind Cleanroom Isolation:** Decoupled TDD workflow (`ami-cleanroom-arbiter`) where implementers and test authors communicate exclusively over frozen interface contracts, eliminating confirmation bias.
 
