@@ -27,15 +27,51 @@ const t = {
   problem: lang === 'en' ? "The Problem" : "El Problema",
   solution: lang === 'en' ? "The Solution" : "La Solución",
   learnings: lang === 'en' ? "Key Learnings" : "Aprendizajes Clave",
-  visitApp: lang === 'en' ? "View App" : "Ver App",
+  visitApp: websiteActionText || (lang === 'en' ? "View App" : "Ver App"),
   visitSite: websiteActionText || (lang === 'en' ? "Visit Website" : "Visitar Sitio Web"),
+  githubSource: lang === 'en' ? "GitHub Repo" : "Código en GitHub",
   backHeader: lang === 'en' ? "back" : "volver",
   pathPrefix: lang === 'en' ? 'projects' : 'proyectos',
   lastUpdated: lang === 'en' ? "Last updated" : "Última actualización",
   sourceOfTruth: lang === 'en' ? "This page is a high-level summary. The GitHub repository is the source of truth for each tool's current features." : "Esta página es un resumen de alto nivel. El repositorio en GitHub es la fuente de verdad sobre las funcionalidades actuales de cada herramienta.",
+  copyCode: lang === 'en' ? "Copy" : "Copiar",
+  copiedCode: lang === 'en' ? "Copied!" : "¡Copiado!",
 };
 
 const slug = Astro.params.project?.split('/').pop() || '';
+
+const hasLiveOrWebsiteCta = Boolean((isLiveApp && liveAppUrl) || websiteUrl);
+
+// Pastel-Tech Solid Button Hierarchy (Matches ProductLayout.astro)
+const primaryBtnClass = "w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-2.5 rounded-xl bg-brand-purple hover:bg-brand-violet-deep text-white shadow-md shadow-brand-purple/20 hover:shadow-lg hover:shadow-brand-purple/35 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 font-semibold text-sm sm:text-base tracking-wide cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900";
+const secondaryBtnClass = "w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 rounded-xl bg-white/80 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 hover:text-brand-purple dark:hover:text-brand-purple-light hover:bg-white dark:hover:bg-slate-800 hover:border-brand-purple/40 dark:hover:border-brand-purple/40 shadow-sm hover:shadow transition-all duration-200 active:scale-95 font-medium text-sm sm:text-base tracking-wide cursor-pointer select-none backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900";
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function formatInlineMarkdown(text: string): string {
+  const escaped = escapeHtml(text);
+  return escaped.replace(
+    /`([^`]+)`/g,
+    '<code class="font-mono text-[0.85em] bg-slate-100/90 dark:bg-slate-800/90 text-brand-purple dark:text-brand-purple-light px-1.5 py-0.5 rounded-md font-medium break-words">$1</code>'
+  );
+}
+
+function formatLearningItem(learning: string): string {
+  const colonIdx = learning.indexOf(':');
+  if (colonIdx > 0 && colonIdx < 95) {
+    const prefix = learning.slice(0, colonIdx + 1);
+    const rest = learning.slice(colonIdx + 1);
+    return `<strong class="font-semibold text-slate-900 dark:text-white">${formatInlineMarkdown(prefix)}</strong>${formatInlineMarkdown(rest)}`;
+  }
+  return formatInlineMarkdown(learning);
+}
 
 // Schema.org structured data for software project / application
 const projectJSONLD = JSON.stringify({
@@ -68,161 +104,172 @@ const projectJSONLD = JSON.stringify({
   
   <div class="relative z-10 w-full transition-all duration-500">
     <!-- Console Window (GUI Mode) -->
-    <div id="console-window" class="flex w-full max-w-5xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/50 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden flex-col transition-all duration-500 animate-gui-boot my-6 sm:my-10">
+    <div id="console-window" class="flex w-full max-w-5xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl border border-white/60 dark:border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden flex-col transition-all duration-500 animate-gui-boot my-2 sm:my-10">
       
-      <!-- Window Header (Matches index.astro structure but optimized for navigation) -->
-      <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0 bg-white/50 dark:bg-slate-900/50">
-        <div class="w-20 shrink-0 flex justify-start">
-          <a href="/" class="exit-gui-btn group flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity font-mono text-xs text-slate-500 hover:text-pastel-blue dark:text-slate-400 dark:hover:text-pastel-blue">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-0.5"><path d="m15 18-6-6 6-6"/></svg>
+      <!-- Window Header (Matches index.astro structure & provides ergonomic 44px touch targets) -->
+      <div class="px-3 sm:px-4 py-2 border-b border-slate-200/80 dark:border-slate-800 flex items-center justify-between shrink-0 bg-white/60 dark:bg-slate-900/60">
+        <div class="w-20 sm:w-24 shrink-0 flex justify-start">
+          <a
+            href="/"
+            aria-label={t.back}
+            class="exit-gui-btn group inline-flex items-center gap-1.5 min-h-[36px] px-2 -ml-1 rounded-lg opacity-80 hover:opacity-100 hover:bg-slate-200/50 dark:hover:bg-slate-800/60 transition-all font-mono text-xs text-slate-600 hover:text-brand-purple dark:text-slate-300 dark:hover:text-brand-purple-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-0.5 shrink-0"><path d="m15 18-6-6 6-6"/></svg>
             <span>{t.backHeader}</span>
           </a>
         </div>
-        <div class="flex-grow min-w-0 flex justify-center px-4">
-          <span id="header-path" class="text-xs sm:text-sm font-mono text-slate-500 truncate text-center w-full">
+        <div class="flex-grow min-w-0 flex justify-center px-2">
+          <span id="header-path" class="text-[11px] sm:text-sm font-mono text-slate-500 dark:text-slate-400 truncate text-center w-full">
             ~/projects-hub/{t.pathPrefix}/{slug}
           </span>
         </div>
-        <div class="w-20 shrink-0 flex justify-end">
-          <!-- Empty div for layout symmetry -->
+        <div class="w-20 sm:w-24 shrink-0 flex justify-end items-center gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-slate-300/80 dark:bg-slate-700/80 hidden sm:inline-block" aria-hidden="true"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-brand-aqua/70" aria-hidden="true"></span>
         </div>
       </div>
 
       <!-- Window Content Body -->
-      <div class="p-6 sm:p-10 flex flex-col">
+      <div class="p-4 sm:p-8 lg:p-10 flex flex-col">
         
-        <!-- 1. The Open Hero -->
-        <header class="pb-10 border-b border-slate-200/50 dark:border-slate-800/50 mb-8 relative z-10">
+        <!-- 1. The Open Hero (Mobile-First Ergonomic Layout) -->
+        <header class="pb-7 sm:pb-10 border-b border-slate-200/60 dark:border-slate-800/60 mb-7 sm:mb-8 relative z-10">
           
-          {status && (
-            <div class="flex mb-6 animate-fade-in">
-              <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-md rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                <span class={`w-2 h-2 rounded-full ${
-                  status === 'Activo' || status === 'Active'
-                    ? 'bg-pastel-mint'
-                    : status === 'En Desarrollo' || status === 'In Development'
-                      ? 'bg-amber-500'
-                      : status === 'Archivado' || status === 'Archived'
-                        ? 'bg-slate-500'
-                        : 'bg-slate-500'
-                }`}></span>
-                {status}
-              </div>
-            </div>
-          )}
-
-          <div class="flex items-center gap-6 mb-8 animate-fade-in" style="animation-delay: 50ms;">
+          <!-- Top Identity Row: Icon Pedestal + Status & Title -->
+          <div class="flex items-start sm:items-center gap-4 sm:gap-6 mb-5 animate-fade-in">
             {icon && (
-              <div class="w-20 h-20 shrink-0 bg-white dark:bg-slate-800 rounded-3xl p-4 shadow-xl border border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center">
-                <img src={icon} alt={`${title} icon`} class="w-full h-full object-contain rounded-lg" />
+              <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white/90 dark:bg-slate-800/90 rounded-2xl p-2 sm:p-2.5 shadow-lg border border-slate-200/70 dark:border-slate-700/60 flex items-center justify-center">
+                <img src={icon} alt={`${title} icon`} class="w-full h-full object-contain rounded-xl drop-shadow-sm" />
               </div>
             )}
-            
-            <div class="flex flex-col gap-3">
+
+            <div class="flex flex-col gap-2 min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-2.5">
+                {status && (
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100/90 dark:bg-slate-800/90 backdrop-blur-md rounded-full text-xs font-medium text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700">
+                    <span class={`w-2 h-2 rounded-full ${
+                      status === 'Activo' || status === 'Active'
+                        ? 'bg-emerald-500 dark:bg-pastel-mint'
+                        : status === 'En Desarrollo' || status === 'In Development'
+                          ? 'bg-amber-500'
+                          : 'bg-slate-400 dark:bg-slate-500'
+                    }`}></span>
+                    <span>{status}</span>
+                  </div>
+                )}
+
+                {lastUpdated && (
+                  <span class="text-[11px] sm:text-xs font-mono text-slate-500 dark:text-slate-400">
+                    {t.lastUpdated}: <time datetime={lastUpdated.toISOString().slice(0, 10)}>{lastUpdated.toLocaleDateString(lang === 'en' ? 'en-US' : 'es-CL', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}</time>
+                  </span>
+                )}
+              </div>
+
+              <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white leading-[1.15] break-words">
+                {title}
+              </h1>
+            </div>
+          </div>
+          
+          <!-- Description -->
+          <p class="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-5 sm:mb-6 max-w-3xl leading-relaxed font-inter animate-fade-in" style="animation-delay: 80ms;">
+            {description}
+          </p>
+
+          <!-- Full-Width Taxonomic Pills (Categories & Tech Stack) -->
+          {(categories.length > 0 || technologies.length > 0) && (
+            <div class="flex flex-col gap-2.5 mb-6 sm:mb-7 animate-fade-in" style="animation-delay: 140ms;">
               {categories.length > 0 && (
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-1.5 sm:gap-2">
                   {categories.map(cat => (
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-700 dark:text-slate-300 text-xs rounded-full font-medium border border-slate-200/60 dark:border-slate-700/60">
-                      <svg class="w-3 h-3 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
-                      {cat}
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-700 dark:text-slate-300 text-xs rounded-full font-medium border border-slate-200/70 dark:border-slate-700/60">
+                      <svg class="w-3 h-3 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
+                      <span>{cat}</span>
                     </span>
                   ))}
                 </div>
               )}
               {technologies.length > 0 && (
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-1.5 sm:gap-2">
                   {technologies.map(tech => (
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-50/80 dark:bg-purple-900/20 backdrop-blur-sm text-brand-purple dark:text-brand-purple-light text-xs rounded-full font-medium border border-purple-200/60 dark:border-purple-800/40">
-                      <svg class="w-3 h-3 text-brand-purple dark:text-brand-purple-light" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                      {tech}
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-50/90 dark:bg-purple-900/25 backdrop-blur-sm text-brand-purple dark:text-brand-purple-light text-xs rounded-full font-medium border border-purple-200/70 dark:border-purple-800/40">
+                      <svg class="w-3 h-3 text-brand-purple dark:text-brand-purple-light shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                      <span>{tech}</span>
                     </span>
                   ))}
                 </div>
               )}
             </div>
-          </div>
-          
-          <h1 class="text-4xl sm:text-5xl font-extrabold font-outfit tracking-tight text-slate-900 dark:text-white mb-6 leading-tight animate-fade-in" style="animation-delay: 100ms;">
-            {title}
-          </h1>
-          
-          <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl leading-relaxed font-inter animate-fade-in" style="animation-delay: 200ms;">
-            {description}
-          </p>
-          
-          <div class="flex flex-wrap gap-4 animate-fade-in" style="animation-delay: 300ms;">
-              {githubUrl && (
-                <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors shadow-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  GitHub
-                </a>
-              )}
-              
-              {isLiveApp && liveAppUrl && (
-                <a href={liveAppUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-2.5 bg-pastel-blue text-slate-900 rounded-xl font-medium hover:bg-pastel-lilac transition-colors shadow-lg shadow-pastel-blue/40 dark:shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  {t.visitApp}
-                </a>
-              )}
-              
-              {websiteUrl && (
-                <a href={websiteUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-6 py-2.5 bg-emerald-600 text-white rounded-xl font-medium hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-200 dark:shadow-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                  {t.visitSite}
-                </a>
-              )}
-          </div>
-
-          {lastUpdated && (
-            <p class="mt-5 text-xs font-mono text-slate-500 dark:text-slate-500 animate-fade-in" style="animation-delay: 350ms;">
-              {t.lastUpdated}: <time datetime={lastUpdated.toISOString().slice(0, 10)}>{lastUpdated.toLocaleDateString(lang === 'en' ? 'en-US' : 'es-CL', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>
-            </p>
           )}
+          
+          <!-- Action CTAs (Strict Single-Primary Pastel-Tech Hierarchy, Full-Width on Mobile) -->
+          <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-3.5 animate-fade-in" style="animation-delay: 200ms;">
+            {isLiveApp && liveAppUrl && (
+              <a href={liveAppUrl} target="_blank" rel="noopener noreferrer" class={primaryBtnClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <span>{t.visitApp}</span>
+              </a>
+            )}
+            
+            {websiteUrl && (
+              <a href={websiteUrl} target="_blank" rel="noopener noreferrer" class={isLiveApp && liveAppUrl ? secondaryBtnClass : primaryBtnClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span>{t.visitSite}</span>
+              </a>
+            )}
+
+            {githubUrl && (
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer" class={hasLiveOrWebsiteCta ? secondaryBtnClass : primaryBtnClass}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>{t.githubSource}</span>
+              </a>
+            )}
+          </div>
         </header>
 
-        <!-- 2. The Context Grid (Bento Style) -->
-        <section class="relative z-10 animate-fade-in mb-6" style="animation-delay: 400ms;">
+        <!-- 2. The Context Grid (Bento Style, Mobile Optimized) -->
+        <section class="relative z-10 animate-fade-in mb-6" style="animation-delay: 280ms;">
           {(problem || solution) && (
-            <div class="grid sm:grid-cols-2 gap-6 mb-6">
+            <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
               {problem && (
-                <div class="group relative p-6 sm:p-8 rounded-3xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-sm transition-all hover:bg-white/60 dark:hover:bg-slate-900/60">
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400">
+                <div class="group relative p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white/55 dark:bg-slate-900/50 backdrop-blur-md border border-slate-200/70 dark:border-slate-800/70 shadow-sm transition-all hover:bg-white/75 dark:hover:bg-slate-900/70">
+                  <div class="flex items-center gap-3 mb-3.5">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 shrink-0 border border-slate-200/60 dark:border-slate-700/60">
                       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
-                    <h3 class="text-lg font-bold font-outfit text-slate-900 dark:text-white">{t.problem}</h3>
+                    <h2 class="text-base sm:text-lg font-bold font-outfit text-slate-900 dark:text-white">{t.problem}</h2>
                   </div>
-                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed font-inter text-sm sm:text-base">{problem}</p>
+                  <p class="text-slate-600 dark:text-slate-300 leading-relaxed font-inter text-sm sm:text-base break-words" set:html={formatInlineMarkdown(problem)}></p>
                 </div>
               )}
 
               {solution && (
-                <div class="group relative p-6 sm:p-8 rounded-3xl bg-purple-50/50 dark:bg-purple-900/10 backdrop-blur-md border border-purple-200/60 dark:border-purple-800/30 shadow-sm transition-all hover:bg-purple-50/80 dark:hover:bg-purple-900/20">
-                  <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-brand-purple dark:text-brand-purple-light">
+                <div class="group relative p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-purple-50/60 dark:bg-purple-900/15 backdrop-blur-md border border-purple-200/70 dark:border-purple-800/40 shadow-sm transition-all hover:bg-purple-50/85 dark:hover:bg-purple-900/25">
+                  <div class="flex items-center gap-3 mb-3.5">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-brand-purple dark:text-brand-purple-light shrink-0 border border-purple-200/60 dark:border-purple-700/50">
                       <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
                     </div>
-                    <h3 class="text-lg font-bold font-outfit text-brand-purple dark:text-brand-purple-light">{t.solution}</h3>
+                    <h2 class="text-base sm:text-lg font-bold font-outfit text-brand-purple dark:text-brand-purple-light">{t.solution}</h2>
                   </div>
-                  <p class="text-slate-700 dark:text-slate-300 leading-relaxed font-inter text-sm sm:text-base">{solution}</p>
+                  <p class="text-slate-700 dark:text-slate-300 leading-relaxed font-inter text-sm sm:text-base break-words" set:html={formatInlineMarkdown(solution)}></p>
                 </div>
               )}
             </div>
           )}
 
           {learnings.length > 0 && (
-            <div class="group relative p-6 sm:p-8 rounded-3xl bg-slate-50/50 dark:bg-slate-800/20 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 shadow-sm transition-all hover:bg-slate-100/50 dark:hover:bg-slate-800/40">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-inner">
+            <div class="group relative p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-slate-50/65 dark:bg-slate-800/25 backdrop-blur-md border border-slate-200/70 dark:border-slate-700/60 shadow-sm transition-all hover:bg-slate-100/65 dark:hover:bg-slate-800/40">
+              <div class="flex items-center gap-3 mb-4 sm:mb-5">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-inner shrink-0 border border-amber-200/60 dark:border-amber-700/40">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </div>
-                <h3 class="text-xl font-bold font-outfit text-slate-900 dark:text-white">{t.learnings}</h3>
+                <h2 class="text-lg sm:text-xl font-bold font-outfit text-slate-900 dark:text-white">{t.learnings}</h2>
               </div>
-              <ul class="space-y-3.5">
+              <ul class="space-y-3 sm:space-y-3.5">
                 {learnings.map(learning => (
-                  <li class="flex items-start gap-3 text-slate-700 dark:text-slate-300 leading-relaxed font-inter text-sm sm:text-base">
+                  <li class="flex items-start gap-2.5 sm:gap-3 text-slate-700 dark:text-slate-300 leading-relaxed font-inter text-sm sm:text-base">
                     <svg class="w-5 h-5 text-emerald-600 dark:text-pastel-mint shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                    <span>{learning}</span>
+                    <span class="min-w-0 flex-1 break-words [overflow-wrap:anywhere]" set:html={formatLearningItem(learning)}></span>
                   </li>
                 ))}
               </ul>
@@ -230,21 +277,41 @@ const projectJSONLD = JSON.stringify({
           )}
         </section>
 
-        <section class="project-deep-dive relative z-10 animate-fade-in mt-4 text-slate-600 dark:text-slate-400 font-inter text-sm sm:text-base leading-relaxed" style="animation-delay: 500ms;">
+        <!-- 3. Deep Dive Case Study Markdown -->
+        <section
+          class="project-deep-dive relative z-10 animate-fade-in mt-2 text-slate-600 dark:text-slate-400 font-inter text-sm sm:text-base leading-relaxed min-w-0 break-words"
+          style="animation-delay: 360ms;"
+          data-copy-label={t.copyCode}
+          data-copied-label={t.copiedCode}
+        >
           <slot />
         </section>
 
-        {githubUrl && (
-          <p class="relative z-10 mt-10 pt-6 border-t border-slate-200/60 dark:border-slate-800/60 text-xs text-slate-500 font-inter">
-            {t.sourceOfTruth} <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-700 dark:hover:text-slate-300">GitHub ↗</a>
-          </p>
-        )}
+        <!-- 4. Bottom Navigation & Source of Truth Footer (Peak-End UX) -->
+        <footer class="relative z-10 mt-8 sm:mt-10 pt-6 border-t border-slate-200/70 dark:border-slate-800/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          {githubUrl ? (
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-inter max-w-2xl leading-relaxed">
+              {t.sourceOfTruth}{' '}
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="font-medium text-brand-purple dark:text-brand-purple-light underline underline-offset-4 hover:opacity-80">
+                GitHub ↗
+              </a>
+            </p>
+          ) : <div />}
+
+          <a
+            href="/"
+            class="exit-gui-btn inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-brand-purple dark:hover:text-brand-purple-light border border-slate-200/80 dark:border-slate-700/80 text-xs sm:text-sm font-mono font-medium transition-all shrink-0 self-start sm:self-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <span>{t.back}</span>
+          </a>
+        </footer>
 
       </div>
     </div>
   </div>
 
-  <!-- Client-side navigation transition handler -->
+  <!-- Client-side navigation transition & interactive code copy handler -->
   <script>
     // Ensure terminal body class is removed so page scrolling works naturally
     document.body.classList.remove('terminal-active');
@@ -255,6 +322,44 @@ const projectJSONLD = JSON.stringify({
       setTimeout(() => {
         win.classList.remove('animate-gui-boot');
       }, 500);
+    }
+
+    // Enhance <pre> blocks in .project-deep-dive with a copy button
+    const deepDive = document.querySelector('.project-deep-dive');
+    if (deepDive) {
+      const copyLabel = deepDive.getAttribute('data-copy-label') || 'Copy';
+      const copiedLabel = deepDive.getAttribute('data-copied-label') || 'Copied!';
+      deepDive.querySelectorAll('pre').forEach((pre) => {
+        if (pre.parentElement?.classList.contains('pre-wrapper')) return;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'pre-wrapper relative group my-5';
+        pre.parentNode?.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+        pre.style.margin = '0';
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', copyLabel);
+        btn.className = 'absolute top-2.5 right-2.5 px-2.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-mono border border-slate-700/80 transition-all cursor-pointer flex items-center gap-1.5 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple';
+        btn.textContent = copyLabel;
+
+        btn.addEventListener('click', async () => {
+          const code = pre.querySelector('code')?.innerText || pre.innerText;
+          try {
+            await navigator.clipboard.writeText(code.trim());
+            btn.textContent = copiedLabel;
+            btn.classList.add('text-emerald-300', 'border-emerald-500/40');
+            setTimeout(() => {
+              btn.textContent = copyLabel;
+              btn.classList.remove('text-emerald-300', 'border-emerald-500/40');
+            }, 2000);
+          } catch {
+            // Ignore clipboard errors in restricted contexts
+          }
+        });
+
+        wrapper.appendChild(btn);
+      });
     }
 
     document.querySelectorAll('.exit-gui-btn').forEach(btn => {
@@ -329,21 +434,26 @@ const projectJSONLD = JSON.stringify({
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
       color: var(--color-slate-900);
-      margin-top: 2rem;
+      margin-top: 1.75rem;
       margin-bottom: 0.75rem;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--color-slate-200);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      line-height: 1.3;
     }
     .dark .project-deep-dive h2,
     .dark .project-deep-dive h3 {
       color: var(--color-slate-100);
       border-bottom-color: var(--color-slate-800);
     }
-    .project-deep-dive h2 { font-size: 1.4rem; }
-    .project-deep-dive h3 { font-size: 1.2rem; }
+    .project-deep-dive h2 { font-size: 1.3rem; }
+    .project-deep-dive h3 { font-size: 1.15rem; }
+    @media (min-width: 640px) {
+      .project-deep-dive h2 { font-size: 1.45rem; }
+      .project-deep-dive h3 { font-size: 1.25rem; }
+    }
     
     .project-deep-dive p {
       margin-bottom: 1rem;
@@ -358,13 +468,21 @@ const projectJSONLD = JSON.stringify({
       background: var(--color-slate-900) !important;
       color: var(--color-slate-100) !important;
       border: 1px solid var(--color-slate-800);
-      border-radius: 1rem;
-      padding: 1.25rem;
+      border-radius: 0.875rem;
+      padding: 1rem 1.125rem;
+      padding-right: 4.5rem;
       margin: 1.25rem 0;
       overflow-x: auto;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.875rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      font-size: 0.8125rem;
+      line-height: 1.6;
+    }
+    @media (min-width: 640px) {
+      .project-deep-dive pre {
+        font-size: 0.875rem;
+        padding: 1.25rem;
+        padding-right: 5rem;
+      }
     }
     .dark .project-deep-dive pre {
       background: var(--color-slate-950) !important;
@@ -374,22 +492,27 @@ const projectJSONLD = JSON.stringify({
     .project-deep-dive code:not(pre code) {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85em;
-      background: rgba(241, 245, 249, 0.9);
+      background: var(--color-slate-100);
       color: var(--color-brand-purple);
       padding: 0.15rem 0.4rem;
       border-radius: 0.375rem;
       font-weight: 500;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .dark .project-deep-dive code:not(pre code) {
-      background: rgba(30, 41, 59, 0.9);
+      background: var(--color-slate-800);
       color: var(--color-brand-purple-light);
     }
 
     .project-deep-dive ul {
       list-style-type: disc;
-      padding-left: 1.5rem;
+      padding-left: 1.25rem;
       margin-bottom: 1.25rem;
       color: var(--color-slate-600);
+    }
+    @media (min-width: 640px) {
+      .project-deep-dive ul { padding-left: 1.5rem; }
     }
     .dark .project-deep-dive ul {
       color: var(--color-slate-400);
@@ -397,9 +520,12 @@ const projectJSONLD = JSON.stringify({
 
     .project-deep-dive ol {
       list-style-type: decimal;
-      padding-left: 1.5rem;
+      padding-left: 1.25rem;
       margin-bottom: 1.25rem;
       color: var(--color-slate-600);
+    }
+    @media (min-width: 640px) {
+      .project-deep-dive ol { padding-left: 1.5rem; }
     }
     .dark .project-deep-dive ol {
       color: var(--color-slate-400);
@@ -408,19 +534,20 @@ const projectJSONLD = JSON.stringify({
     .project-deep-dive li {
       margin-bottom: 0.5rem;
       line-height: 1.65;
+      overflow-wrap: anywhere;
     }
 
     .project-deep-dive blockquote {
       border-left: 4px solid var(--color-brand-purple);
       padding: 0.75rem 1rem;
       font-style: italic;
-      background: rgba(139, 92, 246, 0.08);
+      background: color-mix(in srgb, var(--color-brand-purple) 8%, transparent);
       border-radius: 0 0.75rem 0.75rem 0;
       margin: 1.25rem 0;
       color: var(--color-slate-700);
     }
     .dark .project-deep-dive blockquote {
-      background: rgba(196, 155, 255, 0.12);
+      background: color-mix(in srgb, var(--color-brand-purple-light) 12%, transparent);
       border-left-color: var(--color-brand-purple-light);
       color: var(--color-slate-300);
     }
@@ -438,6 +565,8 @@ const projectJSONLD = JSON.stringify({
       text-decoration: underline;
       text-underline-offset: 4px;
       transition: color 0.2s;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .project-deep-dive a:hover {
       color: var(--color-brand-magenta);
@@ -459,4 +588,3 @@ const projectJSONLD = JSON.stringify({
     }
   </style>
 </Layout>
-

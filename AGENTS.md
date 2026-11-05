@@ -84,8 +84,8 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
 - **Routes:** `src/pages/p/[...path].astro` builds `/p/<slug>/` (es) and `/p/<slug>/en/` (en) for every non-archived entry with a `product` block. They are excluded from the sitemap; their canonical URL is the project's subdomain (`websiteUrl`).
 - **Subdomains & DNS Setup (Vercel & Namecheap):** each `<slug>.ana-catalina.com` is attached to this Vercel project, and `vercel.json` maps `/` and `/en` on that host to the product routes. These are `routes` placed before `{ "handle": "filesystem" }` on purpose: plain `rewrites` run after static files, so `/` would serve the console.
   1. Add the `product` block to both language entries (`es` and `en`) and add the two host routes to `vercel.json`.
-  2. Attach the subdomain in Vercel: go to Vercel Dashboard -> project `projects-hub` -> **Settings** -> **Domains**, and add `<slug>.ana-catalina.com`.
-  3. Retrieve the dedicated CNAME target from Vercel: Vercel does **NOT** use generic `cname.vercel-dns.com` for subdomains on this domain; it assigns a unique per-subdomain hash target under `vercel-dns-017.com` (e.g., `xxxxxxxxxxxxxxxx.vercel-dns-017.com`). Copy the exact target string displayed in the Vercel domain card.
+  2. Attach the subdomain in Vercel: run `vercel domains add <slug>.ana-catalina.com projects-hub` via Vercel CLI (or go to Vercel Dashboard -> project `projects-hub` -> **Settings** -> **Domains**).
+  3. Retrieve the dedicated CNAME target from Vercel: run `vercel domains verify <slug>.ana-catalina.com`. Vercel does **NOT** use generic `cname.vercel-dns.com` for subdomains on this domain; it assigns a unique per-subdomain hash target under `vercel-dns-017.com` (e.g., `xxxxxxxxxxxxxxxx.vercel-dns-017.com`).
   4. Create the DNS record in Namecheap:
      - In Namecheap -> **Domain List** -> `ana-catalina.com` -> **Manage** -> **Advanced DNS**.
      - Under **Host Records**, click **Add New Record**:
@@ -94,7 +94,7 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
        - **Target / Value:** the unique `<hash>.vercel-dns-017.com` provided by Vercel.
        - **TTL:** `Automatic` (or `1 min` for faster propagation).
      - Save changes with the green checkmark.
-  5. Return to Vercel and click **Refresh** on the domain card; within 1–2 minutes it turns green (`Valid Configuration`) and provisions the SSL certificate.
+  5. Verification: run `vercel domains verify <slug>.ana-catalina.com` (or click **Refresh** on the Vercel domain card); within 1–2 minutes it turns green (`Valid Configuration`) and provisions the SSL certificate.
   6. `src/__tests__/product-pages.test.ts` fails if a routed subdomain has no bilingual product block, a product has no `downloadUrl`, or an archived entry still links to a live site.
 
 ---
@@ -129,20 +129,29 @@ Besides the case-study page (`/<slug>`), a project can have an end-user product 
 11. **Mandatory Full Quality Gate (Lint + Type-Check + Test):**
    - In GitHub Actions CI (`.github/workflows/ci.yml`), `npm run lint` (`eslint .`) runs as a mandatory blocking gate auditing all JavaScript/TypeScript files, including workspace automation scripts in `.agents/skills/**/scripts/`.
    - Always execute `npm run lint` alongside `npm run type-check` and `npm test` before committing or pushing changes to prevent CI build breaks due to unused variables (`@typescript-eslint/no-unused-vars`).
-12. **Automated Portfolio Sync & Subagent Orchestration (`portfolio-auditor`):**
-   - To audit and synchronize personal repositories, invoke the `portfolio-auditor` agent (or use `npm run audit:projects` powered by `.agents/skills/portfolio-sync-audit/`).
-   - **Google Antigravity Runtime Execution Exception & Protocol:** Due to an inherent limitation in Google Antigravity CLI (`agy`), statically discovered named subagents (`TypeName: "portfolio-auditor"`) are instantiated in a read-only tool sandbox, ignoring shell (`run_command`) and file modification tools (`write_to_file`, `replace_file_content`). Therefore, when delegating to `portfolio-auditor` in Google Antigravity, the parent agent MUST dispatch it using either:
-     1. **Pattern A (`define_subagent` registration):** Register the subagent dynamically using `define_subagent(name="portfolio-auditor", enable_write_tools=true, enable_subagent_tools=true, enable_mcp_tools=true, system_prompt=...)` prior to calling `invoke_subagent`.
+12. **Automated Portfolio Sync & Subagent Orchestration (`hub-portfolio-auditor`):**
+   - To audit and synchronize personal repositories, invoke the `hub-portfolio-auditor` agent (or use `npm run audit:projects` powered by `.agents/skills/hub-portfolio-sync-audit/`).
+   - **Google Antigravity Runtime Execution Exception & Protocol:** Due to an inherent limitation in Google Antigravity CLI (`agy`), statically discovered named subagents (`TypeName: "hub-portfolio-auditor"`) are instantiated in a read-only tool sandbox, ignoring shell (`run_command`) and file modification tools (`write_to_file`, `replace_file_content`). Therefore, when delegating to `hub-portfolio-auditor` in Google Antigravity, the parent agent MUST dispatch it using either:
+     1. **Pattern A (`define_subagent` registration):** Register the subagent dynamically using `define_subagent(name="hub-portfolio-auditor", enable_write_tools=true, enable_subagent_tools=true, enable_mcp_tools=true, system_prompt=...)` prior to calling `invoke_subagent`.
      2. **Pattern B (`TypeName: 'self'` inheritance):** Invoke via `invoke_subagent(TypeName="self", Role="Portfolio Auditor", Prompt="...", Workspace="inherit")`, inheriting the parent agent's full read/write/shell tool capabilities while maintaining clean subagent conversational isolation.
-   - **Autonomous End-to-End Execution:** The `portfolio-auditor` agent operates as a fully autonomous executor. It possesses direct capabilities to scan sibling directories (`Get-ChildItem`), copy project icons (`Copy-Item`), scaffold and edit bilingual entries in `src/content/projects/{es,en}/*.md`, execute local quality gates (`npm run lint; npm run type-check; npm test; npm run build`), stage and commit changes in English, push to remote (`origin main`), and verify live CI deployment (`gh run list`). It must never request manual user intervention for terminal operations.
-   - To create or update a single entry, use `.agents/skills/project-entry-update/` (the audit calls it per flagged project). Any content change or review of an entry must set `lastUpdated` to the current date in both `es` and `en`, since the page shows it to readers and the audit uses it as the review mark.
+   - **Autonomous End-to-End Execution:** The `hub-portfolio-auditor` agent operates as a fully autonomous executor. It possesses direct capabilities to scan sibling directories (`Get-ChildItem`), copy project icons (`Copy-Item`), scaffold and edit bilingual entries in `src/content/projects/{es,en}/*.md`, execute local quality gates (`npm run lint; npm run type-check; npm test; npm run build`), stage and commit changes in English, push to remote (`origin main`), and verify live CI deployment (`gh run list`). It must never request manual user intervention for terminal operations.
+   - To create or update a single entry, use `.agents/skills/hub-project-entry-update/` (the audit calls it per flagged project). Any content change or review of an entry must set `lastUpdated` to the current date in both `es` and `en`, since the page shows it to readers and the audit uses it as the review mark.
    - An entry is stale when its source repo has a commit newer than its review date (the later of `lastUpdated` and the last commit of its `es` file). Only `Activo`/`Active` and `En Desarrollo`/`In Development` entries are monitored; archived ones are frozen, and more statuses can be added to the audit filter. If there are ever more than ~10 monitored entries, or you want alerts without running the audit by hand, the upgrade path is per-file pins plus a weekly workflow.
+   - **Product Landing Pages & Subdomain Setup:** When auditing or adding projects, agents must evaluate whether each active project has or should have a Pastel-Tech product landing page (`product` block). If present or newly added, agents must ensure host routes exist in `vercel.json`, automatically provision the subdomain via `vercel domains add <slug>.ana-catalina.com projects-hub`, extract the assigned CNAME hash with `vercel domains verify <slug>.ana-catalina.com`, and report the Namecheap DNS record to the user.
    - Repository discovery must remain 100% path-agnostic (resolving sibling repos at `..` or `$env:REPOS_DIR`).
    - Personal portfolio audits MUST automatically ignore forks (`isFork: true` on GitHub API) and non-software repositories, focusing exclusively on original projects authored by the user.
 13. **Content Scope & Length Guidelines (Product Pages vs. Case Studies):**
    - **Product Landing Pages (`product` block / `/p/<slug>/`):** Must remain concise, scannable, and up-to-date. Focus purely on end-user value propositions, key features, direct download/install actions, and brief introductory hooks. Never include lengthy setup tutorials or changelogs. Do not place hardcoded version numbers in marketing copy (they go stale).
    - **Project Case Studies (`src/content/projects/{es,en}/*.md`):** Can be more extensive than product landing pages, but must still have a bounded, digestible length. Emphasize the core problem, solution, key learnings, and primary technical capabilities. Deep setup guides, exhaustive architecture specs, and full documentation belong in the source repository's `README.md` (SSOT).
    - **Proportional Updates:** If upstream changes in a project are minor (e.g., routine patch, minor bug fix, dependency bump), do NOT rewrite or unnecessarily expand the copy. Simply verify that the existing description remains accurate and update `lastUpdated` (or version numbers in manifests/scripts if applicable) without adding unnecessary text.
+14. **Dedicated AI Agents & Skills Suite (`hub-*`):**
+    - The repository maintains specialized autonomous agents and skills in `.agents/` tailored for Google Antigravity (`agy`):
+      - **`hub-portfolio-auditor`** (`.agents/agents/hub-portfolio-auditor.md`): Master orchestrator agent for scanning sibling repos, synchronizing icons, authoring bilingual case studies, and provisioning subdomains.
+      - **`hub-dns-auditor`** (`.agents/agents/hub-dns-auditor.md`): Consistency auditor ensuring every custom subdomain has valid routes in `vercel.json`, registered status in Vercel, and functional CNAME configuration.
+      - **`hub-portfolio-sync-audit`** (`.agents/skills/hub-portfolio-sync-audit/`): Audits sibling and remote repos via `npm run audit:projects`.
+      - **`hub-project-entry-update`** (`.agents/skills/hub-project-entry-update/`): Standardized workflow to scaffold or refresh a single project entry and its product landing page.
+      - **`hub-provision-subdomain`** (`.agents/skills/hub-provision-subdomain/`): Step-by-step procedure to add Vercel domains, map `vercel.json` routes, and extract unique Namecheap CNAME records.
+      - **`hub-validate-parity`** (`.agents/skills/hub-validate-parity/`): Parity and compliance checker verifying bilingual symmetry, valid Lucide icon exports, and Zero-Flags compliance (`npm run validate:parity`).
 
 ---
 
@@ -250,7 +259,7 @@ Every repository in the portfolio must strictly adhere to the following universa
   - Terminal console navigation and Bento-style case studies (`/<slug>`).
   - Dedicated product landing pages (`/p/<slug>/`) and subdomain mapping (`<slug>.ana-catalina.com`) configured via `vercel.json` and Namecheap CNAMEs.
   - Upstream data provider for `anacatalina-mcp` (which consumes flagship project frontmatter via `scripts/sync_mcp_data.py`).
-  - Cross-repository activity audit tool (`npm run audit:projects`) powered by `.agents/skills/portfolio-sync-audit/`.
+  - Cross-repository activity audit tool (`npm run audit:projects`) powered by `.agents/skills/hub-portfolio-sync-audit/`.
 - **Consumed Dependencies (Inputs):**
   - Follows design tokens and aesthetic hierarchy established by `anacatalina-homepage`.
   - Links to candidate career trajectory and curriculum hosted on `anacatalina-cv` (`https://cv.ana-catalina.com/`).

@@ -27,7 +27,7 @@ learnings:
 
 *   **Affective NLP Classifier:** Evaluates freeform user input through a TF-IDF and Logistic Regression pipeline to predict the overarching affective quadrant (`alta_positiva`, `alta_negativa`, `baja_positiva`, `baja_negativa`).
 *   **Semantic Emotion Matcher:** Ranks the 16 emotions within the predicted quadrant by cosine similarity against the user's input, resolving most cases instantly without further questions.
-*   **Binary Somatic Decision Tree (64 States, Fallback):** Only when the matcher isn't confident enough, the application falls back to a deterministic binary tree of depth 4 ($2^4 = 16$ leaves per quadrant), evaluating 4 physiological Yes/No somatic indicators to pinpoint the exact emotion.
+*   **Binary Somatic Decision Tree (64 States, Fallback):** Only when the matcher isn't confident enough, the application falls back to a deterministic binary tree of depth 4 (2⁴ = 16 leaves per quadrant), evaluating 4 physiological Yes/No somatic indicators to pinpoint the exact emotion.
 
 ### Dialectal Idiom Mapping & Hypermedia Performance
 

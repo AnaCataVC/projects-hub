@@ -20,6 +20,33 @@ describe("ProjectLayout.astro", () => {
     expect(result).toContain("Web");
     expect(result).toContain("Astro");
     expect(result).toContain('id="console-window"');
+    expect(result).toContain('id="global-theme-toggle"');
+    expect(result).toContain('hreflang="es"');
+    expect(result).toContain('hreflang="en"');
+  });
+
+  it("formats inline code backticks, bolds learning titles, and applies websiteActionText to liveAppUrl", async () => {
+    const container = await AstroContainer.create();
+    const result = await container.renderToString(ProjectLayout, {
+      props: {
+        title: "Live App Test",
+        description: "Testing live app CTA and inline formatting.",
+        isLiveApp: true,
+        liveAppUrl: "https://example.com",
+        githubUrl: "https://github.com/example/repo",
+        websiteActionText: "Ver Portafolio en Vivo",
+        solution: "Built with `tasks.py` and `verify_ecosystem.py`.",
+        learnings: [
+          "Clean Architecture: Isolated domain logic with `SharedPreferences.OnSharedPreferenceChangeListener`.",
+        ],
+      },
+    });
+
+    expect(result).toContain("Ver Portafolio en Vivo");
+    expect(result).toContain("<code");
+    expect(result).toContain("tasks.py</code>");
+    expect(result).toContain('<strong class="font-semibold text-slate-900 dark:text-white">Clean Architecture:</strong>');
+    expect(result).toContain("[overflow-wrap:anywhere]");
   });
 });
 

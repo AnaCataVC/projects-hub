@@ -22,11 +22,11 @@ learnings:
 websiteActionText: "Visitar Sitio"
 product:
   tagline: "Ponle orden y estilo a tus carpetas en Windows"
-  intro: "Cambia y organiza los iconos de tus carpetas fácilmente, convierte imágenes en iconos al instante y ve los cambios de inmediato sin tener que reiniciar el Explorador."
+  intro: "Cambia y organiza los iconos de tus carpetas fácilmente con interfaz Fluent nativa, atajos de teclado y conversión instantánea de imágenes a ICO sin reiniciar el Explorador."
   features:
     - icon: "FolderTree"
       title: "Personalización Masiva"
-      text: "Asigna iconos individuales o en lotes a múltiples carpetas y árboles anidados con vista previa interactiva."
+      text: "Asigna iconos individuales o en lotes a múltiples carpetas con vista previa interactiva, atajos de teclado (Ctrl+O, Ctrl+Z, Delete) y confirmación de seguridad en reglas."
     - icon: "Layers"
       title: "Codificador Nativo ICO de 7 Capas"
       text: "Genera binarios ICO con resoluciones desde 16x16 hasta 256x256 (capas BGRA DIB y compresión PNG en 256px)."

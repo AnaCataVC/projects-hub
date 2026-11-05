@@ -24,8 +24,13 @@ const {
 	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://projects.ana-catalina.com').href,
 } = Astro.props;
 
+const siteBase = Astro.site || 'https://projects.ana-catalina.com';
+const cleanPath = Astro.url.pathname.replace(/^\/en(\/|$)/, '/');
+const esHref = new URL(cleanPath, siteBase).href;
+const enHref = new URL(cleanPath === '/' ? '/' : `/en${cleanPath}`, siteBase).href;
+
 // Ensure absolute URL for social image previews (Open Graph & Twitter Cards)
-const absoluteImageURL = new URL(image, Astro.site || 'https://projects.ana-catalina.com').href;
+const absoluteImageURL = new URL(image, siteBase).href;
 
 // Schema.org structured data for WebSite and Person profile
 const schemaOrgJSONLD = JSON.stringify({
@@ -56,6 +61,9 @@ const schemaOrgJSONLD = JSON.stringify({
 		<meta name="author" content="Ana-Catalina" />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href={canonicalURL} />
+		<link rel="alternate" hreflang="es" href={esHref} />
+		<link rel="alternate" hreflang="en" href={enHref} />
+		<link rel="alternate" hreflang="x-default" href={esHref} />
 
 		<!-- Favicon and Fonts -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261026" />
@@ -132,22 +140,33 @@ const schemaOrgJSONLD = JSON.stringify({
 				<div class="flex items-center justify-between h-16 pointer-events-auto">
 					<!-- Discreet Logo in corner -->
 					<header id="global-logo" class="z-10">
-						<a href="https://ana-catalina.com">
+						<a href="https://ana-catalina.com" aria-label="Ana-Catalina Home" class="inline-flex items-center">
 							<img src="/logo-ac.png" alt="Ana-Catalina AC Logo" class="w-8 h-8 rounded-lg object-contain opacity-90 hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_2px_8px_rgba(46,230,229,0.25)]" />
 						</a>
 					</header>
 
 					<!-- Top Right Actions -->
-					<div id="global-actions" class="flex gap-4">
+					<div id="global-actions" class="flex items-center gap-2.5 sm:gap-3">
 						<LanguageToggle />
+						<button
+							id="global-theme-toggle"
+							type="button"
+							aria-label={lang === 'en' ? 'Toggle theme' : 'Cambiar tema'}
+							title={lang === 'en' ? 'Toggle theme' : 'Cambiar tema'}
+							onclick="if(window.setThemeGlobal) { const isDark = document.documentElement.classList.contains('dark'); window.setThemeGlobal(!isDark); localStorage.setItem('terminalThemeSet', 'true'); }"
+							class="w-9 h-9 rounded-full flex items-center justify-center bg-white/60 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 backdrop-blur-sm text-slate-600 dark:text-slate-300 hover:text-brand-purple dark:hover:text-brand-purple-light hover:border-brand-purple/40 dark:hover:border-brand-purple/40 shadow-sm transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+						>
+							<svg class="block dark:hidden pointer-events-none w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+							<svg class="hidden dark:block pointer-events-none w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<main id="main-content" class:list={[
-			"px-4 sm:px-12 w-full max-w-5xl mx-auto pt-8 sm:pt-12 transition-all duration-300",
-			isProjectPage ? "block pb-24 sm:pb-36 mt-4 sm:mt-0" : "flex-grow flex flex-col pb-8 sm:pb-12 mt-16 sm:mt-0"
+			"px-3 sm:px-8 lg:px-12 w-full max-w-5xl mx-auto transition-all duration-300",
+			isProjectPage ? "block pt-1 sm:pt-14 pb-20 sm:pb-32 mt-0" : "flex-grow flex flex-col pt-8 sm:pt-12 pb-8 sm:pb-12 mt-16 sm:mt-0"
 		]}>
 			<slot />
 		</main>

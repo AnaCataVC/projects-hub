@@ -1,22 +1,23 @@
 ---
 title: "Amiga IA"
-description: "Comprehensive ecosystem of autonomous subagents, stateless guardrail hooks, and 23 portable declarative skills. 100% cross-compatible with Antigravity (Gemini), Claude Code, and OpenAI Codex."
-lastUpdated: 2026-10-31
+description: "Comprehensive ecosystem of 14 autonomous subagents, stateless guardrail hooks, and 25 portable declarative skills. 100% cross-compatible with Antigravity (Gemini), Claude Code, and OpenAI Codex."
+lastUpdated: 2026-11-01
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
 isLiveApp: false
-technologies: ["Subagent Orchestration", "Agent Skills", "Delimited Block Protocol", "Release Automation", "PowerShell", "Node.js"]
+technologies: ["Subagent Orchestration", "Agent Skills", "Delimited Block Protocol", "Cleanroom TDD", "Empirical Benchmarks", "Release Automation", "PowerShell", "Node.js"]
 categories: ["AI", "Agents", "Productivity", "Developer Tools"]
 type: "ai"
 status: "Active"
 problem: "Traditional step-by-step imperative instructions break down as codebases scale, alongside heavy recurring token taxes caused by bloated system prompts and repetitive multi-engine context."
-solution: "A unified agentic ecosystem featuring autonomous orchestrating subagents and declarative skills, utilizing a delimited block protocol for clean directive distribution and rigorous release verification gates."
+solution: "A unified agentic ecosystem featuring 14 autonomous orchestrating subagents and 25 declarative skills, powered by a tri-ecosystem compiler (Antigravity, Claude Code, and OpenAI Codex), delimited block distribution, Double-Blind Cleanroom TDD, and deterministic empirical benchmarks."
 learnings:
+  - "Empirical Benchmark Validation (ADR-004, ADR-012): Offline deterministic benchmark suite demonstrating a 44.75% (-2,973 tokens) reduction in context overhead per turn, 0% confirmation bias in Cleanroom TDD, and 100% precision and recall (F1 = 1.00) in repository defect audits."
   - "Idempotent AI Rules Distribution: Designed a delimited block protocol to inject and sync agent directives across codebases without overwriting local configurations or leaving artifacts."
   - "Release Automation Verification Gates: Enforced live artifact verification protocols ensuring compiled binaries are physically generated and uploaded before publishing official releases."
   - "Agentic vs. Passive Prompting: Transitioning to autonomous subagent profiles that reason about project goals and deploy worker threads in parallel proved dramatically more robust and scalable than monolithic prompt engineering."
-  - "System Token Optimization (ADR-004): Verified 36.3% reduction (-1,211 tokens per conversation turn) by compacting the universal adapter and modularizing hook scripts."
+  - "Tri-Ecosystem Semantic Compiler: Automated compilation pipeline transforming canonical Markdown sources into native structures for Anthropic Claude Code (~/.claude/), Google Antigravity (~/.gemini/config/), and OpenAI Codex (~/.agents/ and ~/.codex/)."
 websiteActionText: "Visit Page"
 product:
   tagline: "A thoughtful team of AI agents for everyday coding"
@@ -67,8 +68,8 @@ product:
         description: "Automates the creation, conflict checking, and critical self-review of your own Pull Requests."
         tags: ["ami-review-self-pr", "ami-plan-commits", "ami-detect-pr-conflicts", "ami-create-tests"]
       - title: "ami-repo-auditor"
-        description: "Orchestrates modular repository health audits, dependency scanning, debugging, and test generation."
-        tags: ["ami-discover-automations", "ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
+        description: "Orchestrates modular repository health audits, agent discovery, automation opportunities, and quality checks."
+        tags: ["ami-discover-ai-agents", "ami-discover-automations", "ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
       - title: "ami-doc-architect"
         description: "Master documentation orchestrator for repository wikis, context research, and learning extraction."
         tags: ["ami-manage-docs", "ami-research-context"]
@@ -95,12 +96,13 @@ product:
 
 ### Technical Architecture & Orchestration
 
-**Amiga IA** elevates AI-assisted software engineering from linear chat prompts to an **autonomous subagent mesh** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, etc.). Each agent operates with bounded tools, declarative skills, and explicit verification gates.
+**Amiga IA** elevates AI-assisted software engineering from linear chat prompts to an **autonomous subagent mesh of 14 specialized agents** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, etc.) supported by **25 on-demand declarative skills**. Each agent operates with bounded tools, declarative skills, and explicit verification gates.
 
 *   **Universal Adapter & Multi-Engine Portability:** Stateless guardrail injection and portable skill compilation with native cross-compatibility across Antigravity (Gemini), Claude Code, and OpenAI Codex.
-*   **Delimited Block Protocol:** An idempotent synchronization engine that distributes and updates global agent directives across projects without overwriting custom developer settings.
+*   **Delimited Block Protocol:** Idempotent synchronization engine that updates global rules across codebases without overwriting local configurations or leaving residual clutter.
+*   **Double-Blind Cleanroom Isolation:** Decoupled TDD workflow (`ami-cleanroom-arbiter`) where implementers and test authors communicate exclusively over frozen interface contracts, eliminating confirmation bias.
 
-### Optimization & Quality Gates
+### Optimization, Benchmarks & Verification Gates
 
-*   **Token Tax Reduction:** Decoupling bloated system prompts into *on-demand declarative skills* reduced initial context token consumption by **36.3%**.
-*   **Anti-Hallucination Gate:** Automated CI/CD release pipelines featuring live verification checks that physically compile, test, and validate binary hashes before triggering official GitHub releases.
+*   **Empirical Benchmark Suite:** Offline deterministic evaluations demonstrating a **44.75% (-2,973 tokens/turn)** reduction in context overhead, 0% escaped defects under Cleanroom TDD, and perfect precision and recall ($F_1 = 1.00$) in repository defect detection.
+*   **Anti-Hallucination Release Protocol:** Automated release pipelines with live artifact verification gates that compile, test, and verify binary checksums before enabling publishing to GitHub.

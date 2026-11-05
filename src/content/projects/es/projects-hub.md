@@ -1,21 +1,23 @@
 ---
 title: "Projects Hub — Terminal Interactiva"
 description: "El portafolio que estás viendo: una terminal Unix simulada 100% en el cliente para navegar mis proyectos por teclado o búsqueda, sin backend."
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-31
 icon: "/project-icons/projects-hub-icon.svg"
 githubUrl: "https://github.com/AnaCataVC/projects-hub"
 liveAppUrl: "https://projects.ana-catalina.com"
 isLiveApp: true
-technologies: ["Astro 7", "TypeScript", "Tailwind CSS v4", "Zod", "Vitest", "Vercel"]
-categories: ["Portafolio", "Frontend", "UX/UI", "Testing"]
+technologies: ["Astro 7", "TypeScript", "Tailwind CSS v4", "Zod", "Vitest", "GitHub Actions", "Vercel"]
+categories: ["Portafolio", "Frontend", "GitOps", "Testing"]
 type: "web"
 status: "Activo"
-problem: "Los portafolios estáticos de tarjetas no comunican el dominio en diseño de interacción ni ofrecen un espacio adecuado para detallar la arquitectura, los aprendizajes técnicos y las motivaciones reales detrás de cada proyecto sin saturar la vista."
-solution: "Una arquitectura de interfaz dual nacida para satisfacer mi curiosidad: una terminal Unix client-side para explorar el catálogo por teclado o búsqueda, conectada a fichas técnicas Bento que profundizan en arquitectura y decisiones de diseño."
+problem: "Los portafolios estáticos de tarjetas no comunican el dominio en diseño de interacción ni ofrecen un espacio adecuado para detallar la arquitectura, los aprendizajes técnicos y las motivaciones reales detrás de cada proyecto sin saturar la vista. Además, mantener un catálogo multi-proyecto sincronizado con repositorios en constante evolución suele depender de mantenimiento manual propenso a desactualizaciones."
+solution: "Una arquitectura de interfaz dual nacida para satisfacer mi curiosidad: una terminal Unix client-side para explorar el catálogo por teclado o búsqueda, conectada a fichas técnicas Bento que profundizan en arquitectura y decisiones de diseño. Actúa como el Single Source of Truth (SSOT) de proyectos del ecosistema, respaldado por un pipeline de CI de 5 capas, auditorías automáticas de repositorios locales y remotos (audit-projects.mjs), detección semanal de drift en GitHub Actions y compuertas de integridad bilingüe (Zero-Flags y verificación de activos)."
 learnings:
   - "Simular un sistema de archivos Unix 100% client-side —sin backend— con navegación por teclado, breadcrumbs y búsqueda incremental tipo 'find'."
   - "Extraer la lógica pura de la terminal (parsing, matching, aplanado del árbol) a un módulo separado para poder testearla con Vitest sin simular el DOM."
   - "Diseñar un schema de Content Collections (Zod) bilingüe como única fuente de verdad para las fichas de proyecto."
+  - "Auditoría Agéntica Multi-Cuenta y Detección de Drift (GitOps): Implementación de escaneo agnóstico de repositorios hermanos (..) y API de GitHub sin rutas absolutas, con aislamiento de tokens (AnaCataVC) para evitar falsos negativos en sesiones compartidas, y workflow semanal que compara marcas de revisión contra el historial de commits."
+  - "Compuertas de Integridad de Contratos y Pre-Push Hook: Pruebas automatizadas en Vitest que garantizan paridad 1:1 de archivos bilingües, política Zero-Flags, privacidad de rutas del sistema de archivos y existencia física de activos de imagen, integradas en un hook pre-push nativo."
 websiteActionText: "Ver Portafolio en Vivo"
 ---
 

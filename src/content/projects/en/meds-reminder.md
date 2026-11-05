@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "100% offline-first native Android mobile application for medication adherence and multi-profile dosage reminders with high-precision alarms."
-lastUpdated: 2026-10-31
+lastUpdated: 2026-11-01
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -11,8 +11,10 @@ categories: ["Mobile", "Health", "Android", "Productivity"]
 type: "mobile"
 status: "Active"
 problem: "Medication forgetfulness across multi-member family profiles and inconsistent alarm reliability on Android due to aggressive battery-saving modes (Doze mode)."
-solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, lockscreen popups (AlarmActivity), pre-alarm quick-actions, per-person alarm suspension, early intake resolution, and a fully deterministic Room-as-single-source-of-truth alarm engine with zero artificial delays."
+solution: "A local-first, privacy-respecting Android application featuring multi-profile management, exact alarms that bypass Doze mode, interactive lockscreen popups (`AlarmActivity`) with granular per-medication confirmation, silent pre-alarms with quick actions, per-person alarm suspension, configurable cumulative snooze, clear differentiation between taken and skipped doses with instant reactivation, and a fully deterministic Room-as-single-source-of-truth alarm engine."
 learnings:
+  - "Atomic Partial Intake Resolution in Scheduled Medication Groups (Room Schema v6): Ephemeral per-medication state tracking in many-to-many cross references (medication_group_cross_ref) enabling granular intake confirmations or skips directly from the fullscreen AlarmActivity without de-synchronizing system schedulers or home screen widgets."
+  - "Deterministic Skip vs. Taken State Differentiation with Reactivation (Room Auto-Migration v5): Clean architectural separation of intake statuses using last_skipped_date and instant schedule reactivation, preserving treatment integrity while offering reactive recovery from accidental skips."
   - "Intake Lifecycle & Cumulative Snooze Management: Calculating snoozes relative to scheduled alarm time with configurable cumulative intervals, reactive cancellation of active snoozes, and Room DB sync when doses are logged early."
   - "Per-Person Alarm Suspension: Implementing temporary notification and alarm suppression per profile without corrupting underlying treatment schedules."
   - "Ensuring sub-second alarm accuracy on Android 14/15/16 using AlarmManager.setAlarmClock() and USE_EXACT_ALARM under healthcare exemption guidelines."
@@ -28,7 +30,7 @@ product:
       text: "Zero telemetry, zero external servers, and zero cloud storage. Your medical data stays strictly within your phone's local SQLite (Room) database."
     - icon: "AlarmClock"
       title: "Full-Screen Lockscreen Alarms"
-      text: "Launches an interactive AlarmActivity directly over the lockscreen, powered by a high-priority setAlarmClock() trigger."
+      text: "Launches an interactive AlarmActivity directly over the lockscreen with granular per-medication checkboxes, powered by a high-priority setAlarmClock() trigger."
     - icon: "Users"
       title: "Multi-Profile Family Care"
       text: "Manage treatments for parents, children, or partners from one single device with independent catalogs, exact dosages, and custom schedules."
@@ -36,8 +38,11 @@ product:
       title: "Silent Pre-Alarms"
       text: "Get a notification 15 or 30 minutes before a dose is due, with one-tap actions to mark it as taken or skip it for today, avoiding sound interruptions."
     - icon: "PauseCircle"
-      title: "Smart Suspension"
-      text: "Pause a person's alarms for 6 hours or for the rest of the day with a single switch. They reactivate automatically once the scheduled time expires."
+      title: "Smart Suspension & Cumulative Snooze"
+      text: "Pause alarms for 6 hours or snooze doses with configurable cumulative minutes and a dedicated options sheet, cancelling reactively upon logging intake."
+    - icon: "CheckCheck"
+      title: "Individual Intake & Reactivation"
+      text: "Confirm or skip specific medications within multi-drug schedules, with instant one-tap schedule reactivation for doses skipped by mistake."
     - icon: "FileJson"
       title: "Atomic JSON SAF Backup"
       text: "Export and import your entire database atomically via Android's Storage Access Framework. No proprietary dependencies, no lock-in."
@@ -51,12 +56,13 @@ product:
 **Meds Reminder** is engineered for 100% medication adherence reliability operating completely offline:
 
 *   **Doze-Resilient Precision with `AlarmManager`:** Built with `setAlarmClock()` and `USE_EXACT_ALARM` permissions under health categorization, ensuring exact second-precision triggers even when Android enters deep sleep (*Doze mode*).
-*   **Lock Screen Full-Screen Overlay (`AlarmActivity`):** Leverages `showWhenLocked` and `turnScreenOn` flags to surface critical dosage reminders above the keyguard without requiring manual unlocking.
-*   **Multi-Profile Relational Room DB:** Clean data layer powered by Koin DI and Kotlin Coroutines/Flow to model multi-family regimens and flexible dosage intervals.
+*   **Lock Screen Full-Screen Overlay (`AlarmActivity`):** Leverages `showWhenLocked` and `turnScreenOn` flags to surface critical dosage reminders above the keyguard without manual unlocking, featuring interactive checkboxes for granular intake confirmation within scheduled groups.
+*   **Multi-Profile Relational Room DB:** Clean data layer powered by Koin DI and Kotlin Coroutines/Flow to model multi-family regimens and flexible dosage intervals, protected by verified Room auto-migrations.
 
-### Lifecycle Management & Dynamic Notification Channels
+### Lifecycle Management, Snooze & Granular Intake
 
-*   **Intelligent Early-Dose Resolution:** State synchronization algorithm that detects when medication was taken ahead of schedule, automatically cancelling pending pre-alarms and snoozes to eliminate redundant notifications.
+*   **Individual Intake Confirmation & Distinct Skip States:** Allows confirming specific medicines in a shared time slot while skipping or postponing others, coupled with clear skipped-state status chips and instant schedule reactivation.
+*   **Intelligent Early-Dose Resolution & Cumulative Snooze:** State synchronization algorithm that reconciles Room state upon early dosage logging, configurable cumulative snoozes (`SnoozeOptionsSheet`), and reactive cancellation of pending alerts.
 *   **Dynamic Sound Channels on Android 8.0+:** Generates distinct notification channels hashed by custom audio URI on-the-fly, bypassing Android's built-in channel audio immutability.
 
 > **Note**: You can explore the source code, review technical documentation, and build the APK directly from the GitHub repository.
