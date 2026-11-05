@@ -20,20 +20,25 @@ Triggered on every `push` to `main` and on all `pull_request` events:
 - **Runtime:** Ubuntu Latest with Node.js 22 LTS and deterministic `npm ci` lockfile installation.
 - **Least-Privilege Permissions:** Scoped strictly to `contents: read`.
 - **Concurrency Control:** Groups runs by `${{ github.workflow }}-${{ github.ref }}` with `cancel-in-progress: true` to automatically abort superseded workflow runs on rapid pushes.
-- **5-Stage Quality Gate:**
+- **7-Stage Quality Gate:**
   1. `npm ci` — Deterministic dependency installation.
-  2. `npm run type-check` — Astro & TypeScript strict static analysis (`astro check`).
-  3. `npm run lint` — ESLint 10 flat-config verification across `.astro`, `.ts`, and `.mjs` automation scripts.
-  4. `npm run test` — Vitest 4 headless component, schema, routing, and portfolio integrity suites.
-  5. `npm run build` — Production static site generation (`astro build`).
+  2. `npm run validate:parity` — Bilingual file symmetry, Lucide icon export validity, and Zero-Flags audit.
+  3. `npm run audit:landings` — SEO title/meta description length audit and CLI binary upstream alignment.
+  4. `npm run type-check` — Astro & TypeScript strict static analysis (`astro check`).
+  5. `npm run lint` — ESLint 10 flat-config verification across `.astro`, `.ts`, and `.mjs` automation scripts.
+  6. `npm run test` — Vitest 4 headless component, schema, routing, and portfolio integrity suites.
+  7. `npm run build` — Production static site generation (`astro build`).
 
-### 2.2 Weekly Portfolio Drift Audit (`.github/workflows/portfolio-drift.yml`)
+### 2.2 Weekly Portfolio Drift Audit & Automated Issue Lifecycle (`.github/workflows/portfolio-drift.yml`)
 Triggered automatically every Monday at `12:00 UTC` (`cron: "0 12 * * 1"`) or manually via `workflow_dispatch`:
-- Checks out the full git history (`fetch-depth: 0`) so review timestamps can be accurately resolved from commit history.
-- Executes `.agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs` against the public GitHub repositories of `AnaCataVC`.
-- Generates a structured Markdown summary directly in `$GITHUB_STEP_SUMMARY`, listing:
-  - **New Unindexed Repositories:** Projects created on GitHub that do not yet have an entry in `src/content/projects/`.
-  - **Pending Portfolio Updates:** Active or in-development projects with upstream commits newer than their portfolio review mark (`lastUpdated` or last commit timestamp), complete with direct GitHub comparison links (`/compare/<sha>...HEAD`).
+- **Dual Audit Execution:**
+  - Runs `audit-projects.mjs` against public GitHub repositories of `AnaCataVC` to discover new unindexed projects and stale case studies.
+  - Runs `audit-product-landings.mjs` to detect SEO length regressions or upstream binary drift on active product landing pages.
+- **Markdown Summary:** Generates a structured audit report directly in `$GITHUB_STEP_SUMMARY`.
+- **Automated Issue Lifecycle Management (`publish-drift-report.mjs`):**
+  - **Permissions:** Scoped to `contents: read` and `issues: write`.
+  - **Drift Detected:** Automatically creates or updates an open GitHub Issue labeled `portfolio-drift` and assigned to `AnaCataVC`, presenting an interactive Markdown checklist with direct GitHub `/compare/...` diff links.
+  - **Zero Drift (Synchronized):** If an existing `portfolio-drift` issue is open and no drift is detected, the workflow automatically closes it with a confirmation comment.
 
 ### 2.3 Automated Dependency Maintenance (`.github/dependabot.yml`)
 Configured for weekly checks every Monday across two ecosystems:
@@ -41,10 +46,12 @@ Configured for weekly checks every Monday across two ecosystems:
 - **`github-actions` (`/`)**: Monitors third-party workflow actions (`actions/checkout`, `actions/setup-node`) for security and runtime updates.
 
 ### 2.4 Local Pre-Push Git Hook (`.githooks/pre-push`)
-Versioned native Git hook that intercepts `git push` operations locally and runs:
-1. `npm run lint`
-2. `npm run type-check`
-3. `npm test`
+Versioned native Git hook that intercepts `git push` operations locally and executes:
+1. `npm run validate:parity`
+2. `npm run audit:landings`
+3. `npm run lint`
+4. `npm run type-check`
+5. `npm test`
 
 To activate the versioned hooks directory on a fresh clone, run:
 ```bash
@@ -60,6 +67,7 @@ npm run prepare-hooks
 | `npm run dev` | `astro dev` | Starts the local development server on `http://localhost:4321`. |
 | `npm run verify` | `npm run lint && npm run type-check && npm test && npm run build` | **Single-command full quality gate.** Runs linter, TypeScript/Astro checker, Vitest suites, and production build sequentially. |
 | `npm run audit:projects` | `node .agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs` | Audits sibling local folders (`..`) and remote GitHub repositories (`AnaCataVC`) for unindexed projects or stale case studies. |
+| `npm run audit:landings` | `node .agents/skills/hub-audit-product-landing/scripts/audit-product-landings.mjs` | Audits product landing pages for SERP title/meta description length, Lucide icon exports, and CLI binary alignment. |
 | `npm run validate:parity` | `node .agents/skills/hub-validate-parity/scripts/validate-parity.mjs` | Audits bilingual parity, Lucide icons, schema conformity, and Zero-Flags rule across content entries. |
 | `npm run prepare-hooks` | `git config core.hooksPath .githooks` | Binds the local repository's Git hooks path to the versioned `.githooks/` directory. |
 | `npm run lint` | `eslint .` | Lints all project source files and `.agents/` scripts. |
@@ -110,7 +118,8 @@ When `npm run audit:projects` reports new or updated repositories, the `hub-port
 Projects Hub includes a specialized suite of autonomous capabilities located in `.agents/`:
 - **`hub-portfolio-auditor`** (`.agents/agents/hub-portfolio-auditor.md`): Master orchestrator agent for repository discovery, asset synchronization, bilingual case studies, product pages, and domain provisioning.
 - **`hub-dns-auditor`** (`.agents/agents/hub-dns-auditor.md`): DNS, SSL, and subdomain consistency auditor validating `vercel.json` host routes, Vercel registered domains, and Namecheap CNAME records.
-- **`hub-portfolio-sync-audit`** (`.agents/skills/hub-portfolio-sync-audit/`): Skill executing `npm run audit:projects` to categorize repositories into new projects and pending updates.
+- **`hub-portfolio-sync-audit`** (`.agents/skills/hub-portfolio-sync-audit/`): Skill executing `npm run audit:projects` to categorize repositories into new projects and pending updates, with `publish-drift-report.mjs` managing GitHub Action summaries and automated Issue lifecycles.
+- **`hub-audit-product-landing`** (`.agents/skills/hub-audit-product-landing/`): Automated SEO and marketing integrity auditor enforcing SERP metadata lengths, valid Lucide icon exports, and upstream binary command alignment (`npm run audit:landings`).
 - **`hub-project-entry-update`** (`.agents/skills/hub-project-entry-update/`): Skill updating a single entry's case study, product page, and domain setup.
 - **`hub-provision-subdomain`** (`.agents/skills/hub-provision-subdomain/`): Procedural recipe for Vercel subdomain attachment, `vercel.json` host route mapping, and Namecheap CNAME retrieval.
 - **`hub-validate-parity`** (`.agents/skills/hub-validate-parity/`): Automated bilingual parity, Zod schema, Lucide icon export, and Zero-Flags validator (`npm run validate:parity`).
