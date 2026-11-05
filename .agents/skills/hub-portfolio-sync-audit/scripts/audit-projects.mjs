@@ -209,6 +209,7 @@ function runAudit() {
   const results = {
     newProjects: [],
     pendingUpdates: [],
+    productAlerts: [],
     upToDate: [],
     notMonitored: [],
   };
@@ -245,6 +246,19 @@ function runAudit() {
       (!reviewDate || latestActivity > reviewDate) ||
       !hasEnglish
     );
+
+    // Check product landing presence for active tools
+    const hasProduct = /^product:\s*$/m.test(esContent);
+    const typeMatch = esContent.match(/^type:\s*["']?([a-zA-Z0-9_-]+)["']?/m);
+    const projectType = typeMatch ? typeMatch[1] : 'desktop';
+    const isStandaloneShowcase = ['anacatalina-mcp', 'anacatalina-cv', 'emotion-finder', 'life-tracker-analytics'].includes(targetProjectName);
+
+    if (!hasProduct && !isStandaloneShowcase && ['desktop', 'mobile', 'ai'].includes(projectType)) {
+      results.productAlerts.push({
+        repo: repoName,
+        issue: `Active ${projectType} entry is missing a Pastel-Tech product landing page (/p/${targetProjectName}/)`,
+      });
+    }
 
     if (isStale) {
       results.pendingUpdates.push({
@@ -295,6 +309,14 @@ function runAudit() {
     console.log('');
   } else {
     console.log('🔄 PENDING UPDATES: None detected.\n');
+  }
+
+  if (results.productAlerts.length > 0) {
+    console.log('🏷️  PRODUCT LANDING & SEO ALERTS:');
+    for (const a of results.productAlerts) {
+      console.log(`  • ${a.repo.padEnd(25)} ${a.issue}`);
+    }
+    console.log('      Run "npm run audit:landings" for comprehensive SEO and binary audit.\n');
   }
 
   console.log(`✅ UP TO DATE PROJECTS: ${results.upToDate.length} projects synchronized.`);

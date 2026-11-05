@@ -20,8 +20,8 @@ learnings:
   - "Modular Learnings Catalog & Strongly Typed State Contracts: Any atomic state key must be formally registered in the PluginState interface of types/index.d.ts to prevent untyped collisions during engine compilation and validation."
 websiteActionText: "Visit Page"
 product:
-  tagline: "Production-grade mods and reactive UI panels for Claude Desktop and Claude Code"
-  intro: "First-class companion suite designed as a daily driver for Claude Desktop (Code tab) and Claude Code CLI: optimize reasoning with quiet gauges, audit uncommitted changes with fast hotkeys, protect Git/K8s environments, and run bias-free Cleanroom TDD."
+  tagline: "Reactive mods for Claude Desktop and CLI"
+  intro: "Companion mod suite for Claude Desktop & CLI: optimize reasoning with quiet gauges, audit uncommitted changes with hotkeys, and run bias-free Cleanroom TDD."
   features:
     - icon: "Sliders"
       title: "Hooks & Settings Inspector"

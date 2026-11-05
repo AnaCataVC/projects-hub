@@ -15,6 +15,7 @@
     "verify": "npm run lint && npm run type-check && npm test && npm run build",
     "prepare-hooks": "git config core.hooksPath .githooks",
     "audit:projects": "node .agents/skills/hub-portfolio-sync-audit/scripts/audit-projects.mjs",
+    "audit:landings": "node .agents/skills/hub-audit-product-landing/scripts/audit-product-landings.mjs",
     "validate:parity": "node .agents/skills/hub-validate-parity/scripts/validate-parity.mjs"
   },
   "repository": {

@@ -20,8 +20,8 @@ learnings:
   - "Catálogo Modular de Aprendizajes y Contratos Fuertemente Tipados: Toda clave atómica compartida (atom) debe declararse explícitamente en la interfaz PluginState de types/index.d.ts para prevenir colisiones en tiempo de compilación y validación del motor."
 websiteActionText: "Ver Página"
 product:
-  tagline: "Mods de producción y paneles reactivos para Claude Desktop y Claude Code"
-  intro: "Suite complementaria de mods y paneles reactivos diseñada como daily driver para Claude Desktop (pestaña Code) y Claude Code CLI: optimiza tu contexto con medidores discretos, audita cambios pendientes con atajos rápidos, protege entornos Git/K8s y habilita TDD Cleanroom sin sesgos."
+  tagline: "Mods reactivos para Claude Desktop y CLI"
+  intro: "Suite de mods para Claude Desktop y CLI: optimiza tu contexto con medidores discretos, audita cambios con atajos rápidos y habilita TDD Cleanroom sin sesgos."
   features:
     - icon: "Sliders"
       title: "Inspección de Hooks y Ajustes"

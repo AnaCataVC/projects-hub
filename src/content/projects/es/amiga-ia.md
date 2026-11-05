@@ -90,7 +90,7 @@ product:
       language: "bash"
       code: |
         npm install -g @anacatavc/amiga-ia
-        ami
+        ami # o: amiga-ia-setup
     - title: "Gestión Modular de Packs de Dominio"
       language: "bash"
       code: |
