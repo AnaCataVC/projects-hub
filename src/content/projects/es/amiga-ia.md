@@ -35,9 +35,12 @@ product:
     - icon: "Shield"
       title: "Controles Previos al Push"
       text: "Realiza pruebas de seguridad, consistencia de datos e interceptación de hooks antes de cualquier push al remoto."
+    - icon: "Package"
+      title: "Packs de Dominio y CLI ami"
+      text: "Activa solo lo que necesitas: packs integrados ('essential', 'data', 'ui') y extensiones runtime ('claude-mods') con activación instantánea y 100% offline."
     - icon: "Stethoscope"
       title: "Asistente de Instalación y Diagnóstico"
-      text: "El wizard CLI interactivo (`amiga-ia-setup`) permite instalar la suite completa o packs de dominio selectivos para Antigravity, Claude Code y OpenAI Codex, con invariantes de ingeniería reforzadas y un comando doctor para verificar la salud del sistema."
+      text: "El wizard CLI interactivo (`ami` o `amiga-ia-setup`) permite configurar la suite completa o packs selectivos para Antigravity, Claude Code y OpenAI Codex, con verificación de salud mediante ami doctor."
   platforms: ["Claude Code", "Antigravity (Gemini)", "OpenAI Codex"]
   downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
   downloadLabel: "Instalar vía NPM"
@@ -83,15 +86,27 @@ product:
         description: "Crea un panel de subagentes dinámicos para debatir, analizar y refinar ideas arquitectónicas."
         tags: ["Dynamic Parallel Subagents"]
   codeSnippets:
-    - title: "Instalación Universal y Selección de Motor"
+    - title: "Instalación Universal con CLI ami"
       language: "bash"
       code: |
         npm install -g @anacatavc/amiga-ia
-        amiga-ia-setup
-    - title: "Salud del Sistema y Alertas Legacy"
+        ami
+    - title: "Gestión Modular de Packs de Dominio"
       language: "bash"
       code: |
-        amiga-ia-setup doctor
+        ami list
+        ami add data
+        ami add ui
+        ami add claude-mods
+    - title: "Diagnóstico y Salud del Sistema"
+      language: "bash"
+      code: |
+        ami doctor
+  faq:
+    - question: "¿Cómo funciona la nueva CLI ami y los packs de dominio?"
+      answer: "La CLI `ami` (alias oficial de `amiga-ia-setup`) organiza las 39 capacidades en paquetes declarativos ('essential', 'data', 'ui') y extensiones runtime ('claude-mods'). La activación o desactivación es instantánea, 100% offline y no requiere descargas adicionales."
+    - question: "¿En qué motores de IA puedo usar Amiga IA?"
+      answer: "Amiga IA compila nativamente para Google Antigravity (Gemini), Anthropic Claude Code y OpenAI Codex, adaptando sus reglas, subagentes y skills al formato requerido por cada herramienta."
 ---
 
 ### Arquitectura Técnica y Orquestación

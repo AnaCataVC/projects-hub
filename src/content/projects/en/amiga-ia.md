@@ -35,9 +35,12 @@ product:
     - icon: "Shield"
       title: "Pre-Flight Guards"
       text: "Performs baseline security, data consistency, and hook interceptions before pushing to remote."
+    - icon: "Package"
+      title: "Domain Packs & ami CLI"
+      text: "Activate only what you need: in-tree domain packs ('essential', 'data', 'ui') and runtime extensions ('claude-mods') with instant, 100% offline toggling."
     - icon: "Stethoscope"
       title: "Setup Wizard & Diagnostic Doctor"
-      text: "The interactive CLI wizard (`amiga-ia-setup`) configures full suites or selective domain packs across Antigravity, Claude Code, and OpenAI Codex, with strengthened engineering invariants and a doctor command to verify system health."
+      text: "The interactive CLI wizard (`ami` or `amiga-ia-setup`) configures full suites or selective domain packs across Antigravity, Claude Code, and OpenAI Codex, with health checks via ami doctor."
   platforms: ["Claude Code", "Antigravity (Gemini)", "OpenAI Codex"]
   downloadUrl: "https://www.npmjs.com/package/@anacatavc/amiga-ia"
   downloadLabel: "Install via NPM"
@@ -83,15 +86,27 @@ product:
         description: "Spawns a council of dynamic specialized subagents to debate, analyze, and refine architectural ideas."
         tags: ["Dynamic Parallel Subagents"]
   codeSnippets:
-    - title: "Universal CLI Setup & Engine Selection"
+    - title: "Universal Installation via ami CLI"
       language: "bash"
       code: |
         npm install -g @anacatavc/amiga-ia
-        amiga-ia-setup
-    - title: "System Health & Legacy Advisories"
+        ami
+    - title: "Modular Domain Packs & Extensions"
       language: "bash"
       code: |
-        amiga-ia-setup doctor
+        ami list
+        ami add data
+        ami add ui
+        ami add claude-mods
+    - title: "System Health Diagnostics"
+      language: "bash"
+      code: |
+        ami doctor
+  faq:
+    - question: "How does the ami CLI and Domain Packs work?"
+      answer: "The `ami` CLI (official alias of `amiga-ia-setup`) packages 39 capabilities into declarative packs ('essential', 'data', 'ui') and runtime extensions ('claude-mods'). Activation is instantaneous, 100% offline, and requires zero additional downloads."
+    - question: "Which AI coding assistants are supported?"
+      answer: "Amiga IA compiles natively for Google Antigravity (Gemini), Anthropic Claude Code, and OpenAI Codex, translating rules, subagents, and skills into each engine's expected native directory structure."
 ---
 
 ### Technical Architecture & Orchestration
