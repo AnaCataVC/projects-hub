@@ -43,22 +43,29 @@ Get-ChildItem -Path ".." -Directory
 - **New Projects & Pending Updates:**
   - Inspect sibling configuration (`package.json`, `Cargo.toml`, `.csproj`, `README.md`).
   - Categorize (`data-science`, `ai-and-agents`, `software-engineering/desktop`, `software-engineering/mobile`, `software-engineering/web`).
-  - Scaffold or update both Spanish (`es`) and English (`en`) project case studies in `src/content/projects/`.
-  - **Product Landing Page & Vercel URL Setup:**
-    - For all active/in-development software projects, scaffold the `product` block (`tagline`, `intro`, `features`, `platforms`, `downloadUrl`, `catalog`, `codeSnippets`, `faq`).
-    - Set `websiteUrl: "https://<slug>.ana-catalina.com"` and `websiteActionText`.
-    - Check and insert host routes in `vercel.json` for `/` and `/en`.
-    - Run `vercel domains add <slug>.ana-catalina.com projects-hub` to register the subdomain.
-    - Run `vercel domains verify <slug>.ana-catalina.com` to retrieve the dedicated CNAME hash target (`<hash>.vercel-dns-017.com.`).
-    - Explicitly report the Namecheap CNAME configuration (`Host: <slug>`, `Target: <hash>.vercel-dns-017.com`).
-  - Update `technologies`, `problem`, `solution`, `learnings`, and bump `lastUpdated` to today's date (`YYYY-MM-DD`).
+  - **Mandatory Dual-Layer Audit (Case Study + Product Landing):**
+    - **Layer 1 (Case Study):** Scaffold or update both Spanish (`es`) and English (`en`) project case studies in `src/content/projects/`. Update `technologies`, `problem`, `solution`, `learnings`, and bump `lastUpdated` to today's date (`YYYY-MM-DD`).
+    - **Layer 2 (Product Landing Page & SEO):**
+      - For all active/in-development software projects, scaffold or refresh the `product` block (`tagline`, `intro`, `features`, `platforms`, `downloadUrl`, `catalog`, `codeSnippets`, `faq`).
+      - **Upstream Binary Check:** Verify upstream manifest (`package.json` `bin` / `Cargo.toml`) to ensure `codeSnippets` showcase the actual modern CLI commands and flags.
+      - **SEO Optimization:** Ensure `title — tagline` stays within 30–65 chars, `intro` stays within 100–160 chars, features have valid Lucide icons, and zero flags are used.
+      - Set `websiteUrl: "https://<slug>.ana-catalina.com"` and `websiteActionText`.
+      - Check and insert host routes in `vercel.json` for `/` and `/en`.
+      - Run `vercel domains add <slug>.ana-catalina.com projects-hub` to register the subdomain.
+      - Run `vercel domains verify <slug>.ana-catalina.com` to retrieve the dedicated CNAME hash target (`<hash>.vercel-dns-017.com.`).
+      - Explicitly report the Namecheap CNAME configuration (`Host: <slug>`, `Target: <hash>.vercel-dns-017.com`).
 
-### 3. Quality Gate Verification
+### 3. Quality Gate & SEO Verification
 Execute the local validation suite:
 ```powershell
-npm run lint; npm run type-check; npm test; npm run build
+npm run audit:landings
+npm run validate:parity
+npm run lint
+npm run type-check
+npm test
+npm run build
 ```
-Do not proceed if any linter error, TypeScript error, or Vitest failure occurs.
+Do not proceed if any SEO issue, linter error, TypeScript error, or Vitest failure occurs.
 
 ### 4. Git Hygiene, Commit & Push
 - Inspect git status and diff.
