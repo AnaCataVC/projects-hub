@@ -21,7 +21,7 @@ learnings:
 websiteActionText: "Ver Página"
 product:
   tagline: "Mods de producción y paneles reactivos para Claude Desktop y Claude Code"
-  intro: "Optimiza tu ventana de contexto con medidores discretos, audita cambios pendientes antes de salir con atajos de teclado, protege identidades Git/Kubernetes y habilita TDD Cleanroom sin sesgos en Claude Desktop y Claude Code CLI."
+  intro: "Suite complementaria de mods y paneles reactivos diseñada como daily driver para Claude Desktop (pestaña Code) y Claude Code CLI: optimiza tu contexto con medidores discretos, audita cambios pendientes con atajos rápidos, protege entornos Git/K8s y habilita TDD Cleanroom sin sesgos."
   features:
     - icon: "Sliders"
       title: "Inspección de Hooks y Ajustes"
@@ -71,21 +71,27 @@ product:
         description: "Guarda multientorno silenciosa para cuentas GitHub CLI y comandos de Kubernetes en producción."
         tags: ["git auth", "kubectl", "Guardrails", "Status Bar"]
   codeSnippets:
-    - title: "Carga Rápida por Línea de Comandos"
+    - title: "Instalación Rápida de Mods"
+      language: "bash"
+      code: "npm run install-mods"
+    - title: "Configuración Persistente en Claude Desktop"
+      language: "json"
+      code: |
+        // ~/.claude/settings.json
+        {
+          "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/child-sessions:~/.claude/mods/cleanroom-guard:~/.claude/mods/close-checklist:~/.claude/mods/context-guard:~/.claude/mods/hooks-viewer:~/.claude/mods/undelegated-reads"
+        }
+    - title: "Carga Ad-Hoc en Terminal CLI"
       language: "bash"
       code: "claude --plugin-dir mods/hooks-viewer --plugin-dir mods/undelegated-reads"
-    - title: "Carga Mediante Configuración Global"
-      language: "powershell"
-      code: |
-        # Configuración persistente para Claude Desktop y Claude Code CLI
-        $env:CLAUDE_CODE_PLUGIN_DIRS = "C:/path/to/ami-claude-mods/mods/hooks-viewer;C:/path/to/ami-claude-mods/mods/close-checklist"
-        claude
-    - title: "Validación de Contratos de Mod"
+    - title: "Validación de Contratos y Tests"
       language: "bash"
       code: |
         claude plugin validate mods/hooks-viewer
         claude plugin test mods/hooks-viewer
   faq:
+    - question: "¿Cómo se integra con Claude Desktop frente a la terminal CLI?"
+      answer: "ami-claude-mods es un compañero de primera clase para la app Claude Desktop (pestaña Code): paneles laterales (Pane), banners interactivos y medidores se renderizan como controles gráficos nativos. En la CLI de terminal, esos mismos componentes se adaptan fluidamente a Ink/ANSI sin requerir configuraciones separadas."
     - question: "¿Requiere modificar el binario de Claude Desktop o Claude Code?"
       answer: "No. Todos los mods se ejecutan en el sandbox aislado ECMAScript oficial compartido por Claude Desktop y Claude Code CLI, consumiendo exclusivamente la interfaz EngineInterface ($)."
     - question: "¿Es compatible con Windows, macOS y Linux?"

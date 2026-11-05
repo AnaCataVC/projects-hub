@@ -21,7 +21,7 @@ learnings:
 websiteActionText: "Visit Page"
 product:
   tagline: "Production-grade mods and reactive UI panels for Claude Desktop and Claude Code"
-  intro: "Optimize your reasoning context with quiet meters, audit uncommitted changes before exit with keyboard shortcuts, protect Git/Kubernetes environments, and run bias-free Cleanroom TDD across Claude Desktop and Claude Code CLI."
+  intro: "First-class companion suite designed as a daily driver for Claude Desktop (Code tab) and Claude Code CLI: optimize reasoning with quiet gauges, audit uncommitted changes with fast hotkeys, protect Git/K8s environments, and run bias-free Cleanroom TDD."
   features:
     - icon: "Sliders"
       title: "Hooks & Settings Inspector"
@@ -71,21 +71,27 @@ product:
         description: "Quiet multi-profile guard aligning GitHub CLI accounts with workspaces in the status bar and blocking un-scoped kubectl commands."
         tags: ["git auth", "kubectl", "Guardrails", "Status Bar"]
   codeSnippets:
-    - title: "Fast Command-Line Loading"
+    - title: "Fast Mods Installation"
+      language: "bash"
+      code: "npm run install-mods"
+    - title: "Persistent Setup in Claude Desktop"
+      language: "json"
+      code: |
+        // ~/.claude/settings.json
+        {
+          "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/child-sessions:~/.claude/mods/cleanroom-guard:~/.claude/mods/close-checklist:~/.claude/mods/context-guard:~/.claude/mods/hooks-viewer:~/.claude/mods/undelegated-reads"
+        }
+    - title: "Ad-Hoc CLI Terminal Execution"
       language: "bash"
       code: "claude --plugin-dir mods/hooks-viewer --plugin-dir mods/undelegated-reads"
-    - title: "Load via Global Configuration"
-      language: "powershell"
-      code: |
-        # Persistent configuration for Claude Desktop and Claude Code CLI
-        $env:CLAUDE_CODE_PLUGIN_DIRS = "C:/path/to/ami-claude-mods/mods/hooks-viewer;C:/path/to/ami-claude-mods/mods/close-checklist"
-        claude
-    - title: "Validate Mod Contract"
+    - title: "Contract Validation & Tests"
       language: "bash"
       code: |
         claude plugin validate mods/hooks-viewer
         claude plugin test mods/hooks-viewer
   faq:
+    - question: "How does it integrate with Claude Desktop vs. CLI terminal?"
+      answer: "ami-claude-mods is built as a first-class companion for Claude Desktop (Code tab): side panes (Pane), banners, and gauges render as native desktop GUI controls. In the CLI terminal, the exact same components render seamlessly using Ink/ANSI without separate configs."
     - question: "Does it modify Claude Desktop or Claude Code core binaries?"
       answer: "No. All mods run inside the official sandboxed ECMAScript runtime shared by Claude Desktop and Claude Code CLI, consuming exclusively the EngineInterface ($)."
     - question: "Is it cross-compatible across Windows, macOS, and Linux?"
