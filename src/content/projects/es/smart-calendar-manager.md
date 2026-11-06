@@ -2,7 +2,7 @@
 title: "Smart Calendar Manager"
 icon: "/project-icons/smart-calendar-manager-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 (WinUI 3 / .NET 9) que une agendas laboral y personal vía feeds iCal secretos, bloquea disponibilidad sin OAuth y automatiza la preparación de videollamadas."
-lastUpdated: 2026-10-24
+lastUpdated: 2026-11-05
 githubUrl: "https://github.com/AnaCataVC/smart-calendar-manager"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "RFC 5545 iCalendar", "Google Apps Script", "xUnit"]
@@ -20,8 +20,8 @@ learnings:
 websiteUrl: "https://smart-calendar-manager.ana-catalina.com"
 websiteActionText: "Ver Página"
 product:
-  tagline: "Coordina tu agenda laboral y personal con total privacidad"
-  intro: "Bloquea tus horas personales en el calendario del trabajo para que no te agenden encima, revisa todas tus reuniones en un solo lugar y ten tus llamadas listas sin compartir accesos privados."
+  tagline: "Une tu agenda laboral y personal"
+  intro: "Bloquea tus horas personales en el calendario del trabajo, revisa todas tus reuniones en un solo lugar y prepara tus llamadas con total privacidad."
   features:
     - icon: "CalendarCheck2"
       title: "Varios Feeds iCal, Sin OAuth"
@@ -41,6 +41,13 @@ product:
     - icon: "Repeat"
       title: "Parser RFC 5545 Sin Dependencias"
       text: "Un motor de calendario escrito desde cero: plegado de líneas, resolución de recurrencia (RRULE), y manejo de zonas horarias IANA/Windows, más detección de enlaces de reunión para Meet, Zoom, Teams y Webex."
+  faq:
+    - question: "¿Funciona si mi empresa bloquea aplicaciones OAuth de terceros?"
+      answer: "Sí. Lee tus calendarios mediante enlaces iCal secretos y genera un Google Apps Script que corre en tu propia cuenta laboral sin pedir permisos OAuth."
+    - question: "¿Mis compañeros de trabajo verán los detalles de mis eventos personales?"
+      answer: "No. El script crea bloques privados con el título 'Ocupada' en tu calendario laboral, ocultando por completo el nombre, lugar y descripción real."
+    - question: "¿Cómo me ayuda a preparar mis videollamadas a tiempo?"
+      answer: "Detecta enlaces de Meet, Zoom, Teams o Webex en tus eventos y te avisa minutos antes, abriendo automáticamente tus herramientas de notas y la llamada."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/smart-calendar-manager/releases/latest"
   downloadLabel: "Descargar para Windows"

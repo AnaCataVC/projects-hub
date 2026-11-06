@@ -20,8 +20,8 @@ learnings:
   - "Native OS Integration & Concurrency: Replaced fragile TCP socket single-instance locking with a robust Win32 System.Threading.Mutex and decoupled background system tray lifecycle via H.NotifyIcon.Wpf."
 websiteActionText: "Visit Website"
 product:
-  tagline: "Gentle reminders to rest your eyes and stretch"
-  intro: "Sends quiet reminders to rest your eyes or correct your posture, but only counts when you're actually typing or moving the mouse — pausing automatically when you step away."
+  tagline: "Gentle eye and posture breaks on PC"
+  intro: "Sends quiet reminders to rest your eyes or check your posture, counting only active keyboard or mouse time and pausing when you step away."
   features:
     - icon: "Eye"
       title: "Visual Rest"
@@ -38,6 +38,13 @@ product:
     - icon: "SlidersHorizontal"
       title: "Fully Customizable"
       text: "Redesigned settings window with segmented tabs to configure reminder intervals, sounds, auto-start with Windows, and adherence metrics."
+  faq:
+    - question: "Does it use much RAM or CPU while running in the background?"
+      answer: "No. Built natively in .NET 9, it sits quietly in the system tray using only 12–16 MB of RAM and less than 0.1% CPU."
+    - question: "What happens when I step away from my desk?"
+      answer: "It detects keyboard and mouse inactivity via Win32 and pauses all timers automatically so you aren't interrupted the moment you return."
+    - question: "Does it work across multiple monitors?"
+      answer: "Yes. It projects synchronized translucent break overlays across all active displays, handling mixed-DPI scaling automatically."
   platforms: ["Windows 10", "Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/screen-health-guardian/releases/latest"
   downloadLabel: "Download Installer (.exe)"

@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "Aplicación móvil nativa para Android (100% offline-first) para la adherencia médica y recordatorios de dosis multi-perfil con alarmas de alta precisión."
-lastUpdated: 2026-11-01
+lastUpdated: 2026-11-05
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -23,7 +23,7 @@ learnings:
 websiteActionText: "Ver Página"
 product:
   tagline: "Tus medicamentos a tiempo y sin olvidos"
-  intro: "Organiza tus tomas y las de tu familia con recordatorios discretos, alarmas que suenan aunque la pantalla esté bloqueada y la tranquilidad de que todos tus datos se quedan en tu teléfono."
+  intro: "Organiza tus tomas y las de tu familia con avisos discretos, alarmas que suenan sobre la pantalla bloqueada y todos tus datos privados en tu teléfono."
   features:
     - icon: "ShieldCheck"
       title: "100% Offline & Privacidad"
@@ -46,6 +46,13 @@ product:
     - icon: "FileJson"
       title: "Respaldo SAF en JSON"
       text: "Exporta e importa tu base de datos completa de forma atómica mediante el Storage Access Framework de Android. Sin dependencias propietarias ni bloqueos."
+  faq:
+    - question: "¿Mis datos médicos se suben a algún servidor o la nube?"
+      answer: "No. Meds Reminder funciona 100% sin internet y guarda todo en una base de datos local en tu teléfono, con opción de respaldar en un archivo JSON."
+    - question: "¿Las alarmas suenan aunque el teléfono esté en ahorro de batería?"
+      answer: "Sí. Utiliza alarmas exactas del sistema que despiertan el dispositivo en modo Doze y muestran la alerta directamente sobre la pantalla bloqueada."
+    - question: "¿Puedo llevar el control de medicamentos de varios familiares?"
+      answer: "Sí, puedes crear perfiles independientes para cada integrante de la familia con sus propios medicamentos, dosis, horarios y pausas temporales."
   platforms: ["Android"]
   downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases/latest"
   downloadLabel: "Descargar APK Release"

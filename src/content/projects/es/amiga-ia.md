@@ -20,8 +20,8 @@ learnings:
   - "Compilador Semántico Tri-Ecosistema: Traducción automatizada desde Markdown canónico hacia formatos nativos de Anthropic Claude Code (~/.claude/), Google Antigravity (~/.gemini/config/) y OpenAI Codex (~/.agents/ y ~/.codex/)."
 websiteActionText: "Ver Página"
 product:
-  tagline: "Un equipo de agentes de IA para ayudarte a programar mejor"
-  intro: "Subagentes especializados, reglas claras y herramientas en Markdown para planificar código, revisar cambios y lanzar versiones con orden en Claude Code, Antigravity y OpenAI Codex."
+  tagline: "Un equipo de agentes de IA para programar mejor"
+  intro: "Subagentes especializados, reglas claras y skills en Markdown para planificar, revisar cambios y lanzar versiones en Claude Code, Antigravity y OpenAI Codex."
   features:
     - icon: "Bot"
       title: "Suite de Subagentes Autónoma"

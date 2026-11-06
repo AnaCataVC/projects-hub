@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Micro-herramienta flotante nativa para Windows (System Tray y Spotlight) para gestionar Git Worktrees, lanzadores desacoplados de IDEs y terminales, y alternancia de cuentas de GitHub CLI en 1 clic."
-lastUpdated: 2026-10-26
+lastUpdated: 2026-11-05
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -22,8 +22,8 @@ learnings:
   - "Interfaces Reactivas Ultraligeras con Svelte 5 (Runes) y Tauri v2 con anclaje dinámico a la barra de tareas y memoria inferior a 35 MB."
 websiteActionText: "Ver Página"
 product:
-  tagline: "Salta entre ramas de Git y cuentas de GitHub sin perder el ritmo"
-  intro: "Un panel discreto en tu barra de tareas para moverte entre ramas con Git worktrees, limpiar carpetas de proyectos y cambiar de cuenta de GitHub sin enredos en la terminal."
+  tagline: "Gestiona Git worktrees y cuentas de GitHub"
+  intro: "Un panel en la bandeja del sistema para saltar entre ramas con Git worktrees, limpiar carpetas de proyectos y alternar cuentas de GitHub en un clic."
   features:
     - icon: "Terminal"
       title: "Cero Parpadeo de Consola"
@@ -43,6 +43,13 @@ product:
     - icon: "GitBranch"
       title: "Parsing del Protocolo Git Porcelain"
       text: "El parsing determinista de la salida legible por máquina de git worktree list maneja repos bare, estados bloqueados y HEADs desacoplados en cualquier instalación de Git localizada."
+  faq:
+    - question: "¿Cómo evita borrar por accidente cambios sin guardar en un worktree?"
+      answer: "Antes de eliminar cualquier carpeta o rama, verifica si hay archivos modificados o sin seguimiento y ofrece guardarlos en Stash o confirmar el descarte."
+    - question: "¿Qué editores y terminales puede abrir directamente?"
+      answer: "Detecta ejecutables instalados como VS Code, Cursor, Windsurf, Antigravity, Windows Terminal y Git Bash, abriéndolos sin parpadeos de consola."
+    - question: "¿Cómo funciona el cambio rápido de cuenta de GitHub?"
+      answer: "Ejecuta la alternancia de perfil en GitHub CLI con un solo clic desde la bandeja del sistema para cambiar al instante entre tu cuenta personal y la del trabajo."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases/latest"
   downloadLabel: "Descargar para Windows"

@@ -20,8 +20,8 @@ learnings:
   - "Integración Nativa con el Sistema Operativo: Sustitución de locks por sockets TCP por un System.Threading.Mutex nativo de Win32 y desacoplamiento del System Tray mediante H.NotifyIcon.Wpf."
 websiteActionText: "Visitar Sitio"
 product:
-  tagline: "Recordatorios amables para cuidar tu postura y tu vista"
-  intro: "Te avisa cuándo descansar la vista o estirarte en el escritorio, pero solo cuenta cuando estás usando el teclado o el mouse: si te alejas del PC, se pausa solo."
+  tagline: "Cuida tu vista y postura frente al PC"
+  intro: "Te avisa cuándo descansar la vista o estirarte en el PC, contando solo cuando usas el teclado o el mouse y pausándose si te alejas."
   features:
     - icon: "Eye"
       title: "Descanso Visual"
@@ -38,6 +38,13 @@ product:
     - icon: "SlidersHorizontal"
       title: "Totalmente Configurable"
       text: "Ventana de preferencias rediseñada con pestañas segmentadas para personalizar intervalos, sonidos, inicio con Windows y métricas."
+  faq:
+    - question: "¿Consume mucha memoria RAM o procesador en segundo plano?"
+      answer: "No. Es una app nativa en .NET 9 que vive en la bandeja del sistema usando entre 12 y 16 MB de RAM y menos del 0.1% de CPU."
+    - question: "¿Qué pasa si me levanto del escritorio y dejo el PC encendido?"
+      answer: "Detecta automáticamente cuando dejas de usar el teclado o el mouse y pausa los contadores para no interrumpirte apenas regreses."
+    - question: "¿Funciona si trabajo con dos o más monitores conectados?"
+      answer: "Sí. Proyecta el recordatorio visual de forma sincronizada en todas tus pantallas activas, respetando la escala y resolución de cada una."
   platforms: ["Windows 10", "Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/screen-health-guardian/releases/latest"
   downloadLabel: "Descargar Instalador (.exe)"

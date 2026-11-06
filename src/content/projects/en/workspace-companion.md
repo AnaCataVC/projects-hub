@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Ultra-lightweight native Windows system tray and Spotlight utility to manage Git Worktrees, decoupled IDE/terminal launchers, and 1-click GitHub CLI switching."
-lastUpdated: 2026-10-26
+lastUpdated: 2026-11-05
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -22,7 +22,7 @@ learnings:
   - "Ultra-Fast Reactive UI with Svelte 5 (Runes) and Tauri v2 with automatic taskbar anchoring and minimal working set memory."
 websiteActionText: "View Page"
 product:
-  tagline: "Switch between Git branches and GitHub accounts without losing your stride"
+  tagline: "Manage Git worktrees and GitHub accounts"
   intro: "A handy system tray panel to jump between branches using Git worktrees, clean up project folders, and switch GitHub accounts without terminal friction."
   features:
     - icon: "Terminal"
@@ -43,6 +43,13 @@ product:
     - icon: "GitBranch"
       title: "Git Porcelain Protocol Parsing"
       text: "Deterministic parsing of machine-readable git worktree list output handles bare repos, locked states, and detached HEADs across all localized Git installations."
+  faq:
+    - question: "How does it prevent accidentally deleting uncommitted worktree changes?"
+      answer: "Before removing any worktree or branch, it runs pre-flight dirty checks and offers one-click Stash or double-confirmed Discard actions."
+    - question: "Which code editors and terminals can it launch?"
+      answer: "It automatically resolves installed binaries for VS Code, Cursor, Windsurf, Antigravity, Windows Terminal, and Git Bash with zero console flickering."
+    - question: "How does one-click GitHub account switching work?"
+      answer: "It switches active GitHub CLI profiles directly from the system tray so you can toggle between personal and work accounts in a single click."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/workspace-companion/releases/latest"
   downloadLabel: "Download for Windows"

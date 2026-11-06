@@ -20,7 +20,7 @@ learnings:
 websiteActionText: "Ver Página"
 product:
   tagline: "Dale un respiro a tus ojos mientras trabajas"
-  intro: "Aplica la regla 20-20-20 con recordatorios que solo cuentan el tiempo que de verdad usas la pantalla, adaptándose a tu ritmo de trabajo sin interrumpirte de más."
+  intro: "Aplica la regla 20-20-20 con avisos que solo cuentan el tiempo real frente a la pantalla, adaptándose a tu ritmo sin interrumpirte de más."
   features:
     - icon: "Timer"
       title: "Intervalos Personalizables"
@@ -37,6 +37,13 @@ product:
   screenshots:
     - src: "/product-screenshots/rest-your-eyes/mobile.jpeg"
       alt: "Captura de pantalla de Rest Your Eyes en un dispositivo Android"
+  faq:
+    - question: "¿El temporizador sigue corriendo cuando apago la pantalla?"
+      answer: "No. Solo cuenta el tiempo con la pantalla encendida y se pausa automáticamente al bloquear el teléfono, sin gastar batería en reposo."
+    - question: "¿Puedo personalizar la duración del trabajo y del descanso?"
+      answer: "Sí. Viene configurado por defecto con la regla 20-20-20 (20 segundos cada 20 minutos), pero puedes ajustar ambos intervalos a tu medida."
+    - question: "¿Cómo me avisa cuando es momento de descansar la vista?"
+      answer: "Muestra un aviso suave superpuesto sobre la app que estés usando, con sonido o vibración opcional y estadísticas de tu constancia semanal."
   platforms: ["Android"]
   downloadUrl: "https://github.com/AnaCataVC/rest-your-eyes/releases/latest"
   downloadLabel: "Descargar APK"

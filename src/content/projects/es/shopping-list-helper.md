@@ -1,7 +1,7 @@
 ---
-title: "Ayudante de Compras — Shopping List Helper"
+title: "Shopping List Helper"
 description: "Aplicación móvil nativa para Android (100% offline-first) para gestionar compras recurrentes del hogar y armar la lista de compras por tienda."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-11-05
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"
@@ -39,6 +39,13 @@ product:
     - icon: "Languages"
       title: "Bilingüe y con tema claro/oscuro"
       text: "Interfaz completa en español e inglés, con paleta Material Design 3 configurable según el sistema o de forma manual."
+  faq:
+    - question: "¿Cómo funcionan las compras recurrentes?"
+      answer: "Puedes asignar una repetición cada N días a cualquier ítem. Al marcarlo como comprado se oculta y vuelve a aparecer solo cuando vence el plazo."
+    - question: "¿Qué hace el modo 'Voy a comprar'?"
+      answer: "Filtra tu lista por una tienda o categoría específica y muestra únicamente los ítems vencidos ordenados por urgencia, listos para ir marcando en el pasillo."
+    - question: "¿Requiere cuenta o conexión a internet?"
+      answer: "No. Funciona 100% sin internet y guarda todo localmente en tu teléfono, con opción de exportar e importar tu lista completa en formato JSON."
   platforms: ["Android"]
   downloadUrl: "https://github.com/AnaCataVC/shopping-list-helper/releases/latest"
   downloadLabel: "Descargar APK"

@@ -1,7 +1,7 @@
 ---
 title: "Little Chef Timer"
 description: "Temporizador de cocina para Android, 100% offline, con alarmas exactas que suenan aunque el teléfono esté bloqueado, en modo Doze o con la app cerrada por el sistema."
-lastUpdated: 2026-10-18
+lastUpdated: 2026-11-05
 icon: "/project-icons/little-chef-timer-icon.png"
 githubUrl: "https://github.com/AnaCataVC/little-chef-timer"
 websiteUrl: "https://little-chef-timer.ana-catalina.com"
@@ -18,7 +18,7 @@ learnings:
   - "UI reactiva sin polling: un SharedPreferences.OnSharedPreferenceChangeListener conectado a un DisposableEffect de Compose actualiza la interfaz solo cuando cambia el estado, sin lecturas periódicas a disco."
   - "Canales de notificación por sonido: como el sonido de un canal es inmutable una vez creado, cada tono elegido genera su propio canal (alarm_<hash>), eliminando los anteriores."
 product:
-  tagline: "El temporizador de cocina que no se olvida de nada"
+  tagline: "Temporizador de cocina que no olvida nada"
   intro: "Guarda tus recetas con su tiempo exacto y deja que la alarma suene puntual, aunque el teléfono esté bloqueado o la app cerrada."
   features:
     - icon: "ChefHat"

@@ -43,6 +43,36 @@ describe("product pages", () => {
     }
   });
 
+  it.each(slugs.filter((s) => hasProduct(frontMatter("es", s))))("%s product block meets SEO title, intro, FAQ, and OG card standards", (slug) => {
+    const extractYamlVal = (block: string, key: string): string => {
+      const dq = block.match(new RegExp(`^\\s*${key}:\\s*"([^"]*)"`, "m"));
+      if (dq) return dq[1].trim();
+      const sq = block.match(new RegExp(`^\\s*${key}:\\s*'([^']*)'`, "m"));
+      if (sq) return sq[1].trim();
+      const uq = block.match(new RegExp(`^\\s*${key}:\\s*([^\\r\\n]+)`, "m"));
+      return uq ? uq[1].trim() : "";
+    };
+
+    for (const lang of langs) {
+      const fm = frontMatter(lang, slug);
+      const title = extractYamlVal(fm, "title") || slug;
+      const tagline = extractYamlVal(fm, "tagline");
+      const intro = extractYamlVal(fm, "intro");
+      const fullTitle = `${title} — ${tagline}`;
+
+      expect(fullTitle.length, `${lang}/${slug} SEO title length (${fullTitle.length})`).toBeGreaterThanOrEqual(30);
+      expect(fullTitle.length, `${lang}/${slug} SEO title length (${fullTitle.length}): "${fullTitle}"`).toBeLessThanOrEqual(65);
+      expect(intro.length, `${lang}/${slug} SEO intro length (${intro.length})`).toBeGreaterThanOrEqual(100);
+      expect(intro.length, `${lang}/${slug} SEO intro length (${intro.length})`).toBeLessThanOrEqual(160);
+
+      const faqQuestions = [...fm.matchAll(/^\s+-\s*question:\s*/gm)];
+      expect(faqQuestions.length, `${lang}/${slug} should have at least 2 FAQs`).toBeGreaterThanOrEqual(2);
+    }
+
+    const ogCard = path.join(root, "public", "og", `${slug}.png`);
+    expect(fs.existsSync(ogCard), `public/og/${slug}.png must exist`).toBe(true);
+  });
+
   it.each(slugs.filter((s) => isArchived(frontMatter("es", s))))("archived %s links to no live site", (slug) => {
     for (const lang of langs) {
       expect(frontMatter(lang, slug)).not.toMatch(/^(websiteUrl|liveAppUrl):/m);

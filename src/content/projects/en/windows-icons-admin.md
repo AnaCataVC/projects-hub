@@ -2,7 +2,7 @@
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
 description: "High-performance folder and system icon personalization utility for Windows 10 and 11, featuring an automated rule engine, native multi-resolution PNG-to-ICO encoder, and instant shell refresh."
-lastUpdated: 2026-10-31
+lastUpdated: 2026-11-05
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
@@ -21,8 +21,8 @@ learnings:
   - "Dual Storage Modality: Architecture supporting both Centralized icon storage in %LOCALAPPDATA% (clean folders without loose assets) and Portable mode directly inside the customized directory (preserving icons across network shares and removable drives)."
 websiteActionText: "Visit Website"
 product:
-  tagline: "Bring order and style to your Windows folders"
-  intro: "Customize and organize folder icons effortlessly with a native Fluent UI, keyboard shortcuts, and instant image-to-ICO conversion without restarting Windows Explorer."
+  tagline: "Order and style for your Windows folders"
+  intro: "Customize and organize folder icons with a native Fluent UI, automated matching rules, and instant image-to-ICO conversion without restarting Explorer."
   features:
     - icon: "FolderTree"
       title: "Bulk Folder Customization"

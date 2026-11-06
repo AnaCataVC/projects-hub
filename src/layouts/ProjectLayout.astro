@@ -95,7 +95,7 @@ const projectJSONLD = JSON.stringify({
   title={`${title} | Ana-Catalina Projects`}
   description={description}
   lang={lang}
-  image={icon || '/og-image.png'}
+  image={slug ? `/og/${slug}.png` : '/og-image.png'}
   ogType="article"
   isProjectPage={true}
 >

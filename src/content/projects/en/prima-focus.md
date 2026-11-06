@@ -1,7 +1,7 @@
 ---
 title: "Prima Focus"
 description: "Local-first native Android productivity application built with Kotlin Multiplatform, focused on productivity through a predictive priority system, Jetpack Glance widgets, and peer-to-peer sync via Google Nearby Connections."
-lastUpdated: 2026-10-26
+lastUpdated: 2026-11-05
 icon: "/project-icons/prima-focus-icon.png"
 githubUrl: "https://github.com/AnaCataVC/prima-focus"
 websiteUrl: "https://prima-focus.ana-catalina.com"
@@ -41,6 +41,13 @@ product:
     - icon: "LayoutGrid"
       title: "Widgets & Adaptive Layout"
       text: "Interactive Android widgets (Jetpack Glance) and a split view with an interactive calendar optimized for tablets."
+  faq:
+    - question: "Do I need an internet connection or an account to use it?"
+      answer: "No. Prima Focus is 100% local-first: all your tasks and priorities live in a local SQLite database on your device, with no accounts or cloud servers."
+    - question: "How do I sync tasks between my Android phone and tablet?"
+      answer: "It connects directly peer-to-peer over Bluetooth and Wi-Fi Direct via Google Nearby Connections, with a 45-second auto-timeout to protect battery life."
+    - question: "Can I view and complete tasks without opening the app?"
+      answer: "Yes. Interactive home screen widgets let you see your top Today Task and check it off in a single tap right from your launcher."
   platforms: ["Android"]
   downloadUrl: "https://github.com/AnaCataVC/prima-focus/releases/latest"
   downloadLabel: "Download App (Android APK)"

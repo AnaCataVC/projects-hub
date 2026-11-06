@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Aplicación de escritorio nativa para Windows 11 (WinUI 3 / .NET 9) que sincroniza carpetas de trabajo y contexto de agentes IA hacia Google Drive mediante Google Apps Script, con hashing incremental y redacción de secretos."
-lastUpdated: 2026-10-31
+lastUpdated: 2026-11-05
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "Google Apps Script", "xUnit"]
@@ -20,8 +20,8 @@ learnings:
 websiteUrl: "https://google-drive-work-sync.ana-catalina.com"
 websiteActionText: "Ver Página"
 product:
-  tagline: "Respalda tus proyectos y sesiones de IA en Google Drive"
-  intro: "Una pequeña aplicación en tu barra de tareas que sube tus cambios a Drive, cuida tus cuotas de transferencia y filtra claves privadas antes de que cualquier archivo salga de tu equipo."
+  tagline: "Respalda proyectos e IA en Google Drive"
+  intro: "App en la bandeja del sistema que sube solo tus cambios a Drive, cuida tus cuotas de transferencia y filtra claves privadas antes de que salgan de tu PC."
   features:
     - icon: "ScanLine"
       title: "Fast-Path de Metadatos + SHA-256"
@@ -41,6 +41,13 @@ product:
     - icon: "ShieldCheck"
       title: "Sin Omisiones Silenciosas"
       text: "Los archivos bloqueados y carpetas no listables se reportan como error, con indicadores de escaneo y sincronización en tiempo real, confirmación en acciones destructivas y reintento en un clic con backoff exponencial."
+  faq:
+    - question: "¿Necesito instalar el cliente oficial de Google Drive?"
+      answer: "No. Se conecta directamente a tu propio Google Apps Script Web App y sube en lotes solo los archivos nuevos o modificados."
+    - question: "¿Cómo evita que se suban claves privadas o tokens por error?"
+      answer: "Aplica un filtro en tres capas: bloquea archivos sensibles (.env, id_rsa), escanea los primeros 64 KB en busca de tokens y sanea configuraciones MCP antes de subir nada."
+    - question: "¿Vuelve a subir todos mis archivos en cada sincronización?"
+      answer: "No. Revisa primero la fecha de modificación y el tamaño, y calcula el hash SHA-256 solo cuando hay cambios reales, guardando un índice local a prueba de fallos."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases/latest"
   downloadLabel: "Descargar para Windows"

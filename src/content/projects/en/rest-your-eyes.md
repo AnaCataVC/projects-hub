@@ -37,6 +37,13 @@ product:
   screenshots:
     - src: "/product-screenshots/rest-your-eyes/mobile.jpeg"
       alt: "Screenshot of Rest Your Eyes on an Android device"
+  faq:
+    - question: "Does the timer keep running when my screen is turned off?"
+      answer: "No. It only counts active screen-on time and pauses automatically as soon as you lock your phone, avoiding any idle battery drain."
+    - question: "Can I customize the work and rest intervals?"
+      answer: "Yes. It defaults to the 20-20-20 rule (20 seconds of rest every 20 minutes), and you can adjust both durations to fit your routine."
+    - question: "How does it remind me when it's time for an eye break?"
+      answer: "It displays a gentle translucent overlay over your current app with optional sound or vibration, and tracks your weekly break adherence."
   platforms: ["Android"]
   downloadUrl: "https://github.com/AnaCataVC/rest-your-eyes/releases/latest"
   downloadLabel: "Download APK"

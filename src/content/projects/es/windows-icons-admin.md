@@ -2,7 +2,7 @@
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
 description: "Utilidad de alto rendimiento para Windows 10 y 11 que automatiza la personalización masiva de iconos de carpetas y del sistema, con motor de reglas, codificador PNG a ICO nativo y refresco instantáneo del shell."
-lastUpdated: 2026-10-31
+lastUpdated: 2026-11-05
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
@@ -21,8 +21,8 @@ learnings:
   - "Modos de Almacenamiento Central y Portátil: Soporte dual para almacenar iconos en un repositorio protegido en %LOCALAPPDATA% (manteniendo limpias las carpetas de usuario) o de forma portátil dentro del propio directorio para conservar los iconos en discos extraíbles o unidades compartidas."
 websiteActionText: "Visitar Sitio"
 product:
-  tagline: "Ponle orden y estilo a tus carpetas en Windows"
-  intro: "Cambia y organiza los iconos de tus carpetas fácilmente con interfaz Fluent nativa, atajos de teclado y conversión instantánea de imágenes a ICO sin reiniciar el Explorador."
+  tagline: "Orden y estilo para tus carpetas en Windows"
+  intro: "Personaliza los iconos de tus carpetas con interfaz Fluent nativa, reglas automáticas y conversión de imágenes a ICO sin reiniciar el Explorador."
   features:
     - icon: "FolderTree"
       title: "Personalización Masiva"

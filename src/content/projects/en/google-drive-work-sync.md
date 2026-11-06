@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that syncs work directories and AI agent context to Google Drive via a Google Apps Script Web App, with incremental hashing and secret redaction."
-lastUpdated: 2026-10-31
+lastUpdated: 2026-11-05
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "Google Apps Script", "xUnit"]
@@ -20,7 +20,7 @@ learnings:
 websiteUrl: "https://google-drive-work-sync.ana-catalina.com"
 websiteActionText: "View Page"
 product:
-  tagline: "Keep your projects and AI sessions safely backed up to Google Drive"
+  tagline: "Back up work and AI sessions to Drive"
   intro: "A quiet tray app that syncs your changes to Drive, respects upload quotas, and strips private keys before anything leaves your computer."
   features:
     - icon: "ScanLine"
@@ -41,6 +41,13 @@ product:
     - icon: "ShieldCheck"
       title: "No Silent Skips"
       text: "Locked files and unlistable folders are reported as errors, with real-time scan and sync busy indicators, destructive action confirmations, and one-click retry with exponential backoff."
+  faq:
+    - question: "Do I need the official Google Drive desktop client?"
+      answer: "No. It connects directly to your own self-hosted Google Apps Script Web App and uploads only new or modified files in compact batches."
+    - question: "How does it prevent private keys or tokens from leaking?"
+      answer: "It runs a three-tier filter before any upload: a filename blacklist (.env, id_rsa), a 64 KB regex token scan, and a fail-closed MCP config sanitizer."
+    - question: "Does it re-upload all my files on every sync run?"
+      answer: "No. It checks file timestamp and size first, computing a SHA-256 hash only when metadata changes and storing state in a crash-safe local index."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases/latest"
   downloadLabel: "Download for Windows"

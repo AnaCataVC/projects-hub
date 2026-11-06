@@ -21,7 +21,7 @@ learnings:
 websiteActionText: "Visit Page"
 product:
   tagline: "A thoughtful team of AI agents for everyday coding"
-  intro: "Specialized subagents, clear guardrails, and portable Markdown tools to plan features, review code, and ship releases with confidence across Claude Code, Antigravity, and OpenAI Codex."
+  intro: "Specialized subagents, clear guardrails, and Markdown tools to plan features, review code, and ship releases across Claude Code, Antigravity, and Codex."
   features:
     - icon: "Bot"
       title: "Autonomous Subagent Suite"

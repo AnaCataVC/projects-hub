@@ -42,9 +42,22 @@ function parseFrontmatter(content) {
   return { frontmatter: match[1], body: match[2] };
 }
 
+function extractYamlString(block, fieldName) {
+  const dq = block.match(new RegExp(`${fieldName}:\\s*"((?:[^"\\\\]|\\\\.)*)"`));
+  if (dq) return dq[1].trim();
+  const sq = block.match(new RegExp(`${fieldName}:\\s*'([^']*)'`));
+  if (sq) return sq[1].trim();
+  const uq = block.match(new RegExp(`${fieldName}:\\s*([^\\r\\n]+)`));
+  return uq ? uq[1].trim() : null;
+}
+
 function extractField(fm, fieldName) {
-  const match = fm.match(new RegExp(`^${fieldName}:\\s*["']?([^"'\r\n]+)["']?`, 'm'));
-  return match ? match[1].trim() : null;
+  const dq = fm.match(new RegExp(`^${fieldName}:\\s*"((?:[^"\\\\]|\\\\.)*)"`, 'm'));
+  if (dq) return dq[1].trim();
+  const sq = fm.match(new RegExp(`^${fieldName}:\\s*'([^']*)'`, 'm'));
+  if (sq) return sq[1].trim();
+  const uq = fm.match(new RegExp(`^${fieldName}:\\s*([^\\r\\n]+)`, 'm'));
+  return uq ? uq[1].trim() : null;
 }
 
 function extractProductBlock(fm) {
@@ -54,13 +67,11 @@ function extractProductBlock(fm) {
 }
 
 function extractProductTagline(prodFm) {
-  const match = prodFm.match(/tagline:\s*["']?([^"'\r\n]+)["']?/);
-  return match ? match[1].trim() : null;
+  return extractYamlString(prodFm, 'tagline');
 }
 
 function extractProductIntro(prodFm) {
-  const match = prodFm.match(/intro:\s*["']?([^"'\r\n]+)["']?/);
-  return match ? match[1].trim() : null;
+  return extractYamlString(prodFm, 'intro');
 }
 
 function extractFeatures(prodFm) {
@@ -130,9 +141,9 @@ function extractSnippets(prodFm) {
 
 function extractFaq(prodFm) {
   const faq = [];
-  const matches = [...prodFm.matchAll(/question:\s*["']?([^"'\r\n]+)["']?\s*\r?\n\s*answer:\s*["']?([^"'\r\n]+)["']?/g)];
+  const matches = [...prodFm.matchAll(/question:\s*(?:"([^"]*)"|'([^']*)'|([^\r\n]+))\s*\r?\n\s*answer:\s*(?:"([^"]*)"|'([^']*)'|([^\r\n]+))/g)];
   for (const m of matches) {
-    faq.push({ question: m[1], answer: m[2] });
+    faq.push({ question: (m[1] ?? m[2] ?? m[3] ?? '').trim(), answer: (m[4] ?? m[5] ?? m[6] ?? '').trim() });
   }
   return faq;
 }
@@ -195,8 +206,10 @@ export function auditLandings() {
 
     const status = extractField(esParsed.frontmatter, 'status') || 'Activo';
     const isArchived = status === 'Archivado' || status === 'Archived';
-    const title = extractField(esParsed.frontmatter, 'title') || slug;
+    const titleEs = extractField(esParsed.frontmatter, 'title') || slug;
+    const titleEn = enParsed ? (extractField(enParsed.frontmatter, 'title') || titleEs) : titleEs;
     const websiteUrl = extractField(esParsed.frontmatter, 'websiteUrl');
+    const iconPath = extractField(esParsed.frontmatter, 'icon');
     const type = extractField(esParsed.frontmatter, 'type') || 'desktop';
 
     const esProd = extractProductBlock(esParsed.frontmatter);
@@ -231,20 +244,20 @@ export function auditLandings() {
     const esIntro = extractProductIntro(esProd);
     const enIntro = extractProductIntro(enProd);
 
-    // Check 3: SEO Tagline & Title Length
+    // Check 3: SEO Tagline & Title Length (optimal: 30-65 chars)
     if (!esTagline || !enTagline) {
       issues.push({ slug, category: 'SEO_TAGLINE', message: 'Missing tagline in product block.' });
     } else {
-      const fullTitleEs = `${title} — ${esTagline}`;
-      const fullTitleEn = `${title} — ${enTagline}`;
-      if (fullTitleEs.length > 70) {
+      const fullTitleEs = `${titleEs} — ${esTagline}`;
+      const fullTitleEn = `${titleEn} — ${enTagline}`;
+      if (fullTitleEs.length < 30 || fullTitleEs.length > 65) {
         warnings.push({
           slug,
           category: 'SEO_TITLE_LENGTH',
           message: `ES Title is ${fullTitleEs.length} chars (optimal: 30-65 chars). Google may truncate in SERPs.`,
         });
       }
-      if (fullTitleEn.length > 70) {
+      if (fullTitleEn.length < 30 || fullTitleEn.length > 65) {
         warnings.push({
           slug,
           category: 'SEO_TITLE_LENGTH',
@@ -253,18 +266,18 @@ export function auditLandings() {
       }
     }
 
-    // Check 4: SEO Meta Description (Intro) Length
+    // Check 4: SEO Meta Description (Intro) Length (optimal: 100-160 chars)
     if (!esIntro || !enIntro) {
       issues.push({ slug, category: 'SEO_META_DESC', message: 'Missing intro in product block.' });
     } else {
-      if (esIntro.length < 50 || esIntro.length > 200) {
+      if (esIntro.length < 95 || esIntro.length > 160) {
         warnings.push({
           slug,
           category: 'SEO_DESC_LENGTH',
           message: `ES Meta Description (intro) is ${esIntro.length} chars (recommended: 100-160 chars).`,
         });
       }
-      if (enIntro.length < 50 || enIntro.length > 200) {
+      if (enIntro.length < 95 || enIntro.length > 160) {
         warnings.push({
           slug,
           category: 'SEO_DESC_LENGTH',
@@ -346,13 +359,21 @@ export function auditLandings() {
       });
     }
 
-    // Check 9: FAQ Completeness
-    const faqs = extractFaq(esProd);
-    if (faqs.length < 2) {
+    // Check 9: FAQ Completeness & Parity
+    const esFaqs = extractFaq(esProd);
+    const enFaqs = extractFaq(enProd);
+    if (esFaqs.length !== enFaqs.length) {
+      issues.push({
+        slug,
+        category: 'FAQ_PARITY',
+        message: `FAQ count mismatch: ES has ${esFaqs.length} items, EN has ${enFaqs.length}.`,
+      });
+    }
+    if (esFaqs.length < 2) {
       warnings.push({
         slug,
         category: 'LOW_FAQ_COUNT',
-        message: `Has ${faqs.length} FAQ items (recommended: at least 2).`,
+        message: `Has ${esFaqs.length} FAQ items (recommended: at least 2).`,
       });
     }
 
@@ -363,6 +384,35 @@ export function auditLandings() {
         category: 'SEO_CANONICAL',
         message: `websiteUrl "${websiteUrl}" is missing or non-HTTPS.`,
       });
+    }
+
+    // Check 11: Social Preview Card & Icon Asset Health
+    const ogCardPath = path.join(CWD, 'public', 'og', `${slug}.png`);
+    if (!fs.existsSync(ogCardPath)) {
+      warnings.push({
+        slug,
+        category: 'OG_SOCIAL_CARD',
+        message: `Missing dedicated 1200x630 Open Graph card at public/og/${slug}.png.`,
+      });
+    }
+    if (iconPath) {
+      const diskIcon = path.join(CWD, 'public', iconPath.replace(/^\//, ''));
+      if (!fs.existsSync(diskIcon)) {
+        issues.push({
+          slug,
+          category: 'ICON_MISSING',
+          message: `Icon file not found at public${iconPath}.`,
+        });
+      } else {
+        const iconSize = fs.statSync(diskIcon).size;
+        if (iconSize > 500 * 1024) {
+          warnings.push({
+            slug,
+            category: 'ICON_WEIGHT',
+            message: `Icon public${iconPath} is ${(iconSize / 1024).toFixed(0)} KB (recommended: < 500 KB for fast LCP).`,
+          });
+        }
+      }
     }
 
     passing.push(slug);

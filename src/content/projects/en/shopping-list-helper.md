@@ -1,7 +1,7 @@
 ---
 title: "Shopping List Helper"
 description: "100% offline-first native Android mobile application to manage recurring household purchases and plan shopping trips by store."
-lastUpdated: 2026-10-04
+lastUpdated: 2026-11-05
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"
@@ -39,6 +39,13 @@ product:
     - icon: "Languages"
       title: "Bilingual with light/dark theme"
       text: "Full interface in English and Spanish, with a Material Design 3 palette that follows the system or can be set manually."
+  faq:
+    - question: "How do recurring purchases work?"
+      answer: "You can set a repeat rule every N days on any item. Once marked as bought, it stays hidden and automatically reappears in your list when due again."
+    - question: "What does 'Going Shopping' mode do?"
+      answer: "It filters your list by a single store or category and displays only due items sorted by urgency, so you can check them off quickly in the aisle."
+    - question: "Does it require an account or internet connection?"
+      answer: "No. It runs 100% offline with all data stored locally on your device, and lets you back up or restore your full list as a JSON file."
   platforms: ["Android"]
   downloadUrl: "https://github.com/AnaCataVC/shopping-list-helper/releases/latest"
   downloadLabel: "Download APK"

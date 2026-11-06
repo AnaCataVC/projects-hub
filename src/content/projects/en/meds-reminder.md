@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "100% offline-first native Android mobile application for medication adherence and multi-profile dosage reminders with high-precision alarms."
-lastUpdated: 2026-11-01
+lastUpdated: 2026-11-05
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"
@@ -22,8 +22,8 @@ learnings:
   - "Resolving Android 8.0+ notification channel sound immutability by dynamically generating deterministic channels keyed by custom ringtone URI hashes."
 websiteActionText: "View Page"
 product:
-  tagline: "Keep your medications on track, without the stress"
-  intro: "Manage doses for yourself and your family with gentle pre-alerts, lockscreen alarms you won't miss, and the peace of mind that your health data stays private on your phone."
+  tagline: "Keep your medications on track, stress-free"
+  intro: "Manage doses for yourself and your family with gentle pre-alerts, reliable lockscreen alarms, and full privacy with all health data stored on your phone."
   features:
     - icon: "ShieldCheck"
       title: "100% Offline & Private"
@@ -46,6 +46,13 @@ product:
     - icon: "FileJson"
       title: "Atomic JSON SAF Backup"
       text: "Export and import your entire database atomically via Android's Storage Access Framework. No proprietary dependencies, no lock-in."
+  faq:
+    - question: "Is my health data ever uploaded to a server or the cloud?"
+      answer: "No. Meds Reminder works 100% offline and stores everything in a local SQLite database on your phone, with optional local JSON backups."
+    - question: "Will the alarms still ring if battery saver or Doze mode is on?"
+      answer: "Yes. It schedules exact system alarm clocks that wake the device from Doze mode and display an interactive alert right over the lockscreen."
+    - question: "Can I track medications for multiple family members?"
+      answer: "Yes, you can create separate profiles for parents, children, or partners, each with their own medication catalog, schedules, and pause controls."
   platforms: ["Android"]
   downloadUrl: "https://github.com/AnaCataVC/meds-reminder/releases/latest"
   downloadLabel: "Download APK Release"

@@ -2,7 +2,7 @@
 title: "Smart Calendar Manager"
 icon: "/project-icons/smart-calendar-manager-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that bridges personal and work schedules through secret iCal feeds, blocks availability without OAuth, and automates video meeting preparation."
-lastUpdated: 2026-10-24
+lastUpdated: 2026-11-05
 githubUrl: "https://github.com/AnaCataVC/smart-calendar-manager"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "WinUI 3", "Windows App SDK", "CommunityToolkit.Mvvm", "RFC 5545 iCalendar", "Google Apps Script", "xUnit"]
@@ -20,8 +20,8 @@ learnings:
 websiteUrl: "https://smart-calendar-manager.ana-catalina.com"
 websiteActionText: "View Page"
 product:
-  tagline: "Keep your work and personal schedules in sync, without sharing private details"
-  intro: "Block personal time on your work calendar so coworkers don't double-book you, see all your meetings in one place, and get calls ready without giving away private account access."
+  tagline: "Sync work and personal calendars"
+  intro: "Block personal time on your work calendar so you aren't double-booked, view all meetings in one place, and prep calls without sharing private details."
   features:
     - icon: "CalendarCheck2"
       title: "Multiple iCal Feeds, No OAuth"
@@ -41,6 +41,13 @@ product:
     - icon: "Repeat"
       title: "Dependency-Free RFC 5545 Parser"
       text: "A calendar engine written from scratch: line folding, recurrence resolution (RRULE), and IANA/Windows timezone handling, plus meeting link detection for Meet, Zoom, Teams and Webex."
+  faq:
+    - question: "Does it work if my company blocks third-party OAuth apps?"
+      answer: "Yes. It reads schedules through secret iCal feeds and generates a first-party Google Apps Script that runs inside your work account without OAuth."
+    - question: "Can coworkers see the details of my personal appointments?"
+      answer: "No. The script creates private 'Busy' blocks on your work calendar, keeping the title, location, and description of personal events completely hidden."
+    - question: "How does pre-meeting automation prepare my video calls?"
+      answer: "It detects Meet, Zoom, Teams, or Webex links in upcoming events and alerts you minutes before start time, opening your note tools and call link."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/smart-calendar-manager/releases/latest"
   downloadLabel: "Download for Windows"
