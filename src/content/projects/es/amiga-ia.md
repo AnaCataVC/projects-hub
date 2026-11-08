@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
 description: "Ecosistema integral de 14 subagentes autónomos, hooks de seguridad sin estado y 25 skills declarativas portátiles con instalación selectiva por packs de dominio e invariantes de ingeniería reforzadas. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-08
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -18,6 +18,7 @@ learnings:
   - "Compuertas de Verificación en Automatización de Releases: Implementación de validaciones en vivo para compilar y comprobar la existencia de binarios y assets antes de publicar releases oficiales."
   - "IA Agéntica vs. Prompts Pasivos: Migrar hacia subagentes autónomos que razonan sobre objetivos globales y coordinan revisiones en paralelo es exponencialmente más resistente y escalable que la ingeniería de prompts tradicional."
   - "Compilador Semántico Tri-Ecosistema: Traducción automatizada desde Markdown canónico hacia formatos nativos de Anthropic Claude Code (~/.claude/), Google Antigravity (~/.gemini/config/) y OpenAI Codex (~/.agents/ y ~/.codex/)."
+  - "Inspección de Hooks Zero-Spawn y Concurrencia Git (v5.15.2): Implementación de rutas rápidas en memoria para auditar payloads de herramientas sin invocar subprocesos de disco ni Git, complementado con GIT_OPTIONAL_LOCKS=0 para erradicar bloqueos de index.lock en sesiones concurrentes."
 websiteActionText: "Ver Página"
 product:
   tagline: "Un equipo de agentes de IA para programar mejor"

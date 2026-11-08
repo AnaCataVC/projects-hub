@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Micro-herramienta flotante nativa para Windows (System Tray y Spotlight) para gestionar Git Worktrees, lanzadores desacoplados de IDEs y terminales, y alternancia de cuentas de GitHub CLI en 1 clic."
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-08
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -20,6 +20,7 @@ learnings:
   - "Resolución de Worktrees Sucios y Bloqueados: Acciones de Stash en 1 clic y Descarte con doble confirmación, además de un flujo de Forzar Desbloqueo y Eliminar para worktrees bloqueados por procesos de agentes externos."
   - "Gestión de Git Worktrees en Árbol: Parser de protocolo Porcelain en hilos secundarios con dock a 1 clic para alternar ramas y conmutación de cuentas GitHub CLI."
   - "Interfaces Reactivas Ultraligeras con Svelte 5 (Runes) y Tauri v2 con anclaje dinámico a la barra de tareas y memoria inferior a 35 MB."
+  - "Optimización de Metadatos de Commits en Lote (v2.6.1): Extracción masiva de autores, fechas y mensajes de commits para todos los worktrees en una única invocación de git show -s, evitando el overhead de subprocesos repetitivos y eliminando desincronizaciones de reloj."
 websiteActionText: "Ver Página"
 product:
   tagline: "Gestiona Git worktrees y cuentas de GitHub"

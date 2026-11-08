@@ -2,7 +2,7 @@
 title: "AMI Claude Mods"
 icon: "/project-icons/ami-claude-mods-icon.png"
 description: "Suite de 8 mods modulares, paneles reactivos y function hooks para Claude Desktop y Claude Code CLI integrados con Amiga IA. Incluye orquestación de planes, control de cuota, medidores discretos, guardas Git/K8s e i18n."
-lastUpdated: 2026-11-06
+lastUpdated: 2026-11-08
 githubUrl: "https://github.com/AnaCataVC/ami-claude-mods"
 websiteUrl: "https://ami-claude-mods.ana-catalina.com"
 isLiveApp: false
@@ -19,6 +19,7 @@ learnings:
   - "Medidores de Estado Silenciosos y Ergonomía del Prompt: Reducción de ruido visual eliminando banners intrusivos sobre el prompt en 'undelegated-reads' y 'context-guard', manteniendo los medidores silenciosos hasta alcanzar el umbral de advertencia (7/10)."
   - "Aislamiento Controlado por el Anfitrión frente a Runtime Node.js: Los plugins operan en un contenedor ESM aislado sin acceso arbitrario a require() ni fs; todo I/O fluye por el manejador EngineInterface ($), garantizando seguridad y consistencia multiplataforma en Windows, macOS y Linux."
   - "Internacionalización Reactiva Bilingüe (i18n): Todos los componentes UI, mensajes de error y textos de ayuda resuelven dinámicamente strings localizados en español e inglés según la configuración del usuario."
+  - "Política de Versionado 0.x (ADR / Versioning Policy): El repositorio se mantiene deliberadamente en la línea 0.x como fuente viva de mods locales y personales, priorizando la iteración rápida sobre la sobrecarga de compatibilidad hacia atrás o ciclos de deprecación formales."
 websiteActionText: "Ver Página"
 product:
   tagline: "Mods reactivos para Claude Desktop y CLI"

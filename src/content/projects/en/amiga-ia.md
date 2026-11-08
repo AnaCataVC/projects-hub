@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
 description: "Comprehensive ecosystem of 14 autonomous subagents, stateless guardrail hooks, and 25 portable declarative skills with selective domain pack installation and strengthened engineering invariants. 100% cross-compatible with Antigravity (Gemini), Claude Code, and OpenAI Codex."
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-08
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -18,6 +18,7 @@ learnings:
   - "Release Automation Verification Gates: Enforced live artifact verification protocols ensuring compiled binaries are physically generated and uploaded before publishing official releases."
   - "Agentic vs. Passive Prompting: Transitioning to autonomous subagent profiles that reason about project goals and deploy worker threads in parallel proved dramatically more robust and scalable than monolithic prompt engineering."
   - "Tri-Ecosystem Semantic Compiler: Automated compilation pipeline transforming canonical Markdown sources into native structures for Anthropic Claude Code (~/.claude/), Google Antigravity (~/.gemini/config/), and OpenAI Codex (~/.agents/ and ~/.codex/)."
+  - "Zero-Spawn Hook Fast-Paths & Git Concurrency (v5.15.2): Engineered zero-spawn in-memory payload inspection routes that eliminate disk I/O and Git subprocesses on tool evaluations, paired with GIT_OPTIONAL_LOCKS=0 to eradicate index.lock race conditions across concurrent agent sessions."
 websiteActionText: "Visit Page"
 product:
   tagline: "A thoughtful team of AI agents for everyday coding"

@@ -2,7 +2,7 @@
 title: "AMI Claude Mods"
 icon: "/project-icons/ami-claude-mods-icon.png"
 description: "Suite of 8 production-grade modular extensions, reactive UI panels, and function hooks for Claude Desktop and Claude Code CLI integrated with Amiga IA. Features plan orchestration, quota pacing, quiet meters, Git/K8s guards, and i18n."
-lastUpdated: 2026-11-06
+lastUpdated: 2026-11-08
 githubUrl: "https://github.com/AnaCataVC/ami-claude-mods"
 websiteUrl: "https://ami-claude-mods.ana-catalina.com"
 isLiveApp: false
@@ -19,6 +19,7 @@ learnings:
   - "Quiet Status Meters & Prompt Ergonomics: Eliminated prompt visual clutter by replacing intrusive AbovePrompt banners in 'undelegated-reads' and 'context-guard' with quiet status line meters that only alert when entering warning thresholds (7/10)."
   - "Host-Gated Isolation over Node.js Runtime: Plugins operate in an isolated ESM container without arbitrary require() or direct fs access; all I/O flows through the EngineInterface ($) handle, guaranteeing sandboxed safety and uniform cross-platform behavior across Windows, macOS, and Linux."
   - "Full Bilingual i18n Localization: All UI panels, toast notifications, status messages, and help texts dynamically resolve localized strings in Spanish and English based on the user's host environment."
+  - "0.x Versioning Policy (ADR / Versioning Policy): The repository intentionally remains on the 0.x release line as a live source of personal local mods, prioritizing rapid iteration over the maintenance overhead of backwards compatibility or formal deprecation cycles."
 websiteActionText: "Visit Page"
 product:
   tagline: "Reactive mods for Claude Desktop and CLI"

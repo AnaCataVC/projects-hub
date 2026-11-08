@@ -1,8 +1,8 @@
 ---
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
-description: "High-performance folder and system icon personalization utility for Windows 10 and 11, featuring an automated rule engine, native multi-resolution PNG-to-ICO encoder, and instant shell refresh."
-lastUpdated: 2026-11-05
+description: "High-performance folder, application, and system icon personalization utility for Windows 10 and 11, featuring an automated rule engine, native multi-resolution PNG-to-ICO encoder, and instant shell refresh."
+lastUpdated: 2026-11-08
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
@@ -19,6 +19,7 @@ learnings:
   - "GDI+ Silent PNG Truncation Guard: Standard .NET image decoders silently process corrupted PNG streams lacking valid IEND footer chunks. A chunk-level PNG integrity parser was built to prevent generating malformed .ico binaries."
   - "Cleanroom TDD Architectural Decoupling: WindowsIconsAdmin.Core was engineered with zero dependencies on UI or platform APIs, enforcing frozen interface contracts and air-gapped unit tests covering ReDoS timeouts, thread-safe undo transactions, multi-resolution binary encoding, and registry shell associations."
   - "Dual Storage Modality: Architecture supporting both Centralized icon storage in %LOCALAPPDATA% (clean folders without loose assets) and Portable mode directly inside the customized directory (preserving icons across network shares and removable drives)."
+  - "Bulk App Icon & Shortcut Pipeline (v1.1.0 / ADR-0004): Automatic discovery of installed applications, deterministic styling engine with live preview, and atomic shortcut icon injection without requiring UAC elevation."
 websiteActionText: "Visit Website"
 product:
   tagline: "Order and style for your Windows folders"
@@ -48,6 +49,9 @@ product:
     - icon: "MonitorCog"
       title: "System & Navigation Pane Icons"
       text: "Customize the Recycle Bin (empty and full states), system folders, and Windows 11 Navigation Pane nodes (Home, Gallery, Linux/WSL, and OneDrive) without UAC elevation."
+    - icon: "Palette"
+      title: "App Icon Discovery & Styling Studio"
+      text: "Inspect installed applications, style shortcut icons with live previews and supersampled containers, and batch apply customizations atomically."
   notice:
     title: "Local Security & Native Performance"
     text: "Windows Icons Admin runs completely locally, collects zero user telemetry, and operates with standard user permissions to customize your folders."

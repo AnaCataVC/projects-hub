@@ -1,7 +1,7 @@
 ---
 title: "Workspace Companion"
 description: "Ultra-lightweight native Windows system tray and Spotlight utility to manage Git Worktrees, decoupled IDE/terminal launchers, and 1-click GitHub CLI switching."
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-08
 icon: "/project-icons/workspace-companion-icon.png"
 githubUrl: "https://github.com/AnaCataVC/workspace-companion"
 websiteUrl: "https://workspace-companion.ana-catalina.com"
@@ -20,6 +20,7 @@ learnings:
   - "Dirty & Locked Worktree Resolution: 1-click Stash and double-confirmed Discard actions plus a Force Unlock & Remove path for worktrees left locked by external agent processes."
   - "Git Worktree Tree Management: Background Porcelain stream parsing with 1-click dock switching and swift GitHub CLI identity profiles."
   - "Ultra-Fast Reactive UI with Svelte 5 (Runes) and Tauri v2 with automatic taskbar anchoring and minimal working set memory."
+  - "Batch Worktree Commit Metadata Optimization (v2.6.1): Bulk extraction of commit authors, dates, and subjects across all worktrees in a single git show -s invocation, removing repetitive subprocess overhead and clock-drift race conditions in tests."
 websiteActionText: "View Page"
 product:
   tagline: "Manage Git worktrees and GitHub accounts"

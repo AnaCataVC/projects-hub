@@ -1,8 +1,8 @@
 ---
 title: "Windows Icons Admin"
 icon: "/project-icons/windows-icons-admin-icon.png"
-description: "Utilidad de alto rendimiento para Windows 10 y 11 que automatiza la personalización masiva de iconos de carpetas y del sistema, con motor de reglas, codificador PNG a ICO nativo y refresco instantáneo del shell."
-lastUpdated: 2026-11-05
+description: "Utilidad de alto rendimiento para Windows 10 y 11 que automatiza la personalización masiva de carpetas, aplicaciones y nodos del sistema, con motor de reglas, codificador PNG a ICO nativo y refresco instantáneo del shell."
+lastUpdated: 2026-11-08
 githubUrl: "https://github.com/AnaCataVC/windows-icons-admin"
 websiteUrl: "https://windows-icons-admin.ana-catalina.com"
 isLiveApp: false
@@ -19,6 +19,7 @@ learnings:
   - "Validación de Integridad PNG contra Truncamiento: Los decodificadores estándar de imágenes procesan silenciosamente flujos PNG truncados sin bloque final IEND. Se implementó un parser de integridad por chunks para garantizar la validez binaria antes de codificar el archivo .ico."
   - "Desacoplamiento Estricto con Cleanroom TDD: La capa WindowsIconsAdmin.Core se diseñó con cero dependencias de UI o APIs de Windows, congelando contratos formales y validando mediante pruebas unitarias independientes timeouts de expresiones regulares, concurrencia en disco, codificación binaria y asociaciones de registro del shell."
   - "Modos de Almacenamiento Central y Portátil: Soporte dual para almacenar iconos en un repositorio protegido en %LOCALAPPDATA% (manteniendo limpias las carpetas de usuario) o de forma portátil dentro del propio directorio para conservar los iconos en discos extraíbles o unidades compartidas."
+  - "Pipeline Masivo de Iconos de Apps y Accesos Directos (v1.1.0 / ADR-0004): Descubrimiento automático de aplicaciones instaladas, motor de estilizado determinista con previsualización en vivo e inyección atómica en accesos directos del shell sin requerir elevación UAC."
 websiteActionText: "Visitar Sitio"
 product:
   tagline: "Orden y estilo para tus carpetas en Windows"
@@ -48,6 +49,9 @@ product:
     - icon: "MonitorCog"
       title: "Iconos del Sistema y Panel de Navegación"
       text: "Personaliza la Papelera de Reciclaje (vacía y llena), carpetas del sistema y nodos del Panel de Navegación de Windows 11 (Inicio, Galería, Linux/WSL y OneDrive) sin requerir permisos de administrador."
+    - icon: "Palette"
+      title: "Estudio y Descubrimiento de Apps"
+      text: "Inspecciona aplicaciones instaladas, estiliza iconos de accesos directos con superelipses y vista previa en vivo, y aplica cambios masivos de forma atómica."
   notice:
     title: "Seguridad y Rendimiento Nativo"
     text: "Windows Icons Admin se ejecuta 100% de forma local, no recopila datos de telemetría y opera con permisos estándar de usuario para personalizar tus carpetas."

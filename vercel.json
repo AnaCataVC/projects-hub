@@ -46,6 +46,26 @@
       "has": [
         {
           "type": "host",
+          "value": "android-icon-admin.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/android-icon-admin/index.html"
+    },
+    {
+      "src": "^/en/?$",
+      "has": [
+        {
+          "type": "host",
+          "value": "android-icon-admin.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/android-icon-admin/en/index.html"
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
           "value": "google-drive-work-sync.ana-catalina.com"
         }
       ],
