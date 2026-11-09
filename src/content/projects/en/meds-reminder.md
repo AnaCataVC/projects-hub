@@ -1,7 +1,7 @@
 ---
 title: "Meds Reminder"
 description: "100% offline-first native Android mobile application for medication adherence and multi-profile dosage reminders with high-precision alarms."
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-09
 icon: "/project-icons/meds-reminder-icon.png"
 githubUrl: "https://github.com/AnaCataVC/meds-reminder"
 websiteUrl: "https://meds-reminder.ana-catalina.com"

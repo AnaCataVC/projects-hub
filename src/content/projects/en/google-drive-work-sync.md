@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that syncs work directories and AI agent context to Google Drive via native Rust engine with BLAKE3 SIMD and Google Apps Script."
-lastUpdated: 2026-11-08
+lastUpdated: 2026-11-09
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "Rust", "WinUI 3", "Windows App SDK", "BLAKE3 SIMD", "P/Invoke FFI", "Google Apps Script", "xUnit"]

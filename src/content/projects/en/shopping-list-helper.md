@@ -1,7 +1,7 @@
 ---
 title: "Shopping List Helper"
 description: "100% offline-first native Android mobile application to manage recurring household purchases and plan shopping trips by store."
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-09
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"
@@ -9,7 +9,7 @@ isLiveApp: false
 technologies: ["Kotlin", "Jetpack Compose", "Material Design 3", "Room Database"]
 categories: ["Mobile", "Productivity", "Android", "Home"]
 type: "mobile"
-status: "Active"
+status: "In Development"
 problem: "Forgetting recurring household purchases (groceries, toiletries, etc.) and wasting time building the shopping list because it's unclear what's missing for a given store."
 solution: "A local-first, cloud-free application with per-store categories, automatic recurrence rules (every N days) that bring items back once due, and a 'Going shopping' mode that filters only what's pending for one category, sorted by urgency."
 learnings:

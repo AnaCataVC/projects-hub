@@ -1,7 +1,7 @@
 ---
 title: "Shopping List Helper"
 description: "Aplicación móvil nativa para Android (100% offline-first) para gestionar compras recurrentes del hogar y armar la lista de compras por tienda."
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-09
 icon: "/project-icons/shopping-list-helper-icon.png"
 githubUrl: "https://github.com/AnaCataVC/shopping-list-helper"
 websiteUrl: "https://shopping-list-helper.ana-catalina.com"
@@ -9,7 +9,7 @@ isLiveApp: false
 technologies: ["Kotlin", "Jetpack Compose", "Material Design 3", "Room Database"]
 categories: ["Mobile", "Productividad", "Android", "Hogar"]
 type: "mobile"
-status: "Activo"
+status: "En Desarrollo"
 problem: "Olvidar recompras periódicas del hogar (artículos de supermercado, aseo, etc.) y perder tiempo armando la lista de compras al no saber qué falta según la tienda a la que se va."
 solution: "Una aplicación local-first sin nube, con categorías por tienda, reglas de recurrencia automática (cada N días) que reaparecen los ítems al vencer, y un modo 'Voy a comprar' que filtra solo lo pendiente de una categoría ordenado por urgencia."
 learnings:

@@ -2,7 +2,7 @@
 title: "Android Icons Admin"
 icon: "/project-icons/android-icon-admin-icon.png"
 description: "Utilidad local-first y determinista para Android 8.0 a 16 y Samsung One UI 8.5 que automatiza la personalización estética de iconos de apps mediante widgets sin insignia, accesos directos silenciosos y exportación a Theme Park."
-lastUpdated: 2026-11-08
+lastUpdated: 2026-11-09
 githubUrl: "https://github.com/AnaCataVC/android-icon-admin"
 websiteUrl: "https://android-icon-admin.ana-catalina.com"
 isLiveApp: false
