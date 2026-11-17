@@ -2,7 +2,7 @@
 title: "One UI Extra Widgets"
 description: "Native suite of six Android home screen widgets styled after Samsung One UI, built in Kotlin with Jetpack Glance, Jetpack Compose, offline astronomical ephemeris, and 5G NR / Wi-Fi 6 telemetry."
 lastUpdated: 2026-11-17
-icon: "/project-icons/one-ui-extra-widgets-icon.svg"
+icon: "/project-icons/one-ui-extra-widgets-icon.png"
 githubUrl: "https://github.com/AnaCataVC/one-ui-extra-widgets"
 websiteUrl: "https://one-ui-extra-widgets.ana-catalina.com"
 isLiveApp: false
@@ -48,7 +48,7 @@ product:
       answer: "No. Weather data comes from the free, keyless Open-Meteo API, and astrology calculations run 100% offline on your device."
     - question: "Which music apps are supported by the retro player widgets?"
       answer: "They sync automatically via Android MediaSession with Spotify, YouTube Music, Apple Music, Samsung Music, Tidal, and most other media players."
-  platforms: ["Android 8.0–15", "Samsung One UI"]
+  platforms: ["Android 8.0–16", "Samsung One UI 8.5"]
   downloadUrl: "https://github.com/AnaCataVC/one-ui-extra-widgets/releases/latest"
   downloadLabel: "Download APK (Android)"
 ---

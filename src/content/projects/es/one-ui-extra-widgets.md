@@ -2,7 +2,7 @@
 title: "One UI Extra Widgets"
 description: "Suite nativa de seis widgets para pantalla de inicio en Android con estética Samsung One UI, construida en Kotlin con Jetpack Glance, Jetpack Compose, efemérides astronómicas offline y telemetría 5G NR / Wi-Fi 6."
 lastUpdated: 2026-11-17
-icon: "/project-icons/one-ui-extra-widgets-icon.svg"
+icon: "/project-icons/one-ui-extra-widgets-icon.png"
 githubUrl: "https://github.com/AnaCataVC/one-ui-extra-widgets"
 websiteUrl: "https://one-ui-extra-widgets.ana-catalina.com"
 isLiveApp: false
@@ -48,7 +48,7 @@ product:
       answer: "No. El widget de clima usa la API abierta de Open-Meteo sin registro, y el de astrología realiza todos los cálculos astronómicos localmente sin internet."
     - question: "¿Con qué aplicaciones de música funcionan los widgets retro?"
       answer: "Se sincronizan automáticamente mediante MediaSession con Spotify, YouTube Music, Apple Music, Samsung Music, Tidal y la mayoría de reproductores Android."
-  platforms: ["Android 8.0–15", "Samsung One UI"]
+  platforms: ["Android 8.0–16", "Samsung One UI 8.5"]
   downloadUrl: "https://github.com/AnaCataVC/one-ui-extra-widgets/releases/latest"
   downloadLabel: "Descargar APK (Android)"
 ---
