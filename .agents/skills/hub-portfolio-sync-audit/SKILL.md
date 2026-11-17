@@ -71,7 +71,7 @@ npm run build
 ```
 Ensure all schema constraints, Vitest unit tests (`product-pages.test.ts`), and production static site generation succeed cleanly.
 
-### 5. Git Commit, Push & CI Verification
+### 5. Git Commit, Push, Issue Closure & CI Verification
 
 ```powershell
 gh auth switch -u AnaCataVC --hostname github.com 2>$null
@@ -81,3 +81,9 @@ git push origin main
 gh run list --limit 3
 ```
 Confirm the GitHub Actions deployment workflow finishes with `conclusion: success`.
+
+If `npm run audit:projects` now reports zero new or pending projects, close any open `portfolio-drift` tracking issue immediately (the `portfolio-drift.yml` workflow also re-runs on `push` to `src/content/projects/**` as a safety net):
+```powershell
+gh issue list --label portfolio-drift --state open --json number,title
+gh issue close <number> --comment "✅ Synchronized all pending portfolio updates and new repositories in commit $(git rev-parse --short HEAD)."
+```

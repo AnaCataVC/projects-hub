@@ -77,12 +77,18 @@ Do not proceed if any SEO issue, linter error, TypeScript error, or Vitest failu
   git push origin main
   ```
 
-### 5. Live CI/CD Verification
+### 5. Live CI/CD Verification & Drift Issue Closure
 Monitor the triggered GitHub Actions workflow until successful deployment:
 ```powershell
 gh run list --limit 3
 ```
 Confirm `conclusion: success` before declaring the audit and synchronization complete.
+
+Once `npm run audit:projects` reports zero drift and the push is live, close any open `portfolio-drift` issue immediately (without waiting for the next scheduled run):
+```powershell
+gh issue list --label portfolio-drift --state open --json number,title
+gh issue close <number> --comment "✅ Synchronized all pending portfolio updates and new repositories in commit $(git rev-parse --short HEAD)."
+```
 
 ---
 

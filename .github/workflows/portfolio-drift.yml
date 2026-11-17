@@ -3,6 +3,11 @@ name: Weekly Portfolio Drift Audit
 on:
   schedule:
     - cron: "0 12 * * 1" # Every Monday at 12:00 UTC
+  push:
+    branches:
+      - main
+    paths:
+      - "src/content/projects/**"
   workflow_dispatch:
 
 permissions:
