@@ -2,7 +2,7 @@
 title: "System Core Monitor"
 icon: "/project-icons/system-core-monitor-icon.png"
 description: "Panel interactivo de telemetría HUD y suite de control de rendimiento para Windows en C# nativo (.NET WPF/XAML) en un único ejecutable standalone de 585 KB sin dependencias externas."
-lastUpdated: 2026-11-09
+lastUpdated: 2026-11-17
 githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
 websiteUrl: "https://system-core-monitor.ana-catalina.com"
 isLiveApp: false
@@ -19,6 +19,7 @@ learnings:
   - "Control de Procesos a Nivel de Kernel: Congelación y reanudación segura de procesos desbocados con ntdll.dll (NtSuspendProcess / NtResumeProcess) y cierre elegante en dos fases."
   - "Conmutación Energética con PowrProf.dll: Alternancia instantánea de perfiles de energía (PowerSetActiveScheme) combinada con recorte seguro de páginas de memoria inactivas (EmptyWorkingSet)."
   - "Limpiador Seguro Multizona: Purga higiénica de archivos temporales del sistema protegida contra enlaces simbólicos (NTFS Junctions) y validación de marcas temporales duales."
+  - "Usabilidad y Localización ES/EN (v3.8.0): Cobertura bilingüe completa en vistas y detalles de procesos, exportación de snapshots del dashboard, filtros de búsqueda, confirmaciones de seguridad y ajustes de inicio/ventana."
 websiteActionText: "Visitar Sitio"
 product:
   tagline: "El pulso de tu PC y sesiones IA al instante"

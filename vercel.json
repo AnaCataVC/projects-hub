@@ -6,6 +6,26 @@
       "has": [
         {
           "type": "host",
+          "value": "one-ui-extra-widgets.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/one-ui-extra-widgets/index.html"
+    },
+    {
+      "src": "^/en/?$",
+      "has": [
+        {
+          "type": "host",
+          "value": "one-ui-extra-widgets.ana-catalina.com"
+        }
+      ],
+      "dest": "/p/one-ui-extra-widgets/en/index.html"
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
           "value": "ami-claude-mods.ana-catalina.com"
         }
       ],

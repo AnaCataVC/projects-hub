@@ -2,7 +2,7 @@
 title: "System Core Monitor"
 icon: "/project-icons/system-core-monitor-icon.png"
 description: "Visual, lightweight HUD system telemetry dashboard and performance control suite for Windows built in native C# (.NET WPF/XAML) in a standalone 585 KB executable with zero external dependencies."
-lastUpdated: 2026-11-09
+lastUpdated: 2026-11-17
 githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
 websiteUrl: "https://system-core-monitor.ana-catalina.com"
 isLiveApp: false
@@ -19,6 +19,7 @@ learnings:
   - "Kernel-Level Process Control: Safe freezing and resuming of runaway tasks using ntdll.dll (NtSuspendProcess / NtResumeProcess) paired with a Two-Phase Graceful Close protocol."
   - "Win32 Power Switching via PowrProf.dll: Instantaneous power profile switching (PowerSetActiveScheme) coupled with working set memory trimming (EmptyWorkingSet)."
   - "Hardened Multizone Cleaner: Safe cleanup of obsolete temporary files protected by NTFS Junction isolation and dual timestamp validation."
+  - "Usability & Full ES/EN Localization (v3.8.0): Complete bilingual coverage across chrome, views, and process details, dashboard snapshot export, search filters, safety confirmations, and window/startup toggles."
 websiteActionText: "Visit Website"
 product:
   tagline: "Real-time pulse on your PC and AI sessions"
