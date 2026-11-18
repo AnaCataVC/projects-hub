@@ -64,6 +64,9 @@ const t = {
     trustOpen: 'Auditable y Abierto',
     trustOpenDesc: 'Código fuente abierto y transparente en GitHub.',
     close: 'Cerrar',
+    prevSlide: 'Captura anterior',
+    nextSlide: 'Siguiente captura',
+    goToSlide: 'Ir a captura',
   },
   en: {
     features: 'What it does',
@@ -86,6 +89,9 @@ const t = {
     trustOpen: 'Auditable & Open Source',
     trustOpenDesc: 'Transparent open source code on GitHub.',
     close: 'Close',
+    prevSlide: 'Previous screenshot',
+    nextSlide: 'Next screenshot',
+    goToSlide: 'Go to screenshot',
   },
 }[lang];
 
@@ -550,7 +556,7 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
         </aside>
       )}
 
-      <!-- Screenshots Gallery with Lightbox support -->
+      <!-- Screenshots Gallery with Slider (>3) and Lightbox support -->
       {product.screenshots.length > 0 && (
         <section class="py-14" aria-labelledby="screens-title">
           <div class="text-center mb-12">
@@ -558,26 +564,100 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
               {t.screenshots}
             </h2>
           </div>
-          <div class="flex flex-wrap gap-8 justify-center">
-            {product.screenshots.map((shot) => (
-              <div
-                class="group relative rounded-2xl p-1.5 sm:p-2 bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 shadow-xl dark:shadow-2xl dark:shadow-black/60 transition-all duration-300 hover:scale-[1.015] hover:border-brand-purple/40 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
-                role="button"
-                tabindex="0"
-                data-lightbox-trigger={shot.src}
-                data-lightbox-alt={shot.alt}
-                aria-label={lang === 'es' ? `Ampliar captura: ${shot.alt}` : `Zoom screenshot: ${shot.alt}`}
-                title={lang === 'es' ? 'Haz clic o presiona Enter para ampliar captura' : 'Click or press Enter to zoom screenshot'}
-              >
-                <img
-                  src={shot.src}
-                  alt={shot.alt}
-                  loading="lazy"
-                  class="max-h-[560px] w-auto max-w-full rounded-xl object-contain block shadow-sm"
-                />
+
+          {product.screenshots.length > 3 ? (
+            <div class="relative max-w-4xl mx-auto" data-gallery-slider data-total-slides={product.screenshots.length}>
+              <!-- Prev / Next Controls -->
+              <button
+                type="button"
+                data-gallery-prev
+                aria-label={t.prevSlide}
+                class="absolute left-1 sm:left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/15 shadow-lg backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-brand-purple dark:hover:text-brand-purple-light hover:border-brand-purple/40 transition-all active:scale-95 cursor-pointer [&>svg]:w-5 [&>svg]:h-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+                set:html={iconSvg('ChevronLeft')}
+              ></button>
+
+              <button
+                type="button"
+                data-gallery-next
+                aria-label={t.nextSlide}
+                class="absolute right-1 sm:right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-white/15 shadow-lg backdrop-blur-md flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-brand-purple dark:hover:text-brand-purple-light hover:border-brand-purple/40 transition-all active:scale-95 cursor-pointer [&>svg]:w-5 [&>svg]:h-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+                set:html={iconSvg('ChevronRight')}
+              ></button>
+
+              <!-- Slides Viewport -->
+              <div class="overflow-hidden rounded-2xl">
+                <div class="flex transition-transform duration-500 ease-out will-change-transform" data-gallery-track>
+                  {product.screenshots.map((shot, idx) => (
+                    <div class="w-full shrink-0 flex flex-col items-center justify-center px-12 sm:px-16 py-2" data-gallery-slide={idx}>
+                      <div
+                        class="group relative rounded-2xl p-1.5 sm:p-2 bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 shadow-xl dark:shadow-2xl dark:shadow-black/60 transition-all duration-300 hover:scale-[1.015] hover:border-brand-purple/40 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+                        role="button"
+                        tabindex="0"
+                        data-lightbox-trigger={shot.src}
+                        data-lightbox-alt={shot.alt}
+                        aria-label={lang === 'es' ? `Ampliar captura: ${shot.alt}` : `Zoom screenshot: ${shot.alt}`}
+                        title={lang === 'es' ? 'Haz clic o presiona Enter para ampliar captura' : 'Click or press Enter to zoom screenshot'}
+                      >
+                        <img
+                          src={shot.src}
+                          alt={shot.alt}
+                          loading={idx === 0 ? 'eager' : 'lazy'}
+                          class="max-h-[420px] sm:max-h-[480px] w-auto max-w-full rounded-xl object-contain block shadow-sm"
+                        />
+                      </div>
+                      <p class="mt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-[Inter] text-center max-w-xl">
+                        {shot.alt}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+
+              <!-- Dots & Counter -->
+              <div class="mt-5 flex flex-col items-center gap-2.5">
+                <div class="flex items-center justify-center gap-2 flex-wrap px-4">
+                  {product.screenshots.map((_, idx) => (
+                    <button
+                      type="button"
+                      data-gallery-dot={idx}
+                      aria-label={`${t.goToSlide} ${idx + 1}`}
+                      aria-current={idx === 0 ? 'true' : 'false'}
+                      class:list={[
+                        'h-2 rounded-full transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple',
+                        idx === 0
+                          ? 'w-6 bg-brand-purple dark:bg-brand-purple-light'
+                          : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-500',
+                      ]}
+                    ></button>
+                  ))}
+                </div>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400" data-gallery-counter>
+                  1 / {product.screenshots.length}
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div class="flex flex-wrap gap-8 justify-center">
+              {product.screenshots.map((shot) => (
+                <div
+                  class="group relative rounded-2xl p-1.5 sm:p-2 bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-white/10 shadow-xl dark:shadow-2xl dark:shadow-black/60 transition-all duration-300 hover:scale-[1.015] hover:border-brand-purple/40 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
+                  role="button"
+                  tabindex="0"
+                  data-lightbox-trigger={shot.src}
+                  data-lightbox-alt={shot.alt}
+                  aria-label={lang === 'es' ? `Ampliar captura: ${shot.alt}` : `Zoom screenshot: ${shot.alt}`}
+                  title={lang === 'es' ? 'Haz clic o presiona Enter para ampliar captura' : 'Click or press Enter to zoom screenshot'}
+                >
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                    class="max-h-[560px] w-auto max-w-full rounded-xl object-contain block shadow-sm"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       )}
 
@@ -787,6 +867,74 @@ const cardClass = `group relative rounded-2xl bg-white/70 dark:bg-slate-900/50 b
           closeLightbox();
         }
       });
+
+      // 6. Gallery Slider Logic (when screenshots > 3)
+      const slider = document.querySelector('[data-gallery-slider]');
+      if (slider) {
+        const track = slider.querySelector('[data-gallery-track]');
+        const prevBtn = slider.querySelector('[data-gallery-prev]');
+        const nextBtn = slider.querySelector('[data-gallery-next]');
+        const dots = Array.from(slider.querySelectorAll('[data-gallery-dot]'));
+        const counter = slider.querySelector('[data-gallery-counter]');
+        const total = Number(slider.getAttribute('data-total-slides') || dots.length);
+        let current = 0;
+
+        function goToSlide(index) {
+          if (!track || total <= 0) return;
+          current = ((index % total) + total) % total;
+          track.style.transform = `translateX(-${current * 100}%)`;
+
+          dots.forEach((dot, idx) => {
+            const isActive = idx === current;
+            dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+            dot.classList.toggle('w-6', isActive);
+            dot.classList.toggle('bg-brand-purple', isActive);
+            dot.classList.toggle('dark:bg-brand-purple-light', isActive);
+            dot.classList.toggle('w-2', !isActive);
+            dot.classList.toggle('bg-slate-300', !isActive);
+            dot.classList.toggle('dark:bg-slate-700', !isActive);
+            dot.classList.toggle('hover:bg-slate-400', !isActive);
+            dot.classList.toggle('dark:hover:bg-slate-500', !isActive);
+          });
+
+          if (counter) {
+            counter.textContent = `${current + 1} / ${total}`;
+          }
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(current - 1));
+        if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(current + 1));
+        dots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const idx = Number(dot.getAttribute('data-gallery-dot') || 0);
+            goToSlide(idx);
+          });
+        });
+
+        slider.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            goToSlide(current - 1);
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            goToSlide(current + 1);
+          }
+        });
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+        slider.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+          touchStartY = e.changedTouches[0].clientY;
+        }, { passive: true });
+        slider.addEventListener('touchend', (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          const dy = e.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            goToSlide(dx < 0 ? current + 1 : current - 1);
+          }
+        }, { passive: true });
+      }
     </script>
   </body>
 </html>
