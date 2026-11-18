@@ -1,7 +1,7 @@
 ---
 title: "One UI Extra Widgets"
-description: "Native suite of six Android home screen widgets styled after Samsung One UI, built in Kotlin with Jetpack Glance, Jetpack Compose, offline astronomical ephemeris, and 5G NR / Wi-Fi 6 telemetry."
-lastUpdated: 2026-11-17
+description: "Native suite of twelve Android home screen widgets styled after Samsung One UI, built in Kotlin with Jetpack Glance, Jetpack Compose, offline astronomical ephemeris, and 5G NR / Wi-Fi 6 telemetry."
+lastUpdated: 2026-11-18
 icon: "/project-icons/one-ui-extra-widgets-icon.png"
 githubUrl: "https://github.com/AnaCataVC/one-ui-extra-widgets"
 websiteUrl: "https://one-ui-extra-widgets.ana-catalina.com"
@@ -11,7 +11,7 @@ categories: ["Android", "Mobile", "Widgets", "One UI"]
 type: "mobile"
 status: "In Development"
 problem: "Stock Samsung Galaxy home screen widgets lack specialized tools with authentic One UI styling — such as air quality with lunar phases, offline astrology, interactive retro music players, and detailed 5G/Wi-Fi metrics — without cloud accounts or battery drain."
-solution: "A modular suite of six Jetpack Glance widgets and Jetpack Compose detail screens built around Samsung One UI design tokens (26dp squircle radii and adaptive day/night translucent surfaces), combining keyless Open-Meteo data, 100% offline astronomical computation, MediaSession bridging, and native network telemetry."
+solution: "A modular suite of twelve Jetpack Glance widgets and Jetpack Compose detail screens built around Samsung One UI design tokens (26dp squircle radii and adaptive day/night translucent surfaces), combining keyless Open-Meteo data, 100% offline astronomical computation, MediaSession bridging, and native network telemetry."
 learnings:
   - "Jetpack Glance + Custom Canvas: Rendering crisp bitmaps for the lunar phase sphere, interactive iPod Classic Click Wheel, and spinning Discman CD album-art mask within RemoteViews constraints."
   - "100% Offline Astronomical Ephemeris: Integrating Astronomy Engine to compute geocentric ecliptic longitudes, lunar transits, and planetary retrograde or shadow states with zero network calls."
@@ -21,7 +21,7 @@ learnings:
 websiteActionText: "Visit Page"
 product:
   tagline: "One UI widgets for your Galaxy"
-  intro: "Six lightweight Android widgets styled for Samsung One UI: weather with AQI, offline astrology, retro music players, and 5G/Wi-Fi 6 telemetry."
+  intro: "Twelve lightweight Android widgets styled for Samsung One UI: weather with AQI, offline astrology, retro music players, and 5G/Wi-Fi 6 telemetry."
   features:
     - icon: "CloudSun"
       title: "Weather Pro, AQI & Moon Phase"
@@ -49,11 +49,23 @@ product:
     - src: "/product-screenshots/one-ui-extra-widgets/retro-mp3.png"
       alt: "2000s USB MP3 stick player widget with equalizer"
     - src: "/product-screenshots/one-ui-extra-widgets/air-quality.png"
-      alt: "European Air Quality Index (AQI) and PM2.5 particulate widget"
+      alt: "European Air Quality Index (AQI) and PM2.5/PM10 particulate widget"
+    - src: "/product-screenshots/one-ui-extra-widgets/rain-probability.png"
+      alt: "Rain Probability widget with 6-hour forecast window and cloud cover"
+    - src: "/product-screenshots/one-ui-extra-widgets/uv-index.png"
+      alt: "Solar UV Index widget with protection level and cloud cover"
+    - src: "/product-screenshots/one-ui-extra-widgets/solar-day.png"
+      alt: "Solar Day widget displaying sunrise, sunset, and golden hour times"
     - src: "/product-screenshots/one-ui-extra-widgets/moon-phase.png"
-      alt: "Scientific Moon Phase widget showing illumination percentage and synodic age"
+      alt: "Scientific Moon Phase widget showing illumination percentage, synodic age, and elongation"
+    - src: "/product-screenshots/one-ui-extra-widgets/night-sky.png"
+      alt: "Night Sky widget showing visibility score, visible planets, and cloud/moon coverage"
     - src: "/product-screenshots/one-ui-extra-widgets/astrology.png"
       alt: "Offline Astrology widget displaying Sun sign, Moon transit, and retrograde planets"
+    - src: "/product-screenshots/one-ui-extra-widgets/thermal-health.png"
+      alt: "Battery Thermal Health widget showing temperature, voltage, current, and wattage"
+    - src: "/product-screenshots/one-ui-extra-widgets/network-quality.png"
+      alt: "4G LTE / 5G and Wi-Fi Network Quality widget showing dBm signal strength and link speed"
   faq:
     - question: "Does it only work on Samsung Galaxy phones?"
       answer: "It is crafted around Samsung One UI design tokens, but it relies on standard Android Jetpack APIs and runs on any device running Android 8.0 or newer."
@@ -68,7 +80,7 @@ product:
 
 ### Samsung One UI-Styled Widget Suite
 
-**One UI Extra Widgets** expands the Android home screen with six widgets crafted around **Samsung One UI** design tokens (`26dp` corner radii, adaptive day/night translucent surfaces, and ergonomic headers), paired with **Jetpack Compose** and **Material 3** detail screens.
+**One UI Extra Widgets** expands the Android home screen with twelve widgets crafted around **Samsung One UI** design tokens (`26dp` corner radii, adaptive day/night translucent surfaces, and ergonomic headers), paired with **Jetpack Compose** and **Material 3** detail screens.
 
 *   **Weather & Air Quality:** Real-time Open-Meteo forecasts (rain probability, European AQI, PM2.5/PM10, and UV index) alongside a custom `Canvas` lunar phase sphere.
 *   **Offline Astrology Engine:** Local ephemeris computation with `Astronomy Engine` for Sun sign, Moon zodiac transit, and retrograde/shadow detection.

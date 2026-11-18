@@ -1,7 +1,7 @@
 ---
 title: "One UI Extra Widgets"
-description: "Suite nativa de seis widgets para pantalla de inicio en Android con estética Samsung One UI, construida en Kotlin con Jetpack Glance, Jetpack Compose, efemérides astronómicas offline y telemetría 5G NR / Wi-Fi 6."
-lastUpdated: 2026-11-17
+description: "Suite nativa de doce widgets para pantalla de inicio en Android con estética Samsung One UI, construida en Kotlin con Jetpack Glance, Jetpack Compose, efemérides astronómicas offline y telemetría 5G NR / Wi-Fi 6."
+lastUpdated: 2026-11-18
 icon: "/project-icons/one-ui-extra-widgets-icon.png"
 githubUrl: "https://github.com/AnaCataVC/one-ui-extra-widgets"
 websiteUrl: "https://one-ui-extra-widgets.ana-catalina.com"
@@ -11,7 +11,7 @@ categories: ["Android", "Mobile", "Widgets", "One UI"]
 type: "mobile"
 status: "En Desarrollo"
 problem: "La oferta de widgets nativos en teléfonos Samsung Galaxy carece de piezas especializadas con acabado One UI auténtico —como calidad del aire con fase lunar, astrología offline, reproductores retro interactivos y métricas detalladas de red 5G/Wi-Fi— sin depender de cuentas en la nube ni drenar la batería."
-solution: "Una suite modular de seis widgets con Jetpack Glance y pantallas de detalle en Jetpack Compose siguiendo los tokens visuales de Samsung One UI (radios de 26dp y superficies translúcidas adaptativas), combinando Open-Meteo sin clave API, cálculo astronómico 100% offline, puente MediaSession y telemetría de red nativa."
+solution: "Una suite modular de doce widgets con Jetpack Glance y pantallas de detalle en Jetpack Compose siguiendo los tokens visuales de Samsung One UI (radios de 26dp y superficies translúcidas adaptativas), combinando Open-Meteo sin clave API, cálculo astronómico 100% offline, puente MediaSession y telemetría de red nativa."
 learnings:
   - "Jetpack Glance + Canvas Personalizado: Renderizado de bitmaps de alta nitidez para la esfera de fase lunar, la rueda táctil del iPod Classic y la máscara circular giratoria de CD en Discman dentro de las restricciones de RemoteViews."
   - "Efemérides Astronómicas 100% Offline: Integración de Astronomy Engine para calcular longitudes eclípticas geocéntricas y detectar tránsitos lunares y planetas retrógrados o en sombra sin llamadas de red."
@@ -21,7 +21,7 @@ learnings:
 websiteActionText: "Ver Página"
 product:
   tagline: "Widgets One UI para tu Galaxy"
-  intro: "Seis widgets ligeros para Android con estética Samsung One UI: clima con AQI, astrología offline, reproductores retro y calidad 5G/Wi-Fi 6."
+  intro: "Doce widgets ligeros para Android con estética Samsung One UI: clima con AQI, astrología offline, reproductores retro y calidad 5G/Wi-Fi 6."
   features:
     - icon: "CloudSun"
       title: "Clima Pro, AQI y Fase Lunar"
@@ -49,11 +49,23 @@ product:
     - src: "/product-screenshots/one-ui-extra-widgets/retro-mp3.png"
       alt: "Widget reproductor MP3 USB estilo años 2000 con ecualizador"
     - src: "/product-screenshots/one-ui-extra-widgets/air-quality.png"
-      alt: "Widget de Calidad del Aire (AQI europeo) y material particulado PM2.5"
+      alt: "Widget de Calidad del Aire (AQI europeo) y material particulado PM2.5 y PM10"
+    - src: "/product-screenshots/one-ui-extra-widgets/rain-probability.png"
+      alt: "Widget de Probabilidad de Lluvia con ventana de 6 horas y nubosidad"
+    - src: "/product-screenshots/one-ui-extra-widgets/uv-index.png"
+      alt: "Widget de Índice UV Solar con nivel de protección y nubosidad"
+    - src: "/product-screenshots/one-ui-extra-widgets/solar-day.png"
+      alt: "Widget Día Solar con horario de amanecer, atardecer y hora dorada"
     - src: "/product-screenshots/one-ui-extra-widgets/moon-phase.png"
-      alt: "Widget científico de Fase Lunar con porcentaje de iluminación y edad sinódica"
+      alt: "Widget científico de Fase Lunar con porcentaje de iluminación, edad sinódica y elongación"
+    - src: "/product-screenshots/one-ui-extra-widgets/night-sky.png"
+      alt: "Widget de Cielo Nocturno con índice de visibilidad, planetas visibles y nubosidad"
     - src: "/product-screenshots/one-ui-extra-widgets/astrology.png"
       alt: "Widget de Astrología offline con signo solar, tránsito lunar y planetas retrógrados"
+    - src: "/product-screenshots/one-ui-extra-widgets/thermal-health.png"
+      alt: "Widget de Salud Térmica de batería con temperatura, voltaje, corriente y potencia"
+    - src: "/product-screenshots/one-ui-extra-widgets/network-quality.png"
+      alt: "Widget de Calidad de Red 4G LTE / 5G y Wi-Fi con potencia dBm y velocidad en Mbps"
   faq:
     - question: "¿Funciona únicamente en teléfonos Samsung Galaxy?"
       answer: "Está diseñado siguiendo la estética Samsung One UI (especialmente optimizado para Galaxy), pero usa APIs estándar de Android Jetpack y funciona en cualquier dispositivo con Android 8.0 o superior."
@@ -68,7 +80,7 @@ product:
 
 ### Suite de Widgets con Estética Samsung One UI
 
-**One UI Extra Widgets** amplía la pantalla de inicio de Android con seis widgets diseñados en torno a los tokens visuales de **Samsung One UI** (esquinas `26dp`, superficies translúcidas adaptativas día/noche y cabeceras ergonómicas) acompañados de pantallas de detalle en **Jetpack Compose** y **Material 3**.
+**One UI Extra Widgets** amplía la pantalla de inicio de Android con doce widgets diseñados en torno a los tokens visuales de **Samsung One UI** (esquinas `26dp`, superficies translúcidas adaptativas día/noche y cabeceras ergonómicas) acompañados de pantallas de detalle en **Jetpack Compose** y **Material 3**.
 
 *   **Clima y Calidad del Aire:** Datos en tiempo real de Open-Meteo (precipitación, AQI europeo, PM2.5/PM10 y UV) más renderizado de fase lunar en `Canvas`.
 *   **Astrología Sin Conexión:** Motor local con `Astronomy Engine` para signo solar, tránsito lunar y detección de planetas retrógrados o en sombra.
