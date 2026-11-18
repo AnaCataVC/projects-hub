@@ -35,6 +35,7 @@ const EXTERNAL_SHOWCASE_PROJECTS = new Set([
   'anacatalina-cv',  // Canonical curriculum website (cv.ana-catalina.com)
   'emotion-finder',   // Full-stack FastHTML/HTMX web application on Vercel
   'life-tracker-analytics', // Streamlit / Python data app
+  'mercury-in-prod', // Static Data Story & Streamlit exploratory lab on Vercel / Streamlit Cloud
 ]);
 function parseFrontmatter(content) {
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);

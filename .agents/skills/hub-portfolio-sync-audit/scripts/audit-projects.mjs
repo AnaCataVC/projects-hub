@@ -251,7 +251,7 @@ function runAudit() {
     const hasProduct = /^product:\s*$/m.test(esContent);
     const typeMatch = esContent.match(/^type:\s*["']?([a-zA-Z0-9_-]+)["']?/m);
     const projectType = typeMatch ? typeMatch[1] : 'desktop';
-    const isStandaloneShowcase = ['anacatalina-mcp', 'anacatalina-cv', 'emotion-finder', 'life-tracker-analytics'].includes(targetProjectName);
+    const isStandaloneShowcase = ['anacatalina-mcp', 'anacatalina-cv', 'emotion-finder', 'life-tracker-analytics', 'mercury-in-prod'].includes(targetProjectName);
 
     if (!hasProduct && !isStandaloneShowcase && ['desktop', 'mobile', 'ai'].includes(projectType)) {
       results.productAlerts.push({
