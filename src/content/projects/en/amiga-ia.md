@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
-description: "Comprehensive ecosystem of 14 autonomous subagents, stateless guardrail hooks, and 25 portable declarative skills with selective domain pack installation and strengthened engineering invariants. 100% cross-compatible with Antigravity (Gemini), Claude Code, and OpenAI Codex."
-lastUpdated: 2026-11-08
+description: "Comprehensive ecosystem of 13 autonomous subagents, stateless guardrail hooks, and 26 portable declarative skills with selective domain pack installation and strengthened engineering invariants. 100% cross-compatible with Antigravity (Gemini), Claude Code, and OpenAI Codex."
+lastUpdated: 2026-11-21
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -11,7 +11,7 @@ categories: ["AI", "Agents", "Productivity", "Developer Tools"]
 type: "ai"
 status: "Active"
 problem: "Traditional step-by-step imperative instructions break down as codebases scale, alongside heavy recurring token taxes caused by bloated system prompts and repetitive multi-engine context."
-solution: "A unified agentic ecosystem featuring 14 autonomous orchestrating subagents and 25 declarative skills with selective domain pack setup and strengthened engineering invariants, powered by a tri-ecosystem compiler (Antigravity, Claude Code, and OpenAI Codex), delimited block distribution, Double-Blind Cleanroom TDD, and deterministic empirical benchmarks."
+solution: "A unified agentic ecosystem featuring 13 autonomous orchestrating subagents and 26 declarative skills with selective domain pack setup and strengthened engineering invariants, powered by a tri-ecosystem compiler (Antigravity, Claude Code, and OpenAI Codex), delimited block distribution, Double-Blind Cleanroom TDD, and deterministic empirical benchmarks."
 learnings:
   - "Empirical Benchmark Validation (ADR-004, ADR-012): Offline deterministic benchmark suite demonstrating a 44.75% (-2,973 tokens) reduction in context overhead per turn, 0% confirmation bias in Cleanroom TDD, and 100% precision and recall (F1 = 1.00) in repository defect audits."
   - "Idempotent AI Rules Distribution: Designed a delimited block protocol to inject and sync agent directives across codebases without overwriting local configurations or leaving artifacts."
@@ -68,9 +68,9 @@ product:
       - title: "ami-pr-reviewer"
         description: "Orchestrates structured PR code reviews using parallel subagents for teammates' Pull Requests."
         tags: ["ami-review-peer-pr", "ami-analyze-pr-comments", "ami-review-self-pr"]
-      - title: "ami-pr-publisher"
-        description: "Automates the creation, conflict checking, and critical self-review of your own Pull Requests."
-        tags: ["ami-review-self-pr", "ami-plan-commits", "ami-detect-pr-conflicts", "ami-create-tests"]
+      - title: "ami-change-validator"
+        description: "Read-only change and PR readiness validator running quality, dependency, test, conflict, and documentation drift checks."
+        tags: ["ami-detect-pr-conflicts", "Quality Gates", "PR Readiness"]
       - title: "ami-repo-auditor"
         description: "Orchestrates modular repository health audits, agent discovery, automation opportunities, and quality checks."
         tags: ["ami-discover-ai-agents", "ami-discover-automations", "ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
@@ -80,9 +80,9 @@ product:
       - title: "ami-release-manager"
         description: "Orchestrates full release lifecycle, semantic version tag calculation, and changelog drafting."
         tags: ["ami-prepare-release"]
-      - title: "ami-push-assistant"
-        description: "Performs baseline security, data consistency, and hook interceptions before pushing to remote."
-        tags: ["Git Pre-Flight Guards", "Real-time Debug Linter"]
+      - title: "ami-ship-change"
+        description: "Main-session shipping orchestrator coordinating parallel validation/review, approved fixes, adversarial verification, commit, push, and PR gates."
+        tags: ["ami-review-self-pr", "ami-plan-commits", "ami-create-tests"]
       - title: "ami-expert-council"
         description: "Spawns a council of dynamic specialized subagents to debate, analyze, and refine architectural ideas."
         tags: ["Dynamic Parallel Subagents"]
@@ -112,7 +112,7 @@ product:
 
 ### Technical Architecture & Orchestration
 
-**Amiga IA** elevates AI-assisted software engineering from linear chat prompts to an **autonomous subagent mesh of 14 specialized agents** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, etc.) supported by **25 on-demand declarative skills**. Each agent operates with bounded tools, declarative skills, and explicit verification gates.
+**Amiga IA** elevates AI-assisted software engineering from linear chat prompts to an **autonomous subagent mesh of 13 specialized agents** (`ami-tech-lead`, `ami-repo-auditor`, `ami-change-validator`, etc.) supported by **26 on-demand declarative skills** (including `ami-ship-change`). Each agent operates with bounded tools, declarative skills, and explicit verification gates.
 
 *   **Universal Adapter & Multi-Engine Portability:** Stateless guardrail injection and portable skill compilation with native cross-compatibility across Antigravity (Gemini), Claude Code, and OpenAI Codex. Features an interactive CLI wizard (`amiga-ia-setup`) with modular domain pack installation and strengthened engineering invariants.
 *   **Delimited Block Protocol:** Idempotent synchronization engine that updates global rules across codebases without overwriting local configurations or leaving residual clutter.

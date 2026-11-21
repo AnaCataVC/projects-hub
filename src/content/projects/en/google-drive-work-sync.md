@@ -2,7 +2,7 @@
 title: "Google Drive Work Sync"
 icon: "/project-icons/google-drive-work-sync-icon.png"
 description: "Native Windows 11 desktop application (WinUI 3 / .NET 9) that syncs work directories and AI agent context to Google Drive via native Rust engine with BLAKE3 SIMD and Google Apps Script."
-lastUpdated: 2026-11-17
+lastUpdated: 2026-11-21
 githubUrl: "https://github.com/AnaCataVC/google-drive-work-sync"
 isLiveApp: false
 technologies: ["C# 13", ".NET 9", "Rust", "WinUI 3", "Windows App SDK", "BLAKE3 SIMD", "P/Invoke FFI", "Google Apps Script", "xUnit"]
@@ -10,7 +10,7 @@ categories: ["Windows", "Productivity", "Developer Tools", "Automation"]
 type: "desktop"
 status: "Active"
 problem: "Keeping work directories and AI agent context (CLAUDE.md, skills, memory files) synced to Google Drive without a heavyweight sync client, without re-uploading unchanged files, and without accidentally leaking secrets."
-solution: "A WinUI 3 system tray app powered by a native Rust engine (FFI P/Invoke) that uploads only new or modified files to a self-hosted Google Apps Script Web App, using ultra-fast BLAKE3 SIMD hashing and Rayon multithreading before transferring, retrying transient failures with exponential backoff, discovering AI agent context recursively while excluding nested repositories and worktrees, and running a three-tiered secret filter."
+solution: "A WinUI 3 system tray app powered by a native Rust engine (FFI P/Invoke) that uploads only new or modified files to a self-hosted Google Apps Script Web App, using ultra-fast BLAKE3 SIMD hashing and Rayon multithreading before transferring, retrying transient failures with exponential backoff, supporting gitignore-style glob exclusions (`.syncignore`) and safe Restore from Drive, discovering AI agent context recursively while excluding nested repositories and worktrees, and running a three-tiered secret filter."
 learnings:
   - "Batch Uploads & Orphan Reconciliation: Batch packaging for Claude context sync with live progress reporting, busy indicators for scans, and destructive action confirmations when purging duplicates or orphans in Google Drive."
   - "Crash-Safe Hash Index: The sync index is written to a temp file and swapped in atomically, so an interrupted run can never leave it empty."
@@ -18,6 +18,7 @@ learnings:
   - "Nested Repository & Worktree Detection: A BFS traversal that identifies git roots (both `.git` directories and linked worktree files) so tracked `CLAUDE.md` files are never misclassified as untracked scratch notes."
   - "No Silent Skips: Locked files or unlistable folders are reported as errors instead of counted as 'unchanged', so the 'Up to date' status can always be trusted."
   - "Native Rust Engine via FFI & BLAKE3 SIMD (v1.9.0): Integrated a native Rust cdylib crate with Rayon parallelism and SIMD-accelerated BLAKE3 hashing through a zero-allocation P/Invoke interop bridge, featuring transparent in-place hash index migration without re-uploading."
+  - "Glob Exclusions & Safe Restore (v1.10.0): Pruned traversal via `.syncignore` rules and chunked Restore from Drive with atomic writes, path traversal rejection, and Windows Recycle Bin protection on overwrites."
 websiteUrl: "https://google-drive-work-sync.ana-catalina.com"
 websiteActionText: "View Page"
 product:
@@ -42,13 +43,19 @@ product:
     - icon: "ShieldCheck"
       title: "No Silent Skips"
       text: "Locked files and unlistable folders are reported as errors, with real-time scan and sync busy indicators, destructive action confirmations, and one-click retry with exponential backoff."
+    - icon: "Filter"
+      title: "Glob Exclusions & .syncignore"
+      text: "Supports gitignore-style glob patterns globally and per folder via `.syncignore`, pruning excluded directories before scanning and suppressing false Drive orphans."
+    - icon: "Download"
+      title: "Safe Restore from Drive"
+      text: "Lists and downloads backups in batches to original or alternate folders with atomic writes, Recycle Bin protection on overwrites, and hash index updates to prevent re-uploads."
   faq:
     - question: "Do I need the official Google Drive desktop client?"
       answer: "No. It connects directly to your own self-hosted Google Apps Script Web App and uploads only new or modified files in compact batches."
     - question: "How does it prevent private keys or tokens from leaking?"
       answer: "It runs a three-tier filter before any upload: a filename blacklist (.env, id_rsa), a 64 KB regex token scan, and a fail-closed MCP config sanitizer."
     - question: "Does it re-upload all my files on every sync run?"
-      answer: "No. It checks file timestamp and size first, computing a SHA-256 hash only when metadata changes and storing state in a crash-safe local index."
+      answer: "No. It checks file timestamp and size first, computing a BLAKE3 hash only when metadata changes and storing state in a crash-safe local index."
   platforms: ["Windows 11"]
   downloadUrl: "https://github.com/AnaCataVC/google-drive-work-sync/releases/latest"
   downloadLabel: "Download for Windows"

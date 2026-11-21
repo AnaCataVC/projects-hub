@@ -1,7 +1,7 @@
 ---
 title: "Amiga IA"
-description: "Ecosistema integral de 14 subagentes autónomos, hooks de seguridad sin estado y 25 skills declarativas portátiles con instalación selectiva por packs de dominio e invariantes de ingeniería reforzadas. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
-lastUpdated: 2026-11-08
+description: "Ecosistema integral de 13 subagentes autónomos, hooks de seguridad sin estado y 26 skills declarativas portátiles con instalación selectiva por packs de dominio e invariantes de ingeniería reforzadas. 100% compatible con Antigravity (Gemini), Claude Code y OpenAI Codex."
+lastUpdated: 2026-11-21
 icon: "/project-icons/ami-icon.png"
 githubUrl: "https://github.com/AnaCataVC/amiga-ia"
 websiteUrl: "https://amiga-ia.ana-catalina.com"
@@ -11,7 +11,7 @@ categories: ["IA", "Agentes", "Productividad", "Developer Tools"]
 type: "ai"
 status: "Activo"
 problem: "La degradación en bases de código grandes al depender de instrucciones imperativas paso a paso, junto al consumo elevado de tokens al acumular contexto repetitivo en asistentes de IA genéricos."
-solution: "Un ecosistema agéntico unificado de 14 subagentes autónomos y 25 skills declarativas con instalación selectiva por dominio e invariantes reforzadas, dotado de un compilador nativo para el tri-ecosistema (Antigravity, Claude Code y OpenAI Codex), protocolo de bloques delimitados, TDD Cleanroom Doble Ciego y suite de benchmarks empíricos deterministas."
+solution: "Un ecosistema agéntico unificado de 13 subagentes autónomos y 26 skills declarativas con instalación selectiva por dominio e invariantes reforzadas, dotado de un compilador nativo para el tri-ecosistema (Antigravity, Claude Code y OpenAI Codex), protocolo de bloques delimitados, TDD Cleanroom Doble Ciego y suite de benchmarks empíricos deterministas."
 learnings:
   - "Evaluación Empírica de Benchmarks Agénticos (ADR-004, ADR-012): Validación offline determinista que evidencia -44.75% (-2.973 tokens) en sobrecarga de contexto por turno, 0% de sesgo de confirmación en TDD Cleanroom y 100% de precisión y exhaustividad en auditorías de repositorio."
   - "Distribución Idempotente de Reglas de IA: Diseño del protocolo de bloques delimitados para inyectar y sincronizar directivas de agentes en proyectos sin sobreescribir configuraciones locales ni generar residuos."
@@ -68,9 +68,9 @@ product:
       - title: "ami-pr-reviewer"
         description: "Orquesta revisiones estructuradas de PRs de compañeros usando subagentes en paralelo."
         tags: ["ami-review-peer-pr", "ami-analyze-pr-comments", "ami-review-self-pr"]
-      - title: "ami-pr-publisher"
-        description: "Automatiza la creación, revisión de conflictos y auto-revisión crítica de tus propios Pull Requests."
-        tags: ["ami-review-self-pr", "ami-plan-commits", "ami-detect-pr-conflicts", "ami-create-tests"]
+      - title: "ami-change-validator"
+        description: "Validador de solo lectura de cambios y preparación de PR que ejecuta comprobaciones de calidad, dependencias, tests, conflictos y deriva documental."
+        tags: ["ami-detect-pr-conflicts", "Quality Gates", "PR Readiness"]
       - title: "ami-repo-auditor"
         description: "Orquesta auditorías de salud, dependencias, detección de agentes y automatizaciones, y generación de pruebas faltantes."
         tags: ["ami-discover-ai-agents", "ami-discover-automations", "ami-scan-tech-debt", "ami-analyze-dependencies", "ami-audit-quality"]
@@ -80,9 +80,9 @@ product:
       - title: "ami-release-manager"
         description: "Orquesta el ciclo de lanzamiento, cálculo semántico de etiquetas de versión y notas de lanzamiento."
         tags: ["ami-prepare-release"]
-      - title: "ami-push-assistant"
-        description: "Realiza pruebas de seguridad, consistencia de datos e interceptación de hooks antes del push."
-        tags: ["Git Pre-Flight Guards", "Real-time Debug Linter"]
+      - title: "ami-ship-change"
+        description: "Orquestador principal para validar, revisar, corregir, commitear, hacer push y abrir Pull Requests con compuertas de confirmación."
+        tags: ["ami-review-self-pr", "ami-plan-commits", "ami-create-tests"]
       - title: "ami-expert-council"
         description: "Crea un panel de subagentes dinámicos para debatir, analizar y refinar ideas arquitectónicas."
         tags: ["Dynamic Parallel Subagents"]
@@ -112,7 +112,7 @@ product:
 
 ### Arquitectura Técnica y Orquestación
 
-**Amiga IA** transforma la asistencia de programación con Inteligencia Artificial, superando las limitaciones de los prompts imperativos mediante una **malla de 14 subagentes especializados y autónomos** (`ami-tech-lead`, `ami-repo-auditor`, `ami-push-assistant`, entre otros) respaldada por **25 skills declarativas bajo demanda**. Cada subagente asume un rol delimitado con herramientas específicas y compuertas de seguridad.
+**Amiga IA** transforma la asistencia de programación con Inteligencia Artificial, superando las limitaciones de los prompts imperativos mediante una **malla de 13 subagentes especializados y autónomos** (`ami-tech-lead`, `ami-repo-auditor`, `ami-change-validator`, entre otros) respaldada por **26 skills declarativas bajo demanda** (como `ami-ship-change`). Cada subagente asume un rol delimitado con herramientas específicas y compuertas de seguridad.
 
 *   **Adaptador Universal & Multi-Motor:** Inyección de guardarraíles sin estado y compilación portátil de habilidades con compatibilidad nativa entre Antigravity (Gemini), Claude Code y OpenAI Codex. Incluye un wizard CLI (`amiga-ia-setup`) con instalación modular por packs de dominio e invariantes de ingeniería reforzadas.
 *   **Protocolo de Bloques Delimitados:** Motor de sincronización idempotente que actualiza reglas globales en múltiples repositorios sin sobreescribir configuraciones locales ni dejar residuos.
