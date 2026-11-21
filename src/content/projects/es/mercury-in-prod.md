@@ -1,7 +1,7 @@
 ---
 title: "Mercury in Prod"
 description: "Laboratorio empírico de Data Science que evalúa si Mercurio retrógrado, las sombras planetarias o las fases lunares se correlacionan con incidentes de software en producción, demostrando cómo los confusores de calendario y el p-hacking generan patrones ilusorios."
-lastUpdated: 2026-11-17
+lastUpdated: 2026-11-21
 icon: "/project-icons/mercury-in-prod-icon.png"
 githubUrl: "https://github.com/AnaCataVC/mercury-in-prod"
 liveAppUrl: "https://mercury.ana-catalina.com"
