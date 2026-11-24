@@ -1,7 +1,7 @@
 ---
 title: "One UI Extra Widgets"
-description: "Native suite of twelve Android home screen widgets styled after Samsung One UI, built in Kotlin with Jetpack Glance, Jetpack Compose, offline astronomical ephemeris, and 5G NR / Wi-Fi 6 telemetry."
-lastUpdated: 2026-11-18
+description: "Native suite of fifteen Android home screen widgets styled after Samsung One UI, built in Kotlin with Jetpack Glance, Jetpack Compose, offline astronomical ephemeris, and 5G NR / Wi-Fi 6 telemetry."
+lastUpdated: 2026-11-24
 icon: "/project-icons/one-ui-extra-widgets-icon.png"
 githubUrl: "https://github.com/AnaCataVC/one-ui-extra-widgets"
 websiteUrl: "https://one-ui-extra-widgets.ana-catalina.com"
@@ -10,10 +10,10 @@ technologies: ["Kotlin", "Jetpack Glance", "Jetpack Compose", "Material 3", "Wor
 categories: ["Android", "Mobile", "Widgets", "One UI"]
 type: "mobile"
 status: "In Development"
-problem: "Stock Samsung Galaxy home screen widgets lack specialized tools with authentic One UI styling — such as air quality with lunar phases, offline astrology, interactive retro music players, and detailed 5G/Wi-Fi metrics — without cloud accounts or battery drain."
-solution: "A modular suite of twelve Jetpack Glance widgets and Jetpack Compose detail screens built around Samsung One UI design tokens (26dp squircle radii and adaptive day/night translucent surfaces), combining keyless Open-Meteo data, 100% offline astronomical computation, MediaSession bridging, and native network telemetry."
+problem: "Stock Samsung Galaxy home screen widgets lack specialized tools with authentic One UI styling — such as air quality with lunar phases, offline astrology, interactive retro music players, battery thermal health, and detailed 5G/Wi-Fi metrics — without cloud accounts or battery drain."
+solution: "A modular suite of fifteen Jetpack Glance widgets and Jetpack Compose detail screens built around Samsung One UI design tokens (26dp squircle radii and adaptive day/night translucent surfaces), combining keyless Open-Meteo data, 100% offline astronomical computation, MediaSession bridging, and native network and battery telemetry."
 learnings:
-  - "Jetpack Glance + Custom Canvas: Rendering crisp bitmaps for the lunar phase sphere, interactive iPod Classic Click Wheel, and spinning Discman CD album-art mask within RemoteViews constraints."
+  - "Jetpack Glance + Custom Canvas: Rendering crisp bitmaps for the lunar phase sphere, interactive iPod Classic Click Wheel, rotating Cassette Walkman reels, stroboscopic Vinyl Turntable platter, and MiniDisc cartridge within RemoteViews constraints."
   - "100% Offline Astronomical Ephemeris: Integrating Astronomy Engine to compute geocentric ecliptic longitudes, lunar transits, and planetary retrograde or shadow states with zero network calls."
   - "Universal MediaSession Bridge: Real-time playback synchronization via NotificationListenerService compatible with Spotify, YouTube Music, Apple Music, Samsung Music, and Tidal."
   - "Rootless 5G NR & Wi-Fi 6 Telemetry: Extracting cellular RSRP in dBm, Wi-Fi link speed in Mbps, frequency band, and RSSI using standard TelephonyManager and ConnectivityManager APIs."
@@ -21,7 +21,7 @@ learnings:
 websiteActionText: "Visit Page"
 product:
   tagline: "One UI widgets for your Galaxy"
-  intro: "Twelve lightweight Android widgets styled for Samsung One UI: weather with AQI, offline astrology, retro music players, and 5G/Wi-Fi 6 telemetry."
+  intro: "Fifteen lightweight Android widgets styled for Samsung One UI: weather with AQI, offline astrology, six retro players, and 5G/Wi-Fi 6 telemetry."
   features:
     - icon: "CloudSun"
       title: "Weather Pro, AQI & Moon Phase"
@@ -30,8 +30,8 @@ product:
       title: "100% Offline Astrology"
       text: "Computes Sun sign, daily Moon transit, lunar illumination, and direct or retrograde planetary states locally on-device with zero internet calls."
     - icon: "Disc3"
-      title: "Three Retro Music Players"
-      text: "Pick between an iPod Classic Click Wheel, a 2000s dot-matrix MP3 stick, or a portable CD Discman, all synced live with your active player."
+      title: "Six Retro Music Players"
+      text: "Pick between iPod Classic, 2000s USB MP3, Discman, Cassette Walkman, Vinyl Turntable, or MiniDisc Hi-MD, all synced live with your active player."
     - icon: "Wifi"
       title: "5G NR & Wi-Fi 6 Network Monitor"
       text: "Displays cellular generation, carrier, RSRP signal power in dBm, Wi-Fi link speed in Mbps, 5 GHz / 2.4 GHz band, and RSSI in real time."
@@ -80,10 +80,10 @@ product:
 
 ### Samsung One UI-Styled Widget Suite
 
-**One UI Extra Widgets** expands the Android home screen with twelve widgets crafted around **Samsung One UI** design tokens (`26dp` corner radii, adaptive day/night translucent surfaces, and ergonomic headers), paired with **Jetpack Compose** and **Material 3** detail screens.
+**One UI Extra Widgets** expands the Android home screen with fifteen widgets crafted around **Samsung One UI** design tokens (`26dp` corner radii, adaptive day/night translucent surfaces, and ergonomic headers), paired with **Jetpack Compose** and **Material 3** detail screens.
 
-*   **Weather & Air Quality:** Real-time Open-Meteo forecasts (rain probability, European AQI, PM2.5/PM10, and UV index) alongside a custom `Canvas` lunar phase sphere.
+*   **Weather, Solar & Air Quality:** Real-time Open-Meteo forecasts (rain probability, European AQI, PM2.5/PM10, UV index, and night sky) alongside offline lunar phase and solar arc renderers.
 *   **Offline Astrology Engine:** Local ephemeris computation with `Astronomy Engine` for Sun sign, Moon zodiac transit, and retrograde/shadow detection.
-*   **Retro Music Players & Network Telemetry:** Three classic player styles (*iPod Classic*, *MP3 LCD*, and *Discman*) bridged via `MediaSession`, plus a live 5G NR / LTE and Wi-Fi 6 signal monitor.
+*   **Retro Music Players & Hardware Diagnostics:** Six classic player styles (*iPod Classic*, *MP3 LCD*, *Discman*, *Cassette Walkman*, *Vinyl Turntable*, and *MiniDisc Hi-MD*) bridged via `MediaSession`, plus live 5G NR / Wi-Fi 6 signal and battery thermal health monitors.
 
 > **Note**: Full source code, architectural research, and official APK releases are publicly available in the GitHub repository under the MIT license.
