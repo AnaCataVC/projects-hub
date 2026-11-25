@@ -1,8 +1,8 @@
 ---
 title: "AMI Claude Mods"
 icon: "/project-icons/ami-claude-mods-icon.png"
-description: "Suite de 8 mods modulares, paneles reactivos y function hooks para Claude Desktop y Claude Code CLI integrados con Amiga IA. Incluye orquestación de planes, control de cuota, medidores discretos, guardas Git/K8s e i18n."
-lastUpdated: 2026-11-24
+description: "Suite de 9 mods modulares, paneles reactivos y function hooks para Claude Desktop y Claude Code CLI con integración opcional con Amiga IA. Incluye orquestación de planes, control de cuota y sesión, medidores discretos, guardas Git/K8s e i18n."
+lastUpdated: 2026-11-25
 githubUrl: "https://github.com/AnaCataVC/ami-claude-mods"
 websiteUrl: "https://ami-claude-mods.ana-catalina.com"
 isLiveApp: false
@@ -11,7 +11,7 @@ categories: ["IA", "Agentes", "Developer Tools", "Productividad"]
 type: "ai"
 status: "En Desarrollo"
 problem: "A medida que los agentes de codificación autónomos ejecutan flujos de trabajo extensos tanto en Claude Desktop como en la terminal con Claude Code CLI, surgen fricciones críticas: saturación de la ventana de contexto por búsquedas mecánicas repetitivas, agotamiento prematuro de límites de uso semanales sin dosificación, falta de seguimiento reactivo en tareas de planes largos, procesos o contenedores huérfanos al salir, commits con identidades Git erróneas, mutaciones en Kubernetes productivo y falta de visibilidad de hooks."
-solution: "Una suite de ocho extensiones modulares (mods) y function hooks con soporte dual nativo (Claude Desktop y Claude Code CLI) e internacionalización bilingüe (ES/EN) integrada con Amiga IA. Incluye panel reactivo de progreso de planes (/plan-progress) con reconciliación de sesiones en 'orchestrate-plan', dosificación de cuota semanal (20% diario) en 'quota-pace', inspección de hooks y capas de configuración ('hooks-viewer'), medidor discreto contra lecturas mecánicas ('undelegated-reads'), checklist de cierre con atajos de recarga ('close-checklist'), bandeja inter-agente ('child-sessions'), guarda Cleanroom Doble Ciego para TDD ('cleanroom-guard') y centinela multientorno Git/K8s ('context-guard')."
+solution: "Una suite de nueve extensiones modulares (mods) y function hooks con soporte dual nativo (Claude Desktop y Claude Code CLI) e internacionalización bilingüe (ES/EN) con integración opcional con Amiga IA. Incluye panel reactivo de progreso de planes (/plan-progress) con reconciliación de sesiones en 'orchestrate-plan', dosificación de cuota semanal (20% diario) en 'quota-pace', atribución de cuota por sesión principal ('session-share'), inspección de hooks y capas de configuración ('hooks-viewer'), medidor discreto contra lecturas mecánicas ('undelegated-reads'), checklist de cierre con atajos de recarga ('close-checklist'), bandeja inter-agente ('child-sessions'), guarda Cleanroom Doble Ciego para TDD ('cleanroom-guard') y centinela multientorno Git/K8s ('context-guard')."
 learnings:
   - "Interoperabilidad Dual de Anfitrión (Claude Desktop GUI y CLI): Los plugins resuelven su interfaz mediante '$.ui.resolve', operando idénticamente como paneles laterales nativos y medidores integrados en Claude Desktop o como interfaces de terminal en la CLI."
   - "Reconciliación Declarativa de Planes sin Mutaciones: 'orchestrate-plan' inspecciona el estado de tareas contra sesiones de agentes secundarias y PRs fusionados de manera no destructiva, evitando modificar el archivo plan.md en disco mientras mantiene el panel UI sincronizado."
@@ -23,7 +23,7 @@ learnings:
 websiteActionText: "Ver Página"
 product:
   tagline: "Mods reactivos para Claude Desktop y CLI"
-  intro: "Suite de 8 mods para Claude Desktop y CLI: orquesta planes, dosifica cuotas, audita recursos con atajos y optimiza contexto con medidores discretos e i18n."
+  intro: "Suite de 9 mods para Claude Desktop y CLI: orquesta planes, dosifica cuotas y sesión, audita recursos con atajos y optimiza contexto con i18n."
   features:
     - icon: "Sliders"
       title: "Inspección de Hooks y Ajustes"
@@ -34,6 +34,9 @@ product:
     - icon: "Gauge"
       title: "Dosificación de Cuota Semanal"
       text: "Calcula el ritmo de uso laboral (20% por día hábil) sobre el límite de 7 días y emite avisos sutiles en la barra de estado antes de agotar la cuota de la cuenta."
+    - icon: "PieChart"
+      title: "Atribución de Cuota por Sesión"
+      text: "Muestra qué porcentaje de la cuota consumida de 5 horas y 7 días corresponde a la sesión principal activa, excluyendo sesiones anidadas o paralelas."
     - icon: "Cpu"
       title: "Medidor Silencioso de Contexto"
       text: "Contabiliza lecturas mecánicas consecutivas en un medidor discreto de barra de estado sin saturar el prompt, alertando solo al entrar en zona de riesgo (7/10) para forzar la delegación."
@@ -69,6 +72,9 @@ product:
       - title: "quota-pace"
         description: "Dosificador de ritmo semanal (20% por día hábil) con alertas deterministas en barra de estado y advertencias diarias."
         tags: ["session.measure", "Status Bar", "Rate Limiting", "Pacing"]
+      - title: "session-share"
+        description: "Medidor en barra de estado que muestra el porcentaje de cuota de 5h y 7d consumido por la sesión principal actual."
+        tags: ["session.measure", "turn.complete", "Status Bar", "Quota"]
       - title: "undelegated-reads"
         description: "Interruptor de seguridad y medidor silencioso en barra de estado que contabiliza lecturas mecánicas sin invadir el prompt."
         tags: ["tool.call", "Status Bar", "Quiet Meter"]
@@ -93,7 +99,7 @@ product:
       code: |
         // ~/.claude/settings.json
         {
-          "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/child-sessions:~/.claude/mods/cleanroom-guard:~/.claude/mods/close-checklist:~/.claude/mods/context-guard:~/.claude/mods/hooks-viewer:~/.claude/mods/orchestrate-plan:~/.claude/mods/quota-pace:~/.claude/mods/undelegated-reads"
+          "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/child-sessions:~/.claude/mods/cleanroom-guard:~/.claude/mods/close-checklist:~/.claude/mods/context-guard:~/.claude/mods/hooks-viewer:~/.claude/mods/orchestrate-plan:~/.claude/mods/quota-pace:~/.claude/mods/session-share:~/.claude/mods/undelegated-reads"
         }
     - title: "Carga Ad-Hoc en Terminal CLI"
       language: "bash"
@@ -114,11 +120,12 @@ product:
 
 ### Extensiones de Producción y Guardas de Seguridad para Claude Desktop y Claude Code
 
-**AMI Claude Mods** (`ami-claude-mods`) es una suite de ocho herramientas modulares y function hooks desarrollada con soporte dual para **Claude Desktop** (pestaña Code integrada) y la CLI de **Claude Code** (Early Access 2.1+), integrada fluidamente con el ecosistema agéntico de **Amiga IA** (`amiga-ia`) y soporte bilingüe completo (español e inglés). Diseñada para desarrolladores y equipos que utilizan agentes de IA en flujos intensivos de codificación, la suite resuelve los problemas operativos y de seguridad más comunes al interactuar con el motor agéntico:
+**AMI Claude Mods** (`ami-claude-mods`) es una suite de nueve herramientas modulares y function hooks desarrollada con soporte dual para **Claude Desktop** (pestaña Code integrada) y la CLI de **Claude Code** (Early Access 2.1+), con integración opcional lista para usar con el ecosistema agéntico de **Amiga IA** (`amiga-ia`) y soporte bilingüe completo (español e inglés). Diseñada para desarrolladores y equipos que utilizan agentes de IA en flujos intensivos de codificación, la suite resuelve los problemas operativos y de seguridad más comunes al interactuar con el motor agéntico:
 
 *   **Inspección y Diagnóstico del Motor (`hooks-viewer`):** Panel lateral reactivo y comando interactivo `/hooks-panel` que visualiza en tiempo real los hooks registrados, plugins activos y capas de configuración (`user`, `project`, `local`), con atajo de recarga rápida (`r`) y foco automático.
 *   **Seguimiento y Orquestación de Planes (`orchestrate-plan`):** Panel lateral interactivo `/plan-progress` que monitorea el avance de `plan.md`, reconciliando tareas completadas con sesiones concurrentes y PRs sin modificar destructivamente el archivo, además de disparar subagentes ejecutores.
 *   **Dosificación y Ritmo de Cuota Semanal (`quota-pace`):** Medidor en barra de estado que modela el ritmo de consumo óptimo (20% por día laboral) sobre el límite semanal de tokens, alertando una vez al día cuando la sesión supera el umbral diario estimado.
+*   **Atribución de Cuota por Sesión (`session-share`):** Indicador en barra de estado que calcula qué porcentaje de tu cuota consumida de 5 horas y 7 días se gastó en la sesión principal actual, excluyendo sesiones anidadas o paralelas.
 *   **Eficiencia de Contexto y Medidor Silencioso (`undelegated-reads`):** Medidor discreto en la barra de estado e interruptor de circuito (*circuit breaker*) que monitorea lecturas mecánicas (`Read`, `Grep`, `Glob`) en el hilo principal sin saturar el prompt con banners, alertando solo al entrar en zona de riesgo (7/10) para forzar la delegación en subagentes exploradores.
 *   **Inspección Previa a la Salida y Cierre Seguro (`close-checklist`):** Guardarraíl de salida unificado en los comandos `/cierre` y `/checklist` o al finalizar la sesión (`session.end`). Identifica cambios pendientes en Git, contenedores o volúmenes Docker activos y procesos en segundo plano, incorporando atajos de teclado (`r`) para refrescar el estado.
 *   **Buzón de Mensajería Inter-Agente con Atajos Rápidos (`child-sessions`):** Interfaz no bloqueante sobre el prompt que organiza preguntas y notificaciones prioritarias emitidas por subagentes en ejecución concurrente, con atajos numéricos (`1`-`3`) para responder o descartar al instante.
