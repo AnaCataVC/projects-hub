@@ -2,7 +2,7 @@
 title: "System Core Monitor"
 icon: "/project-icons/system-core-monitor-icon.png"
 description: "Visual, lightweight HUD system telemetry dashboard and performance control suite for Windows built in native C# (.NET WPF/XAML) in a standalone 585 KB executable with zero external dependencies."
-lastUpdated: 2026-11-17
+lastUpdated: 2026-11-26
 githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
 websiteUrl: "https://system-core-monitor.ana-catalina.com"
 isLiveApp: false
@@ -20,6 +20,7 @@ learnings:
   - "Win32 Power Switching via PowrProf.dll: Instantaneous power profile switching (PowerSetActiveScheme) coupled with working set memory trimming (EmptyWorkingSet)."
   - "Hardened Multizone Cleaner: Safe cleanup of obsolete temporary files protected by NTFS Junction isolation and dual timestamp validation."
   - "Usability & Full ES/EN Localization (v3.8.0): Complete bilingual coverage across chrome, views, and process details, dashboard snapshot export, search filters, safety confirmations, and window/startup toggles."
+  - "Storage, Docker/WSL & ModernDialog (v3.9.1): Enriched storage view with KPI strip, on-demand FolderSizeScanner (top-10 breakdown), Docker prune and PowerShell 7+ VHDX compaction actions, and theme-aware borderless ModernDialog."
 websiteActionText: "Visit Website"
 product:
   tagline: "Real-time pulse on your PC and AI sessions"
@@ -105,5 +106,6 @@ product:
 
 *   **Kernel NT Process Management (`ntdll.dll`):** Direct thread-level control using `NtSuspendProcess` and `NtResumeProcess` to freeze runaway background tasks without data loss, plus a two-phase graceful close protocol with System Tray minimization detection.
 *   **1-Click Command Center:** Instantaneous power scheme toggling via `PowrProf.dll`, Turbo Mode with RAM working set trimming (`EmptyWorkingSet`), native DNS cache flusher, and multizone temp cleaner immune to NTFS Junction attacks.
+*   **Storage & Docker/WSL Maintenance:** On-demand `FolderSizeScanner`, state-aware Docker Desktop pruning, WSL VHDX compaction via `pwsh.exe`, and theme-aware borderless `ModernDialog` prompts.
 
 > **Note**: You can download the pre-compiled standalone `.exe` directly from the GitHub Releases section without needing an installer.

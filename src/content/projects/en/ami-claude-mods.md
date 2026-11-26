@@ -2,7 +2,7 @@
 title: "AMI Claude Mods"
 icon: "/project-icons/ami-claude-mods-icon.png"
 description: "Suite of 9 production-grade modular extensions, reactive UI panels, and function hooks for Claude Desktop and Claude Code CLI with optional Amiga IA integration. Features plan orchestration, quota and session pacing, quiet meters, Git/K8s guards, and i18n."
-lastUpdated: 2026-11-25
+lastUpdated: 2026-11-26
 githubUrl: "https://github.com/AnaCataVC/ami-claude-mods"
 websiteUrl: "https://ami-claude-mods.ana-catalina.com"
 isLiveApp: false

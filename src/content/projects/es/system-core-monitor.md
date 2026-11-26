@@ -2,7 +2,7 @@
 title: "System Core Monitor"
 icon: "/project-icons/system-core-monitor-icon.png"
 description: "Panel interactivo de telemetría HUD y suite de control de rendimiento para Windows en C# nativo (.NET WPF/XAML) en un único ejecutable standalone de 585 KB sin dependencias externas."
-lastUpdated: 2026-11-17
+lastUpdated: 2026-11-26
 githubUrl: "https://github.com/AnaCataVC/system-core-monitor"
 websiteUrl: "https://system-core-monitor.ana-catalina.com"
 isLiveApp: false
@@ -20,6 +20,7 @@ learnings:
   - "Conmutación Energética con PowrProf.dll: Alternancia instantánea de perfiles de energía (PowerSetActiveScheme) combinada con recorte seguro de páginas de memoria inactivas (EmptyWorkingSet)."
   - "Limpiador Seguro Multizona: Purga higiénica de archivos temporales del sistema protegida contra enlaces simbólicos (NTFS Junctions) y validación de marcas temporales duales."
   - "Usabilidad y Localización ES/EN (v3.8.0): Cobertura bilingüe completa en vistas y detalles de procesos, exportación de snapshots del dashboard, filtros de búsqueda, confirmaciones de seguridad y ajustes de inicio/ventana."
+  - "Almacenamiento, Docker/WSL y ModernDialog (v3.9.1): Vista de almacenamiento con KPIs, FolderSizeScanner bajo demanda (top-10), acciones de Docker prune y compactación VHDX con PowerShell 7+, y diálogos sin bordes adaptados al tema."
 websiteActionText: "Visitar Sitio"
 product:
   tagline: "El pulso de tu PC y sesiones IA al instante"
@@ -105,5 +106,6 @@ product:
 
 *   **Control de Procesos en Kernel (`ntdll.dll`):** Suspensión y reactivación instantánea de hilos con `NtSuspendProcess` y `NtResumeProcess` para congelar tareas intensivas sin perder datos, junto a un protocolo de cierre elegante en dos fases con detección de System Tray.
 *   **Centro de Comandos en 1 Clic:** Conmutación de esquemas de energía mediante `PowrProf.dll`, modo Turbo con recorte de memoria RAM (`EmptyWorkingSet`), vaciado de caché DNS y limpiador multizona inmune a *Junctions* de NTFS.
+*   **Almacenamiento y Mantenimiento Docker/WSL:** Escáner de carpetas bajo demanda (`FolderSizeScanner`), limpieza de Docker Desktop con detección de estado, compactación VHDX de WSL mediante `pwsh.exe` y diálogos `ModernDialog` adaptados al tema.
 
 > **Nota**: Puedes descargar el ejecutable standalone `.exe` directamente desde la sección de Releases en GitHub sin necesidad de instaladores.
